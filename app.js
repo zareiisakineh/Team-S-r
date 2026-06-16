@@ -1,5 +1,5 @@
 console.log("app.js loaded");
-
+/*
 // Interaktiv veiviser
 function nextStep(answer, currentStepId) {
   // Skjul nåværende steg
@@ -92,7 +92,8 @@ function resetGuide() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+*/document.addEventListener("DOMContentLoaded", () => {
+  
   // 1. Mobilmeny
   const toggle = document.getElementById("menuToggle");
   const menu = document.getElementById("menu");
@@ -105,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       menu.classList.toggle("open");
     });
   }
-
+/*
   // 2. Rollevelger
   const roleButtons = document.querySelectorAll('.role-btn');
   if (roleButtons.length === 0) {
@@ -132,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
+*/
   // 3. Lukk mobilmeny ved klikk
   const menuLinks = document.querySelectorAll('.nav a');
   menuLinks.forEach(link => {

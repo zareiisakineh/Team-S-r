@@ -416,3 +416,22 @@ a {
   color: white;
   border-radius: 8px;
 }
+#minSubmit{
+padding: 0.4rem;
+margin-top: 0.6rem;
+background-color: rgb(214, 248, 248);
+border-radius: 5px;
+border: none;
+font-weight: bold;
+}
+#mittForslag{
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+#minLable{
+  padding-bottom: 1.5rem;
+}
+.tekst{
+  padding-left: 2rem;
+}
