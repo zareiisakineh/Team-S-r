@@ -170,8 +170,6 @@ a {
 
 /* Role Selector */
 
-
-
 /* Hero Actions */
 .hero-actions {
   display: flex;
@@ -190,15 +188,22 @@ a {
   border: 1px solid var(--primary-color);
   background: var(--primary-color);
   color: white;
-  font-weight: 600;
+  font-weight: 800;
   transition: all 0.2s ease;
   text-decoration: none;
+  font-size: large;
 }
 
 .btn:hover {
   background: var(--secondary-color);
+  cursor: pointer;
 }
-
+.btn:active{
+  font-size: 1.1em;
+}
+.btn:visited{
+  background-color: #5ce791;
+}
 /* Grid & Tiles */
 .grid {
   display: grid;
@@ -277,7 +282,7 @@ a {
 }
 
 
-/* Stil for interaktiv veiviser */
+/* Stil for interaktiv veiviser 
 .ai-guide-container {
   margin: 2rem 0;
   padding: 1.5rem;
@@ -362,15 +367,17 @@ a {
   color: white;
   border-radius: 8px;
 }
-#minSubmit{
-padding: 0.4rem;
-margin-top: 0.6rem;
-background-color: rgb(214, 248, 248);
-border-radius: 5px;
-
-font-weight: bold;
-font-size: x-large;
+p::selection{
+  background-color: var(--primary-light);
+  color: #162d4e;
 }
+ol{
+  padding-left: 3rem;
+}
+ol ul{
+  padding-left: 3rem;
+}
+
 #mittForslag {
     width: 100%;
     max-width: 800px;
@@ -379,14 +386,16 @@ font-size: x-large;
     border-radius: 5px;
     background-color: var(--primary-light);
     resize: vertical; /* brukeren kan gjøre den høyere */
-    margin-top: 2rem;
     
 }
 
 #minLable {
     display: block;
-    margin-bottom: 3rem;
-    font-weight: 600;
+    font-weight: bold;
+    font-size: larger;
+}
+lable{
+  font-size: xx-large;
 }
 
 .gang-wrapper {
