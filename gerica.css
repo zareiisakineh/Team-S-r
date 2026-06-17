@@ -46,7 +46,7 @@ a {
 
 .brand-title {
   font-weight: 800;
-  font-size: 28px;
+  font-size: 22px;
   color: var(--primary-color);
   padding-left: 2rem;
 }
@@ -424,14 +424,49 @@ border-radius: 5px;
 border: none;
 font-weight: bold;
 }
-#mittForslag{
-  border-radius: 5px;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
+#mittForslag {
+    width: 100%;
+    max-width: 800px;
+    min-height: 200px;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: var(--primary-light);
+    resize: vertical; /* brukeren kan gjøre den høyere */
 }
-#minLable{
-  padding-bottom: 1.5rem;
+
+#minLable {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
 }
-.tekst{
-  padding-left: 2rem;
+
+.gang-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+#medGang {
+    width: 900px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.gang-tekst {
+    flex: 1;
+}
+
+.gang-tekst p {
+    margin-bottom: 1rem;
+}
+@media (max-width: 900px) {
+    .gang-wrapper {
+        flex-direction: column;
+    }
+
+    #medGang {
+        width: 100%;
+        max-width: 500px;
+    }
 }
