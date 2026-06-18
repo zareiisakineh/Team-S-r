@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Team Sør</title>
   <link rel="stylesheet" href="gerica.css" />
+  
 </head>
 <body>
 
@@ -15,50 +16,43 @@
     <nav class="nav" aria-label="Hovedmeny">
       <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
       <ul id="menu"> 
-      <li><a href="index.html" ><i class="fas fa-link"></i> Hjem</a></li>
-      <li><a href="forStudenter.html"><i class="fas fa-link"></i>For studenter</a></li>
-        <li><a href="arbeidsliste.html"><i class="fas fa-envelope"></i>Print</a></li>
+      <li><a href="index.html" >Hjem</a></li>
+      <li><a href="forStudenter.html">For studenter</a></li>
+        <li><a href="arbeidsliste.html">Print</a></li>
        
-        <li><a href="prosedyrer.html" aria-current="page"><i class="fas fa-question-circle"></i>Prosedyrer</a></li>
+        <li><a href="prosedyrer.html" aria-current="page">Prosedyrer</a></li>
        
-        <li><a href="sjekkliste.html"><i class="fas fa-clipboard-list"></i>Ansvarsykepleier </a></li>
-         <li><a href="velferdsTeknologi.html"><i class="fas fa-lightbulb"></i>Velferdsteknologi</a></li>
+        <li><a href="sjekkliste.html">Ansvarsykepleier </a></li>
+         <li><a href="velferdsTeknologi.html">Velferdsteknologi</a></li>
     
-        <li><a href="gangTid.html"><i class="fas fa-link"></i>Gangtid</a></li>
-         <li><a href="Bursdager.html"><i class="fas fa-link"></i>Bursdager</a></li>
+        <li><a href="gangTid.html">Gangtid</a></li>
+         <li><a href="Bursdager.html">Bursdager</a></li>
       </ul>
-      </ul>
+     
     </nav>
   </header>
-  <main id="main-content" class="container">
-<h2>Nyttige prosedyre</h2>
-<section class="hero card">
-    <h2>Picc-Line</h2>
-</section>
+   <main class="faq-container ">
+    <section class="card">
+      <h1> Nyttige prosedyre</h1>
+      <p class="lead">Her finner du  vanlige prosedyrer </p>
+    </section>
 
-  <section class="hero card">
-    <h2>Stell av VAP</h2>
-</section>
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Stell av VAP</span>
+        </button>
+        <div class="faq-answer">
+            <p>Hvordan stelle innstikksstedet.</p>
+        </div>
+    </div>
 
-<section class="hero card">
-    <h2>Picc-Line</h2>
-</section>
-
-<section class="hero card">
-    <h2>Stell av VAP</h2>
-</section>
-
-<section class="hero card">
-    <h2>Stell av VAP</h2>
-</section>
-
-<section class="hero card">
- <h2>Dialyse: </h2> 
- 
- <p class = "tekst"><strong>Aseptisk teknikk</strong><br>
- <strong>Utstyr: </strong>Overgangskobling, oppvarmet dialyspose(Extraneal), desinfeksjonshette, antivac for hender og antibac for overflater og utstyr.
-</p>
-<ol class = "tekst">
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Dialyse</span>
+        </button>
+        <div class="faq-answer">
+            <p></p>
+            <ol class = "tekst">
   <li>Spritvask dialysebordet og organisatoren</li>
   <li>Vask hender med flytende såpe</li>
   <li>Legg frem nødvendig utstyr</li>
@@ -77,13 +71,65 @@
    <li>Åpne klemmen på pasientslangen og tøm magen. Discen står automatisk i tømmeposisjon.</li>
 </ol>
 <p><strong>vent mens buken tømmes for dialyse</strong></p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Sårstell</span>           
+        </button>
+        <div class="faq-answer">
+            <p>Prosedyre for sårstell.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+            <span>PEG-sonde</span>    
+        </button>
+        <div class="faq-answer">
+            <p>Prosedyre for stell av PEG-sonde.</p>
+        </div>
+    </div>
+
+
+ <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Dokumentasjon og journalføring</span>
+        </button>
+        <div class="faq-answer">
+          <p>Her finner du oversikt over forskjellige journaltyper i Gerica</p>
+        </div>
+      </div>
+    
 </section>
 
-<section class="hero card">
-    <h2>Sårstell</h2>
-</section>
+<script>
+    function toggleFaq(button) {
+      const faqItem = button.parentElement;
+      const answer = faqItem.querySelector('.faq-answer');
+      const icon = button.querySelector('.faq-icon');
 
- <script src="app.js" defer></script>
+      if (answer.classList.contains('active')) {
+        answer.classList.remove('active');
+        icon.classList.remove('open');
+      } else {
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-answer').forEach(item => {
+          item.classList.remove('active');
+        });
+        document.querySelectorAll('.faq-icon').forEach(item => {
+          item.classList.remove('open');
+        });
+
+        // Open the clicked FAQ item
+        answer.classList.add('active');
+        icon.classList.add('open');
+      }
+    }
+  </script>
+ 
 </main>
+<script src="app.js" defer></script>
 </body>
 </html>
