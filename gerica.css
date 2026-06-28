@@ -917,3 +917,12 @@ lable{
     .faq-icon.open {
       transform: rotate(180deg);
     }
+      
+    #pegInput{
+      font-size: large;
+      padding: 1rem;
+    }
+    #pegButton{
+      font-size: large;
+      padding: 0.7rem;
+    }

@@ -43,6 +43,11 @@
         </button>
         <div class="faq-answer">
             <p>Hvordan stelle innstikksstedet.</p>
+             <p id ="vapP"></p>
+            <label id = "vapLable">Skriv prosedyren for VAP her</label><br>
+            <textarea id = "vapInput"></textarea><br>
+            <button id = "vapButton">Send</button>
+
         </div>
     </div>
 
@@ -80,6 +85,11 @@
         </button>
         <div class="faq-answer">
             <p>Prosedyre for sårstell.</p>
+             <p id ="sårP"></p>
+            <label id = "sårLable">Skriv prosedyren for Sårstell her</label><br>
+            <textarea id = "sårInput"></textarea><br>
+            <button id = "sårButton">Send</button>
+
         </div>
     </div>
 
@@ -89,6 +99,11 @@
         </button>
         <div class="faq-answer">
             <p>Prosedyre for stell av PEG-sonde.</p>
+            <p id ="pegP"></p>
+            <label id = "pegLable">Skriv prosedyren for PEG her</label><br>
+            <textarea id = "pegInput"></textarea><br>
+            <button id = "pegButton">Send</button>
+
         </div>
     </div>
 
@@ -99,37 +114,104 @@
         </button>
         <div class="faq-answer">
           <p>Her finner du oversikt over forskjellige journaltyper i Gerica</p>
+          <p id ="dokumentP"></p>
+            <label id = "dokumentLable">Skriv prosedyren for dokumentasjon her</label><br>
+            <textarea id = "dokumentInput"></textarea><br>
+            <button id = "dokumentButton">Send</button>
         </div>
       </div>
     
 </section>
 
 <script>
-    function toggleFaq(button) {
-      const faqItem = button.parentElement;
-      const answer = faqItem.querySelector('.faq-answer');
-      const icon = button.querySelector('.faq-icon');
+  document.getElementById("pegButton").addEventListener("click", () => {
+    document.getElementById("pegP").textContent =
+        document.getElementById("pegInput").value;
+});
 
-      if (answer.classList.contains('active')) {
-        answer.classList.remove('active');
-        icon.classList.remove('open');
-      } else {
-        // Close all other FAQ items
-        document.querySelectorAll('.faq-answer').forEach(item => {
-          item.classList.remove('active');
-        });
-        document.querySelectorAll('.faq-icon').forEach(item => {
-          item.classList.remove('open');
-        });
+document.getElementById("vapButton").addEventListener("click", () => {
+    document.getElementById("vapP").textContent =
+        document.getElementById("vapInput").value;
+});
 
-        // Open the clicked FAQ item
-        answer.classList.add('active');
-        icon.classList.add('open');
-      }
-    }
-  </script>
+document.getElementById("sårButton").addEventListener("click", () => {
+    document.getElementById("sårP").textContent =
+        document.getElementById("sårInput").value;
+});
+
+document.getElementById("dokumentButton").addEventListener("click", () => {
+    document.getElementById("dokumentP").textContent =
+        document.getElementById("dokumentInput").value;
+});
+</script>
  
 </main>
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  getDoc
+}
+from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB1H...",
+  authDomain: "team-soer-bg0.firebaseapp.com",
+  projectId: "team-soer-bg0",
+  storageBucket: "team-soer-bg0.firebasestorage.app",
+  messagingSenderId: "976478969417",
+  appId: "1:976478969417:web:fc3b6d551b5d08ba0ba998",
+  measurementId: "G-H5WCVC2616"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function hentPEG() {
+    const snap = await getDoc(
+        doc(db,"prosedyrer","peg")
+    );
+
+    if(snap.exists()) {
+        document.getElementById("pegP")
+            .textContent = snap.data().tekst;
+    }
+}
+
+async function lagrePEG() {
+
+    const tekst =
+        document.getElementById("pegInput").value;
+
+    await setDoc(
+        doc(db,"prosedyrer","peg"),
+        {
+            tekst: tekst
+        }
+    );
+
+    document.getElementById("pegP")
+        .textContent = tekst;
+}
+
+document
+    .getElementById("pegButton")
+    .addEventListener(
+        "click",
+        lagrePEG
+    );
+
+window.addEventListener(
+    "load",
+    hentPEG
+);
+
+</script>
 <script src="app.js" defer></script>
 </body>
 </html>

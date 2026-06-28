@@ -27,28 +27,6 @@ function toggleFaq(button) {
         }
     }
 }
- function toggleFaq(button) {
-      const faqItem = button.parentElement;
-      const answer = faqItem.querySelector('.faq-answer');
-      const icon = button.querySelector('.faq-icon');
-
-      if (answer.classList.contains('active')) {
-        answer.classList.remove('active');
-        icon.classList.remove('open');
-      } else {
-        // Close all other FAQ items
-        document.querySelectorAll('.faq-answer').forEach(item => {
-          item.classList.remove('active');
-        });
-        document.querySelectorAll('.faq-icon').forEach(item => {
-          item.classList.remove('open');
-        });
-
-        // Open the clicked FAQ item
-        answer.classList.add('active');
-        icon.classList.add('open');
-      }
-    }
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
