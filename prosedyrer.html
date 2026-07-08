@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Team Sør</title>
   <link rel="stylesheet" href="gerica.css" />
-  
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+   
+
+  </style>
 </head>
 <body>
 
@@ -31,18 +35,74 @@
      
     </nav>
   </header>
-   <main class="faq-container ">
-    <section class="card">
+   <main class="container ">
+    
       <h1> Nyttige prosedyre</h1>
       <p class="lead">Her finner du  vanlige prosedyrer </p>
-    </section>
+    <section class="card">
 
-    <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-            <span>Stell av VAP</span>
+    <div class="prosedyre-item">
+        <button class="prosedyre-question" onclick="toggleFaq(this)">
+            <span>Stell av Nefrostomi</span>
+            <i class="fas fa-chevron-down prosedyre-icon"></i>
         </button>
-        <div class="faq-answer">
-            <p>Hvordan stelle innstikksstedet.</p>
+        <div class="prosedyre-answer">
+            <p>PICC-line: stell av innstikksted
+
+PICC-line kateter er et perifert innlagt sentralt venekateter.
+
+
+Utfør håndhygiene.
+
+Ta på rene hansker.
+
+Fjern gammel bandasje forsiktig. Løsne den transparente bandasjen ytterst og dra den av mot innstikkstedet.
+
+Uten bandasje, inspiser innstikksted/utløpssted med tanke på:
+
+· lokalt ødem
+
+· hematom
+
+· lekkasje
+
+· tegn til infeksjon (ømhet, rødme, varme, hevelse, ev. pussdannelse og lukt)
+
+Ved tegn til infeksjon, kontakt lege for vurdering av aktuelle tiltak, f.eks. ordinasjon av mikrobiologisk prøvetaking eller fjerning av kateter.
+
+Ta av hansker og utfør håndhygiene.
+
+
+Ta på rene hansker.
+
+Bruk pinsett.Ta en tupfer fuktet med desinfeksjonsmiddel og desinfiser huden tilsvarende bandasjens størrelse, fra innstikkstedet og utover. Bruk en ny tupfer for hvert drag. La huden lufttørke i minimum 30 sekunder. Vær forsiktig slik at kateteret ikke forflyttes.
+
+Bruk pinsett. Ta en tupfer fuktet med desinfeksjonsmiddel og desinfiser hud og kateter fra innstikkstedet og mot plasteret med venekateterlås. La det lufttørke.
+
+Ta av beskyttelseshansker hvis plaster med venekateterlås skal skiftes.
+
+
+Plaster med venekateterlås bør skiftes samtidig med ukentlig rutinemessig stell av innstikksted. Ved behov for hyppigere stell av innstikksted, skiftes låsen kun dersom den er løs eller forurenset.
+
+Utfør håndhygiene.
+
+Ta på sterile hansker.
+
+Fikser kateteret midlertidig med steril suturtape.
+
+Bruk ny steril pinsett og fukt plastervingene med tupfer med desinfeksjonsmiddel.
+
+Åpne kateterlåsen, frigjør kateteret, og fjern plaster med kateterlås forsiktig.
+
+Desinfiser festestedet med desinfeksjonsmiddel og la det lufttørke.
+
+Påfør hudbeskyttende krem på festestedet og la det lufttørke. Følg produktbeskrivelsen.
+
+Fikser PICC-line kateteret i kateterlåsen og steng.
+
+Fjern beskyttelsespapiret fra undersiden av plasteret, en side om gangen, og fest på huden.
+
+Fjern suturtapen som fikserer kateteret</p>
              <p id ="vapP"></p>
             <label id = "vapLable">Skriv prosedyren for VAP her</label><br>
             <textarea id = "vapInput"></textarea><br>
@@ -51,12 +111,13 @@
         </div>
     </div>
 
-    <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+    <div class="prosedyre-item">
+        <button class="prosedyre-question" onclick="toggleFaq(this)">
             <span>Dialyse</span>
+            <i class="fas fa-chevron-down prosedyre-icon"></i>
         </button>
-        <div class="faq-answer">
-            <p></p>
+        <div class="prosedyre-answer">
+           
             <ol class = "tekst">
   <li>Spritvask dialysebordet og organisatoren</li>
   <li>Vask hender med flytende såpe</li>
@@ -79,11 +140,12 @@
         </div>
     </div>
 
-    <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-            <span>Sårstell</span>           
+    <div class="prosedyre-item">
+        <button class="prosedyre-question" onclick="toggleFaq(this)">
+            <span>Sårstell</span>   
+            <i class="fas fa-chevron-down prosedyre-icon"></i>        
         </button>
-        <div class="faq-answer">
+        <div class="prosedyre-answer">
             <p>Prosedyre for sårstell.</p>
              <p id ="sårP"></p>
             <label id = "sårLable">Skriv prosedyren for Sårstell her</label><br>
@@ -93,11 +155,12 @@
         </div>
     </div>
 
-    <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-            <span>PEG-sonde</span>    
+    <div class="prosedyre-item">
+        <button class="prosedyre-question" onclick="toggleFaq(this)">
+            <span>PEG-sonde</span>   
+             <i class="fas fa-chevron-down prosedyre-icon"></i> 
         </button>
-        <div class="faq-answer">
+        <div class="prosedyre-answer">
             <p>Prosedyre for stell av PEG-sonde.</p>
             <p id ="pegP"></p>
             <label id = "pegLable">Skriv prosedyren for PEG her</label><br>
@@ -108,11 +171,12 @@
     </div>
 
 
- <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+ <div class="prosedyre-item">
+        <button class="prosedyre-question" onclick="toggleFaq(this)">
           <span>Dokumentasjon og journalføring</span>
+          <i class="fas fa-chevron-down prosedyre-icon"></i>
         </button>
-        <div class="faq-answer">
+        <div class="prosedyre-answer">
           <p>Her finner du oversikt over forskjellige journaltyper i Gerica</p>
           <p id ="dokumentP"></p>
             <label id = "dokumentLable">Skriv prosedyren for dokumentasjon her</label><br>
@@ -121,8 +185,8 @@
         </div>
       </div>
     
-</section>
 
+</section>
 <script>
   document.getElementById("pegButton").addEventListener("click", () => {
     document.getElementById("pegP").textContent =
@@ -146,72 +210,7 @@ document.getElementById("dokumentButton").addEventListener("click", () => {
 </script>
  
 </main>
-<script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-
-import {
-  getFirestore,
-  doc,
-  setDoc,
-  getDoc
-}
-from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyB1H...",
-  authDomain: "team-soer-bg0.firebaseapp.com",
-  projectId: "team-soer-bg0",
-  storageBucket: "team-soer-bg0.firebasestorage.app",
-  messagingSenderId: "976478969417",
-  appId: "1:976478969417:web:fc3b6d551b5d08ba0ba998",
-  measurementId: "G-H5WCVC2616"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-async function hentPEG() {
-    const snap = await getDoc(
-        doc(db,"prosedyrer","peg")
-    );
-
-    if(snap.exists()) {
-        document.getElementById("pegP")
-            .textContent = snap.data().tekst;
-    }
-}
-
-async function lagrePEG() {
-
-    const tekst =
-        document.getElementById("pegInput").value;
-
-    await setDoc(
-        doc(db,"prosedyrer","peg"),
-        {
-            tekst: tekst
-        }
-    );
-
-    document.getElementById("pegP")
-        .textContent = tekst;
-}
-
-document
-    .getElementById("pegButton")
-    .addEventListener(
-        "click",
-        lagrePEG
-    );
-
-window.addEventListener(
-    "load",
-    hentPEG
-);
-
-</script>
 <script src="app.js" defer></script>
 </body>
 </html>

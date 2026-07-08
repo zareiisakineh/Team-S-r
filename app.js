@@ -2,7 +2,7 @@ console.log("app.js loaded");
 
 function toggleFaq(button) {
     const answer = button.nextElementSibling;
-    const icon = button.querySelector(".faq-icon");
+    const icon = button.querySelector(".prosedyre-icon");
 
     if (answer.classList.contains("active")) {
         answer.classList.remove("active");
@@ -10,13 +10,14 @@ function toggleFaq(button) {
         if (icon) {
             icon.classList.remove("open");
         }
-    } else {
+    } 
+    else {
 
-        document.querySelectorAll(".faq-answer").forEach(item => {
+        document.querySelectorAll(".prosedyre-answer").forEach(item => {
             item.classList.remove("active");
         });
 
-        document.querySelectorAll(".faq-icon").forEach(item => {
+        document.querySelectorAll(".prosedyre-icon").forEach(item => {
             item.classList.remove("open");
         });
 

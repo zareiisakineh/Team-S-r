@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Team Sør</title>
   <link rel="stylesheet" href="gerica.css" />
+  <style>
+    #mittSpørsmål{
+      width: 100%;
+      background-color: azure;
+      height: 2rem;
+      padding-left: 1rem;
+      text-align: left;
+      border-radius: 5px;
+    }
+    #mittSvar{
+      display: none;
+      background-color:rgb(215, 216, 216);
+      height: 3rem;
+      border: 2px solid rgb(179, 107, 107);
+
+    }
+  </style>
 </head>
 <body>
 
@@ -12,6 +29,7 @@
     <div class="brand">
       <span class="brand-title">Team Sør</span>
     </div>
+
     <nav class="nav" aria-label="Hovedmeny">
       <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
       <ul id="menu"> 
@@ -29,15 +47,40 @@
      
     </nav>
   </header>
+
   <main id="main-content" class="container">
 <h2>Nyttige Gerica-funksjoner</h2>
 <section class="hero card">
-     <p class="lead">
+     <p id="minP" class="lead">
         <strong>Har du glemt hvordan du printer ut arbeidsliste for ansatte fra Gerica?<br> Husker du ikke hvordan du lager nytt besøk på PDA?<br>Slike nyttige funksjoner finner du på denne siden</strong> 
       </p>
 </section>
-
+<div id="item">
+<button id="mittSpørsmål">
+  <p>Øvelse</p>
+</button>
+ <div id="mittSvar">
+  <p>mine knapper</p>
+ </div>
+ </div>
 </main>
+<script>
+ 
+    const question1 = document.getElementById("mittSpørsmål");
+     const answer1 = document.getElementById("mittSvar");
+     question1.addEventListener("click", event => {
+      if(answer1.style.display === "none"){
+        answer1.style.display = "block";
+      }
+      else{
+        answer1.style.display = "none";
+      }
+     })
+
+    
+
+   
+</script>
  <script src="app.js" defer></script>
 </body>
 </html>
