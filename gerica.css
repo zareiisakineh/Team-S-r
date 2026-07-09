@@ -54,7 +54,7 @@
 
 /* Container & Cards */
 .container {
-  max-width: 1800px;
+  max-width: 2700px;
   margin: 0 auto;
   padding: 18px;
 }
@@ -68,9 +68,6 @@
   margin-bottom: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
-
-
-
 
 /* Role Selector */
 
@@ -335,107 +332,8 @@ lable{
   font-size: xx-large;
 }
 
-.gang-wrapper {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    margin-top: 20px;
-}
 
-#medGang {
-    width: 900px;
-    height: auto;
-    flex-shrink: 0;
-}
 
-.gang-tekst {
-    flex: 1;
-}
 
-.gang-tekst p {
-    margin-bottom: 1rem;
-}
-@media (max-width: 900px) {
-    .gang-wrapper {
-        flex-direction: column;
-    }
-
-    #medGang {
-        width: 100%;
-        max-width: 500px;
-    }
-}
-
- .prosedyre-container {
-      margin: 2rem ;
-    }
-
-    .prosedyre-item {
-      margin-bottom: 1rem;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .prosedyre-item1{
-     border: 1px solid black;
-    }
-
-    .prosedyre-question {
-      width: 100%;
-      height: 6rem;
-      padding: 1rem;
-      background-color: var(--primary-light);
-      border: none;
-      text-align: left;
-      cursor: pointer;
-      font-size: 1.5rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .prosedyre-question1{
-      width: 100%;
-      display: flex;
-    }
-
-    .prosedyre-question:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    .prosedyre-answer {
-      padding: 1rem;
-      display: none;
-      background-color: var(--card-bg);
-      font-size: 1.5rem;
-      padding-left: 20px;
-        list-style-type: circle;
-    padding-left: 20px;
-    }
-   .prosedyre-answer1{
-    display: none;
-   }
-   .prosedyre-answer1.active{
-    display: block;
-   }
-    .prosedyre-answer.active {
-      display: block;
-    }
-
-    .prosedyre-icon {
-      transition: transform 0.3s;
-    }
-
-    .prosedyre-icon.open {
-      transform: rotate(180deg);
-    }
       
-    #pegInput{
-      font-size: large;
-      padding: 1rem;
-    }
-    #pegButton{
-      font-size: large;
-      padding: 0.7rem;
-    }
+ 

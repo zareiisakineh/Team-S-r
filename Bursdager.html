@@ -5,6 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Merkantil-funksjoner</title>
   <link rel="stylesheet" href="gerica.css" />
+
+   <style>
+.container {
+      margin: 2rem ;
+    }
+
+    .item {
+      margin-bottom: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+   
+    .question {
+      width: 100%;
+      height: 6rem;
+      padding: 1rem;
+      background-color: rgb(251, 225, 225);
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .question:hover {
+      background-color: rgb(215, 191, 191);;
+      color: rgb(33, 27, 27);
+    }
+
+    .answer {
+      padding: 1rem;
+      display: none;
+      background-color: var(--border-color);
+      font-size: 1.5rem;
+      padding-left: 20px;
+        list-style-type: circle;
+    padding-left: 20px;
+    }
+  
+    .answer.active {
+      display: block;
+    }
+
+    .icon {
+      transition: transform 0.3s;
+    }
+
+    .icon.open {
+      transform: rotate(180deg);
+    }
+    li{
+      margin-left: 1rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -32,60 +90,60 @@
   </header>
   <main id="main-content" class="container">
 <h2>Bursdagskalender</h2>
-<section class="hero card">
+<section class=" card">
     <h2>Gratulerer med dagen🎉🎉🎉🎉🎊🎊🎊🎊🎊</h2>
 </section>
 <section class="hero card">
-    <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+    <div class="item">
+        <button class="question" onclick="toggleFaq(this)">
             <span>Januar</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Sakineh-20 april</h3><br>
     <img src="bursdag1.jpg" width="200px">
         </div>
     </div>
- <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+ <div class="item">
+        <button class="question" onclick="toggleFaq(this)">
             <span>Februar</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Sakineh-20 april</h3><br>
     <img src="bursdag1.jpg" width="200px">
         </div>
     </div>
-    <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+    <div class="item">
+        <button class="question" onclick="toggleFaq(this)">
             <span>Mars</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Sakineh-20 april</h3><br>
     <img src="bursdag1.jpg" width="200px">
         </div>
     </div>
-    <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+    <div class="item">
+        <button class="question" onclick="toggleFaq(this)">
             <span>April</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Sakineh-20 april</h3><br>
     <img src="bursdag1.jpg" width="200px">
         </div>
     </div>
     <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+        <button class="question" onclick="toggleFaq(this)">
             <span>Mai</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Sakineh-20 april</h3><br>
     <img src="bursdag1.jpg" width="200px">
         </div>
     </div>
-    <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+    <div class="item">
+        <button class="question" onclick="toggleFaq(this)">
             <span>Juni</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Chandranitti-7 Juni</h3>
              <h3>Orasa-8 Juni</h3>
              <h3>Sussie-9 Juni</h3>
@@ -95,60 +153,60 @@
     <img src="" width="200px">
         </div>
     </div>
-    <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+    <div class="item">
+        <button class="question" onclick="toggleFaq(this)">
             <span>Juli</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Sakineh-20 april</h3><br>
     <img src="bursdag1.jpg" width="200px">
         </div>
     </div>
-    <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+    <div class="item">
+        <button class="question" onclick="toggleFaq(this)">
             <span>August</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Ana Marie-25 august</h3><br>
     <img src="" width="200px">
         </div>
-         <div class="prosedyre-answer">
+         <div class="answer">
              <h3>Ibrahim-28 august</h3><br>
     <img src="" width="200px">
         </div>
     </div>
-    <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+    <div class="item">
+        <button class="question" onclick="toggleFaq(this)">
             <span>September</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Sakineh-20 april</h3><br>
     <img src="" width="200px">
         </div>
     </div>
-    <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+    <div class="item">
+        <button class="question" onclick="toggleFaq(this)">
             <span>Oktober</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Sakineh-20 april</h3><br>
     <img src="bursdag1.jpg" width="200px">
         </div>
     </div>
-    <div class="prosedyre-item">
-        <button class="prosedyre-question" onclick="toggleFaq(this)">
+    <div class="item">
+        <button class="question" onclick="toggleFaq(this)">
             <span>November</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Sakineh-20 april</h3><br>
     <img src="bursdag1.jpg" width="200px">
         </div>
     </div>
-    <div class="prosedyre-item">
+    <div class="item">
         <button class="prosedyre-question" onclick="toggleFaq(this)">
             <span>Desember</span>
         </button>
-        <div class="prosedyre-answer">
+        <div class="answer">
              <h3>Sakineh-20 april</h3><br>
     <img src="bursdag1.jpg" width="200px">
         </div>
