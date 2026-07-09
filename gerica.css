@@ -276,6 +276,21 @@ a {
     flex-direction: column;
     align-items: stretch;
   }
+  .container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 18px;
+}
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 0.5rem;
+  background: var(--card-bg);
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
 }
 
 
