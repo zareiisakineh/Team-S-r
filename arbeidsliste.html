@@ -6,63 +6,7 @@
   <title>arbeidsliste</title>
   <link rel="stylesheet" href="gerica.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-.container {
-      margin: 2rem ;
-    }
-
-    .item {
-      margin-bottom: 1rem;
-      border: 1px solid hsl(144, 57%, 91%);;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-   
-    .question {
-      width: 100%;
-      height: 6rem;
-      padding: 1rem;
-      background-color: hsl(102, 21%, 91%);
-      border: none;
-      text-align: left;
-      cursor: pointer;
-      font-size: 1.5rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .question:hover {
-      background-color:hsl(102, 34%, 77%);
-      color: rgb(33, 27, 27);
-    }
-
-    .answer {
-      padding: 1rem;
-      display: none;
-      background-color: hsl(0, 0%, 100%);
-      font-size: 1.5rem;
-      padding-left: 20px;
-        list-style-type: circle;
-    padding-left: 20px;
-    }
   
-    .answer.active {
-      display: block;
-    }
-
-    .icon {
-      transition: transform 0.3s;
-    }
-
-    .icon.open {
-      transform: rotate(180deg);
-    }
-    li{
-      margin-left: 1rem;
-    }
-  </style>
 </head>
 <body>
 
@@ -143,42 +87,43 @@
 </div>
 </section>
 <script>
-  function togglePrint(button) {
+function togglePrint(button) {
     const answer = button.nextElementSibling;
     const icon = button.querySelector(".icon");
 
-    if (answer.classList.contains("active")) {
-        answer.classList.remove("active");
-
-        if (icon) {
-            icon.classList.remove("open");
-        }
-    } 
-    else {
-
-        document.querySelectorAll(".prosedyre").forEach(item => {
+    // Lukk alle andre åpne svar
+    document.querySelectorAll(".answer").forEach(item => {
+        if (item !== answer) {
             item.classList.remove("active");
-        });
-
-        document.querySelectorAll(".prosedyre").forEach(item => {
-            item.classList.remove("open");
-        });
-     answer.classList.add("active");
-
-        if (icon) {
-            icon.classList.add("open");
         }
+    });
+
+    // Tilbakestill alle ikoner
+    document.querySelectorAll(".icon").forEach(item => {
+        if (item !== icon) {
+            item.classList.remove("open");
+        }
+    });
+
+    // Åpne/lukk valgt svar
+    answer.classList.toggle("active");
+
+    if (icon) {
+        icon.classList.toggle("open");
     }
 }
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM loaded");
 
+document.addEventListener("DOMContentLoaded", () => {
     const toggle = document.getElementById("menuToggle");
     const menu = document.getElementById("menu");
 
     if (toggle && menu) {
         toggle.addEventListener("click", () => {
             menu.classList.toggle("open");
+
+            // Oppdater aria-expanded
+            const expanded = menu.classList.contains("open");
+            toggle.setAttribute("aria-expanded", expanded);
         });
     }
 });
