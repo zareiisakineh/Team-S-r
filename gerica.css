@@ -24,8 +24,6 @@
     max-height: 500px;
     opacity: 1;
   }
-
-
 }
 
 .nav a {
@@ -54,15 +52,15 @@
 
 /* Container & Cards */
 .container {
-  max-width: 2700px;
+  max-width: 2900px;
   margin: 0 auto;
-  padding: 18px;
+  padding: 8px;
 }
 
 .card {
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  padding: 1.5rem;
+  padding: 1rem;
   background: var(--card-bg);
   margin-top: 1.5rem;
   margin-bottom: 2rem;
@@ -277,14 +275,14 @@ a {
     align-items: stretch;
   }
   .container {
-  max-width: 100%;
+  max-width: 2900px;
   margin: 0 auto;
-  padding: 18px;
+  padding: 0px;
 }
 .card {
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  padding: 0.5rem;
+  padding: 0.1rem;
   background: var(--card-bg);
   margin-top: 1.5rem;
   margin-bottom: 2rem;

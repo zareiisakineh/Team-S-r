@@ -84,7 +84,7 @@
         <li><a href="gangTid.html"><i class="fas fa-link"></i>Gangtid </a></li>
          <li><a href="Bursdager.html"><i class="fas fa-link"></i>Bursdager</a></li>
       </ul>
-      </ul>
+    
     </nav>
   </header>
   <main id="main-content" class="container">
@@ -141,6 +141,7 @@
     Hvordan printe ut brukeroversikt
   </div>
 </div>
+</section>
 <script>
   function togglePrint(button) {
     const answer = button.nextElementSibling;
@@ -155,11 +156,11 @@
     } 
     else {
 
-        document.querySelectorAll(".prosedyre-answer").forEach(item => {
+        document.querySelectorAll(".prosedyre").forEach(item => {
             item.classList.remove("active");
         });
 
-        document.querySelectorAll(".prosedyre-icon").forEach(item => {
+        document.querySelectorAll(".prosedyre").forEach(item => {
             item.classList.remove("open");
         });
      answer.classList.add("active");
