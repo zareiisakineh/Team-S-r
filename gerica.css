@@ -47,7 +47,11 @@ a {
   font-weight: 800;
   color: var(--primary-color);
 }
-
+/*På desktop ønsker vi at menyen alltid skal vises.Derfor har vi: display:flex. Dette betyr: Vis menyen.
+På en stor skjerm ser det slik ut:
+------------------------------------
+Hjem  Print  Studenter  Prosedyrer
+------------------------------------*/
 .nav {
   display: flex;
   align-items: center;
@@ -89,7 +93,7 @@ a {
 
 /* Container og kort*/
 .container {
-  max-width: 1200px;
+  max-width: 1800px;
   margin: 0 auto;
   padding: 16px;
 }
@@ -153,19 +157,41 @@ a {
 }
 
 /*Mobilvisning*/
+/*
+En mobil har mye mindre plass. Derfor bruker vi @media (max-width:760px). Dette betyr:
+Hvis skjermen er 760 piksler eller mindre, bruk disse CSS-reglene i stedet.
+Nå endrer CSS utseendet.
+.nav ul{
+    display:none;
+}
+    Nå blir menyen skjult.
+-----------------
+☰
+-----------------
+Legg merke til: JavaScript har fortsatt ikke gjort noe. CSS bestemmer bare at menyen skal være skjult.
+}
+*/
+#menuToggle{
+  background-color: rgb(249, 240, 229);
+  border:1px solid #a0a1a8;
+  padding: 2px 20px;
+  font-size: 2rem;
+}
 @media screen and (max-width: 760px) {
 
   .menu-toggle {
     display: block;
   }
-
+/*
+Brukeren klikker -> JavaScript kjører -> class="open" legges til -> CSS ser den nye klassen -> display:flex ->
+Menyen vises*/
   .nav ul {
     display: none;
     position: absolute;
     right: 10px;
     top: 60px;
-    width: 230px;
-    background: white;
+    width: 200px;
+    background: rgb(218, 217, 217);
     border-radius: 12px;
     flex-direction: column;
     padding: 10px;

@@ -301,10 +301,10 @@
     </div>
 
 
- <div class="prosedyre-item">
+ <div class="item">
         <button class="question" onclick="toggleFaq(this)">
           <span>Dokumentasjon og journalføring</span>
-          <i class="fas fa-chevron-down prosedyre-icon"></i>
+          <i class="fas fa-chevron-down icon"></i>
         </button>
         <div class="answer">
           <p>Her finner du oversikt over forskjellige journaltyper i Gerica</p>
@@ -318,29 +318,53 @@
 
 </section>
 <script>
-  document.getElementById("pegButton").addEventListener("click", () => {
-    document.getElementById("pegP").textContent =
-        document.getElementById("pegInput").value;
-});
+  console.log("app.js loaded");
 
-document.getElementById("vapButton").addEventListener("click", () => {
-    document.getElementById("vapP").textContent =
-        document.getElementById("vapInput").value;
-});
+function toggleFaq(button) {
+    const answer = button.nextElementSibling;
+    const icon = button.querySelector(".icon");
 
-document.getElementById("sårButton").addEventListener("click", () => {
-    document.getElementById("sårP").textContent =
-        document.getElementById("sårInput").value;
-});
+    if (answer.classList.contains("active")) {
+        answer.classList.remove("active");
 
-document.getElementById("dokumentButton").addEventListener("click", () => {
-    document.getElementById("dokumentP").textContent =
-        document.getElementById("dokumentInput").value;
+        if (icon) {
+            icon.classList.remove("open");
+        }
+    } 
+    else {
+
+        document.querySelectorAll(".answer").forEach(item => {
+            item.classList.remove("active");
+        });
+
+        document.querySelectorAll(".icon").forEach(item => {
+            item.classList.remove("open");
+        });
+
+        answer.classList.add("active");
+
+        if (icon) {
+            icon.classList.add("open");
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM loaded");
+
+    const toggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("menu");
+
+    if (toggle && menu) {
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("open");
+        });
+    }
 });
 </script>
  
 </main>
 
-<script src="app.js" defer></script>
+<script src="app.s" defer></script>
 </body>
 </html>
