@@ -6,30 +6,17 @@
   <title>Team Sør</title>
   <link rel="stylesheet" href="gerica.css" />
   <style>
-    .mittSpørsmål{
-      width: 100%;
-      height: 6rem;
-      padding: 1rem;
-      background-color: var(--primary-light);
-      border: none;
-      text-align: left;
-      cursor: pointer;
+   
+    .card li{
+      list-style: none;
       font-size: 1.5rem;
-      font-weight: 600;
-      
-      
+      font-weight: bold;
     }
-    .mittSvar{
-       padding: 1rem;
-      display: none;
-      background-color: var(--card-bg);
-      font-size: 1.5rem;
-      padding-left: 20px;
-        list-style-type: circle;
-    padding-left: 20px;
-    width: 100%;
-    border-radius: 5px;
-
+    img{
+      max-inline-size: 100%;
+    padding: 20px;
+    border-radius: 10px ;
+      
     }
   </style>
 </head>
@@ -58,20 +45,16 @@
   </header>
 
   <main id="main-content" class="container">
-<h2>Nyttige Gerica-funksjoner</h2>
-<section class="hero card">
-     <p id="minP" class="lead">
-        <strong>Har du glemt hvordan du printer ut arbeidsliste for ansatte fra Gerica?<br> Husker du ikke hvordan du lager nytt besøk på PDA?<br>Slike nyttige funksjoner finner du på denne siden</strong> 
+<h2>Team Sør</h2>
+<section class="card">
+     <p >
+       <img  src="bilder/gruppeBilde.jpg" width="850px">
+       <img src="bilder/gruppeBilde2.jpg" width="850px">
+       <img src="bilder/gruppeBilde3.jpg" width="850px">
+       <img src="bilder/gruppeBilde4.jpg" width="850px">
       </p>
 </section>
-<div >
-        <button id="mittSpørsmål" class="mittSpørsmål" >
-          <span>Medisin-dispenser</span>
-        </button>
-        <div id="mittSvar" class="mittSvar">
-          <p>Her finner du oversikt over forskjellige journaltyper i Gerica</p>
-        </div>
-      </div>
+
       <br><br>
       <section class="hero card">
         <h3>Team Sør – Hjemmesykepleien i Bydel Gamle Oslo</h3>
@@ -85,8 +68,28 @@
             Team Sør er opptatt av kvalitet, utvikling og samarbeid. Vi er stolte av å være en arbeidsplass der fagkompetanse, engasjement og omtanke danner grunnlaget for gode tjenester – hver dag.
          </p>
       </section>
+      <section>
+       <div class="item">
+    <button class="question" onclick="toggleAccordion(this)">
+     <p>Hvem jobber på team Sør</p> 
+     <i class="fas fa-chevron-down icon"></i>
+    </button >
+   <div class="answer"> 
+  </div>
+</div>
+        </section>
       <section class="hero card">
-        <h3>Hvem jobber i team Sør?</h3>
+        <h2>Hvem jobber i team Sør?</h2>
+        <ul>
+      <li>Merkantil: Silje -> telefonnummer 99285028</li>
+      <li>Teamleder: Ane -> telefonnummer 40762855</li>
+      <li>Fagsykepleier: Fadumo</li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
       </section>
       <section class="hero card">
         <h3>Hvem skal jeg kontakte når jeg er syk?</h3>
@@ -94,20 +97,9 @@
  
 </main>
 <script>
- 
-    const question1 = document.getElementById("mittSpørsmål");
-     const answer1 = document.getElementById("mittSvar");
-     question1.addEventListener("click", event => {
-      if(answer1.style.display === "none"){
-        answer1.style.display = "block";
-      }
-      else{
-        answer1.style.display = "none";
-      }
-     })
-     
-   
+  function toggleAccordion(button) {
 </script>
+
  <script src="app.js" defer></script>
 </body>
 </html>

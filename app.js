@@ -72,7 +72,7 @@ function toggleAccordion(button) {
          // Hvis ikonet ikke tilhører knappen som ble klikket,
         // fjernes klassen open slik at pilen peker ned igjen.
         if (element !== icon) {
-            item.classList.remove("open");
+            element.classList.remove("open");
         }
     });
     // classList.toggle()
