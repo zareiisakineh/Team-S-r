@@ -41,7 +41,7 @@
 <section class="hero card">
   <div class ="item">
     <button class ="question" onclick="togglePrint(this)">
-    <h3>Skrive ut arbeidsliste</h3><br>
+    <h3>Skrive ut arbeidsliste per ansatt</h3><br>
      <i class="fas fa-chevron-down icon"></i>
     </button>
     <div class ="answer">
@@ -50,22 +50,15 @@
         <li>Velg rapport arbeidslister per ansatt</li>
         <li><strong>Ansatt: </strong>Mulighet for å kunne skrive ut arbeidslister for en gitt ansatt eller rute. Trykk F4 i verdifeltet og søk opp ansatt. Hvis det skal skrives ut arbeidslister på flere ansatte eller ruter, så fylles ikke feltet ut</li>
         <li><strong>Nivå: </strong></li>
-        <li><strong>Type tjeneste: </strong></li>
-        <li> </li>
-          <li></li>
+        <li><strong>Type tjeneste:</strong>høreklikk eller trykk på F4 for å søke opp i nivåetre </li>
+        <li><strong>Fra/til dato:</strong> Datoen du skal skrive ut lister for. 
+          Hvis det skrives ut arbeidslister for flere ansatte eller ruter, så  vil oppdragene i aktuell periode komme opp som er fordelt på ansatte/rute</li>
+        <li><strong>Fra/Til klokke/utført: </strong>Sett inn tidspunkt. Oppdrag som starter innen for gitt kl.slett blir med</li>
+        <li><strong>Bachnr: </strong>Evnt. sett inn sats/bach nummer(kun per tjenestetype)</li>
+       
         </ul>
     </div >
   </div>
-  
- <div class="item">
-  <button class= "question" onclick="togglePrint(this)">
-    Printe ut brukeroversikt dag/kveld
-   <i class="fas fa-chevron-down icon"></i>
-  </button>
-  <div class= "answer">
-   Printe ut brukeroversikt dag/kveld
-  </div>
- </div>
 
 <div class="item">
 <button class="question" onclick="togglePrint(this)">
@@ -76,15 +69,66 @@
   Printe ut journal/rapport
 </div>
 </div>
+
+<div class="item">
+  <button class= "question" onclick="togglePrint(this)">
+    <h3>Lage enkel oppdrag</h3>
+   <i class="fas fa-chevron-down icon"></i>
+  </button>
+  <div class= "answer">
+   <ul>
+    <li>Klikk på brukeroversikt i gerica</li>
+    <li>Finn riktig bruker</li>
+    <li>klikk på journal</li>
+    <li>Klikk på "Ny</li>
+    <li>Velg journaltype 7, og trykk på tab</li>
+    <li>Høyrklikk på tjeneste, velg hjemmesykepleien</li>
+    <li>Sett inn riktig dato og klokkeslett</li>
+    <li>Sett inn tiltak: trykk på "ny" - høyreklikk på tiltakstype- finn riktig oppdrag-legg inn tid</li>
+    
+   </ul>>
+  </div>
+ </div>
+ <div class="item">
+  <button class= "question" onclick="togglePrint(this)">
+    <h3>Flytt alle besøk fra en ansatt til en annen</h3>
+   <i class="fas fa-chevron-down icon"></i>
+  </button>
+  <div class= "answer">
+   <ul>
+    <li>Klikk på aktivitiet- øverst i siden</li>
+    <li>i feltet "tjeneste", ser du bare tallet 3 som er hjemmesykepleien, velg høyreklikk på feltet for å få alle tjenestene opp </li>
+    <li>Velg: hjemmesykepleie(tjeneste 3), praktisk bistand(tjeneste 4) og avklaring og mestring(tjeneste 15?)</li>
+    <li>Velg dato og om du vil se på dag eller kvelds-ruter. 0730-15 eller 15-22</li>
+    <li>Klikk på ok og oppdater siden ved å klikke på oppdater-knappen</li>
+    <li>Nå ser du alle ruter og besøkene per rute for valgt dato</li>
+    <li>Velg og høyreklikk på ansattes navn</li>
+    <li>Navnet til alle ansatte som er på jobb, kommer opp</li>
+    <li>velg riktig ansatt og flytt alle besøk</li>
+    <li>Hvis du skal velge en ansatt som ikke har arbeidsliste: velg en annen ansatt og da kan du skrive etternavnet til den ansatte, besøkene skal flyttes til</li>
+   <li>***Viktig*** Ikke glem å velge alle tjenestene som skal bli med, DVS nr 3, 4 og 15</li>
+  </ul>
+  </div>
+ </div>
+
   <div class="item">
     <button class="question" onclick="togglePrint(this)">
      <p>Printe ut brukeroversikt dag/kveld</p> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
    <div class="answer"> 
-    Hvordan printe ut brukeroversikt
+    <ul>
+      <li>Klikk på journal øverst i siden</li>
+      <li>Klikk på printer-ikonet</li>
+      <li>Velg om du vil printe ut for dag eller kveld</li>
+      <li>Velg dato for dagen du vil printe ut/velg dagens dato ved å høyreklikke i feltet</li>
+      <li>Klikk på printer-ikonet</li>
+      <li>Vent til listen vises på siden</li>
+      <li>Klikk print</li>
+    </ul>
   </div>
 </div>
+
 <div class="item">
     <button class="question" onclick="togglePrint(this)">
      <p>Skanne dokumenter i Gerica</p> 
@@ -94,6 +138,60 @@
     Hvordan Skanne dokumenter i Gerica
   </div>
 </div>
+
+<div class="item">
+    <button class="question" onclick="togglePrint(this)">
+     <p>Hva gjør jeg hvis Gerica-appen/en av de andre appene ikke åpnes</p> 
+     <i class="fas fa-chevron-down icon"></i>
+    </button >
+   <div class="answer"> 
+    <ul>
+      <li>Reset Citrix:</li>
+      <li>Lukk alle vinduer</li>
+      <li>Nederst til høyre i siden, klikk på pillen som peker oppover</li>
+      <li>Du ser noen små ikoner, blant annet citrix, teams,...</li>
+       <li>Høreklikk på Citrix-ikonet</li>
+        <li>Velg advanced preferences</li>
+         <li>klikk på reset Citrix</li>
+    </ul>
+  </div>
+</div>
+
+<div class="item">
+    <button class="question" onclick="togglePrint(this)">
+     <p>Å fjerne dashbord i Gat-pro</p> 
+     <i class="fas fa-chevron-down icon"></i>
+    </button >
+   <div class="answer"> 
+    <ul>
+      <li>Klikk på nåla øverst til høyre inni dashbord</li>
+      <li>Nåla må peke til venstre</li>
+      <li>Klikk en gang inni vaktboka</li>
+      
+    </ul>
+  </div>
+</div>
+
+ 
+ <div class="item">
+  <button class= "question" onclick="togglePrint(this)">
+    <h3></h3>
+   <i class="fas fa-chevron-down icon"></i>
+  </button>
+  <div class= "answer">
+   Beskrivelse
+  </div>
+ </div>
+
+ <div class="item">
+  <button class= "question" onclick="togglePrint(this)">
+    <h3></h3>
+   <i class="fas fa-chevron-down icon"></i>
+  </button>
+  <div class= "answer">
+  </div>
+ </div>
+
 </section>
 
 <script>
