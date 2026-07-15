@@ -201,7 +201,7 @@ Menyen vises*/
     background: rgb(218, 217, 217);
     border-radius: 12px;
     flex-direction: column;
-    padding: 10px;
+    padding: 0px;
     box-shadow: 0 4px 10px rgba(0,0,0,.15);
     font-size:0.3rem ;
   }
