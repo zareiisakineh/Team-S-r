@@ -6,6 +6,16 @@
   <title>arbeidsliste</title>
   <link rel="stylesheet" href="gerica.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+  image{
+     max-inline-size: 100%;
+  }
+ .rutiner{
+  margin-block: 50px;
+   max-inline-size: 90%;
+   padding-left: 60px;
+ }
+</style>>
   
 </head>
 <body>
@@ -35,7 +45,7 @@
 <h2>Nyttige Gerica-funksjoner</h2>
 <section class="hero card">
      <p class="lead">
-        <strong>Hvoredan printer jeg ut arbeidsliste per ansatt?.</strong> 
+        <h3>Hvoredan printer jeg ut arbeidsliste per ansatt?.</h3> 
       </p>
 </section>
 <section class="hero card">
@@ -46,23 +56,79 @@
     </button>
     <div class ="answer">
       <ul class = "tekst">
-        <li>Klikk på skriveren (Rapport)</li>
-        <li>Velg rapport arbeidslister per ansatt</li>
+        <li>Velg rapport og deretter arbeidslister per ansatt</li>
+        <img src="bilder/arbeidslite/liste4.png" >
+        <p></p>
+        <li>Klikk på arbeidsplanlegging</li>
+         <img src="bilder/arbeidslite/liste5.png" >
+         <p></p>
+           <img src="bilder/arbeidslite/liste6.png" >
         <li><strong>Ansatt: </strong>Mulighet for å kunne skrive ut arbeidslister for en gitt ansatt eller rute. Trykk F4 i verdifeltet og søk opp ansatt. Hvis det skal skrives ut arbeidslister på flere ansatte eller ruter, så fylles ikke feltet ut</li>
         <li><strong>Nivå: </strong></li>
         <li><strong>Type tjeneste:</strong>høreklikk eller trykk på F4 for å søke opp i nivåetre </li>
         <li><strong>Fra/til dato:</strong> Datoen du skal skrive ut lister for. 
-          Hvis det skrives ut arbeidslister for flere ansatte eller ruter, så  vil oppdragene i aktuell periode komme opp som er fordelt på ansatte/rute</li>
+          <li>Hent frem ansattes navn ved å høyreklikke i ansattfeltet og husk og skriv etternavn først. Deretter er det viktig å skrive dato for arbeidslisten. Dersom ansatt jobber dobbelvakt må du skrive inn klokkeslett for å unngå en hel arbeidsliste for hele dagen. Helt til slutt må du taste ikon for skriver øverst til venstre.</li>
+          <img src="bilder/arbeidslite/liste7.png" ><br>
+          <li>Hvis det skrives ut arbeidslister for flere ansatte eller ruter, så  vil oppdragene i aktuell periode komme opp som er fordelt på ansatte/rute</li>
         <li><strong>Fra/Til klokke/utført: </strong>Sett inn tidspunkt. Oppdrag som starter innen for gitt kl.slett blir med</li>
         <li><strong>Bachnr: </strong>Evnt. sett inn sats/bach nummer(kun per tjenestetype)</li>
-       
+        <li>Tast ikon for skriver slik at du får ut arbeidslisten.</li>
+       <img src="bilder/arbeidslite/liste8.png" >
         </ul>
     </div >
   </div>
 
+  <div class="item">
+    <button class="question" onclick="togglePrint(this)">
+     <h3>Endring av arbeidsliste ved sykdom</h3> 
+     <i class="fas fa-chevron-down icon"></i>
+    </button >
+   <div class="answer"> 
+   <ul>
+    <li>Gå inn på fanen aktivitet og deretter velg «arbeidsliste»</li><br>
+     <img src="bilder/arbeidslite/liste4.png" ><br>
+        <p></p>
+    <li>Velg fanen tjeneste og høyreklikk når du står midt på fanen.</li><br>
+      <img src="bilder/arbeidslite/liste9.png" ><br>
+     <li>Velg riktig tjeneste.I tillegg til tjenester som er haket er det viktig å velge tjeneste 101 hverdagsrehabilitering</li><br>
+     <img src="bilder/arbeidslite/liste10.png" >
+     <li>Deretter må du oppdatere.</li><br>
+     <img src="bilder/arbeidslite/liste11.png" ><br>
+   </ul>
+  </div>
+</div>
+
+<div class="item">
+    <button class="question" onclick="togglePrint(this)">
+     <h3>Forskjellige rutiner</h3> 
+     <i class="fas fa-chevron-down icon"></i>
+    </button >
+   <div class="answer"> 
+    <p>Når vi ikke får tak i brukere er rutinen at vi ringer pårørende, legevakten eller sykehusene for å 
+      bekrefte/avkrefte innleggelse. Videre må vi ta individuelt vurdering om brukers sykdomsbilde før vi 
+      kontakter politiet for hjelp til å bryte leilighet . Er det f.eksempel en bruker som har ustabil diabetes 
+      og det ikke er nådd kontakt med bruker i løpet av vakten er det viktig å sette i gang tiltak. Flere av 
+      våre brukere som kommer til kontoret har ustabil oppmøte og det er veldig viktig at rutinen følges for 
+      dem også. Finner vi ikke ut hvor de er, må teamleder informeres.
+      Det er fort gjort å glemme brukere som kommer hit 2.hver uke for hinting av multidose og vi har tilfelle av 
+      tragisk sak med en av våre brukere som ble funnet død hjemme i dag.  For å sikre at tilsvarende hendelse ikke 
+      skjer er vi avhengig av at tjenesteansvarlig oppdaterer seg om brukere de er ansvarlig for minst engang i uken. 
+      Viktig beskjed om oppfølging til dagvakt eller til tjenesteansvarlig skal i tillegg til gerica skrives i beskjedbok.
+      Vi skal fremover bruke tavle på grupperom. Her skal vi notere innlagte brukere, brukere vi ikke får tak i og 
+      tiltak som er gjort. Det er viktig også å informere teamleder.</p>
+    <div class="rutiner">
+    <img src="bilder/rutiner/1.png" class="rutiner">
+    <img src="bilder/rutiner/2.png" class="rutiner">
+    <img src="bilder/rutiner/3.png" class="rutiner">
+    <img src="bilder/rutiner/4.png" class="rutiner">
+    <img src="bilder/rutiner/5.png" class="rutiner">
+  </div>
+  </div>
+</div>
+
 <div class="item">
 <button class="question" onclick="togglePrint(this)">
-  Printe ut journal/rapport
+  <h3>Printe ut journal/rapport</h3>
    <i class="fas fa-chevron-down icon"></i>
 </button>
 <div class="answer">
@@ -120,7 +186,7 @@
 
   <div class="item">
     <button class="question" onclick="togglePrint(this)">
-     <p>Printe ut brukeroversikt dag/kveld</p> 
+     <h3>Printe ut brukeroversikt dag/kveld</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
    <div class="answer"> 
@@ -138,17 +204,17 @@
 
 <div class="item">
     <button class="question" onclick="togglePrint(this)">
-     <p>Skanne dokumenter i Gerica</p> 
+     <h3>Skanne dokumenter i Gerica</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
    <div class="answer"> 
-    Hvordan Skanne dokumenter i Gerica
+    <h3>Hvordan Skanne dokumenter i Gerica</h3>
   </div>
 </div>
 
 <div class="item">
     <button class="question" onclick="togglePrint(this)">
-     <p>Hva gjør jeg hvis Gerica-appen/en av de andre appene ikke åpnes</p> 
+     <h3>Hva gjør jeg hvis Gerica-appen/en av de andre appene ikke åpnes</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
    <div class="answer"> 
@@ -166,7 +232,7 @@
 
 <div class="item">
     <button class="question" onclick="togglePrint(this)">
-     <p>Å fjerne dashbord i Gat-pro</p> 
+     <h3>Å fjerne dashbord i Gat-pro</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
    <div class="answer"> 
