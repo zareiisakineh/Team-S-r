@@ -128,9 +128,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Når klikket skjer, kjøres funksjonen under.
         // --------------------------------------------------
         menuToggle.addEventListener("click", (event) => {
+            // ----------------------------------------------
+    //Hindrer at klikket bobler videre til document   
             event.stopPropagation();
-    // ----------------------------------------------
-    //Hindrer at klikket bobler videre til document        
+         
     // toggle("open") 
             // Hvis open finnes: fjern den.
             // Hvis open ikke finnes: legg den til.
@@ -138,22 +139,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // ----------------------------------------------
             menu.classList.toggle("open");
    // ----------------------------------------------
-            // setAttribute()
-            //
-            // Endrer et attributt i HTML.
-            //
+            // setAttribute(): Endrer et attributt i HTML.
             // aria-expanded brukes av skjermlesere.
-            //
-            // classList.contains("open")
-            //
-            // returnerer true eller false.
-            //
+            // classList.contains("open"): returnerer true eller false.
+            
             // Hvis menyen er åpen:
-            //
             // aria-expanded="true"
             //
             // Hvis den er lukket:
-            //
             // aria-expanded="false"
             //
             // Dette gjør nettsiden mer universelt utformet.
