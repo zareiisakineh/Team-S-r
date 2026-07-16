@@ -127,9 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // JavaScript sitter nå og venter på at brukeren klikker på menyknappen.
         // Når klikket skjer, kjøres funksjonen under.
         // --------------------------------------------------
-        menuToggle.addEventListener("click", () => {
+        menuToggle.addEventListener("click", (event) => {
     // ----------------------------------------------
-            // toggle("open") 
+    //Hindrer at klikket bobler videre til document        
+    // toggle("open") 
             // Hvis open finnes: fjern den.
             // Hvis open ikke finnes: legg den til.
             // CSS avgjør om menyen skal være synlig.
@@ -162,6 +163,49 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         });
 
+ // ==============================================
+        // Lukk meny når en lenke klikkes
+        // ==============================================
+        const menuLinks = document.querySelectorAll("#menu a");
+
+        menuLinks.forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                menu.classList.remove("open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            });
+
+        });
+
+    // ==============================================
+        // Lukk meny ved klikk utenfor
+        // ==============================================
+        document.addEventListener("click", (event) => {
+
+            if (
+                menu.classList.contains("open") &&
+                !event.target.closest(".nav")
+            ) {
+
+                menu.classList.remove("open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        });
+
     }
 
 });
+
+

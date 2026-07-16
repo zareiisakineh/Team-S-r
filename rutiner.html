@@ -41,7 +41,7 @@
 <h2>Forskjellige rutiner</h2>
 <section class="card">
 <div class="item">
-    <button class="question" onclick="togglePrint(this)">
+    <button class="question" onclick="toggleAccordion(this)">
      <h3>Du får ikke kontakt med brukerne</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
@@ -72,7 +72,7 @@
 </div>
 
 <div class="item">
-    <button class="question" onclick="togglePrint(this)">
+    <button class="question" onclick="toggleAccordion(this)">
      <h3>Gerica er nede hva skal jeg gjøre?</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
@@ -82,7 +82,7 @@
 </div>
 
 <div class="item">
-    <button class="question" onclick="togglePrint(this)">
+    <button class="question" onclick="toggleAccordion(this)">
      <h3>Endring av arbeidsliste ved sykdom</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
@@ -103,7 +103,7 @@
 </div>
 
 <div class="item">
-    <button class="question" onclick="togglePrint(this)">
+    <button class="question" onclick="toggleAccordion(this)">
      <h3>Diverse telefon/kontaktinfo som er greit å ha:</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
@@ -116,7 +116,7 @@
 </div>
 
 <div class="item">
-    <button class="question" onclick="togglePrint(this)">
+    <button class="question" onclick="toggleAccordion(this)">
      <h3>Hva skal jeg gjøre hvis jeg stikker meg med et brukt nål</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
@@ -128,7 +128,7 @@
 </div>
 
 <div class="item">
-    <button class="question" onclick="togglePrint(this)">
+    <button class="question" onclick="toggleAccordion(this)">
      <h3>Hva skal jeg gjøre hvis jeg skader meg i arbeidstiden?</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
@@ -140,7 +140,7 @@
 </div>
 
 <div class="item">
-    <button class="question" onclick="togglePrint(this)">
+    <button class="question" onclick="toggleAccordion(this)">
      <h3>Hva skal jeg gjøre når jeg er syk og ikke kan komme på jobb</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
@@ -152,7 +152,7 @@
 </div>
 
 <div class="item">
-    <button class="question" onclick="togglePrint(this)">
+    <button class="question" onclick="toggleAccordion(this)">
      <h3>Hva skal jeg gjøre hvis jeg stikker meg med et brukt nål</h3> 
      <i class="fas fa-chevron-down icon"></i>
     </button >
@@ -166,51 +166,9 @@
 
 </section>
 </main>
- <script>
+ <script src="app.js" defer>
 
-  console.log("app.js loaded");
-
-function togglePrint(button) {
-    const answer = button.nextElementSibling;
-    const icon = button.querySelector(".icon");
-
-    if (answer.classList.contains("active")) {
-        answer.classList.remove("active");
-
-        if (icon) {
-            icon.classList.remove("open");
-        }
-    } 
-    else {
-
-        document.querySelectorAll(".prosedyre-answer").forEach(item => {
-            item.classList.remove("active");
-        });
-
-        document.querySelectorAll(".prosedyre-icon").forEach(item => {
-            item.classList.remove("open");
-        });
-
-        answer.classList.add("active");
-
-        if (icon) {
-            icon.classList.add("open");
-        }
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM loaded");
-
-    const toggle = document.getElementById("menuToggle");
-    const menu = document.getElementById("menu");
-
-    if (toggle && menu) {
-        toggle.addEventListener("click", () => {
-            menu.classList.toggle("open");
-        });
-    }
-});
+  
  </script>
 </body>
 </html>

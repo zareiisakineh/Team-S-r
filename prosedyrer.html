@@ -44,7 +44,7 @@
 
     <section class="card">
     <div class="item">
-        <button class="question" onclick="toggleFaq(this)">
+        <button class="question" onclick="toggleAccordion(this)">
             <span>Stell av PICC-line</span>
             <i class="fas fa-chevron-down icon"></i>
         </button>
@@ -164,7 +164,7 @@
 -->
     
 <div class="item">
-        <button class="question" onclick="toggleFaq(this)">
+        <button class="question" onclick="toggleAccordion(this)">
             <span>Nefrostomi</span>   
             <i class="fas fa-chevron-down icon"></i>        
         </button>
@@ -247,7 +247,7 @@
     </div>
 
     <div class="item">
-        <button class="question" onclick="toggleFaq(this)">
+        <button class="question" onclick="toggleAccordion(this)">
             <span>Dialyse</span>
             <i class="fas fa-chevron-down icon"></i>
         </button>
@@ -276,7 +276,7 @@
     </div>
 
     <div class="item">
-        <button class="question" onclick="toggleFaq(this)">
+        <button class="question" onclick="toggleAccordion(this)">
             <span>Sårstell</span>   
             <i class="fas fa-chevron-down icon"></i>        
         </button>
@@ -291,7 +291,7 @@
     </div>
 
     <div class="item">
-        <button class="question" onclick="toggleFaq(this)">
+        <button class="question" onclick="toggleAccordion(this)">
             <span>PEG-sonde</span>   
              <i class="fas fa-chevron-down prosedyre-icon"></i> 
         </button>
@@ -307,7 +307,7 @@
 
 
  <div class="item">
-        <button class="question" onclick="toggleFaq(this)">
+        <button class="question" onclick="toggleAccordion(this)">
           <span>Dokumentasjon og journalføring</span>
           <i class="fas fa-chevron-down icon"></i>
         </button>
@@ -320,50 +320,8 @@
     
 
 </section>
-<script>
-  console.log("app.js loaded");
-
-function toggleFaq(button) {
-    const answer = button.nextElementSibling;
-    const icon = button.querySelector(".icon");
-
-    if (answer.classList.contains("active")) {
-        answer.classList.remove("active");
-
-        if (icon) {
-            icon.classList.remove("open");
-        }
-    } 
-    else {
-
-        document.querySelectorAll(".answer").forEach(item => {
-            item.classList.remove("active");
-        });
-
-        document.querySelectorAll(".icon").forEach(item => {
-            item.classList.remove("open");
-        });
-
-        answer.classList.add("active");
-
-        if (icon) {
-            icon.classList.add("open");
-        }
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM loaded");
-
-    const toggle = document.getElementById("menuToggle");
-    const menu = document.getElementById("menu");
-
-    if (toggle && menu) {
-        toggle.addEventListener("click", () => {
-            menu.classList.toggle("open");
-        });
-    }
-});
+<script src="app.js" defer>
+  
 </script>
  
 </main>
