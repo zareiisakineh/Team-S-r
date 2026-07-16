@@ -128,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Når klikket skjer, kjøres funksjonen under.
         // --------------------------------------------------
         menuToggle.addEventListener("click", (event) => {
+            event.stopPropagation();
     // ----------------------------------------------
     //Hindrer at klikket bobler videre til document        
     // toggle("open") 
@@ -203,6 +204,22 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
         });
+
+        document.addEventListener("click", (event) => {
+
+    if (!menu.classList.contains("open")) return;
+
+    // Klikk på menyknappen?
+    if (menuToggle.contains(event.target)) return;
+
+    // Klikk inne i selve menylisten?
+    if (menu.contains(event.target)) return;
+
+    // Ellers: lukk menyen
+    menu.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+
+});
 
     }
 
