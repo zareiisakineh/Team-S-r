@@ -8,21 +8,21 @@ const searchData = [
         title: "Team Sør",
         keywords: "hjem forside ansatte kontakt informasjon",
         page: "index.html",
-        anchor: "Teamleder merkantil"
+        anchor: "TeamlederMerkantil"
     },
 
     {
         title: "Kontaktinformasjon Team Sør",
         keywords: "silje ane fadumo merkantil teamleder fagsykepleier telefon",
         page: "index.html",
-        anchor: ""
+        anchor: "TeamlederMerkantil"
     },
 
     {
         title: "Hvem skal jeg kontakte når jeg er syk?",
         keywords: "syk sykdom fravær sykemelding",
         page: "index.html",
-        anchor: ""
+        anchor: "fravær"
     },
 
     // ===========================
@@ -40,14 +40,14 @@ const searchData = [
         title: "Gerica er nede",
         keywords: "gerica nede citrix system",
         page: "rutiner.html",
-        anchor: "gerica"
+        anchor: "gericaNede"
     },
 
     {
         title: "Endring av arbeidsliste ved sykdom",
         keywords: "arbeidsliste sykdom gerica tjeneste oppdatere ",
         page: "rutiner.html",
-        anchor: "arbeidsliste"
+        anchor: "arbeidslisteEndringSykdom"
     },
     
     {
@@ -62,12 +62,12 @@ const searchData = [
         title: "Telefon- og kontaktinformasjon",
         keywords: "telefon kontaktnummer nummer",
         page: "rutiner.html",
-        anchor: "telefon"
+        anchor: "greitÅha"
     },
 
     {
         title: "Stikkuhell",
-        keywords: "stikkuhell sprøyte nål blod fhi smitte",
+        keywords: "stikkuhell sprøyte nål blod fhi smitte brukt stikk",
         page: "rutiner.html",
         anchor: "stikkuhell"
     },
@@ -81,9 +81,9 @@ const searchData = [
 
     {
         title: "Syk og kan ikke komme på jobb",
-        keywords: "syk fravær sykemelding egenmelding",
+        keywords: "syk fravær sykemelding egenmelding sykdom",
         page: "rutiner.html",
-        anchor: "syk"
+        anchor: "sykdom"
     },
 
     // ===========================
@@ -122,7 +122,7 @@ const searchData = [
         title: "Medisinendringer",
         keywords: "medisin legemiddel gerica",
         page: "sjekkliste.html",
-        anchor: "medisin"
+        anchor: "medisinEndring"
     },
 
     {
