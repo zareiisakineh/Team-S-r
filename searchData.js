@@ -5,22 +5,22 @@ const searchData = [
     // ===========================
 
     {
-        title: "Team Sør",
-        keywords: "hjem forside ansatte kontakt informasjon",
+        title: "merkantil",
+        keywords: "hjem forside ansatte kontakt informasjon leder merkantil",
         page: "index.html",
         anchor: "TeamlederMerkantil"
     },
 
     {
-        title: "Kontaktinformasjon Team Sør",
-        keywords: "silje ane fadumo merkantil teamleder fagsykepleier telefon",
+        title: "Teamleder",
+        keywords: "silje ane fadumo merkantil teamleder fagsykepleier telefon leder",
         page: "index.html",
         anchor: "TeamlederMerkantil"
     },
 
     {
         title: "Hvem skal jeg kontakte når jeg er syk?",
-        keywords: "syk sykdom fravær sykemelding",
+        keywords: "syk sykdom fravær sykemelding egenmelding",
         page: "index.html",
         anchor: "fravær"
     },
@@ -59,8 +59,8 @@ const searchData = [
     
 
     {
-        title: "Telefon- og kontaktinformasjon",
-        keywords: "telefon kontaktnummer nummer",
+        title: "Diverse telefon/kontaktinfo som er greit å ha",
+        keywords: "Diverse telefon/kontaktinfo som er greit å ha",
         page: "rutiner.html",
         anchor: "greitÅha"
     },
