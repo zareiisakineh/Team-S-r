@@ -218,4 +218,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+//for søkeboksen
+window.addEventListener("load", () => {
+
+    if (!location.hash) return;
+
+    const element = document.querySelector(location.hash);
+
+    if (!element) return;
+
+    const button = element.querySelector(".question");
+
+    if (button) {
+        toggleAccordion(button);
+
+        element.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+
+});
 

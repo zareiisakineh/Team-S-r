@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Team Sør</title>
   <link rel="stylesheet" href="gerica.css" />
+  <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
    
     .card li{
@@ -29,10 +31,21 @@
   <header class="topbar">
    <!--logo-->
     <div class="brand">
-    <span class="brand-title">
-        <img src="bilder/logo.png" width="350">
-    </span>
+        <img src="bilder/logo.png" alt="Team Sør">
 </div>
+
+<!--Search-box-->
+ <div class="searchBox">
+
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="🔍 Søk på hele Team Sør">
+
+<div id="searchResults"></div>
+
+ </div>
+
     <nav class="nav" aria-label="Hovedmeny">
       <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
       <ul id="menu"> 
@@ -53,9 +66,10 @@
      
     </nav>
   </header>
-
+  
   <main id="main-content" class="container">
-<h1>Team Sør</h1><br><br>
+    
+<h1>Team Sør</h1>
      <div class="bilde">
        <img  src="bilder/gruppeBilde.jpg" >
        <img src="bilder/gruppeBilde5.jpg" >
@@ -63,6 +77,8 @@
        <img src="bilder/gruppeBilde3.jpg" >
       </div> 
       <br><br>
+
+      
       <section class="hero card">
         <h3>Team Sør – Hjemmesykepleien i Bydel Gamle Oslo</h3>
         <br>
@@ -76,25 +92,26 @@ Enten du er ny hos oss eller har jobbet her i mange år, håper vi at denne side
 
 Takk for innsatsen du gjør – hver eneste dag.<br>
 
-**Velkommen til Team Sør!**
+<strong>**Velkommen til Team Sør!**</strong>
 
-         </p>
       </section>
       <section>
        <div class="item">
     <button class="question" nclick="toggleAccordion(this)">
-     <p> <h2>Hvem jobber i team Sør?</h2></p> 
+     <h2>Hvem jobber i team Sør?</h2>
      <i class="fas fa-chevron-down icon"></i>
     </button >
    <div class="answer"> 
   </div>
 </div>
+
         </section>
+        
       <section class="hero card">
        
         <ul>
-      <li>👉 Merkantil: Silje -------> telefonnummer 99285016</li><br>
-      <li>👉 Teamleder: Ane -------> telefonnummer 40762855</li><br>
+      <li>👉 Merkantil: Silje -------> <a href="tel:99285016">99285016</a></li><br>
+      <li>👉 Teamleder: Ane -------> <a href="tel:99285016">99285016</a></li><br>
       <li>👉 Fagsykepleier: Fadumo</li>
       <li></li>
       <li></li>
