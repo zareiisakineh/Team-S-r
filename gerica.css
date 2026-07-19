@@ -293,13 +293,23 @@ h1{
  @media (max-width:760px){
 
     .topbar{
+      display: flex;
         flex-wrap:wrap;
+         align-items:center;
+    }
+      .brand{
+        order:1;
+    }
+
+    .nav{
+        order:2;
+        margin-left:auto;
     }
 
     .search-box{
         order:3;
-        width:100%;
-        max-width:none;
+        flex:0 0 100%;
+        max-width:100%;
         margin-top:10px;
     }
 
