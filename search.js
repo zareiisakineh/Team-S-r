@@ -1,52 +1,91 @@
-const input = document.getElementById("searchInput");
-const results = document.getElementById("searchResults");
+// ==============================================
+// search.js
+// Søker gjennom searchData.js
+// ==============================================
 
-if(input){
+// Hent HTML-elementene
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
 
-input.addEventListener("input", ()=>{
+// Finnes søkefeltet på denne siden?
+if (searchInput && searchResults) {
 
-const text = input.value.toLowerCase();
+    // Søker mens brukeren skriver
+    searchInput.addEventListener("input", function () {
 
-results.innerHTML="";
+        const text = this.value.trim().toLowerCase();
 
-if(text.length<2) return;
+        // Tøm gamle resultater
+        searchResults.innerHTML = "";
 
-const matches = searchData.filter(item=>{
+        // Hvis søkefeltet er tomt
+        if (text.length === 0) {
+            return;
+        }
 
-return (
-item.title.toLowerCase().includes(text)
-||
-item.keywords.toLowerCase().includes(text)
-);
+        // Finn alle treff
+        const matches = searchData.filter(item => {
 
-});
+            return (
+                item.title.toLowerCase().includes(text) ||
+                item.keywords.toLowerCase().includes(text)
+            );
 
-if(matches.length===0){
+        });
 
-results.innerHTML="<p>Ingen treff.</p>";
+        // Ingen treff
+        if (matches.length === 0) {
 
-return;
+            searchResults.innerHTML = `
+                <div class="result">
+                    Ingen treff.
+                </div>
+            `;
 
-}
+            return;
+        }
 
-matches.forEach(item=>{
+        // Vis maks 10 treff
+        matches.slice(0, 10).forEach(item => {
 
-results.innerHTML+=`
+            const div = document.createElement("div");
+            div.className = "result";
 
-<div class="result">
+            const link = document.createElement("a");
 
-<a href="${item.page}#${item.anchor}">
+            // Har elementet et anchor?
+            if (item.anchor !== "") {
+                link.href = `${item.page}#${item.anchor}`;
+            } else {
+                link.href = item.page;
+            }
 
-${item.title}
+            link.textContent = item.title;
 
-</a>
+            div.appendChild(link);
 
-</div>
+            searchResults.appendChild(div);
 
-`;
+        });
 
-});
+    });
 
-});
+    // Lukk søkeresultat når man klikker utenfor
+    document.addEventListener("click", function (event) {
+
+        if (!event.target.closest(".searchBox")) {
+
+            searchResults.innerHTML = "";
+
+        }
+
+    });
+
+    // Ikke lukk når man klikker inne i søkeboksen
+    searchInput.addEventListener("click", function (event) {
+
+        event.stopPropagation();
+
+    });
 
 }
