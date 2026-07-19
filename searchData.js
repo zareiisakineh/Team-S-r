@@ -213,9 +213,96 @@ const searchData = [
 
     {
         title: "Bursdager",
-        keywords: "bursdag ansatte hamid sara ibrahim",
+        keywords: "bursdag ansatte ",
         page: "Bursdager.html",
         anchor: ""
-    }
+    },
+
+    {
+        title: "januar",
+        keywords: "bursdag ansatte sakti",
+        page: "Bursdager.html",
+        anchor: "januar"
+    },
+
+     {
+        title: "februar",
+        keywords: "bursdag ansatte xaviera miguel joan ane",
+        page: "Bursdager.html",
+        anchor: "februar"
+    },
+
+      {
+        title: "mars",
+        keywords: "bursdag ansatte xaviera miguel joan ane",
+        page: "Bursdager.html",
+        anchor: "mars"
+    },
+
+      {
+        title: "april",
+        keywords: "bursdag ansatte sakineh cecilie",
+        page: "Bursdager.html",
+        anchor: "april"
+    },
+
+      {
+        title: "mai",
+        keywords: "bursdag ansatte sumaya ravi marte",
+        page: "Bursdager.html",
+        anchor: "mai"
+    },
+
+      {
+        title: "juni",
+        keywords: "bursdag ansatte sussie chandranitti john james",
+        page: "Bursdager.html",
+        anchor: "juni"
+    },
+
+      {
+        title: "juli",
+        keywords: "bursdag ansatte ",
+        page: "Bursdager.html",
+        anchor: "juli"
+    },
+
+      {
+        title: "august",
+        keywords: "bursdag ansatte ibrahim ana marie ",
+        page: "Bursdager.html",
+        anchor: "august"
+    },
+
+     {
+        title: "september",
+        keywords: "bursdag ansatte sara amalie ",
+        page: "Bursdager.html",
+        anchor: "september"
+    },
+
+     {
+        title: "oktober",
+        keywords: "bursdag ansatte yusuf aase ",
+        page: "Bursdager.html",
+        anchor: "oktober"
+    },
+
+     {
+        title: "november",
+        keywords: "bursdag ansatte hamid ",
+        page: "Bursdager.html",
+        anchor: "november"
+    },
+
+     {
+        title: "desember",
+        keywords: "bursdag ansatte cathy mathias ",
+        page: "Bursdager.html",
+        anchor: "desember"
+    },
+
+    
+
 
 ];
