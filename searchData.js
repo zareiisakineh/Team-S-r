@@ -190,10 +190,113 @@ const searchData = [
     // ===========================
 
     {
-        title: "Arbeidsliste",
+        title: "Skrive ut arbeidsliste per ansatt",
+        keywords: "Skrive ut arbeidsliste per ansatt",
+        page: "arbeidsliste.html",
+        anchor: "print1"
+    },
+    {
+        title: "Printe ut journal/rapport",
         keywords: "print arbeidsliste gerica",
         page: "arbeidsliste.html",
-        anchor: ""
+        anchor: "print2"
+    },
+     {
+        title: "lage enkel oppdrag",
+        keywords: "lage enkel oppdrag",
+        page: "arbeidsliste.html",
+        anchor: "print3"
+    },
+     {
+        title: "Flytt alle besøk fra en ansatt til en annen",
+        keywords: "Flytt alle besøk fra en ansatt til en annen",
+        page: "arbeidsliste.html",
+        anchor: "print4"
+    },
+     {
+        title: "Printe ut besøksliste dag/kveld",
+        keywords: "Printe ut besøksliste dag/kveld",
+        page: "arbeidsliste.html",
+        anchor: "print5"
+    },
+     {
+        title: "Skanne dokumenter i Gerica",
+        keywords: "Skanne dokumenter i Gerica",
+        page: "arbeidsliste.html",
+        anchor: "print6"
+    },
+     {
+        title: "Hva gjør jeg hvis Gerica-appen/en av de andre appene ikke åpnes",
+        keywords: "Hva gjør jeg hvis Gerica-appen/en av de andre appene ikke åpnes",
+        page: "arbeidsliste.html",
+        anchor: "print7"
+    },
+     {
+        title: "Å fjerne dashbord i Gat-pro",
+        keywords: "Å fjerne dashbord i Gat-pro",
+        page: "arbeidsliste.html",
+        anchor: "print8"
+    },
+     
+     {
+        title: "Skjemaer",
+        keywords: "Skjemaer",
+        page: "arbeidsliste.html",
+        anchor: "print9"
+    },
+    {
+        title: "Tiltaksplan, V1",
+        keywords: "Tiltaksplan, V1",
+        page: "arbeidsliste.html",
+        anchor: "print10"
+    },
+    {
+        title: "Tiltaksplan, V2",
+        keywords: "Tiltaksplan, V2",
+        page: "arbeidsliste.html",
+        anchor: "print11"
+    },
+    {
+        title: "Generere arbeidslister",
+        keywords: "Generere arbeidslister",
+        page: "arbeidsliste.html",
+        anchor: "print12"
+    },
+    {
+        title: "Ny bruker",
+        keywords: "Ny bruker",
+        page: "arbeidsliste.html",
+        anchor: "print13"
+    },
+    {
+        title: "Merkantil-oppgaver",
+        keywords: "Merkantil-oppgaver",
+        page: "arbeidsliste.html",
+        anchor: "print14"
+    },
+    {
+        title: "Printe ut bredeskapsplan (Frekvens rapport)",
+        keywords: "Printe ut bredeskapsplan (Frekvens rapport)",
+        page: "arbeidsliste.html",
+        anchor: "print15"
+    },
+    {
+        title: "Print ut brukerkort for alle brukere",
+        keywords: "Print ut brukerkort for alle brukere",
+        page: "arbeidsliste.html",
+        anchor: "print16"
+    },
+    {
+        title: "",
+        keywords: "",
+        page: "arbeidsliste.html",
+        anchor: "print17"
+    },
+    {
+        title: "",
+        keywords: "",
+        page: "arbeidsliste.html",
+        anchor: "print17"
     },
 
     // ===========================
