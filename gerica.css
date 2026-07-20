@@ -40,7 +40,7 @@ a {
   align-items: center;
   gap:20px;
   justify-content: space-between;
-  padding: 0px 10px;
+  padding: 0px 40px;
    background: var(--card-bg);
   /*
   border-bottom: 1px solid var(--border-color);
@@ -322,3 +322,106 @@ h1{
     padding-bottom: 0px;
 }
 }
+
+
+/*---------------------------------------------------------------------------------------
+------------------------------------Album------------------------------------------------
+------------------------------------------------------------------------------------------*/
+
+/*body{
+    margin:0;
+    background:#111;
+    font-family:Arial,sans-serif;
+}
+header {
+    text-align: center;
+    padding: 30px 0;
+}
+*/
+h1 {
+    font-size: 4rem;
+    color: white;
+    margin: 0;
+}
+@media screen and (max-width: 760px){
+    h1{
+        font-size: 2.5rem;
+    }
+}
+
+.gallery{
+    width: 90%;
+    max-width:1400px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:10px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.gallery img:hover{
+    transform:scale(2.05);
+}
+/*
+hvorfor trenger vi både gligtbox sin css og style.css?
+Godt spørsmål! Du trenger **både `style.css` og GLightbox sin CSS**, men de har forskjellige oppgaver.
+### `style.css` – din egen design
+Denne filen bestemmer hvordan **selve nettsiden** skal se ut.
+For eksempel:
+```css
+body {
+    background: #111;
+    font-family: Arial, sans-serif;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+.gallery img {
+    border-radius: 10px;
+}
+```
+Denne CSS-en styrer blant annet:
+* bakgrunnsfargen på siden
+* skrift
+* avstanden mellom bildene
+* størrelsen på bildene
+* at bildene ligger i et pent rutenett
+* avrundede hjørner
+* hover-effekter
+Kort sagt: **hvordan nettsiden din ser ut før man klikker på et bilde.**
+---
+### GLightbox sin CSS – lightbox-vinduet
+Denne filen:
+```html
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+```
+styrer **bare det som skjer etter at du klikker på et bilde**.
+Den lager blant annet:
+* den mørke bakgrunnen bak bildet
+* pilene for neste og forrige bilde
+* lukkeknappen (×)
+* animasjonen når bildet åpnes og lukkes
+* plasseringen av bildet i vinduet
+---
+### En sammenligning
+Tenk på det som et hus:
+* **`style.css`** er hvordan huset ser ut utenfra – farger, vinduer, dører og hage.
+* **GLightbox CSS** er hvordan et bestemt rom ser ut når du går inn i det – belysning, møbler og dekor.
+Begge er CSS, men de har forskjellige ansvarsområder.
+---
+### Kan man klare seg uten `style.css`?
+Ja, men da blir siden ganske enkel.
+Bildene vil fortsatt kunne åpnes med GLightbox, men de vil vises rett etter hverandre uten et pent galleri. `style.css` gjør siden ryddig og personlig, mens GLightbox tar seg av visningen av bildene når de åpnes.
+
+*/
