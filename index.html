@@ -6,7 +6,11 @@
   <title>Team Sør</title>
   <link rel="stylesheet" href="gerica.css" />
   <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   
+   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <style>
    
     .card li{
@@ -68,11 +72,19 @@ Search-felt
   <main id="main-content" class="container">
     
 <h1>Team Sør</h1>
-     <div class="bilde">
-       <img  src="bilder/gruppeBilde.jpg" >
-       <img src="bilder/gruppeBilde4.jpg" >
-       <img src="bilder/gruppeBilde2.jpg" >
-       <img src="bilder/gruppeBilde3.jpg" >
+     <div class="gallery">
+      <a href="bilder/gruppeBilde.jpg" class="glightbox" data-gallery="album">
+            <img src="bilder/gruppeBilde.jpg" alt="Bilde gruppeBilde">
+          </a>
+          <a href="bilder/gruppeBilde4.jpg" class="glightbox" data-gallery="album">
+            <img src="bilder/gruppeBilde4.jpg" alt="Bilde gruppeBilde4">
+          </a>
+          <a href="bilder/gruppeBilde2.jpg" class="glightbox" data-gallery="album">
+            <img src="bilder/gruppeBilde2.jpg" alt="Bilde gruppeBilde2">
+          </a>
+          <a href="bilder/gruppeBilde3.jpg" class="glightbox" data-gallery="album">
+            <img src="bilder/gruppeBilde3.jpg" alt="Bilde gruppeBilde3">
+          </a>
       </div> 
       <br><br>
 
@@ -145,6 +157,17 @@ Search-felt
       </section>
  
 </main>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+<script>
+const lightbox = GLightbox({
+    selector: '.glightbox',
+    loop: true,
+    touchNavigation: true,
+    keyboardNavigation: true,
+    closeButton: true
+});
+</script>
  <script src="searchData.js" defer></script>
 <script src="search.js" defer></script>
 <script src="app.js" defer></script>
