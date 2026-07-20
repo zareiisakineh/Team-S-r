@@ -73,7 +73,7 @@ if (searchInput && searchResults) {
     // Lukk søkeresultat når man klikker utenfor
     document.addEventListener("click", function (event) {
 
-        if (!event.target.closest(".searchBox")) {
+        if (!event.target.closest(".search-box")) {
 
             searchResults.innerHTML = "";
 
