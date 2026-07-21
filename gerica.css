@@ -370,6 +370,22 @@ h1 {
 .gallery img:hover{
     transform:scale(2.05);
 }
+/*-----------Bursdagsmelding------------------*/
+/*--------------------------------------------*/
+#bursdagMelding{
+    display: none;
+    background: linear-gradient(135deg,#fff3cd,#ffe08a);
+    color: #5c4300;
+    border: 2px solid #f0c14b;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 20px auto;
+    max-width: 900px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    box-shadow: 0 3px 8px rgba(0,0,0,.15);
+}
 /*
 hvorfor trenger vi både gligtbox sin css og style.css?
 Godt spørsmål! Du trenger **både `style.css` og GLightbox sin CSS**, men de har forskjellige oppgaver.

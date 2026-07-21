@@ -240,3 +240,70 @@ window.addEventListener("load", () => {
 
 });
 
+  //for å få varsel om bursdager:
+  //
+    //1.lager en liste(arrays) av objekter(ansatte) med attributer dag og måned:
+ const bursdager = [
+ {navn: "Sakti", dag: 28, måned: 1},
+ {navn: "Xaviera", dag: 2, måned: 2},
+ {navn: "JoAn", dag: 6, måned: 2},
+ {navn: "Miguel", dag: 11, måned: 2},
+ {navn: "Ane", dag: 18, måned: 2},
+ {navn: "Cecilie", dag: 5, måned: 4},
+ {navn: "Sumaya", dag: 20, måned: 4},
+ {navn: "Ravi", dag: 12, måned: 5},
+ {navn: "Marte", dag: 20, måned: 5},
+ {navn: "Chandranitti", dag: 7, måned: 6},
+ {navn: "Sussie", dag: 9, måned: 6},
+ {navn: "JohnJames", dag: 20, måned: 6},
+ {navn: "Carolina", dag: 22, måned: 6},
+ {navn: "Silje", dag: 24, måned: 6},
+ {navn: "Tigist", dag: 16, måned: 7},
+ {navn: "Tigist", dag: 21, måned: 7},
+ {navn: "Ana Marie", dag: 25, måned: 8},
+ {navn: "Ibrahim", dag: 28, måned: 8},
+ {navn: "Sara", dag: 5, måned: 9},
+ {navn: "Amalie", dag: 18, måned: 9},
+ {navn: "Yusuf", dag: 2, måned: 10},
+ {navn: "Aase", dag: 2, måned: 10},
+ {navn: "Hamid", dag: 27, måned: 11},
+ {navn: "Cathy", dag: 23, måned: 12},
+ {navn: "Mathias", dag: 23, måned: 12},
+ 
+];
+
+const melding = document.getElementById("bursdagMelding");
+//new Date() lager et datoobjekt.Hvis datoen er 21. juli 2026, inneholder iDag: Tue Jul 21 2026
+const iDag = new Date();
+//Henter dagen. getDate() betyr Hvilken dag i måneden er det? Eksempel 21. juli gir dag = 21;
+const dag = iDag.getDate();
+//Henter måneden. Månedene i js begynner med 0. Derfor adderer vi med 1
+const måned = iDag.getMonth() + 1;
+
+// Finn alle som har bursdag i dag. filter() går gjennom hele object-listen og lager en ny liste av de som har bursdag i dagens dato
+const dagensBursdager = bursdager.filter(person =>
+    person.dag === dag && person.måned === måned
+);
+// Har vi funnet noen?--> vis melding
+if (dagensBursdager.length > 0) {
+
+    melding.style.display = "block"; //melding vises
+
+    const navn = dagensBursdager.map(person => person.navn); //map lager en ny liste av dagens bursdagsbarn
+  // hvis listen inneholder bare et navn
+    if (navn.length === 1) {
+
+        melding.innerHTML = `
+            🎉 Gratulerer med 40-årsdagen din, <strong>${navn[0]}</strong>! 🎂
+           Beklager vi glemte bursdagen din!
+        `;
+    // hvis listen inneholder flere enn et navn
+    } else {
+
+        melding.innerHTML = `
+            🎉 Gratulerer med dagen til
+            <strong>${navn.join(", ")}</strong>! 🎂
+            Vi ønsker dere en fantastisk bursdag!
+        `;
+    }
+}
