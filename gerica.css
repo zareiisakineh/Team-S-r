@@ -386,6 +386,57 @@ h1 {
     font-weight: bold;
     box-shadow: 0 3px 8px rgba(0,0,0,.15);
 }
+#sendWhatsapp{
+    background: linear-gradient(135deg,#fff3cd,#ffe08a);
+    color: #5c4300;
+    border: 2px solid #f0c14b;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 0px auto;
+    max-width: 900px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    box-shadow: 0 3px 8px rgba(0,0,0,.15);
+}
+/* Knapp for å dele bursdagshilsen på WhatsApp */
+#sendWhatsapp{
+    display: inline-block;
+    margin: 0px auto;
+    padding: 12px 24px;
+    background-color: #25D366;      /* WhatsApp-grønn */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,.15);
+}
+
+/* Når musepekeren er over knappen */
+#sendWhatsapp:hover{
+    background-color: #1EBE5D;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+/* Når knappen trykkes ned */
+#sendWhatsapp:active{
+    transform: scale(0.97);
+}
+
+/* Tastaturfokus (universell utforming) */
+#sendWhatsapp:focus{
+    outline: 3px solid #0d6efd;
+    outline-offset: 3px;
+}
+.button-container{
+    text-align: center;
+    margin-top: 30px;
+}
+
 /*
 hvorfor trenger vi både gligtbox sin css og style.css?
 Godt spørsmål! Du trenger **både `style.css` og GLightbox sin CSS**, men de har forskjellige oppgaver.
