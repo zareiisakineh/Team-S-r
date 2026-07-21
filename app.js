@@ -294,7 +294,7 @@ if (dagensBursdager.length > 0) {
     if (navn.length === 1) {
 
         melding.innerHTML = `
-            🎉 Gratulerer med 40-årsdagen din, <strong>${navn[0]}</strong>! 🎂
+            🎉 Gratulerer med 40-årsdagen din som var, <strong>${navn[0]}</strong>! 🎂
            Beklager vi glemte bursdagen din!
         `;
     // hvis listen inneholder flere enn et navn
