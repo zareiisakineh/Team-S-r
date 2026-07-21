@@ -294,16 +294,44 @@ if (dagensBursdager.length > 0) {
     if (navn.length === 1) {
 
         melding.innerHTML = `
-            🎉 Gratulerer med 40-årsdagen din som var(16juli), <strong>${navn[0]}</strong>! 🎂
-           Beklager vi glemte bursdagen din!
+            🎉 Gratulerer med 40 årsdagen din som var(16juli) kjære <strong>${navn[0]}</strong>! 🎂
+           Vi er glad i deg! 🥳🎈!
         `;
     // hvis listen inneholder flere enn et navn
     } else {
 
         melding.innerHTML = `
-            🎉 Gratulerer med dagen til
+            🎉 Gratulerer med dagen kjære
             <strong>${navn.join(", ")}</strong>! 🎂
-            Vi ønsker dere en fantastisk bursdag!
+            Alle oss i Team Sør ønsker dere en riktig flott dag fylt med glede, smil og kake! 🥳🎈!
         `;
     }
 }
+
+/*Oppsummering av programmet
+
+Programmet følger denne rekkefølgen:
+
+📋 Lager en liste med ansatte og bursdager.
+📅 Leser dagens dato fra datamaskinen.
+🔍 Går gjennom listen med filter().
+✅ Finner alle som har bursdag i dag.
+📏 Sjekker om listen er tom med length.
+🎉 Hvis noen har bursdag, vises meldingsboksen.
+📝 map() henter ut bare navnene.
+✍️ join() setter navnene sammen til én tekst hvis flere har bursdag.
+🌐 innerHTML skriver gratulasjonsmeldingen inn på nettsiden. */
+
+const knapp = document.getElementById("sendWhatsapp");
+
+knapp.addEventListener("click", () => {
+
+    const melding =
+        "🎉 Gratulerer med dagen! Alle oss i Team Sør ønsker deg en fantastisk dag! 🎂🎈";
+
+    window.open(
+        `https://wa.me/?text=${encodeURIComponent(melding)}`,
+        "_blank"
+    );
+
+});
