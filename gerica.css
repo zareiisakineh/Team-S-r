@@ -187,6 +187,9 @@ Legg merke til: JavaScript har fortsatt ikke gjort noe. CSS bestemmer bare at me
   .menu-toggle {
     display: block;
   }
+  .topbar{
+    padding: 0px 0px;
+  }
 /*
 Brukeren klikker -> JavaScript kjører -> class="open" legges til -> CSS ser den nye klassen -> display:flex ->
 Menyen vises*/
