@@ -255,6 +255,7 @@ window.addEventListener("load", () => {
  {navn: "Marte", dag: 20, måned: 5},
  {navn: "Chandranitti", dag: 7, måned: 6},
  {navn: "Sussie", dag: 9, måned: 6},
+ {navn: "Glen", dag: 15, måned: 6},
  {navn: "JohnJames", dag: 20, måned: 6},
  {navn: "Carolina", dag: 22, måned: 6},
  {navn: "Silje", dag: 24, måned: 6},
@@ -275,7 +276,7 @@ window.addEventListener("load", () => {
 const melding = document.getElementById("bursdagMelding");
 //new Date() lager et datoobjekt.Hvis datoen er 21. juli 2026, inneholder iDag: Tue Jul 21 2026
 const iDag = new Date();
-//Henter dagen. getDate() betyr Hvilken dag i måneden er det? Eksempel 21. juli gir dag = 21;
+//Henter dagen. getDate() betyr Hvilken dag i måneden er det? Eksempel 21. juli gir dag = 21; i dag er object, med attributer dag og måned
 const dag = iDag.getDate();
 //Henter måneden. Månedene i js begynner med 0. Derfor adderer vi med 1
 const måned = iDag.getMonth() + 1;
@@ -327,7 +328,7 @@ const knapp = document.getElementById("sendWhatsapp");
 knapp.addEventListener("click", () => {
 
     const melding =
-        "🎉 Gratulerer med dagen! Alle oss i Team Sør ønsker deg en fantastisk dag! 🎂🎈";
+        "🎉 Gratulerer med dagen!<strong>${navn[0]}</strong>! 🎂 Alle oss i Team Sør ønsker deg en fantastisk dag! 🎂🎈";
 
     window.open(
         `https://wa.me/?text=${encodeURIComponent(melding)}`,
