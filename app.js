@@ -250,7 +250,8 @@ window.addEventListener("load", () => {
  {navn: "Miguel", dag: 11, måned: 2},
  {navn: "Ane", dag: 18, måned: 2},
  {navn: "Cecilie", dag: 5, måned: 4},
- {navn: "Sumaya", dag: 20, måned: 4},
+ {navn: "Sakineh", dag: 20, måned: 4},
+ {navn: "Sumaya", dag: 6, måned: 5},
  {navn: "Ravi", dag: 12, måned: 5},
  {navn: "Marte", dag: 20, måned: 5},
  {navn: "Chandranitti", dag: 7, måned: 6},
@@ -280,14 +281,14 @@ const iDag = new Date();
 const dag = iDag.getDate();
 //Henter måneden. Månedene i js begynner med 0. Derfor adderer vi med 1
 const måned = iDag.getMonth() + 1;
-
+const knapp = document.getElementById("sendWhatsapp") ;
 // Finn alle som har bursdag i dag. filter() går gjennom hele object-listen og lager en ny liste av de som har bursdag i dagens dato
 const dagensBursdager = bursdager.filter(person =>
     person.dag === dag && person.måned === måned
 );
 // Har vi funnet noen?--> vis melding
 if (dagensBursdager.length > 0) {
-
+    knapp.style.display = "inline-block";
     melding.style.display = "block"; //melding vises
 
     const navn = dagensBursdager.map(person => person.navn); //map lager en ny liste av dagens bursdagsbarn
@@ -295,8 +296,8 @@ if (dagensBursdager.length > 0) {
     if (navn.length === 1) {
 
         melding.innerHTML = `
-            🎉 Gratulerer med 40 årsdagen din som var(16juli) kjære <strong>${navn[0]}</strong>! 🎂
-           Vi er glad i deg! 🥳🎈!
+            🎉 Gratulerer med dagen kjære <strong>${navn[0]}</strong>! 🎂
+            Alle oss i Team Sør ønsker deg en riktig flott dag fylt med glede, smil og kake! 🥳🎈!
         `;
     // hvis listen inneholder flere enn et navn
     } else {
@@ -304,9 +305,11 @@ if (dagensBursdager.length > 0) {
         melding.innerHTML = `
             🎉 Gratulerer med dagen kjære
             <strong>${navn.join(", ")}</strong>! 🎂
-            Alle oss i Team Sør ønsker dere en riktig flott dag fylt med glede, smil og kake! 🥳🎈!
-        `;
+            Alle oss i Team Sør ønsker dere en riktig flott dag fylt med glede, smil og kake! 🥳🎈!`;
     }
+
+       
+
 }
 
 /*Oppsummering av programmet
@@ -323,16 +326,16 @@ Programmet følger denne rekkefølgen:
 ✍️ join() setter navnene sammen til én tekst hvis flere har bursdag.
 🌐 innerHTML skriver gratulasjonsmeldingen inn på nettsiden. */
 
-const knapp = document.getElementById("sendWhatsapp");
+
 
 knapp.addEventListener("click", () => {
 
-    const melding =
-        "🎉 Gratulerer med dagen!<strong>${navn[0]}</strong>! 🎂 Alle oss i Team Sør ønsker deg en fantastisk dag! 🎂🎈";
+            const melding =
+                "🎉 Gratulerer med dagen!<strong>${navn[0]}</strong>! 🎂 Alle oss i Team Sør ønsker deg en fantastisk dag! 🎂🎈";
 
-    window.open(
-        `https://wa.me/?text=${encodeURIComponent(melding)}`,
-        "_blank"
-    );
+            window.open(
+                `https://wa.me/?text=${encodeURIComponent(melding)}`,
+                "_blank"
+            );
 
-});
+        });

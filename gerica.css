@@ -390,6 +390,7 @@ h1 {
     box-shadow: 0 3px 8px rgba(0,0,0,.15);
 }
 #sendWhatsapp{
+  display: none;
     background: linear-gradient(135deg,#fff3cd,#ffe08a);
     color: #5c4300;
     border: 2px solid #f0c14b;
@@ -400,14 +401,15 @@ h1 {
     text-align: center;
     font-size: 1.3rem;
     font-weight: bold;
+    cursor: pointer;
     box-shadow: 0 3px 8px rgba(0,0,0,.15);
 }
-/* Knapp for å dele bursdagshilsen på WhatsApp */
+/* Knapp for å dele bursdagshilsen på WhatsApp 
 #sendWhatsapp{
     display: inline-block;
     margin: 0px auto;
     padding: 12px 24px;
-    background-color: #25D366;      /* WhatsApp-grønn */
+    background-color: #25D366;      
     color: white;
     border: none;
     border-radius: 10px;
@@ -417,7 +419,7 @@ h1 {
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0,0,0,.15);
 }
-
+*/
 /* Når musepekeren er over knappen */
 #sendWhatsapp:hover{
     background-color: #1EBE5D;
