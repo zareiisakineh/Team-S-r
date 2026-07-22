@@ -188,7 +188,7 @@ Legg merke til: JavaScript har fortsatt ikke gjort noe. CSS bestemmer bare at me
     display: block;
   }
   .topbar{
-    padding: 0px 0px;
+    padding: 0px 10px;
   }
 /*
 Brukeren klikker -> JavaScript kjører -> class="open" legges til -> CSS ser den nye klassen -> display:flex ->
