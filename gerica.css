@@ -442,6 +442,49 @@ h1 {
     margin-top: 30px;
 }
 
+/*------------------------Install-app knappen-------------------------------------------
+---------------------------------------------------------------------------------------*/
+#installApp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 25px;
+    padding: 14px 28px;
+
+    background: #2f5d9f;
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+}
+
+#installApp:hover{
+    background:#244a7d;
+    transform:translateY(-3px);
+}
+
+#installApp:active{
+    transform:scale(.97);
+}
+
+#installApp:focus{
+    outline:3px solid #7ab6ff;
+    outline-offset:3px;
+}
+.installInfo{
+    margin-top:12px;
+    color:#555;
+    font-size:.95rem;
+}
 /*
 hvorfor trenger vi både gligtbox sin css og style.css?
 Godt spørsmål! Du trenger **både `style.css` og GLightbox sin CSS**, men de har forskjellige oppgaver.
