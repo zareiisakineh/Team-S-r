@@ -365,7 +365,7 @@ const searchData = [
 
       {
         title: "juli",
-        keywords: "bursdag ansatte ",
+        keywords: "bursdag ansatte Tigist",
         page: "Bursdager.html",
         anchor: "juli"
     },
