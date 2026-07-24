@@ -249,6 +249,7 @@ window.addEventListener("load", () => {
  {navn: "JoAn", dag: 6, måned: 2},
  {navn: "Miguel", dag: 11, måned: 2},
  {navn: "Ane", dag: 18, måned: 2},
+  {navn: "Fadumo", dag: 1, måned: 3},
  {navn: "Noh", dag: 8, måned: 3},
  {navn: "Kristine", dag: 30, måned: 3},
  {navn: "Cecilie", dag: 5, måned: 4},

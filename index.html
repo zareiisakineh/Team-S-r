@@ -11,6 +11,7 @@
    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+          <link rel="manifest" href="manifest.json">
   <style>
    
     .card li{
@@ -70,8 +71,21 @@ Search-felt
   </header>
   
   <main id="main-content" class="container">
-    
-<h1>Team Sør</h1>
+
+<section class="card">
+
+    <h1>Velkommen til Team Sør</h1>
+    <h4>
+        Velkommen til Team Sørs interne side.
+        Her finner du nyttig informasjon, kalender,
+        bursdager og viktige lenker.
+    </h4><br>
+    <button id="installApp">
+        📲 Installer Team Sør
+    </button>
+</section><br>
+
+<section class="hero card">
      <div class="gallery">
       <a href="bilder/gruppeBilde.jpg" class="glightbox" data-gallery="album">
             <img src="bilder/gruppeBilde.jpg" alt="Bilde gruppeBilde">
@@ -92,21 +106,18 @@ Search-felt
             <img src="bilder/286.jpeg" alt="Bilde 286">
           </a>--> 
       </div> 
+      </section>
       <div id="bursdagMelding"></div>
       <div class="button-container">
        <button id="sendWhatsapp">
             Del bursdagshilsen
         </button>
         </div>
-      <br><br>
-
+      <br>
       
-    <section class="hero card">
-        <h3>Team Sør – Hjemmesykepleien i Bydel Gamle Oslo</h3>
-        <br>
-            <h4>Velkommen til Team Sør</h4><br>
+    <section class="card">
 
-          Denne nettsiden er laget som et praktisk oppslagsverk for ansatte og studenter. Her finner du rutiner, prosedyrer, nyttige tips og informasjon som kan gjøre arbeidshverdagen litt enklere.
+         <p> Denne nettsiden er laget som et praktisk oppslagsverk for ansatte og studenter. Her finner du rutiner, prosedyrer, nyttige tips og informasjon som kan gjøre arbeidshverdagen litt enklere.
 
           Hos Team Sør er vi opptatt av å ta vare på hverandre og skape trygghet – både for brukerne våre og for kollegaene våre. 
 
@@ -114,9 +125,9 @@ Search-felt
 
           Takk for innsatsen du gjør – hver eneste dag.<br>
 
-          <strong>**Velkommen til Team Sør!**</strong>
-
+          <strong>**Velkommen til Team Sør!**</strong></p>
     </section>
+
       <section>
        <div class="item">
       <button class="question" nclick="toggleAccordion(this)">
