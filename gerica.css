@@ -26,6 +26,8 @@ body {
     height:100px;
     width:auto;
     padding-left: 10px;
+    border-radius: 10px 10px;
+    margin-top: 5px;
 }
 
 a {
@@ -318,10 +320,9 @@ h1{
        margin-top: 10px;
     }
 .brand img{
-    height:3.5rem;
+    height:3.6rem;
     width:auto;
     padding-left: 5px;
-    margin-top: 5px;
     padding-bottom: 0px;
 }
 }

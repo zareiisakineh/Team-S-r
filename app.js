@@ -343,3 +343,42 @@ knapp.addEventListener("click", () => {
             );
 
         });
+
+// Installer-knappen
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker.register("./sw.js")
+            .then(() => console.log("Service Worker registrert"))
+            .catch(error => console.log(error));
+
+    });
+
+}
+//Knappen vises bare når installasjon er mulig.
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", (event) => {
+
+    event.preventDefault();
+
+    deferredPrompt = event;
+
+    document.getElementById("installApp").hidden = false;
+
+});
+
+document.getElementById("installApp").addEventListener("click", async () => {
+
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+
+    await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+
+    document.getElementById("installApp").hidden = true;
+
+});
