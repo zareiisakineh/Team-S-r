@@ -383,3 +383,18 @@ document.getElementById("installApp").addEventListener("click", async () => {
     document.getElementById("installApp").hidden = true;
 
 });
+
+//Registrer service worker
+if ("serviceWorker" in navigator) {
+
+    navigator.serviceWorker.register(
+        "service-worker.js"
+    )
+    .then(() => {
+        console.log("Service Worker aktiv");
+    })
+    .catch(error => {
+        console.log("Feil:", error);
+    });
+
+}
