@@ -486,6 +486,25 @@ h1 {
     color:#555;
     font-size:.95rem;
 }
+
+.sykepleier{
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
+.sykepleier a{
+ margin-right: 15px;
+}
+
+.helsefag{
+   display: flex;
+  flex-wrap: wrap;
+   
+}
+.helsefag a{
+margin-right: 15px;
+}
+
 /*
 hvorfor trenger vi både gligtbox sin css og style.css?
 Godt spørsmål! Du trenger **både `style.css` og GLightbox sin CSS**, men de har forskjellige oppgaver.
