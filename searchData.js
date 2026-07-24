@@ -337,7 +337,7 @@ const searchData = [
 
       {
         title: "mars",
-        keywords: "bursdag ansatte xaviera miguel joan ane",
+        keywords: "bursdag ansatte xaviera miguel joan ane fadumo kristine noh",
         page: "Bursdager.html",
         anchor: "mars"
     },
@@ -400,7 +400,7 @@ const searchData = [
 
      {
         title: "desember",
-        keywords: "bursdag ansatte cathy mathias ",
+        keywords: "bursdag ansatte cathy mathias nabina",
         page: "Bursdager.html",
         anchor: "desember"
     },
