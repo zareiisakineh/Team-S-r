@@ -184,8 +184,8 @@ Legg merke til: JavaScript har fortsatt ikke gjort noe. CSS bestemmer bare at me
 }
 */
 #menuToggle{
-  background-color: rgb(249, 240, 229);
-  border:1px solid #a0a1a8;
+  background-color: rgb(253, 253, 252);
+  border:1px solid rgb(253, 253, 252);
   padding: 2px 20px;
   font-size: 2rem;
 }
@@ -218,7 +218,7 @@ Menyen vises*/
     display: none;
     position: absolute;
     right: 10px;
-    top: 90px;
+    top: 50px;
     width: 230px;
     background: rgb(218, 217, 217);
     border-radius: 12px;
