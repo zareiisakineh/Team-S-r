@@ -249,6 +249,10 @@ Menyen vises*/
   .answer li {
     margin-bottom: 8px;
   }
+   table{
+    padding: 0px;
+    width: 580px;
+  }
  
   }
   .ithem{
@@ -258,10 +262,7 @@ Menyen vises*/
         order:2;
         margin-left:auto;
     } 
-  table{
-    padding: 0px;
-    width: 583px;
-  }
+ 
   .card .item{
     width: 100%;
   }
@@ -282,7 +283,7 @@ Menyen vises*/
   .question h3{
     padding-left: 0.5rem;
   }
-}
+
 
 h1{
     margin-bottom:2rem;
