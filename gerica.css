@@ -35,6 +35,10 @@ a {
   color: inherit;
 }
 
+p{
+  font-size: 1.5rem;
+}
+
 /*Header og meny*/
 
 .topbar {
@@ -506,7 +510,7 @@ margin-right: 15px;
 
 }
 td{
-  width: 21rem;
+  width: 25.9rem;
   border: 1px solid black;
    display: flex;
   flex-wrap: wrap;
