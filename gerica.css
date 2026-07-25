@@ -267,12 +267,18 @@ Menyen vises*/
   .menu-toggle{
        margin-top: 10px;
   }
+  .container h1{
+    font-size: 3rem;
+  }
   .card li{
       list-style: none;
       font-size: 1.3rem;
   }
   .card h1{
     font-size: 3rem;
+  }
+  .question h3{
+    padding-left: 0.5rem;
   }
 }
 
