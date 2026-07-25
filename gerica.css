@@ -219,6 +219,7 @@ Menyen vises*/
 
   .container {
     padding: 8px;
+    width: 100%;
   }
 
   .card {
@@ -242,6 +243,9 @@ Menyen vises*/
 
   .answer li {
     margin-bottom: 8px;
+  }
+  .ithem{
+    width: 100%;
   }
   
 }
