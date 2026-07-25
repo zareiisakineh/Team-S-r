@@ -513,7 +513,19 @@ h1 {
 }
 .helsefag a{
 margin-right: 15px;
+}
 
+.sykepleier a,
+.helsefag a{
+    color: #1b4f8a;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.sykepleier a:hover,
+.helsefag a:hover{
+    color: #2f5d9f;
+    text-decoration: underline;
 }
 td{
   width: 25.9rem;
