@@ -362,17 +362,20 @@ h1 {
     h1{
         font-size: 2.5rem;
     }
-    .cardquestion{
+    .card .question{
       width: 100%;
     }
-    .carditem{
+    .item {
+    width: 100%;
+    margin: 0 0 1rem;
+}
+    .card .answer{
       width: 100%;
-      margin: 0;
-      padding: 0;
     }
-    .cardanswer{
-      width: 100%;
-    }
+   ul li{
+    padding: 0px;
+    margin: 0px;
+   }
 }
 
 .gallery{
