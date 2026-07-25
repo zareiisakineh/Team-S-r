@@ -270,9 +270,10 @@ Menyen vises*/
   .card li{
       list-style: none;
       font-size: 1.3rem;
-     
   }
-   
+  .card h1{
+    font-size: 3rem;
+  }
 }
 
 h1{
