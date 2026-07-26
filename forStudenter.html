@@ -10,7 +10,45 @@
   <meta name="theme-color" content="#2f5d9f">
   <link rel="icon" href="images/logo-192.png">
   <link rel="apple-touch-icon" href="images/logo-192.png">
-
+  <style>
+        main{
+           text-align: center;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           margin-top: 20px;
+        }
+        h1{
+            font-size: 4rem;
+        }
+        #valg button{
+            font-size: 6rem;
+            margin: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+           transition: background-color 0.5s ease;
+        }
+        #valg button:hover{
+            background-color: rgb(247, 247, 181);
+        }
+        #datamaskinDisplay, #spillerDisplay{
+            font-size: 2.5rem;
+        }
+        #resultat{
+            font-size: 3rem;
+        }
+         .greenTekst{
+            color: green;
+        }
+        .redTekst{
+            color: red;
+        }
+        #computerScoreDisplay, #playerScoreDisplay{
+            font-size: 2rem;
+        }
+        
+       
+    </style>
 </head>
 <body>
 
@@ -42,13 +80,81 @@
     </nav>
   </header>
   <main id="main-content" class="container">
-<h2>Informasjon for studenter/veiledere</h2>
 <section class="hero card">
-     <p class="lead">
-        <strong>Informasjon for studenter/veiledere</strong> 
-      </p>
+  <h2>Informasjon for studenter/veiledere</h2>
        <p>Kommer senere</p>
 </section>
+        <h1>Stein - saks - papir</h1>
+        <div id="valg">
+            <button onclick="spill('stein')">👊</button>
+            <button onclick="spill('saks')">✌️</button>
+            <button onclick="spill('papir')">✋</button><br>
+        </div>
+        
+        <div id="datamaskinDisplay">Datamaskin:</div>
+        <div id="spillerDisplay">Spiller:</div> 
+        <div id="resultat"></div>
+
+        <div id="playerScoreDisplay">ditt poeng :
+            <span id="playerScore">0</span>
+        </div>
+
+        <div id="computerScoreDisplay">datamaskinens poeng:
+            <span id="computerScore">0</span>
+        </div>
+
+    </main>
+    <script>
+        const utvalg = ["stein", "saks", "papir"];
+        const datamaskinDisplay = document.getElementById("datamaskinDisplay");
+        const spillerDisplay = document.getElementById("spillerDisplay");
+        const resultat = document.getElementById("resultat");
+        const computerScoreDisplay = document.getElementById("computerScoreDisplay");
+        const playerScoreDisplay = document.getElementById("playerScoreDisplay");
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function spill(spillerValg){
+            const datamaskinValg = utvalg[Math.floor(Math.random()*utvalg.length)];
+            console.log(datamaskinValg);
+            let result = "";
+           if(spillerValg === datamaskinValg){
+            result = "uavgjort";
+           }
+           else{
+            switch(spillerValg){
+                case "stein":
+                result = (datamaskinValg === "saks")? "du vant": "du tapte";
+                break;
+                case "saks":
+                result = (datamaskinValg === "papir")? "du vant": "du tapte";
+                break;
+                case "papir":
+                result = (datamaskinValg === "stein")? "du vant": "du tapte";
+                break;
+            }
+           }
+           datamaskinDisplay.textContent = `Datamaskin spilte: ${datamaskinValg}`;
+           spillerDisplay.textContent = `Du spilte: ${spillerValg}`;
+           resultat.textContent = result;
+           //nullstiller/fjerner klassene før neste runde
+           resultat.classList.remove("greenTekst", "redTekst");
+
+           switch(result){
+            case "du vant":
+            resultat.classList.add("greenTekst");
+            playerScore++
+            playerScoreDisplay.textContent = `ditt poeng: ${playerScore}` ;
+            break;
+            case "du tapte":
+            resultat.classList.add("redTekst");
+             computerScore++;
+            computerScoreDisplay.textContent = `datamaskinens poeng: ${computerScore}` ;
+            break;
+           }
+        }
+
+    </script>
  <script src="app.js" defer></script>
 </main>
 </body>
