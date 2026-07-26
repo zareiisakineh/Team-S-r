@@ -251,15 +251,16 @@ Menyen vises*/
    table{
     padding: 0px;
   }
-  h1{
-    font-size: 2rem;
-    text-align: center;
+   h1{
+    font-size: rem;
+  }
+   
   }
   h2{
     font-size: 1.3rem;
     padding-left: 1rem;
   }
-  }
+  
 /*------------------------------------------------------------*/
   .ithem{
     width: 100%;
@@ -283,9 +284,7 @@ Menyen vises*/
       list-style: none;
       font-size: 1.3rem;
   }
-  .card h1{
-    font-size: 3rem;
-  }
+  
   .question h3{
     padding-left: 0.5rem;
   }
