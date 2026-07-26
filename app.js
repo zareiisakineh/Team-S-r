@@ -397,8 +397,117 @@ if ("serviceWorker" in navigator) {
 }
 //------------------------------------------------------------------------------------------
 //------------------------------------------Kontaktliste----------------------------------
-//------------------Lager objekter for alle ansatte---------------------------------------
-const ansatte = [
+//-------------------------------Lager objekter for alle sykepleiere---------------------------------------
+const sykepleier = [
+    {navn:"Sara", rolle:"", telefon:"", epost:"", bilde:"bilder/Sara.jpg"},
+    {navn:"Cathy", rolle:"", telefon:"", epost:"", bilde:"bilder/Cathy.jpg"},
+    {navn:"Mathias", rolle:"", telefon:"", epost:"", bilde:"bilder/Mathias.jpg"},
+    {navn:"Carolina", rolle:"", telefon:"", epost:"", bilde:"bilder/Carolina.jpg"},
+    {navn:"Marte", rolle:"", telefon:"", epost:"", bilde:"bilder/Marte.jpg"},
+    {navn:"Cecilie", rolle:"", telefon:"", epost:"", bilde:"bilder/Cecilie.jpg"},
+    {navn:"Kristine", rolle:"", telefon:"", epost:"", bilde:"bilder/Kristine.jpg"},
+    {navn:"Fadumo", rolle:"", telefon:"", epost:"", bilde:"bilder/Fadumo.jpg"},
+    {navn:"Xaviera", rolle:"", telefon:"", epost:"", bilde:"bilder/Xaviera.jpg"},
+    {navn:"Sakineh", rolle:"", telefon:"", epost:"", bilde:"bilder/Sakineh.jpg"},
+    {navn:"Neda", rolle:"", telefon:"", epost:"", bilde:"bilder/Neda.jpg"},
+    {navn:"Sumaya", rolle:"", telefon:"", epost:"", bilde:"bilder/Sumaya.jpg"},
+    ];
+
+    // ---------------------------------javascript lager kontaktkort-------------------------------------
+// ----------------------------------------------Sykepleiere---------------------------------------------
+const container1 = document.getElementById("SPL");
+sykepleier.forEach(person => {
+    container1.innerHTML += `
+    <div class="ansattKort">
+        <h3>${person.navn}</h3>
+        <p>${person.rolle}</p>
+        <div class="ikoner">
+         <a href="${person.bilde}" class="glightbox" title="${person.navn}">
+                <i class="fas fa-image"></i>
+            </a>
+            <a href="tel:${person.telefon}">
+                <i class="fas fa-phone"></i>
+            </a>   
+        </div>
+    </div>
+    `
+    ;
+});
+
+//------------------------------------------------------------------------------------------
+//------------------------------------------Kontaktliste----------------------------------
+//--------------------------Lager objekter for alle Helsefagarbeidere---------------------------------------
+const helsefag = [
+     {navn:"Hamid", rolle:"", telefon:"", epost:"", bilde:"bilder/Hamid.jpg"},
+     {navn:"Noh", rolle:"", telefon:"", epost:"", bilde:"bilder/Noh.jpg"},
+     {navn:"Sakti", rolle:"", telefon:"", epost:"", bilde:"bilder/Sakti.jpg"},
+     {navn:"Linda", rolle:"", telefon:"", epost:"", bilde:"bilder/Linda.jpg"},
+     {navn:"Chandranitti", rolle:"", telefon:"", epost:"", bilde:"bilder/Chandranitti.jpg"},
+     {navn:"AnaMarie", rolle:"", telefon:"", epost:"", bilde:"bilder/AnaMarie.jpg"},
+     {navn:"Tigist", rolle:"", telefon:"", epost:"", bilde:"bilder/Tigist.jpg"},
+     {navn:"JoAn", rolle:"", telefon:"", epost:"", bilde:"bilder/JoAn.jpg"},
+     {navn:"Robiel", rolle:"", telefon:"", epost:"", bilde:"bilder/Robiel.jpg"},
+     {navn:"Ibrahim", rolle:"", telefon:"", epost:"", bilde:"bilder/Ibrahim.jpg"},
+     {navn:"Nabina", rolle:"", telefon:"", epost:"", bilde:"bilder/Nabina.jpg"},
+     {navn:"Preenaphan", rolle:"", telefon:"", epost:"", bilde:"bilder/Preenaphan.jpg"},
+     {navn:"Gliceria", rolle:"", telefon:"", epost:"", bilde:"bilder/Gliceria.jpg"},
+     {navn:"Miguel", rolle:"", telefon:"", epost:"", bilde:"bilder/Miguel.jpg"},
+     {navn:"Dessery", rolle:"", telefon:"", epost:"", bilde:"bilder/Dessery.jpg"},
+     ];
+//------------------------------------------------------------------------------------------
+//------------------------------------------Kontaktliste----------------------------------
+//--------------------------Lager objekter for alle Helsefagarbeidere---------------------------------------
+     const container2 = document.getElementById("HPL");
+     helsefag.forEach(person => {
+    container2.innerHTML += `
+    <div class="ansattKort">
+        <h3>${person.navn}</h3>
+        <p>${person.rolle}</p>
+        <div class="ikoner">
+         <a href="${person.bilde}" class="glightbox" title="${person.navn}">
+                <i class="fas fa-image"></i>
+            </a>
+            <a href="tel:${person.telefon}">
+                <i class="fas fa-phone"></i>
+            </a>   
+        </div>
+    </div>
+    `
+    ;
+});
+
+//------------------------------------------------------------------------------------------
+//------------------------------------------Kontaktliste----------------------------------
+//--------------------------Lager objekter for alle i paraktisk bistand---------------------------------------
+const paktiskBistand = [
+    {navn:"Ravi", rolle:"", telefon:"", epost:"", bilde:"bilder/Ravi.jpg"},
+    {navn:"Sussie", rolle:"", telefon:"", epost:"", bilde:"bilder/Sussie.jpg"},
+    {navn:"Ebyan", rolle:"", telefon:"", epost:"", bilde:"bilder/Ebyan.jpg"},
+];
+// -------------------------------javascript lager kontaktkort-------------------------------------
+// --------------------------------------paraktisk bistand---------------------------------------------
+const container3 = document.getElementById("PB");
+paktiskBistand.forEach(person => {
+    container3.innerHTML += `
+    <div class="ansattKort">
+        <h3>${person.navn}</h3>
+        <p>${person.rolle}</p>
+        <div class="ikoner">
+         <a href="${person.bilde}" class="glightbox" title="${person.navn}">
+                <i class="fas fa-image"></i>
+            </a>
+            <a href="tel:${person.telefon}">
+                <i class="fas fa-phone"></i>
+            </a>   
+        </div>
+    </div>
+    `
+    ;
+});
+//------------------------------------------------------------------------------------------
+//------------------------------------------Kontaktliste----------------------------------
+//--------------------------Lager objekter for alle Ekstravakter---------------------------------------
+const ekstravakter= [
 
 { navn:"Abdisaalam Saeed", rolle:"", telefon:"92258951", epost:"", bilde:"bilder/Abdisaalam.jpg" },
 
@@ -481,34 +590,22 @@ const ansatte = [
 ];
 
 // --------------------javascript lager kontaktkort-------------------------------------
-// -------------------------------------------------------------------------------------
-const container = document.getElementById("ansatte");
-
-ansatte.forEach(person => {
-
+// ------------------------Ekstravakter---------------------------------------------
+const container = document.getElementById("ekstravakt");
+ekstravakter.forEach(person => {
     container.innerHTML += `
-
     <div class="ansattKort">
-
         <h3>${person.navn}</h3>
-
         <p>${person.rolle}</p>
-
         <div class="ikoner">
-
-            <a href="${person.bilde}" class="glightbox" title="${person.navn}">
+         <a href="${person.bilde}" class="glightbox" title="${person.navn}">
                 <i class="fas fa-image"></i>
             </a>
-
             <a href="tel:${person.telefon}">
                 <i class="fas fa-phone"></i>
-            </a>
-       
+            </a>   
         </div>
-
     </div>
-
     `
     ;
-
 });
