@@ -251,16 +251,12 @@ Menyen vises*/
    table{
     padding: 0px;
   }
-   h1{
-    font-size: rem;
-  }
-   
-  }
-  h2{
+   h2{
     font-size: 1.3rem;
     padding-left: 1rem;
   }
-  
+  }
+
 /*------------------------------------------------------------*/
   .ithem{
     width: 100%;
