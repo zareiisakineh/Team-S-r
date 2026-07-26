@@ -519,6 +519,9 @@ const ekstravakter= [
 
 { navn:"Carlette", rolle:"", telefon:"96689375", epost:"", bilde:"bilder/Carlette.jpg" },
 
+{ navn:"Danait Chilmichael", rolle:"", telefon:"45113773", epost:"", bilde:"bilder/Danait.jpg" },
+
+
 { navn:"Dessery(30%)", rolle:"", telefon:"99860102", epost:"", bilde:"bilder/Dessery.jpg" },
 
 { navn:"Fekerte(SPL)", rolle:"", telefon:"97097023", epost:"", bilde:"bilder/Fekerte.jpg" },
@@ -537,6 +540,8 @@ const ekstravakter= [
 
 { navn:"Judelyn", rolle:"", telefon:"96656132", epost:"", bilde:"bilder/Judelyn.jpg" },
 
+{ navn:"Julius", rolle:"", telefon:"96907174", epost:"", bilde:"Julius/.jpg" },
+
 { navn:"Khirad", rolle:"", telefon:"99350304", epost:"", bilde:"bilder/Khirad.jpg" },
 
 { navn:"Khadra(VPL)", rolle:"", telefon:"92953974", epost:"", bilde:"bilder/Khadra.jpg" },
@@ -548,6 +553,8 @@ const ekstravakter= [
 { navn:"Malyuun(SPL)", rolle:"", telefon:"40954865", epost:"", bilde:"bilder/Malyuun.jpg" },
 
 { navn:"Marthe Sukkestad(SPL)", rolle:"", telefon:"95990136", epost:"", bilde:"bilder/MartheSukkestad.jpg" },
+
+{ navn:"Marco Tørnvall", rolle:"", telefon:"40605990", epost:"", bilde:"bilder/SiljeAntonsen.jpg" },
 
 { navn:"Mostopha", rolle:"", telefon:"98774382", epost:"", bilde:"bilder/Mostopha.jpg" },
 
@@ -562,6 +569,8 @@ const ekstravakter= [
 { navn:"Robiel(80%)", rolle:"", telefon:"97367760", epost:"", bilde:"bilder/Robiel.jpg" },
 
 { navn:"Silje Antonsen", rolle:"", telefon:"45179522", epost:"", bilde:"bilder/SiljeAntonsen.jpg" },
+
+{ navn:"Senait", rolle:"", telefon:"40451826", epost:"", bilde:"bilder/Senait.jpg" },
 
 { navn:"Svetlana", rolle:"", telefon:"40571544", epost:"", bilde:"bilder/Svetlana.jpg" },
 
