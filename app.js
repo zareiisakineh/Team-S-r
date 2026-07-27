@@ -552,7 +552,7 @@ const ekstravakter= [
 
 { navn:"Malyuun(SPL)", rolle:"", telefon:"40954865", epost:"", bilde:"bilder/Malyuun.jpg" },
 
-{ navn:"Marthe Sukkestad(SPL)", rolle:"", telefon:"95990136", epost:"", bilde:"bilder/MartheSukkestad.jpg" },
+{ navn:"Marthe Sukkestad(SPL)", rolle:"", telefon:"95990136", epost:"", bilde:"bilder/MartheS.jpg" },
 
 { navn:"Marco Tørnvall", rolle:"", telefon:"40605990", epost:"", bilde:"bilder/SiljeAntonsen.jpg" },
 
