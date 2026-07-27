@@ -532,7 +532,7 @@ const ekstravakter= [
 
 { navn:"Fekerte(SPL)", rolle:"", telefon:"97097023", epost:"", bilde:"bilder/Fekerte.jpg" },
 
-{ navn:"Gale-Ane", rolle:"", telefon:"93956855", epost:"", bilde:"bilder/Gale-Ane.jpg" },
+{ navn:"Gale-Ane", rolle:"", telefon:"93956855", epost:"", bilde:"bilder/Gale-ane.jpg" },
 
 { navn:"Gliceria(20%)", rolle:"", telefon:"92541182", epost:"", bilde:"bilder/Gliceria.jpg" },
 
