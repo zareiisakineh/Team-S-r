@@ -336,7 +336,7 @@ Programmet følger denne rekkefølgen:
 🌐 innerHTML skriver gratulasjonsmeldingen inn på nettsiden. */
 
 
-
+//deler bursdagsmelding på whatsapp 
 knapp.addEventListener("click", () => {
 
             const melding =
