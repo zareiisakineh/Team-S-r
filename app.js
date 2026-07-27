@@ -244,19 +244,23 @@ window.addEventListener("load", () => {
   //
     //1.lager en liste(arrays) av objekter(ansatte) med attributer dag og måned:
  const bursdager = [
- {navn: "Sakti", dag: 28, måned: 1},
+ {navn: "AnnaEliasson", dag: 14, måned: 1},
+{navn: "Sakti", dag: 28, måned: 1},
  {navn: "Xaviera", dag: 2, måned: 2},
  {navn: "JoAn", dag: 6, måned: 2},
  {navn: "Miguel", dag: 11, måned: 2},
  {navn: "Ane", dag: 18, måned: 2},
   {navn: "Fadumo", dag: 1, måned: 3},
  {navn: "Noh", dag: 8, måned: 3},
+ {navn: "Zemene", dag: 29, måned: 3},
  {navn: "Kristine", dag: 30, måned: 3},
+ {navn: "MartheS", dag: 2, måned: 4},
  {navn: "Cecilie", dag: 5, måned: 4},
  {navn: "Sakineh", dag: 2, måned: 7},
  {navn: "Sumaya", dag: 6, måned: 5},
  {navn: "Ravi", dag: 12, måned: 5},
  {navn: "Marte", dag: 20, måned: 5},
+ {navn: "Malyuun", dag: 6, måned: 6},
  {navn: "Chandranitti", dag: 7, måned: 6},
  {navn: "Sussie", dag: 9, måned: 6},
  {navn: "Glen", dag: 15, måned: 6},
@@ -266,9 +270,11 @@ window.addEventListener("load", () => {
  {navn: "Silje", dag: 24, måned: 6},
  {navn: "Tigist", dag: 16, måned: 7},
  {navn: "Tigist", dag: 2, måned: 7},
+ {navn: "Gale", dag: 19, måned: 7},
  {navn: "Ana Marie", dag: 25, måned: 8},
  {navn: "Ibrahim", dag: 28, måned: 8},
  {navn: "Sara", dag: 5, måned: 9},
+ {navn: "Carlette", dag: 13, måned: 9},
  {navn: "Robiel", dag: 19, måned: 9},
  {navn: "Amalie", dag: 18, måned: 9},
  {navn: "Yusuf", dag: 2, måned: 10},
@@ -552,7 +558,7 @@ const ekstravakter= [
 
 { navn:"Malyuun(SPL)", rolle:"", telefon:"40954865", epost:"", bilde:"bilder/Malyuun.jpg" },
 
-{ navn:"Marthe Sukkestad(SPL)", rolle:"", telefon:"95990136", epost:"", bilde:"bilder/MartheS.jpg" },
+{ navn:"MartheS(SPL)", rolle:"", telefon:"95990136", epost:"", bilde:"bilder/MartheS.jpg" },
 
 { navn:"Marco Tørnvall", rolle:"", telefon:"40605990", epost:"", bilde:"bilder/SiljeAntonsen.jpg" },
 
