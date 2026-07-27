@@ -1,5 +1,7 @@
  :root {
   --primary-color: #4a6fa5;
+  --primary-color2:hsl(100, 22%, 86%);
+  --primary-hover: hsl(102, 34%, 77%);
   --primary-light: #e8f0f9;
   --secondary-color: #6c5ce7;
   --accent-color: #fce2cb;
@@ -129,7 +131,7 @@ Hjem  Print  Studenter  Prosedyrer
   width: 100%;
   min-height: 70px;
   padding: 1rem;
-  background: hsl(102, 21%, 91%);
+  background: var(--primary-color2);
   border: none;
   text-align: left;
   cursor: pointer;
@@ -141,7 +143,7 @@ Hjem  Print  Studenter  Prosedyrer
 }
 
 .question:hover {
-  background: hsl(102, 34%, 77%);
+  background: var(--primary-hover);
 }
 
 .answer {
@@ -491,8 +493,8 @@ header {
     color:#555;
     font-size:.95rem;
 }
-
-.sykepleier{
+/*
+.sykepleier .helsefag{
   display: flex;
   flex-wrap: wrap;
  
@@ -536,6 +538,8 @@ td{
     width: 100%;
   }
 }
+
+*/
 
 /*-----------------------------------------------------------------------------------------
 -------------------------------------Kontaktkort---------------------------------------------
