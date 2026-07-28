@@ -486,7 +486,7 @@ const helsefag = [
 //------------------------------------------Kontaktliste----------------------------------
 //--------------------------Lager objekter for alle i paraktisk bistand---------------------------------------
 const paktiskBistand = [
-    {navn:"Ravi", rolle:"", telefon:"", epost:"", bilde:"bilder/Ravi.jpg"},
+    {navn:"Ravi", rolle:"", telefon:"", epost:"", bilde:"bilder/Ravi2.jpg"},
     {navn:"Sussie", rolle:"", telefon:"", epost:"", bilde:"bilder/Sussie.jpg"},
     {navn:"Ebyan", rolle:"", telefon:"", epost:"", bilde:"bilder/Ebyan.jpg"},
 ];

@@ -241,7 +241,7 @@ Menyen vises*/
   .question {
     min-height: auto;
     font-size: 1rem;
-    padding: 10px 5px;
+    padding: 15px 8px;
   }
   .answer {
     font-size: 1rem;
@@ -283,9 +283,7 @@ Menyen vises*/
       font-size: 1.3rem;
   }
   
-  .question h3{
-    padding-left: 0.5rem;
-  }
+  
 h1{
     margin-bottom:2rem;
 }
