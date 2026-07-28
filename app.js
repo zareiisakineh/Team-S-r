@@ -404,7 +404,7 @@ if ("serviceWorker" in navigator) {
 //------------------------------------------------------------------------------------------
 //------------------------------------------Kontaktliste----------------------------------
 //-------------------------------Lager objekter for alle sykepleiere---------------------------------------
-const sykepleier = [
+/*const sykepleier = [
     {navn:"Sara", rolle:"", telefon:"", epost:"", bilde:"bilder/Sara.jpg"},
     {navn:"Cathy", rolle:"", telefon:"", epost:"", bilde:"bilder/Cathy.jpg"},
     {navn:"Mathias", rolle:"", telefon:"", epost:"", bilde:"bilder/Mathias.jpg"},
@@ -418,8 +418,8 @@ const sykepleier = [
     {navn:"Neda", rolle:"", telefon:"", epost:"", bilde:"bilder/Neda.jpg"},
     {navn:"Sumaya", rolle:"", telefon:"", epost:"", bilde:"bilder/Sumaya.jpg"},
     ];
-
-    // ---------------------------------javascript lager kontaktkort-------------------------------------
+*/
+    /* ---------------------------------javascript lager kontaktkort-------------------------------------
 // ----------------------------------------------Sykepleiere---------------------------------------------
 const container1 = document.getElementById("SPL");
 sykepleier.forEach(person => {
@@ -439,11 +439,11 @@ sykepleier.forEach(person => {
     `
     ;
 });
-
+*/
 //------------------------------------------------------------------------------------------
 //------------------------------------------Kontaktliste----------------------------------
 //--------------------------Lager objekter for alle Helsefagarbeidere---------------------------------------
-const helsefag = [
+/*const helsefag = [
      {navn:"Hamid", rolle:"", telefon:"", epost:"", bilde:"bilder/Hamid.jpg"},
      {navn:"Noh", rolle:"", telefon:"", epost:"", bilde:"bilder/Noh.jpg"},
      {navn:"Sakti", rolle:"", telefon:"", epost:"", bilde:"bilder/Sakti.jpg"},
@@ -459,8 +459,8 @@ const helsefag = [
      {navn:"Gliceria", rolle:"", telefon:"", epost:"", bilde:"bilder/Gliceria.jpg"},
      {navn:"Miguel", rolle:"", telefon:"", epost:"", bilde:"bilder/Miguel.jpg"},
      {navn:"Dessery", rolle:"", telefon:"", epost:"", bilde:"bilder/Dessery.jpg"},
-     ];
-//------------------------------------------------------------------------------------------
+     ];*/
+/*------------------------------------------------------------------------------------------
 //------------------------------------------Kontaktliste----------------------------------
 //--------------------------Lager objekter for alle Helsefagarbeidere---------------------------------------
      const container2 = document.getElementById("HPL");
@@ -481,16 +481,16 @@ const helsefag = [
     `
     ;
 });
-
+*/
 //------------------------------------------------------------------------------------------
 //------------------------------------------Kontaktliste----------------------------------
 //--------------------------Lager objekter for alle i paraktisk bistand---------------------------------------
-const paktiskBistand = [
+/*const paktiskBistand = [
     {navn:"Ravi", rolle:"", telefon:"", epost:"", bilde:"bilder/Ravi.jpg"},
     {navn:"Sussie", rolle:"", telefon:"", epost:"", bilde:"bilder/Sussie.jpg"},
     {navn:"Ebyan", rolle:"", telefon:"", epost:"", bilde:"bilder/Ebyan.jpg"},
-];
-// -------------------------------javascript lager kontaktkort-------------------------------------
+];*/
+/* -------------------------------javascript lager kontaktkort-------------------------------------
 // --------------------------------------paraktisk bistand---------------------------------------------
 const container3 = document.getElementById("PB");
 paktiskBistand.forEach(person => {
@@ -510,10 +510,11 @@ paktiskBistand.forEach(person => {
     `
     ;
 });
+*/
 //------------------------------------------------------------------------------------------
 //------------------------------------------Kontaktliste----------------------------------
 //--------------------------Lager objekter for alle Ekstravakter---------------------------------------
-const ekstravakter= [
+/*const ekstravakter= [
 
 { navn:"Abdisaalam Saeed", rolle:"", telefon:"92258951", epost:"", bilde:"bilder/Abdisaalam.jpg" },
 
@@ -603,8 +604,8 @@ const ekstravakter= [
 { navn:"Kristine(SPL)", rolle:"", telefon:"48626825", epost:"", bilde:"bilder/Kristine.jpg" }
 
 ];
-
-// --------------------javascript lager kontaktkort-------------------------------------
+*/
+/* --------------------javascript lager kontaktkort-------------------------------------
 // ------------------------Ekstravakter---------------------------------------------
 const container = document.getElementById("ekstravakt");
 ekstravakter.forEach(person => {
@@ -624,3 +625,70 @@ ekstravakter.forEach(person => {
     `
     ;
 });
+*/
+
+// Lager fire lister ut fra gruppene
+const sykepleier = ansatte.filter(person => {
+    return person.gruppe === "Sykepleiere";
+});
+
+const hjelpepleier = ansatte.filter(person => {
+    return person.gruppe === "Helsefagarbeidere";
+});
+
+const praktiskBistand = ansatte.filter(person => {
+    return person.gruppe === "PraktiskBistand";
+});
+
+const ekstravakt = ansatte.filter(person => {
+    return person.gruppe === "Ekstravakter";
+});
+
+// Funksjon som skriver ut én gruppe
+function visGruppe(containerId, liste) {
+
+    const container = document.getElementById(containerId);
+
+    liste.forEach(person => {
+
+        container.innerHTML += `
+        
+        <div class="ansattKort">
+
+            <h3>${person.navn}</h3>
+
+            <p>${person.rolle}</p>
+
+            <div class="ikoner">
+
+                <a href="${person.bilde}"
+                   class="glightbox"
+                   title="${person.navn}">
+                    <i class="fas fa-image"></i>
+                </a>
+
+                <a href="tel:${person.telefon}">
+                    <i class="fas fa-phone"></i>
+                </a>
+
+                <a href="mailto:${person.epost}">
+                    <i class="fas fa-envelope"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+visGruppe("SPL", sykepleier);
+
+visGruppe("HPL", hjelpepleier);
+
+visGruppe("PB", praktiskBistand);
+
+visGruppe("ekstravakt", ekstravakt);
