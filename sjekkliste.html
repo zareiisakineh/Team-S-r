@@ -43,7 +43,7 @@
       <ul id="menu"> 
         <li><a href="index.html"><i ></i>Hjem</a></li>
         <li><a href="forStudenter.html"><i ></i>For studenter</a></li>
-        <li><a href="arbeidsliste.html"><i ></i>Print</a></li>
+        <li><a href="arbeidsliste.html"><i ></i>Merkantil</a></li>
 <!--
         <li><a href="prosedyrer.html" ><i ></i>prosedyrer</a></li>
 -->
@@ -60,105 +60,283 @@
     </nav>
   </header>
   <main class="container">
-<h2>Sjekkliste for ansvalig sykepleier</h2>
-<section class="card">
-<div class="item" id="elink">
- <button class="question" onclick="toggleAccordion(this)">
-            <h3>Elink</h3>
-            <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-          <p>Sjekke epikriser, svare på innleggelserapporter, henvendelser fra fastleger/ sykehus o.l.</p>
-        </div>
-</div>
-<div class="item" id="ol">
- <button class="question" onclick="toggleAccordion(this)">
-            <h3>OL-beskjedjournal</h3>
-            <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-          <p>Se gjennom OL beskjeder for å danne en oversikt</p>
-        </div>
-</div>
-<div class="item" id="rapport">
- <button class="question" onclick="toggleAccordion(this)">
-            <h3>Rapporter og praktiske oppgaver</h3>
-            <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-          <p>Gjennomgang av aktuelle problemstillinger fra rapport. Utføre praktiske oppgaver knyttet til dette</p>
-        </div>
-</div>
-<div class="item" id="multidose">
- <button class="question" onclick="toggleAccordion(this)">
-            <h3>Multidoseimport</h3>
-            <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-          <p>Fullfør Multidoseimport hver torsdag i multidose uker</p>
-        </div>
-</div>
-<div class="item" id="medisinEndring">
- <button class="question" onclick="toggleAccordion(this)">
-            <h3>Medisinering</h3>
-            <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-          <p>Legg inn medisinendringer for aktuelle brukere på Gerica</p>
-          <p>printe ut medisinliste:</p>
-          <img src="bilder/arbeidslite/liste48.png" >
-        </div>
-</div>
+    <h2></h2>
+    <section class="card">
+      <div class="item" id="elink">
+          <button class="question" onclick="toggleAccordion(this)">
+              <h3>Sjekkliste for ansvalig sykepleier</h3>
+              <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+            <h3>➡️Elink</h3>
+            <p>Sjekke epikriser, svare på innleggelserapporter, henvendelser fra fastleger/ sykehus o.l.</p><br>
+            <h3>➡️Tiltaksplaner</h3>
+            <p>Oppdater tiltaksplaner der det er aktuelt. Gå gjennom brukere du er TA for og gjør evt. endringer</p><br>
+            <h3>➡️Kommunikasjon</h3>
+            <p>Pasientnett, epikriser/journal/medisingylle sjekkes daglig. Gamle epikriser skannes i Gerica. Be om opplæring hvis du ikke er kjent med det.</p><br>
+            <h3>➡️Medisinrom</h3>
+            <p>Ta ut A og B preparater til neste dag, gå gjennom utstyr og sårutstyr og skriv opp på liste om noe mangler, rydde narkoskap og send tilbake gamle medisiner</p><br> 
+            <h3>➡️OL-beskjedjournal</h3>
+            <p>Se gjennom OL beskjeder for å danne en oversikt</p><br>
+            <h3>➡️Rapporter og praktiske oppgaver</h3>
+            <p>Gjennomgang av aktuelle problemstillinger fra rapport. Utføre praktiske oppgaver knyttet til dette</p><br>
+            <h3>➡️Multidoseimport</h3>
+            <p>Fullfør Multidoseimport hver torsdag i multidose uker</p><br>
+            <h3>➡️Medisinering</h3>
+            <p>Legg inn medisinendringer for aktuelle brukere på Gerica</p>
+          </div>
+      </div>
 
-<div class="item" id="tiltak">
- <button class="question" onclick="toggleAccordion(this)">
-            <h3>Tiltaksplaner</h3>
-            <i class="fas fa-chevron-down icon"></i>
+      <div class ="item" id="print1">
+        <button class ="question" onclick="toggleAccordion(this)">
+        <h3>Skrive ut arbeidsliste per ansatt</h3><br>
+        <i class="fas fa-chevron-down icon"></i>
         </button>
-        <div class="answer">
-          <p>Oppdater tiltaksplaner der det er aktuelt. Gå gjennom brukere du er TA for og gjør evt. endringer</p>
-        </div>
-</div>
+        <div class ="answer">
+          <ul class = "tekst">
+            <li>Klikk på aktivitet</li>
+            <img src="bilder/arbeidslite/liste4.png" >
+            <li>Klikk på arbeidsplanlegging</li>
+            <li>Velg rapport </li>
+            <img src="bilder/arbeidslite/liste5.png" >
+            <li>Deretter arbeidslister per ansatt</li>
+            <img src="bilder/arbeidslite/liste6.png" >
+            <li><strong>Ansatt: </strong>Mulighet for å kunne skrive ut arbeidslister for en gitt ansatt eller rute. Trykk F4 i verdifeltet og søk opp ansatt. Hvis det skal skrives ut arbeidslister på flere ansatte eller ruter, så fylles ikke feltet ut</li>
+            <li><strong>Nivå: </strong></li>
+            <li><strong>Type tjeneste:</strong>høreklikk eller trykk på F4 for å søke opp i nivåetre </li>
+            <li><strong>Fra/til dato:</strong> Datoen du skal skrive ut lister for. 
+            <li>Hent frem ansattes navn ved å høyreklikke i ansattfeltet og husk og skriv etternavn først. Deretter er det viktig å skrive dato for arbeidslisten. Dersom ansatt jobber dobbelvakt må du skrive inn klokkeslett for å unngå en hel arbeidsliste for hele dagen. Helt til slutt må du taste ikon for skriver øverst til venstre.</li>
+              <img src="bilder/arbeidslite/liste7.png" ><br>
+            <li>Hvis det skrives ut arbeidslister for flere ansatte eller ruter, så  vil oppdragene i aktuell periode komme opp som er fordelt på ansatte/rute</li>
+            <li><strong>Fra/Til klokke/utført: </strong>Sett inn tidspunkt. Oppdrag som starter innen for gitt kl.slett blir med</li>
+            <li><strong>Bachnr: </strong>Evnt. sett inn sats/bach nummer(kun per tjenestetype)</li>
+            <li>Tast ikon for skriver slik at du får ut arbeidslisten.</li>
+              <img src="bilder/arbeidslite/liste8.png" >
+          </ul>
+      </div >
+    </div>
 
-<div class="item" id="kommunikasjon">
- <button class="question" onclick="toggleAccordion(this)">
-            <h3>Kommunikasjon</h3>
-            <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-          <p>Pasientnett, epikriser/journal/medisingylle sjekkes daglig. Gamle epikriser skannes i Gerica. Be om opplæring hvis du ikke er kjent med det.</p>
-        </div>
-</div>
+    <div class="item" id="print3">
+      <button class= "question" onclick="toggleAccordion(this)">
+        <h3>Lage enkel oppdrag</h3>
+        <i class="fas fa-chevron-down icon"></i>
+      </button>
+      <div class= "answer">
+      <ul>
+        <li>Klikk på brukeroversikt i gerica</li>
+        <img src="bilder/arbeidslite/liste26.png" >
+        <li>Finn riktig bruker</li>
+        <li>klikk på journal</li>
+        <li>Klikk på "Ny</li>
+        <li>Velg journaltype 7, og trykk på tab</li>
+        <li>Høyrklikk på tjeneste, velg hjemmesykepleien</li>
+        <img src="bilder/arbeidslite/liste31.png" >
+        <li>Sett inn riktig dato og klokkeslett</li>
+        <li>Sett inn tiltak: trykk på "ny" - høyreklikk på tiltakstype- finn riktig tiltak-legg inn tid</li>
+        <img src="bilder/arbeidslite/liste32.png" >
+        <img src="bilder/arbeidslite/liste33.png" >
+        <img src="bilder/arbeidslite/liste28.png" >
+      
+      </ul>>
+      </div>
+  </div>
+  <div class="item" id="print4">
+    <button class= "question" onclick="toggleAccordion(this)">
+      <h3>Flytt alle besøk fra en ansatt til en annen</h3>
+    <i class="fas fa-chevron-down icon"></i>
+    </button>
+    <div class= "answer">
+      <ul>
+        <li>Klikk på aktivitiet- øverst i siden</li>
+          <img src="bilder/arbeidslite/liste1.jpg" >
+        <li>i feltet "tjeneste", ser du bare tallet 3 som er hjemmesykepleien, velg høyreklikk på feltet for å få alle tjenestene opp </li>
+        <li>Velg: hjemmesykepleie(tjeneste 3), praktisk bistand(tjeneste 4) og avklaring og mestring(tjeneste 15?)</li>
+          <img src="bilder/arbeidslite/liste16.png" >
+        <li>Velg dato og om du vil se på dag eller kvelds-ruter. 0730-15 eller 15-22</li>
+        <li>Klikk på ok og oppdater siden ved å klikke på oppdater-knappen</li>
+        <li>Nå ser du alle ruter og besøkene per rute for valgt dato</li>
+          <img src="bilder/arbeidslite/liste2.jpg" >
+        <li>Velg og høyreklikk på ansattes navn</li>
+        <li>Navnet til alle ansatte som er på jobb, kommer opp</li>
+        <li>velg riktig ansatt og flytt alle besøk</li>
+        <li>Hvis du skal velge en ansatt som ikke har arbeidsliste: velg en "annen ansatt" og da kan du skrive etternavnet til den ansatte, besøkene skal flyttes til</li>
+        <li>***Viktig*** Ikke glem å velge alle tjenestene som skal bli med, DVS nr 3, 4 og 15</li>
+      </ul>
+    </div>
+  </div>
 
-<div class="item" id="medisinrom">
- <button class="question" onclick="toggleAccordion(this)">
-            <h3>Medisinrom</h3>
-            <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-          <p>Ta ut A og B preparater til neste dag, gå gjennom utstyr og sårutstyr og skriv opp på liste om noe mangler, rydde narkoskap og send tilbake gamle medisiner</p>
-        </div>
-</div>
+  <div class="item" id="print2">
+    <button class="question" onclick="toggleAccordion(this)">
+      <h3>Printe ut journal/rapport</h3>
+      <i class="fas fa-chevron-down icon"></i>
+    </button>
+    <div class="answer">
+      <ul>
+        <li>Klikk på journal-ikonet øverst på siden</li>
+        <img src="bilder/arbeidslite/liste25.png" >
+        <li>Et nytt vindu åpner seg, klikk på printer-ikonet</li>
+        <li>Skroll ned i det nye vinduet som åpner seg</li>
+        <li>Velg ol-Rapport-hjemmesykepleie Ny(dobbelklikk på den)</li>
+        <img src="bilder/arbeidslite/liste12.png" >
+        <li>velg nivå: dobbelklikk i feltet nivå, høyreklikk og velg hjemmesykepleie team Sør</li>
+        <img src="bilder/arbeidslite/liste24.png" >
+        <li>Velg Fra/Til dato</li>
+        <li>Klikk på printer-ikonet</li>
+        <li>Vent til journalene kommer på skjermen, det kan ta noen sekunder</li>
+        <li>Klikk på printer. Riktig printer er printix-anywhere</li>
+      </ul>
+    </div>
+  </div>
+  <div class="item" id="print10">
+    <button class="question" onclick="toggleAccordion(this)">
+      <h3>Tiltaksplan, V1</h3> 
+      <i class="fas fa-chevron-down icon"></i>
+    </button >
+      <div class="answer"> 
+        <ul>
+          <li>Klikk på brukeroversikt i gerica. Finn og velg brukers navn</li>
+          <li></li>
+          <img src="bilder/arbeidslite/liste26.png" >
+          <li>Klikk på tjeneste</li>
+          <li>Klikk på tiltak og deretter "ny"</li>
+          <li>Velg riktig tiltak</li>
+          <img src="bilder/arbeidslite/liste17.png" >
+          <li>velg tiltaket og klikk på ny. vindu for tidsplan kommer opp</li>
+          <img src="bilder/arbeidslite/liste18.png" >
+          <li>Velg startdato, tidspunkt og rute</li>
+        </ul>
+    </div>
+  </div>
 
-<div class="item" id="pasientnett">
- <button class="question" onclick="toggleAccordion(this)">
-            <h3>Hvordan melde brukere inn i pasientnett?</h3>
-            <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-          Skriv her
-        </div>
-</div>
+  <div class="item" id="print11">
+      <button class="question" onclick="toggleAccordion(this)">
+      <h3>Tiltaksplan V2</h3> 
+      <i class="fas fa-chevron-down icon"></i>
+      </button >
+    <div class="answer"> 
+      <p>Velg bruker i brukeovesikt</p>
+      <p>Klikk på tiltak øverst i siden</p>
+      <img src="bilder/arbeidslite/liste44.png" >
+      <p>i tiltak-vinduet, kan du ldge/sette/endre:
+        situasjon/tidsplan/nødvendig kompetanse/nivå/tidsestimat/antall utførere/nivå/prosedyre<br>  på tiltakene.
+        Du kan også avslutte tiltak</p>
+      <p>-- Lag ny situasjon:</p>
+      <p>Klikk på "+" tegnet</p>
+      <img src="bilder/arbeidslite/liste35.png" >
+      <p>Høyreklikk i feltet "situasjonstype"</p>
+      <img src="bilder/arbeidslite/liste36.png" >
+      <p>Velg riktig situasjon og lagre</p>
+      <img src="bilder/arbeidslite/liste37.png" >
+      <p>Velg riktig situasjon og lagre</p>
+      <img src="bilder/arbeidslite/liste38.png" >
+      <p>Høyreklikk på tiltaket du vil sette situasjonen på -> Bytt situasjon</p>
+      <img src="bilder/arbeidslite/liste39.png" >
+      <p>Endre prosedyre</p>
+      <img src="bilder/arbeidslite/liste40.png" >
+      <p>Endre kompetanse</p>
+      <img src="bilder/arbeidslite/liste41.png" >
+      <p>Endre nivå på tiltaket</p>
+      <img src="bilder/arbeidslite/liste42.png" >
+      <p>Bruk "justere estimat" for å sette tidsplan på tiltaket</p>
+      <img src="bilder/arbeidslite/liste45.png" >
+      <p>- Her kan du også se fremtidige genererte oppdrag</p>
+      <img src="bilder/arbeidslite/liste46.png" >
+    </div>
+  </div>
 
-<div class="item" id="alarmer">
- <button class="question" onclick="toggleAccordion(this)">
-            <h3>Oppfølging av alarmer</h3>
-            <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-          <p>Sjekk ansvarstelefon og dignio for varsler og behandle disse hver vakt. Dokumenteres i Gerica</p>
-        </div>
-</div>
+  <div class="item" id="medisinEndring">
+      <button class="question" onclick="toggleAccordion(this)">
+        <h3>printe ut medisinliste:</h3>
+        <i class="fas fa-chevron-down icon"></i>
+    </button>
+      <div class="answer">
+        <p>➡️Finn riktig bruker</p>
+        <p>➡️Klokk på medisin</p>
+        <p>➡️Klikk på doseringsliste kompakt</p>
+        <img src="bilder/arbeidslite/liste48.png" >
+        <p>➡️Skriv ut</p>
+        <p>➡️Husk å velge riktig printer: printix anywhere</p>
+      </div>
+  </div>
+
+  <div class="item" id="pasientnett">
+    <button class="question" onclick="toggleAccordion(this)">
+        <h3>Hvordan melde brukere inn i pasientnett?</h3>
+        <i class="fas fa-chevron-down icon"></i>
+    </button>
+      <div class="answer">
+        <p>Kommer snart</p>
+      </div>
+  </div>
+
+  <div class="item" id="alarmer">
+  <button class="question" onclick="toggleAccordion(this)">
+              <h3>Oppfølging av alarmer</h3>
+              <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+            <p>Sjekk ansvarstelefon og dignio for varsler og behandle disse hver vakt. Dokumenteres i Gerica</p>
+          </div>
+  </div>
+
+  <div class="item" id="ol">
+  <button class="question" onclick="toggleAccordion(this)">
+              <h3>Når bruker skal flytte til en annen bydel/kommune</h3>
+              <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+            <p></p>
+          </div>
+  </div>
+  <div class="item" id="rapport">
+  <button class="question" onclick="toggleAccordion(this)">
+              <h3></h3>
+              <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+            <p></p>
+          </div>
+  </div>
+  <div class="item" id="multidose">
+  <button class="question" onclick="toggleAccordion(this)">
+              <h3></h3>
+              <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+            <p></p>
+          </div>
+  </div>
+
+  <div class="item" id="tiltak">
+  <button class="question" onclick="toggleAccordion(this)">
+              <h3></h3>
+              <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+            <p></p>
+          </div>
+  </div>
+
+  <div class="item" id="kommunikasjon">
+  <button class="question" onclick="toggleAccordion(this)">
+              <h3></h3>
+              <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+            
+          </div>
+  </div>
+
+  <div class="item" id="medisinrom">
+  <button class="question" onclick="toggleAccordion(this)">
+              <h3></h3>
+              <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+            <p></p>
+          </div>
+  </div>
+
 
 </section>
 </main>

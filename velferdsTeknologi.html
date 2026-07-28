@@ -10,6 +10,26 @@
     <meta name="theme-color" content="#2f5d9f">
     <link rel="icon" href="images/logo-192.png">
     <link rel="apple-touch-icon" href="images/logo-192.png">
+    <style>
+  .answer img{
+     max-width: 300px;
+     margin: 20px;
+  }
+ .rutiner{
+  margin-block: 50px;
+   max-inline-size: 100%;
+   padding-left: 30px;
+ }
+ 
+   @media screen and (max-width: 760px) {
+    .answer img{
+        width: 100%;
+        max-width: 520px;
+        margin: 10px auto;
+        display: block;
+    }
+}
+</style>
 
 </head>
 <body>
@@ -24,7 +44,7 @@
       <ul id="menu"> 
          <li><a href="index.html" > Hjem</a></li>
         <li><a href="forStudenter.html" >For studenter</a></li>
-        <li><a href="arbeidsliste.html"></i>Print</a></li>
+        <li><a href="arbeidsliste.html"></i>Merkantil</a></li>
 <!--
          <li><a href="prosedyrer.html" ></i>prosedyrer</a></li>
 -->
@@ -42,41 +62,42 @@
 
   <main id="main-content" class="container">
     <section class = "card">
-<h2>Velferdsteknologi</h2><br><br>
+      <h2>Velferdsteknologi</h2><br><br>
 
-<div class="item" id="dignio">
+      <div class="item" id="dignio">
+          <button class="question" onclick="toggleAccordion(this)">
+            <h3>Dignio</h3>
+            <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+            <p>Kommer senere</p>
+          </div>
+      </div>
+
+      <div class="item" id="dho">
+          <button class="question" onclick="toggleAccordion(this)">
+            <h3>Digital hjemmeoppfølging</h3>
+            <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+            <p>Kommer senere</p>
+          </div>
+        </div>
+
+      <div class="item" id="">
         <button class="question" onclick="toggleAccordion(this)">
-          <h3>Dignio</h3>
+          <h3>Evondos</h3> 
           <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-           <p>Kommer senere</p>
+        </button >
+        <div class="answer"> 
+         <p>Kommer senere</p>
         </div>
       </div>
 
-       <div class="item" id="">
-    <button class="question" onclick="toggleAccordion(this)">
-     <p></p> 
-     <i class="fas fa-chevron-down icon"></i>
-    </button >
-   <div class="answer"> 
-     <p>Kommer senere</p>
-  </div>
-</div>
 
-<div class="item" id="dho">
+      <div class="item">
         <button class="question" onclick="toggleAccordion(this)">
-          <h3>Digital hjemmeoppfølging</h3>
-          <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-           <p>Kommer senere</p>
-        </div>
-      </div>
-
-<div class="item">
-        <button class="question" onclick="toggleAccordion(this)">
-          <h3></h3>
+          <h3>Karrie</h3>
           <i class="fas fa-chevron-down icon"></i>
         </button>
         <div class="answer">
@@ -84,21 +105,27 @@
         </div>
       </div>
 
-<div class="item" id="medisindispenser">
+      <div class="item" id="medisindispenser">
         <button class="question" onclick="toggleAccordion(this)">
-          <h3>Medisin-dispenser</h3>
+          <h3>Pilly</h3>
           <i class="fas fa-chevron-down icon"></i>
         </button>
         <div class="answer">
-         <ul>
-          <li>Evondos</li>
-          <li>Karrie</li>
-          <li>Pilly</li>
-          
-         </ul>>
+          <p></p>
         </div>
       </div>
-      </section>
+      <div class="item" id="medisindispenser">
+        <button class="question" onclick="toggleAccordion(this)">
+          <h3>GPS</h3>
+          <i class="fas fa-chevron-down icon"></i>
+        </button>
+        <div class="answer">
+          <p></p>
+           <img src="bilder/evondos/gps2.png" >
+           <img src="bilder/evondos/gps.jpg" >
+        </div>
+      </div>
+    </section>
  <script src="app.js" defer>
  </script>
 </main>
