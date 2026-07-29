@@ -525,8 +525,3 @@ header {
     transform:scale(1.1);
 }
 
-@media (orientation: landscape) {
-    body {
-        border: 10px solid red;
-    }
-}

@@ -351,7 +351,8 @@ knapp.addEventListener("click", () => {
 
 });
 
-// Installer-knappen
+// Installer-knappen 
+//Registrer service worker
 if ("serviceWorker" in navigator) {
 
     window.addEventListener("load", () => {
@@ -390,22 +391,11 @@ document.getElementById("installApp").addEventListener("click", async () => {
 
 });
 
-//Registrer service worker
-if ("serviceWorker" in navigator) {
-
-    navigator.serviceWorker.register(
-        "service-worker.js"
-    )
-    .then(() => {
-        console.log("Service Worker aktiv");
-    })
-    .catch(error => {
-        console.log("Feil:", error);
-    });
-}
 
 
-// Lager fire lister ut fra gruppene
+
+
+// Lager fire lister ut fra gruppene:
 //henter alle sykepleiere fra ansatt.js
 const sykepleier = ansatte.filter(person => {
     return person.gruppe === "Sykepleiere";
