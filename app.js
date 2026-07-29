@@ -294,19 +294,20 @@ const dag = iDag.getDate();
 //Henter måneden. Månedene i js begynner med 0. Derfor adderer vi med 1
 const måned = iDag.getMonth() + 1;
 const knapp = document.getElementById("sendWhatsapp") ;
-// Finn alle som har bursdag i dag. filter() går gjennom hele object-listen og lager en ny liste av de som har bursdag i dagens dato
+// Finn alle som har bursdag i dag. filter() går gjennom hele object-listen(ansatt.js) og 
+// lager en ny liste av de som har bursdag i dagens dato
 const dagensBursdager = ansatte.filter(person =>
     person.dag === dag && person.måned === måned
 );
+ const navn = dagensBursdager.map(person => person.navn); //map lager en ny liste av 
+ //dagens bursdagsbarn
+  
 // Har vi funnet noen?--> vis melding
 if (dagensBursdager.length > 0) {
     knapp.style.display = "inline-block";
     melding.style.display = "block"; //melding vises
-
-    const navn = dagensBursdager.map(person => person.navn); //map lager en ny liste av dagens bursdagsbarn
-  // hvis listen inneholder bare et navn
+// hvis listen inneholder bare et navn
     if (navn.length === 1) {
-
         melding.innerHTML = `
             🎉 Gratulerer med dagen kjære <strong>${navn[0]}</strong>! 🎂
             Alle oss i Team Sør ønsker deg en riktig flott dag fylt med glede, smil og kake! 🥳🎈!
@@ -316,7 +317,7 @@ if (dagensBursdager.length > 0) {
 
         melding.innerHTML = `
             🎉 Gratulerer med dagen kjære
-            <strong>${navn.join(", ")}</strong>! 🎂
+            <strong>${navn.join(" og ")}</strong>! 🎂
             Alle oss i Team Sør ønsker dere en riktig flott dag fylt med glede, smil og kake! 🥳🎈!`;
     }
 }
@@ -343,11 +344,12 @@ knapp.addEventListener("click", () => {
                 `🎉 Gratulerer med dagen!<strong>${navn[0]}</strong>! 🎂 Alle oss i Team Sør ønsker deg en fantastisk dag! 🎂🎈`;
 
             window.open(
-                `https://wa.me/?text=${encodeURIComponent(melding)}`,
-                "_blank"
-            );
+        `https://wa.me/?text=${encodeURIComponent(whatsappMelding)}`,
+        "_blank"
+           );
 
-        });
+
+});
 
 // Installer-knappen
 if ("serviceWorker" in navigator) {
@@ -404,18 +406,19 @@ if ("serviceWorker" in navigator) {
 
 
 // Lager fire lister ut fra gruppene
+//henter alle sykepleiere fra ansatt.js
 const sykepleier = ansatte.filter(person => {
     return person.gruppe === "Sykepleiere";
 });
-
+//henter alle Helsefagarbeidere fra ansatt.js
 const hjelpepleier = ansatte.filter(person => {
     return person.gruppe === "Helsefagarbeidere";
 });
-
+//henter alle i praktisk bistand fra ansatt.js
 const praktiskBistand = ansatte.filter(person => {
     return person.gruppe === "PraktiskBistand";
 });
-
+//henter alle ekstravakter fra ansatt.js
 const ekstravakt = ansatte.filter(person => {
     return person.gruppe === "Ekstravakter";
 });
