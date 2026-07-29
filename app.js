@@ -14,7 +14,7 @@ console.log("app.js loaded");
 // til akkurat denne knappen.
 // ----------------------------------------------------------
 function toggleAccordion(button) {
-// ------------------------------------------------------
+    // ------------------------------------------------------
     // nextElementSibling
     //
     // DOM (Document Object Model) ser HTML som et tre av elementer.
@@ -28,7 +28,7 @@ function toggleAccordion(button) {
     // Resultatet lagres i variabelen answer.
     // ------------------------------------------------------
     const answer = button.nextElementSibling;
- // ------------------------------------------------------
+    // ------------------------------------------------------
     // querySelector() 
     // querySelector søker etter elementer ved hjelp av CSS-selectorer.
     // ".icon" betyr: class="icon"
@@ -39,7 +39,7 @@ function toggleAccordion(button) {
     // knappen brukeren klikket på.
     // ------------------------------------------------------
     const icon = button.querySelector(".icon");
- // ------------------------------------------------------
+    // ------------------------------------------------------
     // querySelectorAll()
     // document betyr hele nettsiden. querySelectorAll(".answer")finner ALLE elementer som har klassen answer.
     // Resultatet blir en NodeList (en liste over elementer).
@@ -50,7 +50,7 @@ function toggleAccordion(button) {
     // answer4
     // ------------------------------------------------------
     document.querySelectorAll(".answer").forEach(element => {
-         // forEach går gjennom listen ett element om gangen.
+        // forEach går gjennom listen ett element om gangen.
         // Første runde:
         // item = answer1
         // Andre runde:
@@ -65,11 +65,11 @@ function toggleAccordion(button) {
             element.classList.remove("active");
         }
     });
-// ------------------------------------------------------
+    // ------------------------------------------------------
     // Nå gjør vi nøyaktig det samme med pilene.
     // Vi finner alle ikonene på siden.
     document.querySelectorAll(".icon").forEach(element => {
-         // Hvis ikonet ikke tilhører knappen som ble klikket,
+        // Hvis ikonet ikke tilhører knappen som ble klikket,
         // fjernes klassen open slik at pilen peker ned igjen.
         if (element !== icon) {
             element.classList.remove("open");
@@ -91,7 +91,7 @@ function toggleAccordion(button) {
     // CSS bestemmer hvordan siden skal se ut.
     // ------------------------------------------------------
     answer.classList.toggle("active");
- // ------------------------------------------------------
+    // ------------------------------------------------------
     // if(icon): Sjekker om variabelen icon faktisk inneholder et HTML-element.
     // Dersom knappen av en eller annen grunn ikke har et ikon, hopper JavaScript bare over denne delen.
     // Da unngår vi feilmeldinger.
@@ -109,7 +109,7 @@ function toggleAccordion(button) {
 // Derfor venter vi til hele DOM-en er ferdig bygd.
 // ----------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
- // ------------------------------------------------------
+    // ------------------------------------------------------
     // getElementById(): Henter ett bestemt HTML-element ved hjelp av id.
     // HTML:
     // <button id="menuToggle">
@@ -117,32 +117,32 @@ document.addEventListener("DOMContentLoaded", () => {
     // ------------------------------------------------------
     const menuToggle = document.getElementById("menuToggle");
     const menu = document.getElementById("menu");
-// ------------------------------------------------------
+    // ------------------------------------------------------
     // Denne if-setningen spør: Finnes både knappen og menyen?
     // Hvis ett av elementene mangler, kjører ikke resten av koden.
     // ------------------------------------------------------
     if (menuToggle && menu) {
-  // --------------------------------------------------
+        // --------------------------------------------------
         // addEventListener() Lager en "lytter".
         // JavaScript sitter nå og venter på at brukeren klikker på menyknappen.
         // Når klikket skjer, kjøres funksjonen under.
         // --------------------------------------------------
         menuToggle.addEventListener("click", (event) => {
             // ----------------------------------------------
-    //Hindrer at klikket bobler videre til document   
+            //Hindrer at klikket bobler videre til document   
             event.stopPropagation();
-         
-    // toggle("open") 
+
+            // toggle("open") 
             // Hvis open finnes: fjern den.
             // Hvis open ikke finnes: legg den til.
             // CSS avgjør om menyen skal være synlig.
             // ----------------------------------------------
             menu.classList.toggle("open");
-   // ----------------------------------------------
+            // ----------------------------------------------
             // setAttribute(): Endrer et attributt i HTML.
             // aria-expanded brukes av skjermlesere.
             // classList.contains("open"): returnerer true eller false.
-            
+
             // Hvis menyen er åpen:
             // aria-expanded="true"
             //
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         });
 
- // ==============================================
+        // ==============================================
         // Lukk meny når en lenke klikkes
         // ==============================================
         const menuLinks = document.querySelectorAll("#menu a");
@@ -177,42 +177,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-    // ==============================================
+        // ==============================================
         // Lukk meny ved klikk utenfor
         // ==============================================
+
         document.addEventListener("click", (event) => {
 
-            if (
-                menu.classList.contains("open") &&
-                !event.target.closest(".nav")
-            ) {
+            if (!menu.classList.contains("open")) return;
 
-                menu.classList.remove("open");
+            // Klikk på menyknappen?
+            if (menuToggle.contains(event.target)) return;
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+            // Klikk inne i selve menylisten?
+            if (menu.contains(event.target)) return;
 
-            }
+            // Ellers: lukk menyen
+            menu.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
 
         });
-
-        document.addEventListener("click", (event) => {
-
-    if (!menu.classList.contains("open")) return;
-
-    // Klikk på menyknappen?
-    if (menuToggle.contains(event.target)) return;
-
-    // Klikk inne i selve menylisten?
-    if (menu.contains(event.target)) return;
-
-    // Ellers: lukk menyen
-    menu.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-
-});
 
     }
 
@@ -240,9 +223,9 @@ window.addEventListener("load", () => {
 
 });
 
-  //for å få varsel om bursdager:
-  //
-    //1.lager en liste(arrays) av objekter(ansatte) med attributer dag og måned:
+//for å få varsel om bursdager:
+//
+//1.lager en liste(arrays) av objekter(ansatte) med attributer dag og måned:
 /* const bursdager = [
  {navn: "AnnaEliasson", dag: 14, måned: 1},
 {navn: "Sakti", dag: 28, måned: 1},
@@ -287,40 +270,33 @@ window.addEventListener("load", () => {
 ];
 */
 const melding = document.getElementById("bursdagMelding");
+const whatsappKnapp = document.getElementById("sendWhatsapp");
 //new Date() lager et datoobjekt.Hvis datoen er 21. juli 2026, inneholder iDag: Tue Jul 21 2026
 const iDag = new Date();
 //Henter dagen. getDate() betyr Hvilken dag i måneden er det? Eksempel 21. juli gir dag = 21; i dag er object, med attributer dag og måned
 const dag = iDag.getDate();
 //Henter måneden. Månedene i js begynner med 0. Derfor adderer vi med 1
 const måned = iDag.getMonth() + 1;
-const knapp = document.getElementById("sendWhatsapp") ;
+
 // Finn alle som har bursdag i dag. filter() går gjennom hele object-listen(ansatt.js) og 
 // lager en ny liste av de som har bursdag i dagens dato
 const dagensBursdager = ansatte.filter(person =>
     person.dag === dag && person.måned === måned
 );
- const navn = dagensBursdager.map(person => person.navn); //map lager en ny liste av 
- //dagens bursdagsbarn
-  
-// Har vi funnet noen?--> vis melding
-if (dagensBursdager.length > 0) {
-    knapp.style.display = "inline-block";
-    melding.style.display = "block"; //melding vises
-// hvis listen inneholder bare et navn
-    if (navn.length === 1) {
-        melding.innerHTML = `
-            🎉 Gratulerer med dagen kjære <strong>${navn[0]}</strong>! 🎂
-            Alle oss i Team Sør ønsker deg en riktig flott dag fylt med glede, smil og kake! 🥳🎈!
-        `;
-    // hvis listen inneholder flere enn et navn
-    } else {
+const navn = dagensBursdager.map(person => person.navn); //map lager en ny liste av 
+//dagens bursdagsbarn
 
-        melding.innerHTML = `
-            🎉 Gratulerer med dagen kjære
-            <strong>${navn.join(" og ")}</strong>! 🎂
-            Alle oss i Team Sør ønsker dere en riktig flott dag fylt med glede, smil og kake! 🥳🎈!`;
-    }
+// Har vi funnet noen?--> vis melding
+if (dagensBursdager.length > 0 && whatsappKnapp && melding) {
+    whatsappKnapp.style.display = "inline-block";
+    melding.style.display = "block"; //melding vises
+
+    melding.innerHTML = `
+            🎂🎉💕 Gratulerer med dagen kjære
+            ${navn.join(" og ")}! 🎂
+            Alle oss i Team Sør ønsker dere en riktig flott dag fylt med glede, smil og kake! !`;
 }
+
 
 /*Oppsummering av programmet
 
@@ -338,15 +314,17 @@ Programmet følger denne rekkefølgen:
 
 
 //deler bursdagsmelding på whatsapp 
-knapp.addEventListener("click", () => {
+whatsappKnapp.addEventListener("click", () => {
 
-            const melding =
-                `🎉 Gratulerer med dagen!<strong>${navn[0]}</strong>! 🎂 Alle oss i Team Sør ønsker deg en fantastisk dag! 🎂🎈`;
+    const whatsappMelding =
+`🎂 Gratulerer med dagen kjære ${navn.join(" og ")}!
 
-            window.open(
+Alle oss i Team Sør ønsker deg en fantastisk dag fylt med glede, smil og kake! 🎂❤️`;
+console.log(whatsappMelding);
+    window.open(
         `https://wa.me/?text=${encodeURIComponent(whatsappMelding)}`,
         "_blank"
-           );
+    );
 
 
 });
