@@ -243,7 +243,7 @@ window.addEventListener("load", () => {
   //for å få varsel om bursdager:
   //
     //1.lager en liste(arrays) av objekter(ansatte) med attributer dag og måned:
- const bursdager = [
+/* const bursdager = [
  {navn: "AnnaEliasson", dag: 14, måned: 1},
 {navn: "Sakti", dag: 28, måned: 1},
  {navn: "Xaviera", dag: 2, måned: 2},
@@ -285,7 +285,7 @@ window.addEventListener("load", () => {
  {navn: "Mathias", dag: 23, måned: 12},
  
 ];
-
+*/
 const melding = document.getElementById("bursdagMelding");
 //new Date() lager et datoobjekt.Hvis datoen er 21. juli 2026, inneholder iDag: Tue Jul 21 2026
 const iDag = new Date();
@@ -295,7 +295,7 @@ const dag = iDag.getDate();
 const måned = iDag.getMonth() + 1;
 const knapp = document.getElementById("sendWhatsapp") ;
 // Finn alle som har bursdag i dag. filter() går gjennom hele object-listen og lager en ny liste av de som har bursdag i dagens dato
-const dagensBursdager = bursdager.filter(person =>
+const dagensBursdager = ansatte.filter(person =>
     person.dag === dag && person.måned === måned
 );
 // Har vi funnet noen?--> vis melding
@@ -340,7 +340,7 @@ Programmet følger denne rekkefølgen:
 knapp.addEventListener("click", () => {
 
             const melding =
-                "🎉 Gratulerer med dagen!<strong>${navn[0]}</strong>! 🎂 Alle oss i Team Sør ønsker deg en fantastisk dag! 🎂🎈";
+                `🎉 Gratulerer med dagen!<strong>${navn[0]}</strong>! 🎂 Alle oss i Team Sør ønsker deg en fantastisk dag! 🎂🎈`;
 
             window.open(
                 `https://wa.me/?text=${encodeURIComponent(melding)}`,
