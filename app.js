@@ -450,3 +450,55 @@ if (visAnsatteBtn && beskyttetInnhold) {
     });
 
 }
+
+// Bursdagsbeskyttelse:
+const visBursdagerBtn = document.getElementById("visBursdager");
+const beskyttetBursdag = document.getElementById("beskyttetBursdag");
+
+
+if (visBursdagerBtn && beskyttetBursdag) {
+
+
+    // Sjekk om tilgang allerede finnes
+    const tilgang = localStorage.getItem("bursdagTilgang");
+
+
+    if (tilgang === "ja") {
+
+        beskyttetBursdag.style.display = "block";
+        visBursdagerBtn.style.display = "none";
+
+    }
+
+
+    visBursdagerBtn.addEventListener("click", () => {
+
+
+        const passord = prompt("Skriv inn passord for bursdager");
+
+
+        if (passord === "teamsor2026") {
+
+
+            beskyttetBursdag.style.display = "block";
+            visBursdagerBtn.style.display = "none";
+
+
+            localStorage.setItem(
+                "bursdagTilgang",
+                "ja"
+            );
+
+
+        } else {
+
+
+            alert("Feil passord");
+
+
+        }
+
+
+    });
+
+}
