@@ -417,6 +417,16 @@ const beskyttetInnhold = document.getElementById("beskyttetInnhold");
 
 
 if (visAnsatteBtn && beskyttetInnhold) {
+     // Sjekk om brukeren allerede har fått tilgang
+
+      const tilgang = localStorage.getItem("ansatteTilgang");
+
+    if (tilgang === "ja") {
+
+        beskyttetInnhold.style.display = "block";
+        visAnsatteBtn.style.display = "none";
+
+    }
 
     visAnsatteBtn.addEventListener("click", () => {
 
@@ -426,6 +436,8 @@ if (visAnsatteBtn && beskyttetInnhold) {
 
             beskyttetInnhold.style.display = "block";
             visAnsatteBtn.style.display = "none";
+
+            // Husk tilgang
 
             localStorage.setItem("ansatteTilgang", "ja");
 
