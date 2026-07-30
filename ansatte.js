@@ -82,17 +82,17 @@ const ansatte = [
 
     { navn:"Dessery(30%)", gruppe: "Ekstravakter", rolle:"", telefon:"99860102", epost:"", bilde:"bilder/Dessery.jpg" },
 
-    { navn:"Fekerte(SPL)", gruppe: "Ekstravakter", rolle:"", telefon:"97097023", epost:"", bilde:"bilder/Fekerte.jpg" },
+    { navn:"Fekerte(SPL)", gruppe: "Ekstravakter", rolle:"", telefon:"97097023", epost:"", bilde:"bilder/Fekerte.jpeg", dag: 2, måned: 12},
 
-    { navn:"Gale-Ane", gruppe: "Ekstravakter", rolle:"", telefon:"93956855", epost:"", bilde:"bilder/Gale-Ane.jpg", dag: 19, måned: 7 },
+    { navn:"Gale-Ane", gruppe: "Ekstravakter", rolle:"", telefon:"93956855", epost:"", bilde:"bilder/Gale-Ane.jpg", dag: 19, måned: 7},
 
-    { navn:"Gliceria(20%)", gruppe: "Ekstravakter", rolle:"", telefon:"92541182", epost:"", bilde:"bilder/Gliceria.jpg" },
+    { navn:"Gliceria(20%)", gruppe: "Ekstravakter", rolle:"", telefon:"92541182", epost:"", bilde:"bilder/Gliceria.jpg"},
 
-    { navn:"Glen(SPL)", gruppe: "Ekstravakter", rolle:"", telefon:"96669748", epost:"", bilde:"bilder/Glen.jpg", dag: 15, måned: 6 },
+    { navn:"Glen(SPL)", gruppe: "Ekstravakter", rolle:"", telefon:"96669748", epost:"", bilde:"bilder/Glen.jpg", dag: 15, måned: 6},
 
-    { navn:"Guen(SPL)", gruppe: "Ekstravakter", rolle:"", telefon:"45147657", epost:"", bilde:"bilder/Guen.jpg" },
+    { navn:"Guen(SPL)", gruppe: "Ekstravakter", rolle:"", telefon:"45147657", epost:"", bilde:"bilder/Guen.jpg"},
 
-    { navn:"Helene", gruppe: "Ekstravakter", rolle:"", telefon:"41339278", epost:"", bilde:"bilder/Helene.jpg",  dag: 15, måned: 12 },
+    { navn:"Helene", gruppe: "Ekstravakter", rolle:"", telefon:"41339278", epost:"", bilde:"bilder/Helene.jpg",  dag: 15, måned: 12},
 
     { navn:"John James", gruppe: "Ekstravakter", rolle:"", telefon:"45586388", epost:"", bilde:"bilder/JohnJames.jpg", dag: 20, måned: 6 },
 
@@ -138,7 +138,7 @@ const ansatte = [
 
     { navn:"Tuku", gruppe: "Ekstravakter", rolle:"", telefon:"94481168", epost:"", bilde:"bilder/Tuku.jpg" },
 
-    { navn:"Valentina", gruppe: "Ekstravakter", rolle:"", telefon:"91147851", epost:"", bilde:"bilder/Valentina.jpg" },
+    { navn:"Valentina", gruppe: "Ekstravakter", rolle:"", telefon:"91147851", epost:"", bilde:"bilder/Valentina.jpeg", dag: 22, måned: 11},
 
     { navn:"Vilde", gruppe: "Ekstravakter", rolle:"", telefon:"93869136", epost:"", bilde:"bilder/Vilde.jpg" },
 

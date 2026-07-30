@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+   <!--for beskyttelse-------------------------------------------------->
+    <!--<script src="auth.js"></script> --> 
+<!-------------------------------------------------------------------->
      <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Team Sør</title>
@@ -45,7 +48,7 @@
         <img src="images/logo-192.png" alt="Team Sør">
         <!--<img src="images/logo-512.png" alt="Team Sør">-->
     </div>
-<!-----------------------------------------------------------------------------------
+<!----------------------------------------------------------------------------------------
 Search-felt
 -------------------------------------------------------------------------------------->
  <div class="search-box">
@@ -59,20 +62,25 @@ Search-felt
     <nav class="nav" aria-label="Hovedmeny">
       <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
        <ul id="menu"> 
-         <li><a href="index.html" aria-current="page"></i> Hjem</a></li>
-         <li><a href="forStudenter.html">For studenter</a></li>
-         <li><a href="arbeidsliste.html">Print</a></li>
-      <!--
-         <li><a href="prosedyrer.html" >prosedyrer</a></li>
--->
-        <li><a href="sjekkliste.html">Ansvarsykepleier </a></li>
-        <li><a href="velferdsTeknologi.html">Velferdsteknologi</a></li>
-<!--
-        <li><a href="gangTid.html">Gangtid</a></li>
--->
-        <li><a href="rutiner.html" >Rutiner</a></li>
-        <li><a href="Bursdager.html">Bursdager</a></li>
+          <li><a href="index.html" aria-current="page"></i> Hjem</a></li>
+          <li><a href="forStudenter.html">For studenter</a></li>
+          <li><a href="arbeidsliste.html">Print</a></li>
+        <!--
+          <li><a href="prosedyrer.html" >prosedyrer</a></li>
+  -->
+          <li><a href="sjekkliste.html">Ansvarsykepleier </a></li>
+          <li><a href="velferdsTeknologi.html">Velferdsteknologi</a></li>
+  <!--
+          <li><a href="gangTid.html">Gangtid</a></li>
+  -->
+          <li><a href="rutiner.html" >Rutiner</a></li>
+          <li><a href="Bursdager.html">Bursdager</a></li>
           <li><a href="album.html">Sør-album </a></li>
+          <li>
+            <button id="logoutButton">
+                Logg ut
+            </button>
+          </li>
         
       </ul>
     </nav>
@@ -195,7 +203,7 @@ Search-felt
       
       <div class="item">
         <button class="question" onclick="toggleAccordion(this)">
-          <h2>🏡 Praktisk bistand: </h2>  
+          <h2>🏡Praktisk bistand: </h2>  
           <i class="fas fa-chevron-down icon"></i>
         </button>
             <div class="answer">
@@ -210,7 +218,7 @@ Search-felt
       
         <div class="item">
         <button class="question" onclick="toggleAccordion(this)">
-          <h2>⏰ Ekstravakter: </h2> 
+          <h2> Ekstravakter: </h2> 
           <i class="fas fa-chevron-down icon"></i>
         </button>
             <div class="answer">
@@ -260,6 +268,6 @@ const lightbox = GLightbox({
 <script src="searchData.js" defer></script>
 <script src="search.js" defer></script>
 <script src="app.js" defer></script>
-
+<script src="logout.js"></script>
 </body>
 </html>
