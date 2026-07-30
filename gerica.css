@@ -565,3 +565,18 @@ header {
     transition: all 0.3s ease;
 }
 }
+
+/*Beskyttelsesknapp bare for ansatte på forsiden: */
+#visAnsatte{
+    background:#2f5d9f;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+}
+
+#visAnsatte:hover{
+    opacity:.9;
+}
