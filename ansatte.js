@@ -38,17 +38,17 @@ const ansatte = [
 
     {navn:"Noh", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Noh.jpg", dag: 8, måned: 3},
 
-    {navn:"Sakti", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Sakti.jpg", dag: 28, måned: 1},
+    {navn:"Sakti", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Sakti.jpeg", dag: 28, måned: 1},
 
-    {navn:"Linda", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Linda.jpg", dag: 17, måned: 6},
+    {navn:"Linda", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Linda.jpeg", dag: 17, måned: 6},
 
-    {navn:"Chandranitti", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Chandranitti.jpg", dag: 7, måned: 6},
+    {navn:"Chandranitti", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Chandra.jp g", dag: 7, måned: 6},
 
     {navn:"AnaMarie", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/AnaMarie.jpg", dag: 25, måned: 8},
 
     {navn:"Tigist", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Tigist.jpg", dag: 16, måned: 7},
 
-    {navn:"JoAn", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/JoAn.jpg", dag: 6, måned: 2},
+    {navn:"JoAn", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Joan.jpg", dag: 6, måned: 2},
 
     {navn:"Robiel", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Robiel.jpg", dag: 19, måned: 9},
 
