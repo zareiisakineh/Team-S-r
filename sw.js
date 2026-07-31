@@ -3,7 +3,7 @@ const CACHE_NAME = "team-sor-v1";
 const FILES = [
     "./",
     "./index.html",
-    "./style.css",
+    "./gerica.css",
     "./app.js",
     "./manifest.json"
 ];

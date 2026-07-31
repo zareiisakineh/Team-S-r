@@ -124,7 +124,7 @@ const ansatte = [
 
     { navn:"Robiel(80%)", gruppe: "Ekstravakter", rolle:"", telefon:"97367760", epost:"", bilde:"bilder/Robiel.jpg", dag: 19, måned: 9 },
 
-    { navn:"Silje Antonsen", gruppe: "Ekstravakter", rolle:"", telefon:"45179522", epost:"", bilde:"bilder/SiljeAntonsen.jpg" },
+    { navn:"Silje Antonsen", gruppe: "Ekstravakter", rolle:"", telefon:"45179522", epost:"", bilde:"" },
 
     { navn:"Svetlana", gruppe: "Ekstravakter", rolle:"", telefon:"40571544", epost:"", bilde:"bilder/Svetlana.jpg" },
 
