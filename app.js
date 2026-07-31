@@ -248,7 +248,7 @@ if (dagensBursdager.length > 0 && whatsappKnapp && melding) {
     melding.innerHTML = `
             🎂🎉💕 Gratulerer med dagen kjære
             ${navn.join(" og ")}! 🎂
-            Alle oss i Team Sør ønsker dere en riktig flott dag fylt med glede, smil og kake! !`;
+            Alle oss i Team Sør ønsker deg en riktig flott dag fylt med glede, smil og kake! !`;
 }
 
 
