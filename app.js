@@ -408,3 +408,5 @@ if (document.getElementById("PB")) {
 if (document.getElementById("ekstravakt")) {
     visGruppe("ekstravakt", ekstravakt);
 }
+
+

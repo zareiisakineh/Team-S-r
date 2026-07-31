@@ -48,6 +48,7 @@
       <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
       <ul id="menu"> 
         <li><a href="index.html" >Hjem</a></li>
+        <li><a href="ekstravakter.html" > Vaktbok</a></li>
         <li><a href="forStudenter.html">For studenter</a></li>
         <li><a href="arbeidsliste.html" aria-current="page">Merkantil</a></li>
        <!--
@@ -252,6 +253,21 @@
       <li>windows + prtscn(print  screen)</li>
       <li>prtsn(print  screen)</li>
       <li>Alt + prtsn</li>
+      <p>Hvis endringene vises på alle sider unntatt index.html, og vi har laget nettsiden som en PWA, er den vanligste årsaken at index.html blir servert fra cache av service worker.
+
+          Sjekk disse punktene:<br>
+
+          1. Hard oppdatering av siden
+
+          I Chrome:
+
+          Ctrl + F5
+
+          eller
+
+          Ctrl + Shift + R
+
+          Hvis endringen dukker opp etterpå, var det cache.</p>
     </ul>>
   </div>
 </div>
