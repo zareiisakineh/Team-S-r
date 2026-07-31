@@ -1,11 +1,8 @@
 const CACHE_NAME = "team-sor-v10";
 
 const filer = [
-    "./",
-    "./index.html",
     "./gerica.css",
     "./app.js"
-
 ];
 self.addEventListener("install", event => {
 
