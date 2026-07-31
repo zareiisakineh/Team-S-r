@@ -13,13 +13,18 @@
    <link rel="apple-touch-icon" href="images/logo-192.png">
    <style>
   .answer img{
-     max-width: 1000px;
+     max-width: 1200px;
      margin: 20px;
   }
  .rutiner{
   margin-block: 50px;
    max-inline-size: 100%;
    padding-left: 30px;
+ }
+ .steg{
+  background-color: aqua;
+  margin: 0.5rem 0rem;
+  padding: 1rem 0.4rem;
  }
  
    @media screen and (max-width: 760px) {
@@ -300,7 +305,8 @@
               <i class="fas fa-chevron-down icon"></i>
           </button>
           <div class="answer">
-            <img src="Multidose/Bilde1.png" style="width: 200rem;">
+            <div class="steg">Steg 1: Forbredelser til multidoseimport</div>
+            
             <p>Det er stor risiko for feil ved multidoseimport, og importen bør gjennomføres av faste medarbeidere som har fått opplæring og forstår prosessen rundt multidoseimporten.</p>
             <p>Ansvar: Sykepleier/vernepleier/farmasøyt</p>
             <p>Bytt til riktig rolle for å kunne jobbe i multidoseimport-bildet.
@@ -315,23 +321,91 @@
             <p>Det anbefales sterkt at legemiddellsamstemming er utført, og at både fastlegen og pasienten/pårørende har bekreftet/avkreftet hvilke legemidler som er i bruk på det gjeldende tidspunktet.</p>
             <p>Sjekk kjernejournal for å se på historikken, utstedelse av e-resepter og uthenting av legemidler som er gjort det siste året. Hyppigheten av legemidler hentet på apoteket kan gi en indikasjon, men ikke fasit, på hvordan legemidlene blir brukt (ofte/for sjeldent/ikke i det hele tatt).</p>
             <p>Ta kontakt med fastlegen ved tvil.</p>
-            <img src="Multidose/Bilde2.png" style="width: 200rem;">
+            <div class="steg">Steg 2: åpne multidoseimport bilde</div>
+            
             <p>Klikk på madisin-knappen, velg Multidoseimport<br>    
               Da kommer dette bildet opp (brukerbilde til venstre og legemiddeloversikt til høyre):
             </p>
             <img src="Multidose/Bilde5.png" style="width: 800rem;">
             <p></p>
             <p></p>
-            <p></p>
-            <img src="Multidose/MD1.png" style="width: 800rem;" >
-            <img src="Multidose/MD2.png" >
-            <img src="Multidose/MD3.png" >
-            <img src="Multidose/MD4.png" >
-            <img src="Multidose/MD5.png" >
-            <img src="Multidose/MD6.png" >
-            <img src="Multidose/MD7.png" >
-            <img src="Multidose/MD8.png" >
-            <img src="Multidose/MD9.png" >
+            <div class="steg">Steg 3:Gå gjennom brukerbilde og leggemiddeloversikten</div>
+            <p>Se igjennom brukerbildet og legemiddeloversikten for å få et helhetlig bilde over:</p>
+            <p>hvem som er innlagte på korttids-/langtidsinstitusjoner</p>
+            <p>nye innmeldte pasienter</p>
+            <p>multidoseleveranser som er satt på midlertidig stopp</p>
+            <p>Se her for forklaring av kolonnene og symboler i oversikten</p>
+            <div class="steg">Brukerbilde</div>
+            <p>Venstre side i multidoseimportbildet viser oversikt over alle pasienter. Pasienten kommer med på multidoseimportlisten i tilfeller der pasienten har:</p>
+            <p>et legemiddel i medisinkortet som er merket som multidose</p>
+            <p>mottatt ordinasjonskort som enda ikke er importert</p>
+             <img src="Multidose/Bilde8.png" style="width: 800rem;">
+            <p>Nullstill avkrysningskolonnen "Mottatt" ved å trykke på .  </p>
+            <p>Huk så av avkrysningsboksen "Mottatt" for hver multidoserull som er fysisk mottatt fra apoteket.</p>
+             <div class="steg">Steg 4:Gjennomgang av ordinasjonskort og ligemiddelliste</div>
+            <p>Gå gjennom ordinasjonskortet på papir og sammenlign med eksisterende legemiddelliste.</p>
+            <p>Sjekk eLink for endringer fra fastlegen.</p>
+            <p>Vurder endringer som fastlegen ikke har informert om (eksempel: nye legemidler, endring av dose eller seponeringer). 
+            Kan endringene/avvikene skyldes gammel legemiddelliste fra siste innleggelse/ikke oppdatert legemiddelliste med gammel informasjon? </p>
+            <p>Sjekk kjernejournalen for nye resepter som kan bekrefte/avkrefte ny informasjon i epikrisen/endringene fra fastlegen.</p>
+            <p>Informer fastlegen om nye endringer eller eventuelle feil, og be om at det sendes ny oppdatertlegemiddelliste til multidoseapotek.</p>
+            <p>Sørg for å ha tilstrekkelig med legemidler og be om e-resept ved påbegynt behandling før ny multidose er pakket.</p>
+            <p>Dokumenter viktige endringer i 136-fagjournal i Gerica og informer pasient/pårørende.</p>
+           <div class="steg">Steg 5: Utfør multidoseimport</div>
+            <p>Utfør multidoseimport ved å huke av for riktige legemidler som skal importeres, slik at legemiddellisten og informasjonen knyttet til legemiddelbruken vises riktig i Gerica.</p>
+            <p>Vær nøye med å se på hvert symbol som står foran det enkelte legemiddelet og hvilken betydning det har for hva som skjer med det enkelte legemiddelet/dosering ved import av ordinasjonskortet til pasientens legemiddelliste (se detaljert beskrivelse av symboler for status i multidoseimport bildet).</p>
+            <p>OBS! Dersom informasjonen om hvordan legemiddelet skal brukes er lagt inn manuelt i Gerica, pass på å huke av for riktig linje slik at viktig informasjon ikke blir slettet etter importen. </p>
+            <p>Husk å ta multidoseimport på multidoserullene som kommer til tjenestestedet utenom vanlige multidoseleveranser (eksempel: hastebestillinger, nye pasienter til avdelingen).</p>
+            <p>Dersom multidoseimport ikke er mulig å gjennomføre, må alle legemidler skrives manuelt inn i Gerica.</p>
+            <p>NB! Dersom et legemiddel er lagt inn manuelt, vil legemiddelet ligge dobbelt i sammenstillingsmodulen når det mottas nytt ordinasjonskort hvor dette legemiddelet er lagt inn. Det er da viktig å sette hake for å seponere den manuelle registreringen med symbol slik at legemiddelet kun kommer opp en gang i legemiddellisten i Gerica.</p>
+            <img src="Multidose/Bilde12.png" style="width: 800rem;">
+            <div class="steg">Steg 6: Etterarbeid og kontroll etter at multidoseimport er utført</div>
+            <p>Sjekk alltid legemiddellisten i Gerica etter at multidoseimporten er utført.</p>
+             <p>Alle legemidler pasienten bruker skal gis etter skriftlig ordinering fra legen. Hvis det ikke foreligger en slik ordinering, skal de ikke stå på legemiddellisten og skal heller ikke gis til pasienten.</p>
+            <p>Gjør manuelle endringer i legemiddellisten i Gerica etter utført multidoseimport hvis det er behov for å:</p>
+            <p>legge til nytt legemiddel</p>
+            <p>seponere legemiddel</p>
+            <p>Sjekk at legemidler utenom multidose ligger riktig under faste/daglige inntak og eventuelle legemidler.</p>
+            <p>Sjekk om alle legemidler ved behov står på ordinasjonskortet. Hvis et legemiddel som ikke er brukt over lengre tid skal fjernes, eller et nytt legemiddel som ikke står der skal oppføres, skal dette bekreftes/avkreftes av fastlegen først, og endringene skal sendes til multidoseapotek ved første anledning.</p>
+             <p>Sjekk på LMP at dose og tidspunkt er riktig etter multidoseimport for legemidler utenom multidose. Vises ikke dette riktig på LMP må legemiddelet seponeres først, og så legges inn på nytt med riktig dose og tidsplan.</p>
+              <p>Eksempler på ikke-strukturert tekst som kan sendes fra legen og hvor det er stor risiko at det vises feil på LMP er legemidler som:</p>
+               <p>skal gis flere enn fire ganger daglig (parkinsonmedisin) </p>
+                <p>brukes etter avtale med legen (inhalasjoner og insulin) </p>
+                 <p>Oppdater legemiddellisten slik at den samsvarer med legemidlene som skal gis til pasienten.</p>
+              <div class="steg">Steg 7: Bytt ut eksisterenede/gammelt ordinasjonskort</div>
+              <p>Det følger med to nye ordinasjonskort ved endringer </p>
+             <p>På tjenestestedet (medisinrom eller annet låst rom)</p>
+             <p>Ta ut gammelt ordinasjonskort fra perm.</p>
+             <p>Legg nytt ordinasjonskort (der endringene står forklart) i egen perm.</p>
+             <p>Makuler gammelt ordinasjonskort.</p>
+             <div class="steg">Hos pasient</div>
+             <p>Ta med nytt ordinasjonskort (det uten endringene) hjem til pasient.</p>
+             <p>Ta med gammelt ordinasjonskort tilbake til kontoret.</p>
+             <p>Makuler gammelt ordinasjonskort.</p>
+             <p>Dokumenter at du har lagt igjen nytt ordinasjonskort.</p>
+             <p>Oppdatert ordinasjonskort skal ligge hjemme hos pasient slik at pasient/pårørende og eventuelt annet helsepersonell ved behov, kan få oversikt over legemidler pasienten bruker.  Det er viktig å ha oppdatert ordinasjonskort/legemiddelliste hjemme hos pasienten i tilfeller der LMP ikke fungerer, systemet er nede eller pasient får besøk av legevakt.</p>
+             <p>Medarbeidere skal ta utgangspunkt i legemiddellisten i Gerica når de deler ut legemidler hos pasient. Ordinasjonskortet kan også brukes til å skaffe seg en oversikt over alle legemidlene og for å finne bilde av legemidlene som ligger i multidoseposene.</p>
+               <div class="steg">Steg 8:Gjenta steg 1-7 på alle pasienter med endringer i ordinasjonskortet</div>
+            <div class="steg">Steg 9: Gjennomfør dobbeltkontroll i multidoseimportene</div>
+             <p>Ansvarlig: Annen sykepleier/vernepleier/farmasøyt enn den som utførte multidoseimporten</p>
+             <p>Utfør alltid dobbeltkontroll av multidoseimport
+              Journalfør i Gerica.
+              </p>
+             <p>Følgende tiltak brukes ved multidoseimport, og skal være et aktivt tiltak hos alle pasienter der multidoseimport skal utføres:</p>
+             <p>x.4.2.9 Multidose - kontrollere</p>
+             <p>x.4.2.10 Multidoseimport og dobbeltkontroll</p>
+             <div class="steg">Steg 10: Seponering av legemiddel som allerede er pakket i multidose</div>
+             <p>Fjern legemiddel som skal seponeres og destruer.</p>
+            <p>Legg legemidlene over i dosett. Posene skal ikke klippes og tapes igjen.</p>
+            <p>Utfør alltid dobbeltkontroll av seponeringen.</p>
+            <p>Journalfør i Gerica. Følgende tiltak kan brukes:</p>
+            <p>x.4.2.11 Seponering fra multidose</p>
+            <p>x.4.2.12 Kontroll av seponering fra multidose</p>
+            <div class="steg">Steg 11: Ta med multidoserullene ut til pasientene</div>
+            <p>Ferdigkontrollerte multidoserullene fordeles til ansatte etter arbeidslister/ruter og tas med ut til pasientene.</p>
+            <p>Journalfør i Gerica. Følgende tiltak kan brukes:</p>
+            <p>x.4.1.6 Multidose levering</p>
+            <p>tiltak x.4.1.6 Multidose – levere (alle pasienter som tjenesten mottar multidoseruller på skal ha dette tiltaket)</p>
             <img src="Multidose/MD10.png" >
             <img src="Multidose/MD11.png" >
             <img src="Multidose/MD12.png" >
