@@ -567,7 +567,7 @@ header {
 }
 
 /*Beskyttelsesknapp bare for ansatte på forsiden: */
-#visAnsatte, #visBursdager, #loggUtAnsatte, #loggUtBursdag, #visBilder, #loggUtBilder{
+#visAnsatte, #visBursdager, #loggUtAnsatte, #loggUtBursdag{
     background:#2f5d9f;
     color:white;
     border:none;
