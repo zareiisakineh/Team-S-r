@@ -116,11 +116,20 @@
     <h2>Gratulerer med dagen🎉🎉🎉🎉🎊🎊🎊🎊🎊</h2>
 </section>
 
-   <button id="visBursdager">
-    🔒 Vis bursdager
-</button>
-    <h5>Bursdagene til ansatte skjules pga sikkerhet</h5>
-    <h5>Sendt melding til Sakineh(93674937) for å få passordet. Du trenger å skrive passord bare en gang, etter det vil nettleseren din lagre det</h5>
+<!--Brusdagene er skjult, denne knappen gir brukeren tilgang, passordet blir lagret-->
+        <button id="visBursdager">
+            🔒 Vis bursdager
+        </button>
+
+ <!--logg ut-knapp: Fjerner ansatteTilgang. Neste gang må de logge inn på nyttig*/-->
+        <button id="loggUtBursdag">
+      🔒 Logg ut
+        </button>
+      
+    <h5>Bursdagene til ansatte skjules pga sikkerhet,</h5>
+    <h5>Sendt melding til Sakineh(93674937) for å få passordet.<br>  Du trenger å skrive passord bare en gang,
+        etter det vil nettleseren din lagre passordet<br>(med mindre du klikker på "logg ut"-knappen
+        Da må du skrive passordet på nytt.)</h5>
 <div id="beskyttetBursdag" style="display:none;">
 
     <!-- Hele bursdagsinnholdet  her(skjules) -->
@@ -458,7 +467,56 @@
 </main>
 
 <script>
-  
+  // Bursdagsbeskyttelse:
+const visBursdagerBtn = document.getElementById("visBursdager");
+const beskyttetBursdag = document.getElementById("beskyttetBursdag");
+
+
+if (visBursdagerBtn && beskyttetBursdag) {
+    // Sjekk om tilgang allerede finnes
+    const tilgang = localStorage.getItem("bursdagTilgang");
+
+    if (tilgang === "ja") {
+
+        beskyttetBursdag.style.display = "block";
+        visBursdagerBtn.style.display = "none";
+    }
+    
+    visBursdagerBtn.addEventListener("click", () => {
+        const passord = prompt("Skriv inn passord for bursdager");
+
+        if (passord === "teamsør2026") {
+            beskyttetBursdag.style.display = "block";
+            visBursdagerBtn.style.display = "none";
+
+            localStorage.setItem(
+                "bursdagTilgang",
+                "ja"
+            );
+
+        } else {
+            alert("Feil passord");
+        }
+
+    });
+
+}
+
+//loggut-knapp: fjerner ansattes tilgang til bursdagskalender, neste gang må de skrive passordet igjen for 
+//å få tilgang
+const loggUtBursdag = document.getElementById("loggUtBursdag");
+
+if (loggUtBursdag) {
+
+    loggUtBursdag.addEventListener("click", () => {
+
+        localStorage.removeItem("bursdagTilgang");
+
+        location.reload();
+
+    });
+
+}
 </script>
 <script src="ansatte.js" defer></script>
  <script src="app.js" defer></script>
