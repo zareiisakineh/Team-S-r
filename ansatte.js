@@ -62,8 +62,6 @@ const ansatte = [
 
     {navn:"Miguel", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Miguel.jpg", dag: 11, måned: 2},
 
-    {navn:"Dessery", gruppe: "Helsefagarbeidere", rolle:"", telefon:"99860102", epost:"", bilde:"bilder/Dessery.jpg", dag: 25, måned: 10},
-
     {navn:"Ravi", gruppe: "PraktiskBistand", rolle:"", telefon:"", epost:"", bilde:"bilder/Ravi.jpg", dag: 12, måned: 5},
 
     {navn:"Sussie", gruppe: "PraktiskBistand", rolle:"", telefon:"", epost:"", bilde:"bilder/Sussie.jpg", dag: 9, måned: 6},
