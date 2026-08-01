@@ -62,7 +62,7 @@ const ansatte = [
 
     {navn:"Miguel", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Miguel.jpg", dag: 11, måned: 2},
 
-    {navn:"Dessery", gruppe: "Helsefagarbeidere", rolle:"", telefon:"", epost:"", bilde:"bilder/Dessery.jpg", dag: 25, måned: 10},
+    {navn:"Dessery", gruppe: "Helsefagarbeidere", rolle:"", telefon:"99860102", epost:"", bilde:"bilder/Dessery.jpg", dag: 25, måned: 10},
 
     {navn:"Ravi", gruppe: "PraktiskBistand", rolle:"", telefon:"", epost:"", bilde:"bilder/Ravi.jpg", dag: 12, måned: 5},
 
@@ -80,7 +80,7 @@ const ansatte = [
 
     { navn:"Carlette", gruppe: "Ekstravakter", rolle:"", telefon:"96689375", epost:"", bilde:"bilder/Carlette.jpg", dag: 13, måned: 9 },
 
-    { navn:"Dessery(30%)", gruppe: "Ekstravakter", rolle:"", telefon:"99860102", epost:"", bilde:"bilder/Dessery.jpg" },
+    { navn:"Dessery(30%)", gruppe: "Ekstravakter", rolle:"", telefon:"99860102", epost:"", bilde:"bilder/Dessery.jpg" dag: 25, måned: 10},
 
     { navn:"Fekerte(SPL)", gruppe: "Ekstravakter", rolle:"", telefon:"97097023", epost:"", bilde:"bilder/Fekerte.jpeg", dag: 2, måned: 12},
 
