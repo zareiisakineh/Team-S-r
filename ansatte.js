@@ -84,7 +84,7 @@ const ansatte = [
 
     { navn:"Fekerte(SPL)", gruppe: "Ekstravakter", rolle:"", telefon:"97097023", epost:"", bilde:"bilder/Fekerte.jpeg", dag: 2, måned: 12},
 
-    { navn:"Gale-Ane", gruppe: "Ekstravakter", rolle:"", telefon:"93956855", epost:"", bilde:"bilder/Gale-ane.jpg", dag: 19, måned: 7},
+    { navn:"Gale-ane", gruppe: "Ekstravakter", rolle:"", telefon:"93956855", epost:"", bilde:"bilder/Gale-ane.jpg", dag: 19, måned: 7},
 
     { navn:"Gliceria(20%)", gruppe: "Ekstravakter", rolle:"", telefon:"92541182", epost:"", bilde:"bilder/Gliceria.jpg"},
 
