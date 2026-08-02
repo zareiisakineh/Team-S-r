@@ -69,6 +69,16 @@
     font-size: 1.2rem;
     text-align: center;
 }
+
+#visKnapp, #loggutKnapp{
+    background:#2f5d9f;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+}
   </style>
 </head>
 <body>
@@ -100,7 +110,7 @@
         </button>
         </div>
 
-  <main id="main-content" class="container">
+    <main id="main-content" class="container">
     
     <section class=" card">
        <h1>Bursdagskalender</h1>
@@ -120,418 +130,26 @@
     
 
 <!--Brusdagene er skjult, denne knappen gir brukeren tilgang, passordet blir lagret-->
-        <button id="visBursdager">
+        <button id="visKnapp">
             🔒 Vis bursdager
         </button>
 
  <!--logg ut-knapp: Fjerner ansatteTilgang. Neste gang må de logge inn på nyttig*/-->
-        <button id="loggUtBursdag">
+        <button id="loggutKnapp">
       🔒 Logg ut
         </button>
       
-<div id="beskyttetBursdag" style="display:none;">
+        <div id="beskyttetInnhold" style="display:none;">
 
-    <!-- Hele bursdagsinnholdet  her(skjules) -->
+        <section class="hero card">
+            <div id="bursdagsKalender"></div>
+        </section>
 
-<section class="hero card"> 
-    <div class="item" id="januar">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>Januar</h3>
-             <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-          <div  class="bilder">
-            <div class="person">
-                 <img src="bilder/Sakti.jpeg" >
-                <h3>Sakti - 28. Januar</h3>
-            </div>
-            <div class="person">
-                 <img src="bilder/AnnaEliasson.jpg" >
-                <h3>Anna-14 januar</h3>
-            </div>
-
-          </div>
         </div>
-    </div>
- <div class="item" id="februar">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>Februar</h3>
-             <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-            <div class = "bilder">
-
-                <div class="person">
-                    <img src="bilder/Xaviera.jpg" >
-                    <h3>Xaviera - 2. Februar</h3>
-                </div>
-
-                <div class="person">
-                    <img src="bilder/Joan.jpg" >
-                    <h3>JoAn - 6. Februar</h3>
-                </div>
-
-                <div class="person">
-                    <img src="bilder/Miguel.jpg" >
-                    <h3>Miguel -11. Februar</h3>
-                </div>
-
-                <div class="person">
-                    <img src="bilder/Ane.jpg" >
-                    <h3>Ane - 18. Februar</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="item" id="mars">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>Mars</h3>
-             <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-            <div class="bilder">
-
-                <div class="person">
-                    <img src="bilder/Fadumo.jpg" >
-                    <h3>Fadumo-1 mars</h3>
-                </div>
-
-                <div class="person">
-                    <img src="bilder/Noh.jpg" >
-                    <h3>Noh-8 mars</h3>
-                </div>
-
-                <div class="person">
-                    <img src="bilder/Zemene.jpg" >
-                    <h3>Zemene- 29. mars</h3>
-                </div>
-
-                <div class="person">
-                    <img src="bilder/Kristine.jpg" >
-                    <h3>Kristine- 30. mars</h3>
-                </div>
-
-            </div> 
-        </div>
-    </div>
-
-    <div class="item" id="april">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>April</h3>
-             <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-            <div class=" bilder">
-
-                <div class="person">
-                    <img src="bilder/MartheS.jpg" >
-                    <h3>MartheS - 2. april</h3>
-                </div>
-
-                 <div class="person">
-                    <img src="bilder/Cecilie.jpg" >
-                    <h3>Cecilie - 5. april</h3>
-                 </div>
-
-                 <div class="person">
-                    <img src="bilder/Sakineh.jpg" >
-                    <h3>Sakineh - 20. april</h3> 
-                 </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="item" id="mai">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>Mai</h3>
-             <i class="fas fa-chevron-down icon"></i>
-               </button>
-                 <div class="answer">
-                    <div class="bilder">
-
-                        <div class="person">
-                            <img src="bilder/Sumaya.jpg">
-                            <h3>Sumaya - 6. Mai</h3>
-                        </div>
-
-                        <div class="person">
-                            <img src="bilder/Ravi.jpg">
-                            <h3>Ravi - 12. Mai</h3>
-                        </div>
-
-                        <div class="person">
-                            <img src="bilder/Marte.jpg">
-                            <h3>Marte - 20. Mai</h3>
-                        </div>
-                </div>
-          </div>
-    </div>
-    <div class="item" id="juni">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>Juni</h3>
-             <i class="fas fa-chevron-down icon"></i>
-               </button>
-                  <div class="answer">
-                     <div class="bilder">
-
-                        <div class="person">
-                            <img src="bilder/Malyuun.jpg">
-                            <h3>Malyuun - 6. juni</h3>
-                        </div>
-
-                        <div class="person">
-                            <img src="bilder/Chandra.jpg">
-                            <h3>Chandranitti - 7. juni</h3>
-                        </div>
-
-                        <div class="person">
-                            <img src="bilder/Sussie.jpg">
-                            <h3>Sussie - 9. juni</h3>
-                        </div>
-
-                         <div class="person">
-                            <img src="bilder/Glen.jpg">
-                            <h3>Glen - 15. juni</h3>
-                        </div>
-
-                          <div class="person">
-                            <img src="bilder/Linda.jpeg">
-                            <h3>Linda - 17. juni</h3>
-                        </div>
-
-
-                        <div class="person">
-                            <img src="bilder/JohnJames.jpg">
-                            <h3>John James - 20. juni</h3>
-                        </div>
-
-                        <div class="person">
-                            <img src="bilder/Carolina.jpg">
-                            <h3>Carolina - 22. juni</h3>
-                        </div>
-                  </div>
-             </div>
-        </div>
-     
-            <div class="item" id="juli">
-               <button class="question" onclick="toggleAccordion(this)">
-               <h3>Juli</h3>
-                <i class="fas fa-chevron-down icon"></i>
-               </button>
-                 <div class="answer">
-                   <div class="bilder">
- 
-                    <div class="person">
-                        <img src="bilder/Tigist.jpg" >
-                         <h3>Tigist-16 Juli</h3>
-                    </div>
-
-                    <div class="person">
-                        <img src="bilder/Gale-ane.jpg" >
-                        <h3>Gale-ane-19 Juli</h3>
-                    </div>
-
-            </div>
-        </div>
-    </div>
-   
-    <div class="item" id="august">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>August</h3>
-             <i class="fas fa-chevron-down icon"></i>
-         </button>
-                 <div class="answer">
-                    <div class="bilder">
-
-                 <div class="person">
-                     <img src="bilder/AnaMarie.jpg" >
-                     <h3>Ana Marie - 25. august</h3>
-                 </div>
-
-                  <div class="person">
-                      <img src="bilder/Ibrahim.jpg" >
-                      <h3>Ibrahim - 28. august</h3>
-                   </div>
-
-
-              </div>
-          </div>
-    </div>
-  
-    <div class="item" id="september">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>September</h3>
-             <i class="fas fa-chevron-down icon"></i>
-        </button>
-           <div class="answer">
-               <div class="bilder">
-
-                  <div class="person">
-                    <img src="bilder/Sara.jpg" >
-                    <h3>Sara - 5. september</h3>
-                  </div>
-
-                  <div class="person">
-                    <img src="bilder/Carlette.jpg" >
-                    <h3>Carlette-13 september</h3>
-                 </div>
-
-                <div class="person">
-                    <img src="bilder/Amalie.jpg" >
-                    <h3>Amalie -18. september</h3>
-                </div>
-
-                 <div class="person">
-                    <img src="bilder/Robiel.jpg" >
-                    <h3>Robiel-19 september</h3>
-               
-                </div>
-             </div>
-        </div>
-    </div>
-    <div class="item" id="oktober">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>Oktober</h3>
-             <i class="fas fa-chevron-down icon"></i>
-        </button>
-            <div class="answer">
-              <div class="bilder">
-
-                <div class="person">
-                    <img src="" >
-                    <h3>Yusuf - 2. Oktober</h3>
-                </div>
-
-               
-
-                <div class="person">
-                    <img src="bilder/Aase.jpg" >
-                    <h3>Aase - 2. Oktober</h3>
-                </div>
-
-                  <div class="person">
-                    <img src="Dessery.jpg" >
-                    <h3>Dessery - 25. Oktober</h3>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="item" id="november">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>November</h3>
-             <i class="fas fa-chevron-down icon"></i>
-        </button>
-        <div class="answer">
-            <div class="bilder">
-                 
-
-                <div class="person">
-                    <img src="bilder/Valentina.jpeg" >
-                    <h3>Valentina - 22. November</h3>
-                </div>
-
-                <div class="person">
-                    <img src="bilder/Hamid.jpg" >
-                    <h3>Hamid - 27. November</h3>
-                </div>
-
-                 <div class="person">
-                    <img src="bilder/Senait.jpg" >
-                    <h3>Senait -9. November</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="item">
-        <button class="question" onclick="toggleAccordion(this)">
-            <h3>Desember</h3>
-             <i class="fas fa-chevron-down icon"></i>
-        </button>
-            <div class="answer">
-                <div class="bilder">
-
-                <div class="person">
-                    <img src="bilder/Fekerte.jpeg" >
-                    <h3>Fekerte - 2. Desember</h3>
-                </div>
-
-                 <div class="person">
-                    <img src="bilder/Nabina.jpg" >
-                    <h3>Nabina-7 Desember</h3>
-                </div>
-
-                <div class="person">
-                    <img src="bilder/Cathy.jpg" >
-                    <h3>Cathy - 23. Desember</h3>
-                </div>
-
-                <div class="person">
-                    <img src="bilder/Mathias.jpg" >
-                    <h3>Mathias - 23. Desember</h3>
-                </div>
-            </div>
-        </div>
-    </div>
- 
-</section>
-</div>
-</main>
-
-<script>
-  // Bursdagsbeskyttelse:
-const visBursdagerBtn = document.getElementById("visBursdager");
-const beskyttetBursdag = document.getElementById("beskyttetBursdag");
-
-
-if (visBursdagerBtn && beskyttetBursdag) {
-    // Sjekk om tilgang allerede finnes
-    const tilgang = localStorage.getItem("bursdagTilgang");
-
-    if (tilgang === "ja") {
-
-        beskyttetBursdag.style.display = "block";
-        visBursdagerBtn.style.display = "none";
-    }
-    
-    visBursdagerBtn.addEventListener("click", () => {
-        const passord = prompt("Skriv inn passord for bursdager");
-
-        if (passord === "teamsør2026") {
-            beskyttetBursdag.style.display = "block";
-            visBursdagerBtn.style.display = "none";
-
-            localStorage.setItem(
-                "bursdagTilgang",
-                "ja"
-            );
-
-        } else {
-            alert("Feil passord");
-        }
-
-    });
-
-}
-
-//loggut-knapp: fjerner ansattes tilgang til bursdagskalender, neste gang må de skrive passordet igjen for 
-//å få tilgang
-const loggUtBursdag = document.getElementById("loggUtBursdag");
-
-if (loggUtBursdag) {
-
-    loggUtBursdag.addEventListener("click", () => {
-
-        localStorage.removeItem("bursdagTilgang");
-
-        location.reload();
-
-    });
-
-}
-</script>
-<script src="ansatte.js" defer></script>
- <script src="app.js" defer></script>
+    </main>
+
+    <script src="ansatte.js"></script>
+    <script src="app.js"></script>
+    <script src="bursdag.js"></script>
 </body>
 </html>

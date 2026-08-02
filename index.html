@@ -41,6 +41,16 @@
         font-size: 1.3rem;
       }
     }
+
+    #visKnapp, #loggutKnapp{
+    background:#2f5d9f;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:1rem;
+}
    
   </style>
 </head>
@@ -195,12 +205,12 @@ Search-felt
       <section class="card">
         <!--Knappen som viser kontaktkortene(ellers skjult), man skriver passordet en gang og nettleseren vil 
         lagre passordet til neste gang-->
-      <button id="visAnsatte">
+      <button id="visKnapp">
         🔒 Vis ansatte
       </button>
 
        <!--logg ut-knapp: Fjerner ansatteTilgang. Neste gang må de logge inn på nyttig*/-->
-        <button id="loggUtAnsatte">
+        <button id="loggutKnapp">
       🔒 Logg ut
         </button><br>
 
@@ -306,25 +316,25 @@ const lightbox = GLightbox({
 
 //Beskyttelse for bare ansattdelen i forside:
 
-const visAnsatteBtn = document.getElementById("visAnsatte");
+const visKnapp = document.getElementById("visKnapp");
 const beskyttetInnhold = document.getElementById("beskyttetInnhold");
 
-if (visAnsatteBtn && beskyttetInnhold) {
+if (visKnapp && beskyttetInnhold) {
      // Sjekk om brukeren allerede har fått tilgang
 
       const tilgang = localStorage.getItem("ansatteTilgang");
 
     if (tilgang === "ja") {
         beskyttetInnhold.style.display = "block";
-        visAnsatteBtn.style.display = "none";
+        visKnapp.style.display = "none";
     }
-    visAnsatteBtn.addEventListener("click", () => {
+    visKnapp.addEventListener("click", () => {
         const passord = prompt("Skriv inn passord");
 
         if (passord === "teamsør2026") {
 
             beskyttetInnhold.style.display = "block";
-            visAnsatteBtn.style.display = "none";
+            visKnapp.style.display = "none";
 
             // Husk tilgang
 
@@ -337,11 +347,11 @@ if (visAnsatteBtn && beskyttetInnhold) {
 }
 
 //koden for loggut-knappen som fjerner ansatteTilgang, passordet må skrives på nytt neste gang
-const loggUtAnsatte = document.getElementById("loggUtAnsatte");
+const loggutKnapp = document.getElementById("loggutKnapp");
 
-if (loggUtAnsatte) {
+if (loggutKnapp) {
 
-    loggUtAnsatte.addEventListener("click", () => {
+    loggutKnapp.addEventListener("click", () => {
 
         localStorage.removeItem("ansatteTilgang");
 

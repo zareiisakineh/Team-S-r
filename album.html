@@ -9,7 +9,7 @@
      <meta name="robots" content="noindex, nofollow">
 <!------------------------------------------------------------------------------------------>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ForStudenter</title>
+  <title>Album</title>
   <link rel="stylesheet" href="gerica.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
@@ -20,6 +20,18 @@
   <link rel="icon" href="images/logo-192.png">
   <link rel="apple-touch-icon" href="images/logo-192.png">
 
+   <style>
+      #visKnapp, #loggutKnapp{
+        background:#2f5d9f;
+          color:white;
+          border:none;
+          padding:12px 20px;
+          border-radius:10px;
+          cursor:pointer;
+          font-size:1rem;
+      }
+
+   </style>
 </head>
 <body>
 
@@ -62,18 +74,18 @@
     </div>
         
     <!--Bildene er skjult, denne knappen gir brukeren tilgang, passordet blir lagret-->
-        <button id="visBilder">
+        <button id="visKnapp">
             🔒 Vis bilder
         </button>
 
     <!--logg ut-knapp: Fjerner ansatteTilgang. Neste gang må de logge inn på nyttig*/-->
-        <button id="loggUtBilder">
+        <button id="loggutKnapp">
       🔒 Logg ut
         </button>
       
     
 <!--sjuler album-innholdet-->
-<div id="beskyttetBilde" style="display:none;">
+<div id="beskyttetInnhold" style="display:none;">
 
   <div class="gallery">
 
@@ -1011,9 +1023,9 @@
             <img src="bilder/300.jpeg" alt="Bilde 300">
           </a>
                
- </div>
+    </div>
 <!--album-beskyttelse-->
-</div>
+  </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
@@ -1027,26 +1039,26 @@ const lightbox = GLightbox({
 });
 
  // Albumbeskyttelse:
-const visBildeBtn = document.getElementById("visBilder");
-const beskyttetBilde = document.getElementById("beskyttetBilde");
+const visKnapp = document.getElementById("visKnapp");
+const beskyttetInnhold = document.getElementById("beskyttetInnhold");
 
 
-if (visBildeBtn && beskyttetBilde) {
+if (visKnapp && beskyttetInnhold) {
     // Sjekk om tilgang allerede finnes
     const tilgang = localStorage.getItem("bildeTilgang");
 
     if (tilgang === "ja") {
 
-        beskyttetBilde.style.display = "block";
-        visBildeBtn.style.display = "none";
+        beskyttetInnhold.style.display = "block";
+        visKnapp.style.display = "none";
     }
     
-    visBildeBtn.addEventListener("click", () => {
+    visKnapp.addEventListener("click", () => {
         const passord = prompt("Skriv inn passord for bursdager");
 
         if (passord === "teamsør2026") {
-            beskyttetBilde.style.display = "block";
-            visBildeBtn.style.display = "none";
+            beskyttetInnhold.style.display = "block";
+            visKnapp.style.display = "none";
 
             localStorage.setItem(
                 "bursdagTilgang",
@@ -1063,11 +1075,11 @@ if (visBildeBtn && beskyttetBilde) {
 
 //loggut-knapp: fjerner ansattes tilgang til bursdagskalender, neste gang må de skrive passordet igjen for 
 //å få tilgang
-const loggUtBilder = document.getElementById("loggUtBilder");
+const loggutKnapp = document.getElementById("loggutKnapp");
 
-if (loggUtBilder) {
+if (loggutKnapp) {
 
-    loggUtBilder.addEventListener("click", () => {
+    loggutKnapp.addEventListener("click", () => {
 
         localStorage.removeItem("bildeTilgang");
 

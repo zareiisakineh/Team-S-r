@@ -223,7 +223,7 @@ window.addEventListener("load", () => {
 
 });
 
-const melding = document.getElementById("bursdagMelding");
+/*const melding = document.getElementById("bursdagMelding");
 const whatsappKnapp = document.getElementById("sendWhatsapp");
 //new Date() lager et datoobjekt.Hvis datoen er 21. juli 2026, inneholder iDag: Tue Jul 21 2026
 const iDag = new Date();
@@ -265,7 +265,6 @@ Programmet følger denne rekkefølgen:
 📝 map() henter ut bare navnene.
 ✍️ join() setter navnene sammen til én tekst hvis flere har bursdag.
 🌐 innerHTML skriver gratulasjonsmeldingen inn på nettsiden. */
-
 
 //deler bursdagsmelding på whatsapp 
 whatsappKnapp.addEventListener("click", () => {
@@ -330,10 +329,7 @@ if (installBtn) {
 
 }
 
-
-
-
-
+// Kontakt-kort
 // Lager fire lister ut fra gruppene:
 //henter alle sykepleiere fra ansatt.js
 const sykepleier = ansatte.filter(person => {
