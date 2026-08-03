@@ -174,15 +174,10 @@ Search-felt
 
 
 
-    <section class="card">
-      <div class="item">
-        <button class="question" nclick="toggleAccordion(this)">  
-            <h2> Hvem jobber i team Sør?</h2>
-            <i class="fas fa-chevron-down icon"></i>
-        </button >
-            <div class="answer"> 
-            </div>
-          </div>
+     <div class="card">
+        <h2> Hvem jobber i team Sør?</h2>
+      </div>
+         
      
     </section>
     <section class="card">   
@@ -331,7 +326,7 @@ if (visKnapp && beskyttetInnhold) {
     visKnapp.addEventListener("click", () => {
         const passord = prompt("Skriv inn passord");
 
-        if (passord === "teamsør2026") {
+        if (passord === "teamsor2026") {
 
             beskyttetInnhold.style.display = "block";
             visKnapp.style.display = "none";
@@ -366,7 +361,9 @@ if (loggutKnapp) {
 <script src="searchData.js" defer></script>
 <script src="search.js" defer></script>
 <!--<script src="beskyttelse.js"></script>   Deaktivert innlogging/beskyttelse--> 
-<script src="app.js" defer></script>
+<script type="module" src="app.js"></script>
 <script src="logout.js"></script>
+<script type="module" src="testFirebase.js"></script>
+<script type="module" src="testFirestore.js"></script>
 </body>
 </html>
