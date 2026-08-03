@@ -1,10 +1,28 @@
-/*document
-  .getElementById("logoutButton")
-  .addEventListener("click", () => {
+import { auth }
+from "./firebase.js";
 
-    sessionStorage.removeItem("innlogget");
+import {
+    signOut
+}
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-    window.location.href = "login.html";
+const btn =
+document.getElementById(
+    "loggutKnapp"
+);
 
-});
-*/
+if (btn) {
+
+    btn.addEventListener(
+        "click",
+        async () => {
+
+            await signOut(auth);
+
+            location.reload();
+
+        }
+    );
+
+}

@@ -174,10 +174,15 @@ Search-felt
 
 
 
-     <div class="card">
-        <h2> Hvem jobber i team Sør?</h2>
-      </div>
-         
+    <section class="card">
+      <div class="item">
+        <button class="question" nclick="toggleAccordion(this)">  
+            <h2> Hvem jobber i team Sør?</h2>
+            <i class="fas fa-chevron-down icon"></i>
+        </button >
+            <div class="answer"> 
+            </div>
+          </div>
      
     </section>
     <section class="card">   
@@ -198,20 +203,44 @@ Search-felt
 
       
       <section class="card">
-        <!--Knappen som viser kontaktkortene(ellers skjult), man skriver passordet en gang og nettleseren vil 
-        lagre passordet til neste gang-->
-      <button id="visKnapp">
-        🔒 Vis ansatte
-      </button>
+       <!--
+        Firebase Authentication:
+        Brukeren logger inn med egen konto.
+        Kun innloggede brukere ser kontaktkortene.
+        -->
+      <div id="loginBox">
+
+    <h3>🔒 Sakineh sier</h3>
+
+    <p>
+      Logg inn for å se ansatte
+    </p>
+
+    <input
+        id="email"
+        type="email"
+        placeholder="E-post">
+
+    <input
+        id="password"
+        type="password"
+        placeholder="Passord">
+
+    <button id="loginBtn">
+        Logg inn
+    </button>
+
+</div>
 
        <!--logg ut-knapp: Fjerner ansatteTilgang. Neste gang må de logge inn på nyttig*/-->
-        <button id="loggutKnapp">
+      <button id="loggutKnapp" style="display:none;">
       🔒 Logg ut
-        </button><br>
+      </button>
 
-      <h5>Kontaktkortene til ansatte skjules pga sikkerhet</h5>
-      <h5>Send melding til Sakineh(93674937) for å få passordet.<br> Du trenger å skrive passord bare en gang, etter det vil nettleseren din lagre det</h5>
-      <h5>(med mindre du klikker på "loggut"-knappen, da må du skrive passordet på nytt)</h5><br>
+      <h5>
+      Kontaktkortene er skjult av hensyn til personvern.
+      Logg inn med din Team Sør-konto for tilgang.
+      </h5>
       
      <!--div som skjuler alle ansattekort-->
       <div id="beskyttetInnhold" style="display:none;">
@@ -311,59 +340,25 @@ const lightbox = GLightbox({
 
 //Beskyttelse for bare ansattdelen i forside:
 
-const visKnapp = document.getElementById("visKnapp");
-const beskyttetInnhold = document.getElementById("beskyttetInnhold");
-
-if (visKnapp && beskyttetInnhold) {
-     // Sjekk om brukeren allerede har fått tilgang
-
-      const tilgang = localStorage.getItem("ansatteTilgang");
-
-    if (tilgang === "ja") {
-        beskyttetInnhold.style.display = "block";
-        visKnapp.style.display = "none";
-    }
-    visKnapp.addEventListener("click", () => {
-        const passord = prompt("Skriv inn passord");
-
-        if (passord === "teamsor2026") {
-
-            beskyttetInnhold.style.display = "block";
-            visKnapp.style.display = "none";
-
-            // Husk tilgang
-
-            localStorage.setItem("ansatteTilgang", "ja");
-        } else {
-
-            alert("Feil passord");
-        }
-    });
-}
 
 //koden for loggut-knappen som fjerner ansatteTilgang, passordet må skrives på nytt neste gang
-const loggutKnapp = document.getElementById("loggutKnapp");
-
-if (loggutKnapp) {
-
-    loggutKnapp.addEventListener("click", () => {
-
-        localStorage.removeItem("ansatteTilgang");
-
-        location.reload();
-
-    });
-
-}
 
 </script>
 <script src="ansatte.js" defer></script>
+
 <script src="searchData.js" defer></script>
+
 <script src="search.js" defer></script>
-<!--<script src="beskyttelse.js"></script>   Deaktivert innlogging/beskyttelse--> 
-<script type="module" src="app.js"></script>
-<script src="logout.js"></script>
-<script type="module" src="testFirebase.js"></script>
-<script type="module" src="testFirestore.js"></script>
+
+<script src="app.js" defer></script>
+
+
+
+
+<script type="module" src="auth.js"></script>
+
+<script type="module" src="login.js"></script>
+
+<script type="module" src="logout.js"></script>
 </body>
 </html>

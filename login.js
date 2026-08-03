@@ -1,24 +1,41 @@
-const riktigPassord = "TeamSøt2026";
+import { auth } from "./firebase.js";
 
+import {
+    signInWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-const loginButton = document.getElementById("loginButton");
-   loginButton.classList.add("loginButton");
-  loginButton.addEventListener("click", () => {
+const loginBtn =
+document.getElementById("loginBtn");
 
-    const passord =
-      document.getElementById("password").value;
+if (loginBtn) {
 
-    if (passord === riktigPassord) {
+    loginBtn.addEventListener("click", async () => {
 
-      sessionStorage.setItem(
-        "innlogget",
-        "true"
-      );
+        const email =
+        document.getElementById("email").value;
 
-      window.location.href = "index.html";
+        const password =
+        document.getElementById("password").value;
 
-    } else {
-      alert("Feil passord");
-    }
+        try {
 
-});
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            alert("Innlogging vellykket");
+
+            location.reload();
+
+        } catch (error) {
+
+            alert("Feil brukernavn eller passord");
+
+        }
+
+    });
+
+}

@@ -1,22 +1,56 @@
+import { auth } from "./firebase.js";
 
-//Skrur av beskyttelsen
-const BESKYTTELSE = false; // sett true når du vil aktivere igjen
+import {
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-if (BESKYTTELSE) {
 
-    const loggedIn = localStorage.getItem("loggedIn");
+const innhold = document.getElementById(
+    "beskyttetInnhold"
+);
 
-    if (loggedIn !== "true") {
-        window.location.href = "login.html";
-    }
+const loginBox = document.getElementById(
+    "loginBox"
+);
+
+
+onAuthStateChanged(auth, user => {
+
+
+if(user){
+
+    innhold.style.display="block";
+
+    loginBox.style.display="none";
+
+
+}else{
+
+    innhold.style.display="none";
+
+    loginBox.style.display="block";
 
 }
 
-if (sessionStorage.getItem("innlogget") !== "true") {
-    window.location.href = "login.html";
-}
 
-//Da trenger du bare endre: const BESKYTTELSE = false;
-//til:
-//const BESKYTTELSE = true;
-//når du skal bruke innlogging igjen.
+});
+
+//loggutKnapp
+const loggutKnapp =
+document.getElementById("loggutKnapp");
+
+
+if(user){
+
+    innhold.style.display="block";
+    loginBox.style.display="none";
+    loggutKnapp.style.display="block";
+
+}else{
+
+    innhold.style.display="none";
+    loginBox.style.display="block";
+    loggutKnapp.style.display="none";
+
+}
