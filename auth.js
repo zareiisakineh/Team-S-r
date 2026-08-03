@@ -14,6 +14,8 @@ const loginBox = document.getElementById(
     "loginBox"
 );
 
+const loggutKnapp =
+document.getElementById("loggutKnapp");
 
 onAuthStateChanged(auth, user => {
 
@@ -24,33 +26,21 @@ if(user){
 
     loginBox.style.display="none";
 
+    loggutKnapp.style.display="block";
+
 
 }else{
 
     innhold.style.display="none";
 
     loginBox.style.display="block";
+
+    loggutKnapp.style.display="none";
 
 }
 
 
 });
 
-//loggutKnapp
-const loggutKnapp =
-document.getElementById("loggutKnapp");
 
 
-if(user){
-
-    innhold.style.display="block";
-    loginBox.style.display="none";
-    loggutKnapp.style.display="block";
-
-}else{
-
-    innhold.style.display="none";
-    loginBox.style.display="block";
-    loggutKnapp.style.display="none";
-
-}

@@ -267,18 +267,28 @@ Programmet følger denne rekkefølgen:
 🌐 innerHTML skriver gratulasjonsmeldingen inn på nettsiden. */
 
 //deler bursdagsmelding på whatsapp 
-whatsappKnapp.addEventListener("click", () => {
+const whatsappKnapp =
+document.getElementById("sendWhatsapp");
 
-    const whatsappMelding = 
-    "🎂 Gratulerer med dagen kjære " + navn.join(" og ") + 
-    "!\n\n" +
-    "Alle oss i Team Sør ønsker deg en fantastisk dag fylt med glede, smil og kake! 🎂❤️";
+if (whatsappKnapp) {
 
-    const url = "https://wa.me/?text=" + encodeURIComponent(whatsappMelding);
+    whatsappKnapp.addEventListener("click", () => {
 
-    window.open(url, "_blank");
+        const whatsappMelding =
+            "🎂 Gratulerer med dagen kjære " +
+            navn.join(" og ") +
+            "!\n\n" +
+            "Alle oss i Team Sør ønsker deg en fantastisk dag fylt med glede, smil og kake! 🎂❤️";
 
-});
+        const url =
+            "https://wa.me/?text=" +
+            encodeURIComponent(whatsappMelding);
+
+        window.open(url, "_blank");
+
+    });
+
+}
 
 // Installer-knappen 
 //Registrer service worker
