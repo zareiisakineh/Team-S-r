@@ -1,3 +1,5 @@
+import { hentAnsatte } from "./ansatteFirestore.js";
+
 console.log("app.js loaded");
 
 // Felles funksjon for alle trekkspill
@@ -108,7 +110,175 @@ function toggleAccordion(button) {
 // Hvis JavaScript prøver å hente et element før HTML-en er ferdig lastet, vil elementet ikke finnes.
 // Derfor venter vi til hele DOM-en er ferdig bygd.
 // ----------------------------------------------------------
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+
+    console.log("DOMContentLoaded startet");
+
+    const ansatte = await hentAnsatte();
+
+    console.log("Ansatte hentet:", ansatte.length);
+
+});
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+     const ansatte = await hentAnsatte();
+
+    console.log("Antall ansatte:", ansatte.length);
+
+    // Kontakt-kort
+// Lager fire lister ut fra gruppene:
+//henter alle sykepleiere fra ansatt.js
+const sykepleier = ansatte.filter(person => {
+    return person.gruppe === "Sykepleiere";
+});
+//henter alle Helsefagarbeidere fra ansatt.js
+const hjelpepleier = ansatte.filter(person => {
+    return person.gruppe === "Helsefagarbeidere";
+});
+//henter alle i praktisk bistand fra ansatt.js
+const praktiskBistand = ansatte.filter(person => {
+    return person.gruppe === "PraktiskBistand";
+});
+//henter alle ekstravakter fra ansatt.js
+const ekstravakt = ansatte.filter(person => {
+    return person.gruppe === "Ekstravakter";
+});
+//henter alle fysioterapeuter fra ansatt.js
+const fysioterapeut = ansatte.filter(person => {
+    return person.gruppe === "fysioterapeuter";
+});
+//henter alle fysioterapeuter fra ansatt.js
+const ergoterapeut = ansatte.filter(person => {
+    return person.gruppe === "ergoterapeuter";
+});
+//henter alle fysioterapeuter fra ansatt.js
+const AKS = ansatte.filter(person => {
+    return person.gruppe === "AKS";
+});
+//henter alle ernæringsfysiologer fra ansatt.js
+const ernæringsfysiolog = ansatte.filter(person => {
+    return person.gruppe === "ernæringsfysiologer";
+});
+//henter alle ledere fra ansatt.js
+const leder = ansatte.filter(person => {
+    return person.gruppe === "ledere";
+});
+//henter alle merkantiler fra ansatt.js
+const merkantil = ansatte.filter(person => {
+    return person.gruppe === "merkantiler";
+});
+//henter alle nattevakter fra ansatt.js
+const nattevakt = ansatte.filter(person => {
+    return person.gruppe === "nattevakter";
+});
+//henter alle vurderingsteam fra ansatt.js
+const vurderingsteam = ansatte.filter(person => {
+    return person.gruppe === "vurderingsteam";
+});
+//henter alle responssenter fra ansatt.js
+const responssenter = ansatte.filter(person => {
+    return person.gruppe === "responssenter";
+});
+
+
+
+// Funksjon som skriver ut én gruppe
+function visGruppe(containerId, liste) {
+
+    const container = document.getElementById(containerId);
+
+    liste.forEach(person => {
+
+        container.innerHTML += `
+        
+        <div class="ansattKort">
+
+            <h3>${person.navn}</h3>
+
+            <p>${person.rolle}</p>
+
+            <div class="ikoner">
+
+                <a href="${person.bilde}"
+                   class="glightbox"
+                   title="${person.navn}">
+                    <i class="fas fa-image"></i>
+                </a>
+
+                <a href="tel:${person.telefon}">
+                    <i class="fas fa-phone"></i>
+                </a>
+
+                <a href="mailto:${person.epost}">
+                    <i class="fas fa-envelope"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+if (document.getElementById("SPL")) {
+    visGruppe("SPL", sykepleier);
+}
+
+if (document.getElementById("HPL")) {
+    visGruppe("HPL", hjelpepleier);
+}
+
+if (document.getElementById("PB")) {
+    visGruppe("PB", praktiskBistand);
+}
+
+if (document.getElementById("ekstravakt")) {
+    visGruppe("ekstravakt", ekstravakt);
+}
+
+if (document.getElementById("fysio")) {
+    visGruppe("fysio", fysioterapeut);
+}
+
+if (document.getElementById("ergo")) {
+    visGruppe("ergo", ergoterapeut);
+}
+
+if (document.getElementById("AKS")) {
+    visGruppe("AKS", AKS);
+}
+
+if (document.getElementById("ernæringFysio")) {
+    visGruppe("ernæringFysio", ernæringsfysiolog);
+}
+
+if (document.getElementById("leder")) {
+    visGruppe("leder", leder);
+}
+
+if (document.getElementById("merkantil")) {
+    visGruppe("merkantil", merkantil);
+}
+
+if (document.getElementById("nattevakt")) {
+    visGruppe("nattevakt", nattevakt);
+}
+
+if (document.getElementById("vurderingsteam")) {
+    visGruppe("vurderingsteam", vurderingsteam);
+}
+
+if (document.getElementById("responssenter")) {
+    visGruppe("responssenter", responssenter);
+}
+
+
+
+
     // ------------------------------------------------------
     // getElementById(): Henter ett bestemt HTML-element ved hjelp av id.
     // HTML:
@@ -338,155 +508,4 @@ if (installBtn) {
     });
 
 }
-
-// Kontakt-kort
-// Lager fire lister ut fra gruppene:
-//henter alle sykepleiere fra ansatt.js
-const sykepleier = ansatte.filter(person => {
-    return person.gruppe === "Sykepleiere";
-});
-//henter alle Helsefagarbeidere fra ansatt.js
-const hjelpepleier = ansatte.filter(person => {
-    return person.gruppe === "Helsefagarbeidere";
-});
-//henter alle i praktisk bistand fra ansatt.js
-const praktiskBistand = ansatte.filter(person => {
-    return person.gruppe === "PraktiskBistand";
-});
-//henter alle ekstravakter fra ansatt.js
-const ekstravakt = ansatte.filter(person => {
-    return person.gruppe === "Ekstravakter";
-});
-//henter alle fysioterapeuter fra ansatt.js
-const fysioterapeut = ansatte.filter(person => {
-    return person.gruppe === "fysioterapeuter";
-});
-//henter alle fysioterapeuter fra ansatt.js
-const ergoterapeut = ansatte.filter(person => {
-    return person.gruppe === "ergoterapeuter";
-});
-//henter alle fysioterapeuter fra ansatt.js
-const AKS = ansatte.filter(person => {
-    return person.gruppe === "AKS";
-});
-//henter alle ernæringsfysiologer fra ansatt.js
-const ernæringsfysiolog = ansatte.filter(person => {
-    return person.gruppe === "ernæringsfysiologer";
-});
-//henter alle ledere fra ansatt.js
-const leder = ansatte.filter(person => {
-    return person.gruppe === "ledere";
-});
-//henter alle merkantiler fra ansatt.js
-const merkantil = ansatte.filter(person => {
-    return person.gruppe === "merkantiler";
-});
-//henter alle nattevakter fra ansatt.js
-const nattevakt = ansatte.filter(person => {
-    return person.gruppe === "nattevakter";
-});
-//henter alle vurderingsteam fra ansatt.js
-const vurderingsteam = ansatte.filter(person => {
-    return person.gruppe === "vurderingsteam";
-});
-//henter alle responssenter fra ansatt.js
-const responssenter = ansatte.filter(person => {
-    return person.gruppe === "responssenter";
-});
-
-
-
-// Funksjon som skriver ut én gruppe
-function visGruppe(containerId, liste) {
-
-    const container = document.getElementById(containerId);
-
-    liste.forEach(person => {
-
-        container.innerHTML += `
-        
-        <div class="ansattKort">
-
-            <h3>${person.navn}</h3>
-
-            <p>${person.rolle}</p>
-
-            <div class="ikoner">
-
-                <a href="${person.bilde}"
-                   class="glightbox"
-                   title="${person.navn}">
-                    <i class="fas fa-image"></i>
-                </a>
-
-                <a href="tel:${person.telefon}">
-                    <i class="fas fa-phone"></i>
-                </a>
-
-                <a href="mailto:${person.epost}">
-                    <i class="fas fa-envelope"></i>
-                </a>
-
-            </div>
-
-        </div>
-
-        `;
-
-    });
-
-}
-
-if (document.getElementById("SPL")) {
-    visGruppe("SPL", sykepleier);
-}
-
-if (document.getElementById("HPL")) {
-    visGruppe("HPL", hjelpepleier);
-}
-
-if (document.getElementById("PB")) {
-    visGruppe("PB", praktiskBistand);
-}
-
-if (document.getElementById("ekstravakt")) {
-    visGruppe("ekstravakt", ekstravakt);
-}
-
-if (document.getElementById("fysio")) {
-    visGruppe("fysio", fysioterapeut);
-}
-
-if (document.getElementById("ergo")) {
-    visGruppe("ergo", ergoterapeut);
-}
-
-if (document.getElementById("AKS")) {
-    visGruppe("AKS", AKS);
-}
-
-if (document.getElementById("ernæringFysio")) {
-    visGruppe("ernæringFysio", ernæringsfysiolog);
-}
-
-if (document.getElementById("leder")) {
-    visGruppe("leder", leder);
-}
-
-if (document.getElementById("merkantil")) {
-    visGruppe("merkantil", merkantil);
-}
-
-if (document.getElementById("nattevakt")) {
-    visGruppe("nattevakt", nattevakt);
-}
-
-if (document.getElementById("vurderingsteam")) {
-    visGruppe("vurderingsteam", vurderingsteam);
-}
-
-if (document.getElementById("responssenter")) {
-    visGruppe("responssenter", responssenter);
-}
-
 

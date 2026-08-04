@@ -3,20 +3,22 @@ import { db } from "./firebase.js";
 import {
     collection,
     getDocs
-}
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 async function hentAnsatte() {
 
-    const querySnapshot =
-        await getDocs(collection(db, "ansatte"));
+    const snapshot = await getDocs(
+        collection(db, "ansatte")
+    );
 
-    querySnapshot.forEach((doc) => {
+    const ansatte = [];
 
-        console.log(doc.id, doc.data());
-
+    snapshot.forEach(doc => {
+        ansatte.push(doc.data());
     });
 
+    console.log("Antall ansatte:", ansatte.length);
+    console.log(ansatte);
 }
 
 hentAnsatte();
