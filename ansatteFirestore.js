@@ -1,15 +1,16 @@
-export async function hentAnsatte() {
+import {
+    collection,
+    getDocs
+}
+from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-    console.log("Starter Firestore-henting");
+import { db } from "./firebase.js";
+
+export async function hentAnsatte() {
 
     const snapshot = await getDocs(
         collection(db, "ansatte")
     );
 
-    console.log("Firestore svarte:", snapshot.size);
-
-    return snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-    }));
+    return snapshot.docs.map(doc => doc.data());
 }
