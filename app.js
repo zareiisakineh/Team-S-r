@@ -205,41 +205,43 @@ function visGruppe(containerId, liste) {
 
     const container = document.getElementById(containerId);
 
+    if (!container) {
+        console.log("Fant ikke container:", containerId);
+        return;
+    }
+
+    container.innerHTML = "";
+
     liste.forEach(person => {
 
         container.innerHTML += `
-        
         <div class="ansattKort">
-
             <h3>${person.navn}</h3>
-
-            <p>${person.rolle}</p>
+            <p>${person.rolle || ""}</p>
 
             <div class="ikoner">
-
-                <a href="${person.bilde}"
+                <a href="${person.bilde || "#"}"
                    class="glightbox"
                    title="${person.navn}">
                     <i class="fas fa-image"></i>
                 </a>
 
-                <a href="tel:${person.telefon}">
+                <a href="tel:${person.telefon || ""}">
                     <i class="fas fa-phone"></i>
                 </a>
 
-                <a href="mailto:${person.epost}">
+                <a href="mailto:${person.epost || ""}">
                     <i class="fas fa-envelope"></i>
                 </a>
-
             </div>
-
         </div>
-
         `;
-
     });
 
+    console.log(containerId, "viste", liste.length, "personer");
 }
+
+
 
 if (document.getElementById("SPL")) {
     visGruppe("SPL", sykepleier);
