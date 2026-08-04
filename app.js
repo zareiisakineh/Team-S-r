@@ -390,8 +390,8 @@ const vurderingsteam = ansatte.filter(person => {
     return person.gruppe === "vurderingsteam";
 });
 //henter alle responssenter fra ansatt.js
-const responssenter = ansatte.filter(person => {
-    return person.gruppe === "responssenter";
+const respossenter = ansatte.filter(person => {
+    return person.gruppe === "respossenter";
 });
 
 
@@ -486,7 +486,7 @@ if (document.getElementById("vurderingsteam")) {
 }
 
 if (document.getElementById("responssenter")) {
-    visGruppe("responssenter", responssenter);
+    visGruppe("responssenter", respossenter);
 }
 
 

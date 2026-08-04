@@ -1,4 +1,4 @@
-const CACHE_NAME = "team-sor-v12";
+const CACHE_NAME = "team-sor-v13";
 
 const FILES = [
     "./gerica.css",
