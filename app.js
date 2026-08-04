@@ -195,7 +195,10 @@ const responssenter = ansatte.filter(person => {
     return person.gruppe === "responssenter";
 });
 
-
+console.log("AKS-container:", document.getElementById("AKS"));
+console.log("ergo-container:", document.getElementById("ergo"));
+console.log("fysio-container:", document.getElementById("fysio"));
+console.log("ernæring-container:", document.getElementById("ernæringFysio"));
 
 // Funksjon som skriver ut én gruppe
 function visGruppe(containerId, liste) {
@@ -261,6 +264,11 @@ if (document.getElementById("fysio")) {
 if (document.getElementById("ergo")) {
     visGruppe("ergo", ergoterapeut);
 }
+
+console.log("AKS-container:", document.getElementById("AKS"));
+console.log("ergo-container:", document.getElementById("ergo"));
+console.log("fysio-container:", document.getElementById("fysio"));
+console.log("ernæring-container:", document.getElementById("ernæringFysio"));
 
 if (document.getElementById("AKS")) {
     visGruppe("AKS", AKS);
