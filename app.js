@@ -373,6 +373,27 @@ const AKS = ansatte.filter(person => {
 const ernæringsfysiolog = ansatte.filter(person => {
     return person.gruppe === "ernæringsfysiologer";
 });
+//henter alle ledere fra ansatt.js
+const leder = ansatte.filter(person => {
+    return person.gruppe === "ledere";
+});
+//henter alle merkantiler fra ansatt.js
+const merkantil = ansatte.filter(person => {
+    return person.gruppe === "merkantiler";
+});
+//henter alle nattevakter fra ansatt.js
+const nattevakt = ansatte.filter(person => {
+    return person.gruppe === "nattevakter";
+});
+//henter alle vurderingsteam fra ansatt.js
+const vurderingsteam = ansatte.filter(person => {
+    return person.gruppe === "vurderingsteam";
+});
+//henter alle responssenter fra ansatt.js
+const responssenter = ansatte.filter(person => {
+    return person.gruppe === "responssenter";
+});
+
 
 
 // Funksjon som skriver ut én gruppe
@@ -446,6 +467,26 @@ if (document.getElementById("AKS")) {
 
 if (document.getElementById("ernæringFysio")) {
     visGruppe("ernæringFysio", ernæringsfysiolog);
+}
+
+if (document.getElementById("leder")) {
+    visGruppe("leder", leder);
+}
+
+if (document.getElementById("merkantil")) {
+    visGruppe("merkantil", merkantil);
+}
+
+if (document.getElementById("nattevakt")) {
+    visGruppe("nattevakt", nattevakt);
+}
+
+if (document.getElementById("vurderingsteam")) {
+    visGruppe("vurderingsteam", vurderingsteam);
+}
+
+if (document.getElementById("responssenter")) {
+    visGruppe("responssenter", responssenter);
 }
 
 
