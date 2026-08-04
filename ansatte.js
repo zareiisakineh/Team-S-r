@@ -7,10 +7,29 @@
 //------------------------------------------Kontaktliste----------------------------------
 //Lager objekter for alle ansatte---------------------------------------
 const ansatte = [
+    //fysioterapeuter
+    {navn:"Tarjei", gruppe: "fysioterapeuter", rolle:"", telefon:"94013611", epost:"", bilde:"bilder/Tarjei.jpg", dag: 29, måned: 3},
+    {navn:"Usama", gruppe: "fysioterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/Usama.jpg"},
+    {navn:"Anna", gruppe: "fysioterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/AnnaEliasson.jpg", dag: 14, måned: 1},
+    {navn:"Synnøve", gruppe: "fysioterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/Synnøve.jpg"},
 
+    //Ergoterapeuter
+    {navn:"Wanja", gruppe: "ergoterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/Wanja.jpg"},
+    {navn:"Amalie", gruppe: "ergoterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/Amalie.jpg"},
+    {navn:"Jolene", gruppe: "ergoterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/Jolene.jpg"},
+    {navn:"Mathilde", gruppe: "ergoterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/Mathilde.jpg"},
+     
+    //AKS
+    {navn:"Eder", gruppe: "AKS", rolle:"", telefon:"", epost:"", bilde:"bilder/Eder.jpg"},
+    {navn:"Synne", gruppe: "AKS", rolle:"", telefon:"", epost:"", bilde:"bilder/Synne.jpg"},
+
+    
+    //AKS
+    {navn:"Kristiane", gruppe: "ernæringsfysiologer", rolle:"", telefon:"", epost:"", bilde:"bilder/Kristiane.jpg"},
+    
+    
+    //Sykepleiere
     {navn:"Sara", gruppe: "Sykepleiere", rolle:"", telefon:"", epost:"", bilde:"bilder/Sara.jpg", dag: 5, måned: 9},
-
-    {navn:"Anna", gruppe: "Sykepleiere", rolle:"", telefon:"", epost:"", bilde:"bilder/AnnaEliasson.jpg", dag: 14, måned: 1},
 
     {navn:"Cathy", gruppe: "Sykepleiere", rolle:"", telefon:"", epost:"", bilde:"bilder/Cathy.jpg", dag: 23, måned: 12},
 

@@ -24,8 +24,7 @@
             `;
         }
 
-    });
-        const container = document.getElementById("bursdagsKalender");
+            const container = document.getElementById("bursdagsKalender");
 
     const månedsNavn = [
         "Januar",
@@ -80,56 +79,5 @@
     }
 
 
-
-
-  // Bursdagsbeskyttelse:
-const visKnapp = document.getElementById("visKnapp");
-const beskyttetInnhold = document.getElementById("beskyttetInnhold");
-
-
-if (visKnapp && beskyttetInnhold) {
-    // Sjekk om tilgang allerede finnes
-    const tilgang = localStorage.getItem("bursdagTilgang");
-
-    if (tilgang === "ja") {
-
-        beskyttetInnhold.style.display = "block";
-        visKnapp.style.display = "none";
-    }
+    });
     
-    visKnapp.addEventListener("click", () => {
-        const passord = prompt("Skriv inn passord for bursdager");
-
-        if (passord === "teamsør2026") {
-            beskyttetInnhold.style.display = "block";
-            visKnapp.style.display = "none";
-
-            localStorage.setItem(
-                "bursdagTilgang",
-                "ja"
-            );
-
-        } else {
-            alert("Feil passord");
-        }
-
-    });
-
-}
-
-//loggut-knapp: fjerner ansattes tilgang til bursdagskalender, neste gang må de skrive passordet igjen for 
-//å få tilgang
-const loggutKnapp = document.getElementById("loggutKnapp");
-
-if (loggutKnapp) {
-
-    loggutKnapp.addEventListener("click", () => {
-
-        localStorage.removeItem("bursdagTilgang");
-
-        location.reload();
-
-    });
-
-}
-

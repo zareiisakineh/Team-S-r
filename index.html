@@ -347,22 +347,84 @@ Search-felt
   <!----------------------------------Alle team----------------------------------------------------------->
 
  
-     <!--div som skjuler alle ansattekort-->
+<!----------------------------div som skjuler alle ansattekort--------------------------------------->
       <div id="beskyttetInnhold" style="display:none;">
+<!--------------------------------------------------------------------------------------------->
+<!-------------------------------------------åpne accordion, Ernæringsfysiolog----------------------------------->
+        <div class="item">
+          <button class="question" onclick="toggleAccordion(this)">
+              <h2>🩺 Ernæringsfysiolog:</h2> 
+              <i class="fas fa-chevron-down icon"></i> 
+          </button>
+          <div class="answer">
+   <!-----------------------------------------Kontaktkort, Ernæringsfysiolog--------------------------------------------->
+              <section class="card">
+                <div id="ernæringFysio"></div>
+              </section>
+   <!-------------------------------------------------------------------------------------------------->
+          </div>
+        </div>
+    <!-------------------------------------------------lukk accordion, Ernæringsfysiolog--------------------------------->     
+<!-------------------------------------------åpne accordion, AKS----------------------------------->
+        <div class="item">
+          <button class="question" onclick="toggleAccordion(this)">
+              <h2>🩺 Avansert klininisk sykepleiere:</h2> 
+              <i class="fas fa-chevron-down icon"></i> 
+          </button>
+          <div class="answer">
+   <!-----------------------------------------Kontaktkort, AKS--------------------------------------------->
+              <section class="card">
+                <div id="AKS"></div>
+              </section>
+   <!-------------------------------------------------------------------------------------------------->
+          </div>
+        </div>
+    <!-------------------------------------------------lukk accordion, AKS--------------------------------->     
+<!-------------------------------------------åpne accordion, Ergoterapeuter----------------------------------->
+        <div class="item">
+          <button class="question" onclick="toggleAccordion(this)">
+              <h2>🩺 Ergoterapeuter:</h2> 
+              <i class="fas fa-chevron-down icon"></i> 
+          </button>
+          <div class="answer">
+   <!-----------------------------------------Kontaktkort, Ergoterapeuter--------------------------------------------->
+              <section class="card">
+                <div id="ergo"></div>
+              </section>
+   <!-------------------------------------------------------------------------------------------------->
+          </div>
+        </div>
+    <!-------------------------------------------------lukk accordion, Ergoterapeuter--------------------------------->     
+<!-------------------------------------------Åpene accordion, sykepleiere----------------------------------->
+        <div class="item">
+          <button class="question" onclick="toggleAccordion(this)">
+              <h2>🩺 Fysioterapeuter:</h2> 
+              <i class="fas fa-chevron-down icon"></i> 
+          </button>
+          <div class="answer">
+   <!-----------------------------------------Kontaktkort, Fysioterapeuter--------------------------------------------->
+              <section class="card">
+                <div id="fysio"></div>
+              </section>
+   <!-------------------------------------------------------------------------------------------------->
+          </div>
+        </div>
+    <!-------------------------------------------------lukk accordion--------------------------------->     
+<!-------------------------------------------Accordion, sykepleiere----------------------------------->
         <div class="item">
           <button class="question" onclick="toggleAccordion(this)">
               <h2>🩺 Sykepleiere:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
           <div class="answer">
-   <!-----------------------------------------Kontaktkort--------------------------------------------->
+   <!-----------------------------------------Kontaktkort, sykepeleire--------------------------------------------->
               <section class="card">
                 <div id="SPL"></div>
               </section>
    <!-------------------------------------------------------------------------------------------------->
           </div>
         </div>
-         
+    <!-------------------------------------------------lukk accordion--------------------------------->     
         
           <div class="item">
             <button class="question" onclick="toggleAccordion(this)">
@@ -370,7 +432,7 @@ Search-felt
                 <i class="fas fa-chevron-down icon"></i>
             </button>
               <div class="answer">
-    <!-----------------------------------------Kontaktkort--------------------------------------------->
+    <!-----------------------------------------Kontaktkort, hjlpepleiere--------------------------------------------->
                 <section class="card">
                   <div id="HPL"></div>
                 </section>
@@ -385,7 +447,7 @@ Search-felt
             <i class="fas fa-chevron-down icon"></i>
           </button>
               <div class="answer">
-  <!----------------------------------------------Kontaktkort--------------------------------------------->
+  <!----------------------------------------------Kontaktkort, PB-------------------------------------------->
                 <section class="card">
                   <div id="PB"></div>
                 </section>

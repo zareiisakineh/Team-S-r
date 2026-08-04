@@ -357,6 +357,23 @@ const praktiskBistand = ansatte.filter(person => {
 const ekstravakt = ansatte.filter(person => {
     return person.gruppe === "Ekstravakter";
 });
+//henter alle fysioterapeuter fra ansatt.js
+const fysioterapeut = ansatte.filter(person => {
+    return person.gruppe === "fysioterapeuter";
+});
+//henter alle fysioterapeuter fra ansatt.js
+const ergoterapeut = ansatte.filter(person => {
+    return person.gruppe === "ergoterapeuter";
+});
+//henter alle fysioterapeuter fra ansatt.js
+const AKS = ansatte.filter(person => {
+    return person.gruppe === "AKS";
+});
+//henter alle ernæringsfysiologer fra ansatt.js
+const ernæringsfysiolog = ansatte.filter(person => {
+    return person.gruppe === "ernæringsfysiologer";
+});
+
 
 // Funksjon som skriver ut én gruppe
 function visGruppe(containerId, liste) {
@@ -413,6 +430,22 @@ if (document.getElementById("PB")) {
 
 if (document.getElementById("ekstravakt")) {
     visGruppe("ekstravakt", ekstravakt);
+}
+
+if (document.getElementById("fysio")) {
+    visGruppe("fysio", fysioterapeut);
+}
+
+if (document.getElementById("ergo")) {
+    visGruppe("ergo", ergoterapeut);
+}
+
+if (document.getElementById("AKS")) {
+    visGruppe("AKS", AKS);
+}
+
+if (document.getElementById("ernæringFysio")) {
+    visGruppe("ernæringFysio", ernæringsfysiolog);
 }
 
 
