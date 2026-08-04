@@ -5,12 +5,44 @@
 
 //------------------------------------------------------------------------------------------
 //------------------------------------------Kontaktliste----------------------------------
-//Lager objekter for alle ansatte---------------------------------------
+//-------------------------------Lager objekter for alle ansatte---------------------------------------
 const ansatte = [
+
+    //Ldere
+    {navn:"Saina", gruppe: "ledere", rolle:"", telefon:"", epost:"", bilde:"bilder/Saina.jpg"},
+    {navn:"Sussanna", gruppe: "ledere", rolle:"", telefon:"", epost:"", bilde:"bilder/Sussanna.jpg"},
+    {navn:"Anita", gruppe: "ledere", rolle:"", telefon:"", epost:"", bilde:"bilder/Anita.jpg"},
+    {navn:"Anne",gruppe: "ledere", rolle:"", telefon:"", epost:"", bilde:"bilder/Anne.jpg"},
+    {navn:"Natalia", gruppe: "ledere", rolle:"", telefon:"", epost:"", bilde:"bilder/Natalia.jpg"},
+   
+   // Merkantiler
+    {navn:"Silje", gruppe: "merkantiler", rolle:"", telefon:"", epost:"", bilde:"bilder/Silje.jpg"},
+    {navn:"Laila", gruppe: "merkantiler", rolle:"", telefon:"", epost:"", bilde:"bilder/Laila.jpg"},
+    {navn:"Lisbeth", gruppe: "merkantiler", rolle:"", telefon:"", epost:"", bilde:"bilder/Lisbeth.jpg"},
+    {navn:"Rodolfo", gruppe: "merkantiler", rolle:"", telefon:"", epost:"", bilde:"bilder/Rodolfo.jpg"},
+    
+     //Nattevakter
+    {navn:"Waldemar", gruppe: "nattevakter", rolle:"", telefon:"", epost:"", bilde:"bilder/Waldemar.jpg"},
+    {navn:"Sissel", gruppe: "nattevakter", rolle:"", telefon:"", epost:"", bilde:"bilder/Sissel.jpg"},
+    {navn:"Grete", gruppe: "nattevakter", rolle:"", telefon:"", epost:"", bilde:"bilder/Grete.jpg"},
+    {navn:"Dora",gruppe: "nattevakter", rolle:"", telefon:"", epost:"", bilde:"bilder/Dora.jpg"},
+    {navn:"Sheikh", gruppe: "nattevakter", rolle:"", telefon:"", epost:"", bilde:"bilder/Sheikh.jpg"},
+    
+    
+    // Vurderingsteam
+    {navn:"Ismahan", gruppe: "vurderingsteam", rolle:"", telefon:"", epost:"", bilde:"bilder/Ismahan.jpg"},
+    {navn:"Tonje", gruppe: "vurderingsteam", rolle:"", telefon:"", epost:"", bilde:"bilder/Tonje.jpg"},
+    {navn:"Ismahan", gruppe: "vurderingsteam", rolle:"", telefon:"", epost:"", bilde:"bilder/Ismahan.jpg"},
+    {navn:"Tonje", gruppe: "vurderingsteam", rolle:"", telefon:"", epost:"", bilde:"bilder/Tonje.jpg"},
+   
+    // Responssenter
+    {navn:"Pham", gruppe: "responssenter", rolle:"", telefon:"", epost:"", bilde:"bilder/Pham.jpg"},
+    {navn:"Fatima", gruppe: "responssenter", rolle:"", telefon:"", epost:"", bilde:"bilder/Fatima.jpg"},
+
     //fysioterapeuter
-    {navn:"Tarjei", gruppe: "fysioterapeuter", rolle:"", telefon:"94013611", epost:"", bilde:"bilder/Tarjei.jpg", dag: 29, måned: 3},
+    {navn:"Tarjei", gruppe: "fysioterapeuter", rolle:"", telefon:"94013611", epost:"", bilde:"bilder/Tarjei.jpg"},
     {navn:"Usama", gruppe: "fysioterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/Usama.jpg"},
-    {navn:"Anna", gruppe: "fysioterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/AnnaEliasson.jpg", dag: 14, måned: 1},
+    {navn:"Anna", gruppe: "fysioterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/AnnaEliasson.jpg"},
     {navn:"Synnøve", gruppe: "fysioterapeuter", rolle:"", telefon:"", epost:"", bilde:"bilder/Synnøve.jpg"},
 
     //Ergoterapeuter
@@ -24,7 +56,7 @@ const ansatte = [
     {navn:"Synne", gruppe: "AKS", rolle:"", telefon:"", epost:"", bilde:"bilder/Synne.jpg"},
 
     
-    //AKS
+    //ernæringsfysiologer
     {navn:"Kristiane", gruppe: "ernæringsfysiologer", rolle:"", telefon:"", epost:"", bilde:"bilder/Kristiane.jpg"},
     
     
