@@ -123,9 +123,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 document.addEventListener("DOMContentLoaded", async () => {
      const ansatte = await hentAnsatte();
+console.log("AKS:", ansatte.filter(p => p.gruppe === "AKS").length);
+console.log("Ergo:", ansatte.filter(p => p.gruppe === "ergoterapeuter").length);
+console.log("Fysio:", ansatte.filter(p => p.gruppe === "fysioterapeuter").length);
+console.log("Ernæring:", ansatte.filter(p => p.gruppe === "ernæringsfysiologer").length);
 
-    console.log("Antall ansatte:", ansatte.length);
-
+console.log(
+    ansatte.filter(
+        p => p.gruppe &&
+        (
+            p.gruppe.includes("AKS") ||
+            p.gruppe.includes("ergo") ||
+            p.gruppe.includes("fysio") ||
+            p.gruppe.includes("Ergo") ||
+            p.gruppe.includes("Fysio")
+        )
+    )
+);
     // Kontakt-kort
 // Lager fire lister ut fra gruppene:
 //henter alle sykepleiere fra ansatt.js
