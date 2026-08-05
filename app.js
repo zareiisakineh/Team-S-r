@@ -2,27 +2,39 @@ import { hentAnsatte } from "./ansatteFirestore.js";
 
 console.log("app.js loaded");
 
-function toggleAccordion(button) {
+document.addEventListener("click", (event) => {
 
-console.log("Klikk!");
-    const item = button.parentElement;
+    const button = event.target.closest(".question");
 
-    const answer = item.querySelector(".answer");
+    if (!button) return;
 
-    answer.classList.toggle("open");
+    const currentItem = button.parentElement;
+    const currentAnswer = currentItem.querySelector(".answer");
+
+
+    // Lukk alle andre
+    document.querySelectorAll(".item").forEach(item => {
+
+        if (item !== currentItem) {
+
+            item.querySelector(".answer")
+                ?.classList.remove("open");
+
+            item.querySelector(".icon")
+                ?.classList.remove("rotate");
+        }
+
+    });
+
+
+    // Åpne/lukk det som ble klikket
+    currentAnswer.classList.toggle("open");
 
     button.querySelector(".icon")
         ?.classList.toggle("rotate");
-}
-// ----------------------------------------------------------
-document.querySelectorAll(".question")
-.forEach(button => {
-
-    button.addEventListener("click", () => {
-        toggleAccordion(button);
-    });
 
 });
+
 
 /* HENT ANSATTE FRA FIRESTORE */
 const ansatte = await hentAnsatte();
