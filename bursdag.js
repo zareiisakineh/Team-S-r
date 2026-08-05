@@ -1,7 +1,10 @@
- 
- 
+ import { hentAnsatte } from "./ansatteFirestore.js";
  //Bursdagskode uten html
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", async () => {
+
+    const ansatte = await hentAnsatte();
+
+    console.log("Antall ansatte:", ansatte.length);
 
         // Automatisk gratulasjon
         const iDag = new Date();
@@ -15,7 +18,7 @@
 
         const melding = document.getElementById("bursdagMelding");
 
-        if (bursdagsbarn.length > 0) {
+        if (melding && bursdagsbarn.length > 0) {
 
             melding.innerHTML = `
                 <div class="card">
