@@ -241,7 +241,7 @@ function visGruppe(containerId, liste) {
     console.log(containerId, "viste", liste.length, "personer");
 }
 
-
+ window.toggleAccordion = toggleAccordion;
 
 if (document.getElementById("SPL")) {
     visGruppe("SPL", sykepleier);
