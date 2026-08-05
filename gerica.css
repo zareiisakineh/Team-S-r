@@ -153,7 +153,7 @@ Hjem  Print  Studenter  Prosedyrer
   font-size: 1.1rem;
 }
 
-.answer.active {
+.answer.open {
   display: block;
 }
 
@@ -165,7 +165,7 @@ Hjem  Print  Studenter  Prosedyrer
   transition: transform 0.3s;
 }
 
-.icon.open {
+.icon.rotate {
   transform: rotate(180deg);
 }
 
