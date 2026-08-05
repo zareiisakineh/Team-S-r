@@ -482,7 +482,7 @@ header {
 /*-----------------------------------------------------------------------------------------
 -------------------------------------Kontaktkort---------------------------------------------
 ---------------------------------------------------------------------------------------------*/
-#ekstravakt, #SPL, #HPL, #PB, #fysio, #ergo, #AKS, #ernæringFysio, #leder, #merkantil, #nattevakt, #vurderingsteam, #respossenter{
+#ekstravakt, #SPL, #HPL, #PB, #fysio, #ergo, #AKS, #ernæringFysio, #leder, #merkantil, #nattevakt, #vurderingsteam, #responssenter{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
