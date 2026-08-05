@@ -1,3 +1,5 @@
+ 
+ 
  //Bursdagskode uten html
     document.addEventListener("DOMContentLoaded", () => {
 
@@ -40,6 +42,9 @@
         "November",
         "Desember"
     ];
+//test
+
+
 
     for (let måned = 1; måned <= 12; måned++) {
 
@@ -51,7 +56,7 @@
 
         let html = `
             <div class="item">
-                <button class="question" onclick="toggleAccordion(this)">
+                <button class="question">
                     <h3>${månedsNavn[måned - 1]}</h3>
                     <i class="fas fa-chevron-down icon"></i>
                 </button>
@@ -77,7 +82,24 @@
 
         container.innerHTML += html;
     }
+document.querySelectorAll(".question")
+.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        console.log("Klikk registrert");
+
+        const item = button.parentElement;
+        const answer = item.querySelector(".answer");
+
+        answer.classList.toggle("open");
+
+        button.querySelector(".icon")
+              ?.classList.toggle("rotate");
+    });
+
+});
 
 
     });
-    
+  
