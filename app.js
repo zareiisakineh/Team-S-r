@@ -50,60 +50,63 @@ const khirad = ansatte.find(
     person => person.navn === "Khirad"
 );
 
-console.log(khirad);
 // Kontakt-kort
 // Lager fire lister ut fra gruppene:
 //henter alle sykepleiere fra firestore
 const sykepleier = ansatte.filter(person => {
     return  person.gruppe === "Sykepleiere";
 });
-//henter alle Helsefagarbeidere fra ansatt.js
+//henter alle Helsefagarbeidere fra firestore
 const hjelpepleier = ansatte.filter(person => {
     return  person.gruppe === "Helsefagarbeidere";
 });
-//henter alle i praktisk bistand fra ansatt.js
+//henter alle i praktisk bistand fra firestore
 const praktiskBistand = ansatte.filter(person => {
     return  person.gruppe === "PraktiskBistand";
 });
-//henter alle ekstravakter fra ansatt.js
+//henter alle ekstravakter fra firestore
 const ekstravakt = ansatte.filter(person => {
     return  person.gruppe === "Ekstravakter";
 });
-//henter alle fysioterapeuter fra ansatt.js
+//henter alle fysioterapeuter fra firestore
 const fysioterapeut = ansatte.filter(person => {
     return  person.gruppe === "fysioterapeuter";
 });
-//henter alle fysioterapeuter fra ansatt.js
+//henter alle fysioterapeuter fra firestore
 const ergoterapeut = ansatte.filter(person => {
     return  person.gruppe === "ergoterapeuter";
 });
-//henter alle fysioterapeuter fra ansatt.js
+//henter alle fysioterapeuter fra firestore
 const AKS = ansatte.filter(person => {
     return  person.gruppe === "AKS";
 });
-//henter alle ernæringsfysiologer fra ansatt.js
+//henter alle ernæringsfysiologer fra firestore
 const ernæringsfysiolog = ansatte.filter(person => {
     return  person.gruppe === "ernæringsfysiologer";
 });
-//henter alle ledere fra ansatt.js
+//henter alle ledere fra firestore
 const leder = ansatte.filter(person => {
     return  person.gruppe === "ledere";
 });
-//henter alle merkantiler fra ansatt.js
+//henter alle merkantiler fra firestore
 const merkantil = ansatte.filter(person => {
     return  person.gruppe === "merkantiler";
 });
-//henter alle nattevakter fra ansatt.js
+//henter alle nattevakter fra firestore
 const nattevakt = ansatte.filter(person => {
     return  person.gruppe === "nattevakter";
 });
-//henter alle vurderingsteam fra ansatt.js
+//henter alle vurderingsteam fra firestore
 const vurderingsteam = ansatte.filter(person => {
     return  person.gruppe === "vurderingsteam";
 });
-//henter alle responssenter fra ansatt.js
+//henter alle responssenter fra firestore
 const responssenter = ansatte.filter(person => {
     return  person.gruppe === "responssenter";
+});
+//henter alle fagsykepleiere fra firestore
+const fagsykepleier = ansatte.filter(person => {
+    return  person.gruppe === "fagsykepleiere";
 });
 
 
@@ -204,6 +207,10 @@ if (document.getElementById("vurderingsteam")) {
 
 if (document.getElementById("responssenter")) {
     visGruppe("responssenter", responssenter);
+}
+
+if (document.getElementById("fagSPL")) {
+    visGruppe("fagSPL", fagsykepleier);
 }
 
 // ----------------------------------------------------------

@@ -482,11 +482,13 @@ header {
 /*-----------------------------------------------------------------------------------------
 -------------------------------------Kontaktkort---------------------------------------------
 ---------------------------------------------------------------------------------------------*/
-#ekstravakt, #SPL, #HPL, #PB, #fysio, #ergo, #AKS, #ernæringFysio, #leder, #merkantil, #nattevakt, #vurderingsteam, #responssenter{
+#ekstravakt, #SPL, #HPL, #PB, #fysio, #ergo, #AKS, #ernæringFysio, #leder, #merkantil, #nattevakt, #vurderingsteam, #responssenter, #fagSPL{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
+   
 }
+ 
 .ansattKort{
     background:white;
     border-radius:12px;
