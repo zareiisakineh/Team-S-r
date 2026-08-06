@@ -9,8 +9,28 @@ function toggleAccordion(button) {
 
     const answer = item.querySelector(".answer");
 
+    // Lukk alle andre trekkspill
+    document.querySelectorAll(".answer").forEach(element => {
+
+        if (element !== answer) {
+            element.classList.remove("open");
+        }
+
+    });
+
+    // Tilbakestill alle andre piler
+    document.querySelectorAll(".icon").forEach(icon => {
+
+        if (icon !== button.querySelector(".icon")) {
+            icon.classList.remove("rotate");
+        }
+
+    });
+
+    // Åpne/lukk valgt trekkspill
     answer.classList.toggle("open");
 
+    // Roter pilen
     button.querySelector(".icon")
         ?.classList.toggle("rotate");
 }
