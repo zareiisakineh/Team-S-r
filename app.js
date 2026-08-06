@@ -1,53 +1,36 @@
 import { hentAnsatte } from "./ansatteFirestore.js";
 
+
 console.log("app.js loaded");
 
 function toggleAccordion(button) {
 
-    console.log("Klikk!");
-
     const item = button.parentElement;
+
     const answer = item.querySelector(".answer");
 
-    // Er dette trekkspillet allerede åpent?
-    const erÅpen = answer.classList.contains("open");
+    answer.classList.toggle("open");
 
-    // Lukk alle trekkspill
-    document.querySelectorAll(".answer").forEach(a => {
-        a.classList.remove("open");
-    });
-
-    document.querySelectorAll(".icon").forEach(icon => {
-        icon.classList.remove("rotate");
-    });
-
-    // Åpne bare hvis det ikke allerede var åpent
-    if (!erÅpen) {
-        answer.classList.add("open");
-
-        button.querySelector(".icon")
-            ?.classList.add("rotate");
-    }
+    button.querySelector(".icon")
+        ?.classList.toggle("rotate");
 }
-
-
-
+// ----------------------------------------------------------
 document.querySelectorAll(".question")
 .forEach(button => {
 
     button.addEventListener("click", () => {
         toggleAccordion(button);
     });
-    
 
 });
 
-
 /* HENT ANSATTE FRA FIRESTORE */
 const ansatte = await hentAnsatte();
-// test for å se nøyaktig hvilke gruppenavn som finnes i databasen
-console.log(ansatte.map(a => a.gruppe));
+const khirad = ansatte.find(
+    person => person.navn === "Khirad"
+);
 
+console.log(khirad);
 // Kontakt-kort
 // Lager fire lister ut fra gruppene:
 //henter alle sykepleiere fra firestore
