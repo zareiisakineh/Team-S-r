@@ -2,36 +2,43 @@ import { hentAnsatte } from "./ansatteFirestore.js";
 
 console.log("app.js loaded");
 
-document.addEventListener("click", (event) => {
+function toggleAccordion(button) {
 
-    const button = event.target.closest(".question");
+    console.log("Klikk!");
 
-    if (!button) return;
+    const item = button.parentElement;
+    const answer = item.querySelector(".answer");
 
-    const currentItem = button.parentElement;
-    const currentAnswer = currentItem.querySelector(".answer");
+    // Er dette trekkspillet allerede åpent?
+    const erÅpen = answer.classList.contains("open");
 
-
-    // Lukk alle andre
-    document.querySelectorAll(".item").forEach(item => {
-
-        if (item !== currentItem) {
-
-            item.querySelector(".answer")
-                ?.classList.remove("open");
-
-            item.querySelector(".icon")
-                ?.classList.remove("rotate");
-        }
-
+    // Lukk alle trekkspill
+    document.querySelectorAll(".answer").forEach(a => {
+        a.classList.remove("open");
     });
 
+    document.querySelectorAll(".icon").forEach(icon => {
+        icon.classList.remove("rotate");
+    });
 
-    // Åpne/lukk det som ble klikket
-    currentAnswer.classList.toggle("open");
+    // Åpne bare hvis det ikke allerede var åpent
+    if (!erÅpen) {
+        answer.classList.add("open");
 
-    button.querySelector(".icon")
-        ?.classList.toggle("rotate");
+        button.querySelector(".icon")
+            ?.classList.add("rotate");
+    }
+}
+
+
+
+document.querySelectorAll(".question")
+.forEach(button => {
+
+    button.addEventListener("click", () => {
+        toggleAccordion(button);
+    });
+    
 
 });
 
