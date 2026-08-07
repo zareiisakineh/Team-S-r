@@ -1,51 +1,48 @@
- import { hentAnsatte } from "./ansatteFirestore.js";
- //Bursdagskode uten html
-    document.addEventListener("DOMContentLoaded", async () => {
+import { hentAnsatte } from "./ansatteFirestore.js";
+
+document.addEventListener("DOMContentLoaded", async () => {
 
     const ansatte = await hentAnsatte();
 
-console.log("Antall ansatte:", ansatte.length);
+    console.log("Antall ansatte:", ansatte.length);
 
+    const iDag = new Date();
+    const dag = iDag.getDate();
+    const måned = iDag.getMonth() + 1;
 
-const iDag = new Date();
-const dag = iDag.getDate();
-const måned = iDag.getMonth() + 1;
+    console.log("Dagens dato:", dag, måned);
 
-
-console.log("Dagens dato:", dag, måned);
-
-console.log(
-    ansatte.map(person => ({
-        navn: person.navn,
-        dag: person.dag,
-        måned: person.måned
-    }))
-);
-
-// Finn dagens bursdager
-const bursdagsbarn = ansatte.filter(
-    person =>
+    const bursdagsbarn = ansatte.filter(person =>
         Number(person.dag) === dag &&
         Number(person.måned) === måned
-);
+    );
 
-console.log("Bursdagsbarn i dag:", bursdagsbarn);
+    console.log("Bursdagsbarn i dag:", bursdagsbarn);
 
-// vise melding
-        const melding = document.getElementById("bursdagMelding");
+    const melding = document.getElementById("bursdagMelding");
+    const whatsappKnapp = document.getElementById("sendWhatsapp");
 
-        if (melding && bursdagsbarn.length > 0) {
+    if (melding && bursdagsbarn.length > 0) {
 
-            melding.innerHTML = `
-                <div class="card">
-                    🎂 Gratulerer med dagen til
-                    <strong>${bursdagsbarn.map(p => p.navn).join(", ")}</strong>
-                    🎉
-                </div>
-            `;
+        melding.innerHTML = `
+            <div class="card">
+                🎂 Gratulerer med dagen til
+                <strong>${bursdagsbarn.map(p => p.navn).join(", ")}</strong>
+                🎉
+            </div>
+        `;
+
+        melding.classList.add("vis");
+
+        if (whatsappKnapp) {
+            whatsappKnapp.classList.add("vis");
         }
+    }
 
-            const container = document.getElementById("bursdagsKalender");
+    const container =
+        document.getElementById("bursdagsKalender");
+
+    if (!container) return;
 
     const månedsNavn = [
         "Januar",
@@ -61,14 +58,13 @@ console.log("Bursdagsbarn i dag:", bursdagsbarn);
         "November",
         "Desember"
     ];
-//test
 
-
+    container.innerHTML = "";
 
     for (let måned = 1; måned <= 12; måned++) {
 
         const personer = ansatte.filter(
-            person => person.måned === måned
+            person => Number(person.måned) === måned
         );
 
         if (personer.length === 0) continue;
@@ -84,11 +80,20 @@ console.log("Bursdagsbarn i dag:", bursdagsbarn);
                     <div class="bilder">
         `;
 
-        personer.sort((a, b) => a.dag - b.dag).forEach(person => {
+        personer
+            .sort((a, b) => a.dag - b.dag)
+            .forEach(person => {
+
                 html += `
                     <div class="person">
-                        <img src="${person.bilde}" alt="${person.navn}">
-                        <h3>${person.navn} - ${person.dag}. ${månedsNavn[måned - 1]}</h3>
+                        <img src="${person.bilde}"
+                             alt="${person.navn}"
+                             onerror="this.src='images/logo-192.png'">
+
+                        <h3>
+                            ${person.navn} -
+                            ${person.dag}. ${månedsNavn[måned - 1]}
+                        </h3>
                     </div>
                 `;
             });
@@ -101,48 +106,26 @@ console.log("Bursdagsbarn i dag:", bursdagsbarn);
 
         container.innerHTML += html;
     }
-    
-document.querySelectorAll(".question")
-.forEach(button => {
 
-    button.addEventListener("click", () => {
+    document
+        .querySelectorAll(".question")
+        .forEach(button => {
 
-        console.log("Klikk registrert");
+            button.addEventListener("click", () => {
 
-        const item = button.parentElement;
-        const answer = item.querySelector(".answer");
+                const item =
+                    button.parentElement;
 
-        answer.classList.toggle("open");
+                const answer =
+                    item.querySelector(".answer");
 
-        button.querySelector(".icon")
-              ?.classList.toggle("rotate");
-    });
+                answer.classList.toggle("open");
+
+                button
+                    .querySelector(".icon")
+                    ?.classList.toggle("rotate");
+            });
+
+        });
 
 });
-
-
-    });
-  
-    //deler bursdagsmelding på whatsapp 
-const whatsappKnapp =
-document.getElementById("sendWhatsapp");
-
-if (whatsappKnapp) {
-
-    whatsappKnapp.addEventListener("click", () => {
-
-        const whatsappMelding =
-            "🎂 Gratulerer med dagen kjære " +
-            navn.join(" og ") +
-            "!\n\n" +
-            "Alle oss i Team Sør ønsker deg en fantastisk dag fylt med glede, smil og kake! 🎂❤️";
-
-        const url =
-            "https://wa.me/?text=" +
-            encodeURIComponent(whatsappMelding);
-
-        window.open(url, "_blank");
-
-    });
-
-}
