@@ -310,51 +310,56 @@ if ("serviceWorker" in navigator) {
     });
 
 }
-//Knappen vises bare når installasjon er mulig.
+//Knappen sombrukes til å installere app.
 let deferredPrompt;
 
-window.addEventListener("beforeinstallprompt", (event) => {
+const installButton =
+document.getElementById("installApp");
 
-    event.preventDefault();
+window.addEventListener(
+    "beforeinstallprompt",
+    (e) => {
 
-    deferredPrompt = event;
+        e.preventDefault();
 
-   const installBtn = document.getElementById("installApp");
+        deferredPrompt = e;
 
-if (installBtn) {
-    installBtn.hidden = false;
-}
+        installButton.hidden = false;
+    }
+);
+installButton.addEventListener(
+    "click",
+    async () => {
 
-});
+        if (!deferredPrompt) return;
 
-const installBtn = document.getElementById("installApp");
+        deferredPrompt.prompt();
 
-if (installBtn) {
-
-    installBtn.addEventListener("click", async () => {
-
-        if (!deferredPrompt) {
-
-            deferredPrompt.prompt();
-
+        const result =
             await deferredPrompt.userChoice;
 
-            deferredPrompt = null;
+        if(result.outcome === "accepted"){
 
-            installBtn.hidden = true;
-
-        } else {
-
-            alert(
-                "For å installere appen:\n\n" +
-                "Trykk på ⋮ øverst i Chrome og velg 'Installer app'."
+            console.log(
+                "Brukeren installerte appen"
             );
 
         }
 
-    });
+        deferredPrompt = null;
 
-}
+        installButton.hidden = true;
+    }
+); 
 
+// Skjuler knappen etter installasjon
+window.addEventListener(
+    "appinstalled",
+    () => {
 
+        installButton.hidden = true;
 
+        console.log("App installert");
+
+    }
+);
