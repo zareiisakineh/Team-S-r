@@ -356,7 +356,7 @@ if (installBtn) {
 
     installBtn.addEventListener("click", async () => {
 
-        if (deferredPrompt) {
+        if (!deferredPrompt) {
 
             deferredPrompt.prompt();
 
