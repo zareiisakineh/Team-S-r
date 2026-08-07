@@ -396,21 +396,7 @@ header {
     box-shadow: 0 3px 8px rgba(0,0,0,.15);
 }
 
-#bursdagMelding{
-    display:none;
-}
 
-#bursdagMelding.vis{
-    display:block;
-}
-
-#sendWhatsapp{
-    display:none;
-}
-
-#sendWhatsapp.vis{
-    display:inline-block;
-}
  /*Knapp for å dele bursdagshilsen på WhatsApp*/ 
 #sendWhatsapp{
   display: none;
@@ -449,6 +435,22 @@ header {
 .button-container{
     text-align: center;
     margin-top: 30px;
+}
+
+#bursdagMelding{
+    display:none;
+}
+
+#bursdagMelding.vis{
+    display:block;
+}
+
+#sendWhatsapp{
+    display:none;
+}
+
+#sendWhatsapp.vis{
+    display:inline-block;
 }
 
 /*------------------------Install-app knappen-------------------------------------------
