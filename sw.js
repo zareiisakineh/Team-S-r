@@ -5,7 +5,9 @@ const FILES = [
     "./index.html",
     "./gerica.css",
     "./app.js",
-    "./manifest.json"
+    "./manifest.json",
+    "./images/logo-192.png",
+    "./images/logo-512.png"
 ];
 
 self.addEventListener("install", event => {
