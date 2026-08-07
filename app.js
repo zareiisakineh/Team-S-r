@@ -356,20 +356,28 @@ if (installBtn) {
 
     installBtn.addEventListener("click", async () => {
 
-        if (!deferredPrompt) return;
+        if (deferredPrompt) {
 
-        deferredPrompt.prompt();
+            deferredPrompt.prompt();
 
-        await deferredPrompt.userChoice;
+            await deferredPrompt.userChoice;
 
-        deferredPrompt = null;
+            deferredPrompt = null;
 
-        installBtn.hidden = true;
+            installBtn.hidden = true;
+
+        } else {
+
+            alert(
+                "For å installere appen:\n\n" +
+                "Trykk på ⋮ øverst i Chrome og velg 'Installer app'."
+            );
+
+        }
+
     });
 
 }
-
-
 
 
 
