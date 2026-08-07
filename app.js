@@ -109,7 +109,6 @@ const fagsykepleier = ansatte.filter(person => {
     return  person.gruppe === "fagsykepleiere";
 });
 
-
  // ----------------------------
     // Vis ansatte
     // ----------------------------
