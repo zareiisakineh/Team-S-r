@@ -274,8 +274,6 @@ if (document.getElementById("fagSPL")) {
 
     }
 
-
-
 //for søkeboksen
 window.addEventListener("load", () => {
 
