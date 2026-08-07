@@ -109,7 +109,6 @@ const fagsykepleier = ansatte.filter(person => {
     return  person.gruppe === "fagsykepleiere";
 });
 
-
  // ----------------------------
     // Vis ansatte
     // ----------------------------
@@ -274,8 +273,6 @@ if (document.getElementById("fagSPL")) {
         });
 
     }
-
-
 
 //for søkeboksen
 window.addEventListener("load", () => {
