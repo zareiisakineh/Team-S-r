@@ -4,18 +4,34 @@
 
     const ansatte = await hentAnsatte();
 
-    console.log("Antall ansatte:", ansatte.length);
+console.log("Antall ansatte:", ansatte.length);
 
-        // Automatisk gratulasjon
-        const iDag = new Date();
-        const dag = iDag.getDate();
-        const måned = iDag.getMonth() + 1;
 
-        const bursdagsbarn = ansatte.filter(
-            person => person.dag === dag &&
-                    person.måned === måned
-        );
+const iDag = new Date();
+const dag = iDag.getDate();
+const måned = iDag.getMonth() + 1;
 
+
+console.log("Dagens dato:", dag, måned);
+
+console.log(
+    ansatte.map(person => ({
+        navn: person.navn,
+        dag: person.dag,
+        måned: person.måned
+    }))
+);
+
+// Finn dagens bursdager
+const bursdagsbarn = ansatte.filter(
+    person =>
+        Number(person.dag) === dag &&
+        Number(person.måned) === måned
+);
+
+console.log("Bursdagsbarn i dag:", bursdagsbarn);
+
+// vise melding
         const melding = document.getElementById("bursdagMelding");
 
         if (melding && bursdagsbarn.length > 0) {
@@ -85,6 +101,7 @@
 
         container.innerHTML += html;
     }
+    
 document.querySelectorAll(".question")
 .forEach(button => {
 
@@ -106,3 +123,26 @@ document.querySelectorAll(".question")
 
     });
   
+    //deler bursdagsmelding på whatsapp 
+const whatsappKnapp =
+document.getElementById("sendWhatsapp");
+
+if (whatsappKnapp) {
+
+    whatsappKnapp.addEventListener("click", () => {
+
+        const whatsappMelding =
+            "🎂 Gratulerer med dagen kjære " +
+            navn.join(" og ") +
+            "!\n\n" +
+            "Alle oss i Team Sør ønsker deg en fantastisk dag fylt med glede, smil og kake! 🎂❤️";
+
+        const url =
+            "https://wa.me/?text=" +
+            encodeURIComponent(whatsappMelding);
+
+        window.open(url, "_blank");
+
+    });
+
+}

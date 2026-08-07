@@ -296,29 +296,6 @@ window.addEventListener("load", () => {
 
 });
 
-//deler bursdagsmelding på whatsapp 
-const whatsappKnapp =
-document.getElementById("sendWhatsapp");
-
-if (whatsappKnapp) {
-
-    whatsappKnapp.addEventListener("click", () => {
-
-        const whatsappMelding =
-            "🎂 Gratulerer med dagen kjære " +
-            navn.join(" og ") +
-            "!\n\n" +
-            "Alle oss i Team Sør ønsker deg en fantastisk dag fylt med glede, smil og kake! 🎂❤️";
-
-        const url =
-            "https://wa.me/?text=" +
-            encodeURIComponent(whatsappMelding);
-
-        window.open(url, "_blank");
-
-    });
-
-}
 
 // Installer-knappen 
 //Registrer service worker
