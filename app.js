@@ -439,36 +439,50 @@ if ("serviceWorker" in navigator) {
 
 const installButton = document.getElementById("installApp");
 
-if (installButton) {
+    if (installButton) {
 
-    installButton.hidden = false;
+        installButton.hidden = false;
 
-    installButton.addEventListener("click", () => {
+        installButton.addEventListener("click", () => {
 
-        alert(
-`📲 Installer Team Sør
+            alert(`📲 Installer Team Sør
 
-ANDROID – Chrome:
-1. Trykk på ⋮ øverst til høyre.
-2. Velg «Legg til på startskjermen»
-   eller «Installer app».
-3. Trykk «Installer».
+            ANDROID – Chrome:
 
-IPHONE / IPAD – Safari:
-1. Trykk på Del-knappen ↗️.
-2. Velg «Legg til på Hjem-skjerm».
-3. Trykk «Legg til».
+            1. Trykk på ⋮ øverst til høyre.
+            2. Velg «Legg til på startskjermen»
+            eller «Installer app».
+            3. Trykk «Installer».
 
-PC – Chrome:
-1. Trykk på ⋮ øverst til høyre.
-2. Velg «Installer Team Sør»
-   eller «Lagre og del» → «Installer Team Sør».
-3. Trykk «Installer».
+            ANDROID – Brave:
 
-Hvis du ikke ser «Installer»:
-Siden kan fortsatt brukes som vanlig nettside.`
-        );
+            1. Trykk på ⋮ øverst til høyre.
+            2. Velg «Installer app»
+            eller «Legg til på startskjermen».
+            3. Trykk «Installer».
 
-    });
+            IPHONE / IPAD – Safari:
 
-}
+            1. Trykk på Del-knappen ↗️.
+            2. Velg «Legg til på Hjem-skjerm».
+            3. Trykk «Legg til».
+
+            PC – Chrome:
+
+            1. Trykk på ⋮ øverst til høyre.
+            2. Velg «Installer Team Sør»
+            eller «Lagre og del» → «Installer Team Sør».
+            3. Trykk «Installer».
+
+            PC – Brave:
+
+            1. Trykk på ≡ øverst til høyre.
+            2. Velg «Installer Team Sør».
+            3. Trykk «Installer».
+
+            Hvis du ikke ser «Installer»:
+            Siden kan fortsatt brukes som vanlig nettside.
+            `);
+                });
+
+    }
