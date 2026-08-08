@@ -436,33 +436,135 @@ if ("serviceWorker" in navigator) {
 // INSTALLER APP
 // ==========================================================
 
+let deferredPrompt = null;
+
 const installButton = document.getElementById("installApp");
 
+console.log("installButton:", installButton);
+
+
+// ==========================================================
+// PC / ANDROID CHROME - INSTALLASJON
+// ==========================================================
+
+window.addEventListener("beforeinstallprompt", (event) => {
+
+    console.log("INSTALL EVENT FUNNET");
+
+    event.preventDefault();
+
+    deferredPrompt = event;
+
+    if (installButton) {
+        installButton.hidden = false;
+        console.log("Installer-knappen er synlig.");
+    }
+
+});
+
+
+// ==========================================================
+// KLIKK PÅ INSTALLER
+// ==========================================================
+
 if (installButton) {
-    installButton.addEventListener("click", () => {
 
-       alert(
-  "📲 Installer Team Sør\n\n" +
+    installButton.addEventListener("click", async () => {
 
-  "🤖 ANDROID:\n" +
-  "1. Åpne Team Sør i Chrome.\n" +
-  "2. Trykk på ⋮ øverst til høyre.\n" +
-  "3. Velg «Legg til på startskjermen» eller «Installer app».\n" +
-  "4. Trykk «Installer».\n\n" +
+        // --------------------------------------------------
+        // Hvis Chrome har gitt oss installasjonsdialogen
+        // --------------------------------------------------
 
-  "🍎 iPHONE / iPAD:\n" +
-  "1. Åpne Team Sør i Safari.\n" +
-  "2. Trykk på Del-knappen ⬆️.\n" +
-  "3. Velg «Legg til på Hjem-skjerm».\n" +
-  "4. Trykk «Legg til».\n\n" +
+        if (deferredPrompt) {
 
-  "💻 PC:\n" +
-  "1. Åpne Team Sør i Chrome eller Edge.\n" +
-  "2. Se etter et installasjonsikon ⊕ i adressefeltet.\n" +
-  "3. Trykk på ikonet og velg «Installer».\n\n" +
+            console.log("Starter installasjon...");
 
-  "Hvis installasjonsikonet ikke vises på PC, kan du bruke nettsiden direkte i nettleseren."
-);
+            deferredPrompt.prompt();
+
+            const result = await deferredPrompt.userChoice;
+
+            console.log(
+                "Installasjonsvalg:",
+                result.outcome
+            );
+
+            deferredPrompt = null;
+
+            return;
+        }
+
+
+        // --------------------------------------------------
+        // MOBIL / IOS
+        // --------------------------------------------------
+
+        const isIOS =
+            /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        const isAndroid =
+            /Android/i.test(navigator.userAgent);
+
+
+        if (isIOS) {
+
+            alert(
+                "📱 Installer Team Sør på iPhone/iPad\n\n" +
+
+                "1. Trykk på Del-knappen ⬆️ nederst eller øverst i Safari.\n\n" +
+
+                "2. Bla nedover i menyen.\n\n" +
+
+                "3. Velg «Legg til på Hjem-skjerm».\n\n" +
+
+                "4. Trykk «Legg til».\n\n" +
+
+                "Team Sør blir da lagt til på Hjem-skjermen."
+            );
+
+            return;
+        }
+
+
+        // --------------------------------------------------
+        // ANDROID
+        // --------------------------------------------------
+
+        if (isAndroid) {
+
+            alert(
+                "📱 Installer Team Sør på Android\n\n" +
+
+                "1. Trykk på ⋮ menyen øverst til høyre i Chrome.\n\n" +
+
+                "2. Velg «Installer app» eller «Legg til på startskjermen».\n\n" +
+
+                "3. Trykk «Installer».\n\n" +
+
+                "Team Sør blir da lagt til på startskjermen."
+            );
+
+            return;
+        }
+
+
+        // --------------------------------------------------
+        // PC
+        // --------------------------------------------------
+
+        alert(
+            "💻 Installer Team Sør på PC\n\n" +
+
+            "Hvis installasjonsknappen ikke vises automatisk:\n\n" +
+
+            "1. Åpne Team Sør i Chrome eller Edge.\n\n" +
+
+            "2. Se etter et installasjonsikon ⊕ i adressefeltet.\n\n" +
+
+            "3. Klikk på ikonet og velg «Installer».\n\n" +
+
+            "Du kan også åpne nettlesermenyen ⋮ og velge «Installer Team Sør»."
+        );
 
     });
+
 }
