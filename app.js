@@ -1,17 +1,37 @@
-//Når siden åpnes, hentes funksjonen hentAnsatte() fra firestore.
+// ==========================================================
+// TEAM SØR - app.js
+// ==========================================================
+
+console.log("app.js loaded");
+
+// ----------------------------------------------------------
+// HENT ANSATTE FRA FIRESTORE
+// ----------------------------------------------------------
 
 import { hentAnsatte } from "./ansatteFirestore.js";
 
-//Dette er bare for testing. Når filen lastes inn, vises: app.js loaded
-console.log("app.js loaded");
-// Lager funksjonen toggleAccordion(). Når brukeren klikker på: <button class="question"> skjer dette:: 
+
+// ==========================================================
+// TREKKSPILL
+// ==========================================================
 
 function toggleAccordion(button) {
-// Finner tilhørende svarfelt
+
+    // Finn tilhørende item
     const item = button.parentElement;
+
+    // Finn svarfeltet
     const answer = item.querySelector(".answer");
 
-    // Lukk alle andre trekkspill
+    if (!answer) {
+        console.warn("Fant ikke .answer for trekkspill:", button);
+        return;
+    }
+
+    // ------------------------------------------------------
+    // Lukk alle andre svar
+    // ------------------------------------------------------
+
     document.querySelectorAll(".answer").forEach(element => {
 
         if (element !== answer) {
@@ -20,7 +40,10 @@ function toggleAccordion(button) {
 
     });
 
-    // Tilbakestill alle andre piler. Fjerner: rotate fra alle pilene.
+    // ------------------------------------------------------
+    // Fjern rotasjon fra alle andre piler
+    // ------------------------------------------------------
+
     document.querySelectorAll(".icon").forEach(icon => {
 
         if (icon !== button.querySelector(".icon")) {
@@ -29,17 +52,30 @@ function toggleAccordion(button) {
 
     });
 
-    // Åpne/lukk valgt trekkspill: 
-    // Hvis det er lukket → åpnes. Hvis det er åpent → lukkes.
+    // ------------------------------------------------------
+    // Åpne / lukk valgt trekkspill
+    // ------------------------------------------------------
+
     answer.classList.toggle("open");
 
-    // Roter pilen
-    button.querySelector(".icon")
-        ?.classList.toggle("rotate");
+    // ------------------------------------------------------
+    // Roter pil
+    // ------------------------------------------------------
+
+    const icon = button.querySelector(".icon");
+
+    if (icon) {
+        icon.classList.toggle("rotate");
+    }
+
 }
-// Finner alle trekkspillknapper.----------------------------------------------------------
-document.querySelectorAll(".question")
-.forEach(button => {
+
+
+// ----------------------------------------------------------
+// Aktiver alle trekkspillknapper
+// ----------------------------------------------------------
+
+document.querySelectorAll(".question").forEach(button => {
 
     button.addEventListener("click", () => {
         toggleAccordion(button);
@@ -47,106 +83,124 @@ document.querySelectorAll(".question")
 
 });
 
-/* HENT ANSATTE FRA FIRESTORE */
-//Denne linjen: Denne linjen: 1. Kobler til Firestore 2. Leser alle ansatte 3. Lagrer dem i variabelen: ansatte
+
+// ==========================================================
+// FIRESTORE - HENT ANSATTE
+// ==========================================================
+
 const ansatte = await hentAnsatte();
 
-// Kontakt-kort
-// Lager fire lister ut fra gruppene:
-//henter alle sykepleiere fra firestore
-const sykepleier = ansatte.filter(person => {
-    return  person.gruppe === "Sykepleiere";
-});
-//henter alle Helsefagarbeidere fra firestore
-const hjelpepleier = ansatte.filter(person => {
-    return  person.gruppe === "Helsefagarbeidere";
-});
-//henter alle i praktisk bistand fra firestore
-const praktiskBistand = ansatte.filter(person => {
-    return  person.gruppe === "PraktiskBistand";
-});
-//henter alle ekstravakter fra firestore
-const ekstravakt = ansatte.filter(person => {
-    return  person.gruppe === "Ekstravakter";
-});
-//henter alle fysioterapeuter fra firestore
-const fysioterapeut = ansatte.filter(person => {
-    return  person.gruppe === "fysioterapeuter";
-});
-//henter alle fysioterapeuter fra firestore
-const ergoterapeut = ansatte.filter(person => {
-    return  person.gruppe === "ergoterapeuter";
-});
-//henter alle fysioterapeuter fra firestore
-const AKS = ansatte.filter(person => {
-    return  person.gruppe === "AKS";
-});
-//henter alle ernæringsfysiologer fra firestore
-const ernæringsfysiolog = ansatte.filter(person => {
-    return  person.gruppe === "ernæringsfysiologer";
-});
-//henter alle ledere fra firestore
-const leder = ansatte.filter(person => {
-    return  person.gruppe === "ledere";
-});
-//henter alle merkantiler fra firestore
-const merkantil = ansatte.filter(person => {
-    return  person.gruppe === "merkantiler";
-});
-//henter alle nattevakter fra firestore
-const nattevakt = ansatte.filter(person => {
-    return  person.gruppe === "nattevakter";
-});
-//henter alle vurderingsteam fra firestore
-const vurderingsteam = ansatte.filter(person => {
-    return  person.gruppe === "vurderingsteam";
-});
-//henter alle responssenter fra firestore
-const responssenter = ansatte.filter(person => {
-    return  person.gruppe === "responssenter";
-});
-//henter alle fagsykepleiere fra firestore
-const fagsykepleier = ansatte.filter(person => {
-    return  person.gruppe === "fagsykepleiere";
-});
+console.log("Antall ansatte:", ansatte.length);
 
- // ----------------------------
-    // Vis ansatte
-    // ----------------------------
-// Funksjon som skriver ut én gruppe. brukes til å vise ansatte på siden.
+
+// ==========================================================
+// DEL ANSATTE INN I GRUPPER
+// ==========================================================
+
+const sykepleier = ansatte.filter(person =>
+    person.gruppe === "Sykepleiere"
+);
+
+const hjelpepleier = ansatte.filter(person =>
+    person.gruppe === "Helsefagarbeidere"
+);
+
+const praktiskBistand = ansatte.filter(person =>
+    person.gruppe === "PraktiskBistand"
+);
+
+const ekstravakt = ansatte.filter(person =>
+    person.gruppe === "Ekstravakter"
+);
+
+const fysioterapeut = ansatte.filter(person =>
+    person.gruppe === "fysioterapeuter"
+);
+
+const ergoterapeut = ansatte.filter(person =>
+    person.gruppe === "ergoterapeuter"
+);
+
+const AKS = ansatte.filter(person =>
+    person.gruppe === "AKS"
+);
+
+const ernæringsfysiolog = ansatte.filter(person =>
+    person.gruppe === "ernæringsfysiologer"
+);
+
+const leder = ansatte.filter(person =>
+    person.gruppe === "ledere"
+);
+
+const merkantil = ansatte.filter(person =>
+    person.gruppe === "merkantiler"
+);
+
+const nattevakt = ansatte.filter(person =>
+    person.gruppe === "nattevakter"
+);
+
+const vurderingsteam = ansatte.filter(person =>
+    person.gruppe === "vurderingsteam"
+);
+
+const responssenter = ansatte.filter(person =>
+    person.gruppe === "responssenter"
+);
+
+const fagsykepleier = ansatte.filter(person =>
+    person.gruppe === "fagsykepleiere"
+);
+
+
+// ==========================================================
+// VIS ANSATTE
+// ==========================================================
+
 function visGruppe(containerId, liste) {
 
     const container = document.getElementById(containerId);
-// For hver person bygges HTML.
+
+    // Hvis containeren ikke finnes på denne siden,
+    // gjør vi ingenting.
+    if (!container) {
+        return;
+    }
+
+    // Tøm containeren før vi legger inn ansatte
+    container.innerHTML = "";
+
+    // Legg inn hver person
     liste.forEach(person => {
 
         container.innerHTML += `
-        
-        <div class="ansattKort">
 
-            <h3>${person.navn}</h3>
+            <div class="ansattKort">
 
-            <p>${person.rolle}</p>
+                <h3>${person.navn ?? ""}</h3>
 
-            <div class="ikoner">
+                <p>${person.rolle ?? ""}</p>
 
-                <a href="${person.bilde}"
-                   class="glightbox"
-                   title="${person.navn}">
-                    <i class="fas fa-image"></i>
-                </a>
+                <div class="ikoner">
 
-                <a href="tel:${person.telefon}">
-                    <i class="fas fa-phone"></i>
-                </a>
+                    <a href="${person.bilde ?? "#"}"
+                       class="glightbox"
+                       title="${person.navn ?? ""}">
+                        <i class="fas fa-image"></i>
+                    </a>
 
-                <a href="mailto:${person.epost}">
-                    <i class="fas fa-envelope"></i>
-                </a>
+                    <a href="tel:${person.telefon ?? ""}">
+                        <i class="fas fa-phone"></i>
+                    </a>
+
+                    <a href="mailto:${person.epost ?? ""}">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+
+                </div>
 
             </div>
-
-        </div>
 
         `;
 
@@ -154,9 +208,11 @@ function visGruppe(containerId, liste) {
 
 }
 
-  // ----------------------------
-    // Viser gruppene på siden med visGruppe-funksjonen
-    // ----------------------------
+
+// ==========================================================
+// VIS GRUPPENE
+// ==========================================================
+
 if (document.getElementById("SPL")) {
     visGruppe("SPL", sykepleier);
 }
@@ -213,157 +269,226 @@ if (document.getElementById("fagSPL")) {
     visGruppe("fagSPL", fagsykepleier);
 }
 
-// ----------------------------------------------------------
-// Mobilmeny
-// ------------------------------------------------------
-    const menuToggle = document.getElementById("menuToggle");
-    const menu = document.getElementById("menu");
+
+// ==========================================================
+// MOBILMENY
+// ==========================================================
+
+const menuToggle = document.getElementById("menuToggle");
+const menu = document.getElementById("menu");
+
+if (menuToggle && menu) {
+
     // ------------------------------------------------------
-    if (menuToggle && menu) {
-// -----------Når brukeren trykker: hamburgermeny: ---------------------------------------
-        menuToggle.addEventListener("click", (event) => {
-             
-            event.stopPropagation();
-// -Kjøres: Hvis menyen er skjult(display:none;): blir den: (display:flex;)-----------------------------
-            menu.classList.toggle("open");
-// ----------------------------------------------
+    // Åpne / lukke hamburgermeny
+    // ------------------------------------------------------
+
+    menuToggle.addEventListener("click", event => {
+
+        event.stopPropagation();
+
+        menu.classList.toggle("open");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            menu.classList.contains("open")
+        );
+
+    });
+
+
+    // ------------------------------------------------------
+    // Lukk meny når en lenke klikkes
+    // ------------------------------------------------------
+
+    const menuLinks = document.querySelectorAll("#menu a");
+
+    menuLinks.forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            menu.classList.remove("open");
+
             menuToggle.setAttribute(
                 "aria-expanded",
-                menu.classList.contains("open")
+                "false"
             );
-        });
-
-        // ==============================================
-        // Lukk meny når en lenke klikkes. Når brukeren velger: Hjem, Bursdager, Album: lukkes menyen automatisk.
-        // ==============================================
-        const menuLinks = document.querySelectorAll("#menu a");
-
-        menuLinks.forEach(link => {
-
-            link.addEventListener("click", () => {
-
-                menu.classList.remove("open");
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            });
 
         });
 
-        // ==============================================
-        // Lukk meny ved klikk utenfor
-        // ==============================================
-
-        document.addEventListener("click", (event) => {
-
-            if (!menu.classList.contains("open")) return;
-
-            // Klikk på menyknappen?
-            if (menuToggle.contains(event.target)) return;
-
-            // Klikk inne i selve menylisten?
-            if (menu.contains(event.target)) return;
-
-            // Ellers: lukk menyen
-            menu.classList.remove("open");
-            menuToggle.setAttribute("aria-expanded", "false");
-
-        });
-
-    }
-
-//for søkeboksen: Åpner riktig trekkspill ved søk
-window.addEventListener("load", () => {
-
-    if (!location.hash) return;
-
-    const element = document.querySelector(location.hash);
-
-    if (!element) return;
-
-    const button = element.querySelector(".question");
-
-    if (button) {
-        toggleAccordion(button);
-
-        element.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }
-
-});
+    });
 
 
+    // ------------------------------------------------------
+    // Lukk meny ved klikk utenfor
+    // ------------------------------------------------------
 
-// ----------------------------------------------------------
-// INSTALLER APP
-// ----------------------------------------------------------
+    document.addEventListener("click", event => {
 
-// Registrer Service Worker
-if ("serviceWorker" in navigator) {
+        if (!menu.classList.contains("open")) {
+            return;
+        }
 
-    window.addEventListener("load", () => {
+        // Klikk på menyknappen?
+        if (menuToggle.contains(event.target)) {
+            return;
+        }
 
-        console.log("Prøver å registrere service worker");
+        // Klikk inne i menyen?
+        if (menu.contains(event.target)) {
+            return;
+        }
 
-        navigator.serviceWorker.register("/Team-S-r/sw.js")
-            .then(registration => {
-                 console.log(
-                    "Service Worker registrert:",
-                    registration.scope
-                );
-            })
-            .catch(error => {
-                console.error(
-                    "Service Worker kunne ikke registreres:",
-                    error
-                );
-            });
+        // Ellers lukk menyen
+        menu.classList.remove("open");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
 
     });
 
 }
 
 
-// ----------------------------------------------------------
-// Installer-knappen
-// ----------------------------------------------------------
-// Variabelen opprettes. Her lagres installasjonsdialogen slik at du kan vise den senere når brukeren klikker på knappen.
+// ==========================================================
+// ÅPNE RIKTIG TREKKSPILL VED HASH / SØK
+// ==========================================================
+
+window.addEventListener("load", () => {
+
+    if (!location.hash) {
+        return;
+    }
+
+    let element;
+
+    try {
+
+        element = document.querySelector(location.hash);
+
+    } catch (error) {
+
+        console.warn(
+            "Ugyldig URL-hash:",
+            location.hash
+        );
+
+        return;
+    }
+
+    if (!element) {
+        return;
+    }
+
+    const button = element.querySelector(".question");
+
+    if (!button) {
+        return;
+    }
+
+    toggleAccordion(button);
+
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+});
+
+
+// ==========================================================
+// SERVICE WORKER
+// ==========================================================
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", () => {
+
+        console.log(
+            "Prøver å registrere service worker..."
+        );
+
+        navigator.serviceWorker.register(
+            "/Team-S-r/sw.js"
+        )
+
+        .then(registration => {
+
+            console.log(
+                "Service Worker registrert:",
+                registration.scope
+            );
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Service Worker kunne ikke registreres:",
+                error
+            );
+
+        });
+
+    });
+
+}
+
+
+// ==========================================================
+// INSTALLER APP
+// ==========================================================
+
+// Her lagres installasjonsdialogen
 let deferredPrompt = null;
 
-const installButton = document.getElementById("installApp");
-//const uninstallButton = document.getElementById("uninstallApp");
+
+// Finn installer-knappen
+const installButton =
+    document.getElementById("installApp");
 
 
-// beforeinstallprompt kommer bare når siden har manifest.json, service worker fungerer, siden er HTTPS (GitHub Pages er HTTPS), appen ikke allerede er installert
+// ==========================================================
+// BEFOREINSTALLPROMPT
+// ==========================================================
+
 window.addEventListener(
     "beforeinstallprompt",
-    (event) => {
+    event => {
 
         console.log("INSTALL EVENT FUNNET");
 
-// Hindrer Chrome fra å vise sitt eget vindu med en gang
+        // Hindrer Chrome fra å vise sitt eget
+        // installasjonsvindu automatisk
         event.preventDefault();
 
-// Lagre installasjonsdialogen
-        deferredPrompt = event;    //Nå ligger installasjonsdialogen lagret i minnet.
+        // Lagre installasjonsdialogen
+        deferredPrompt = event;
 
-// Vis vår egen installer-knapp
+        console.log(
+            "Installasjonsdialog lagret."
+        );
+
+        // Vis vår egen knapp
         if (installButton) {
-            installButton.hidden = false;   // Dette hindrer feilen: Cannot read properties of null
+
+            installButton.hidden = false;
+
+            console.log(
+                "Installer-knappen er synlig."
+            );
+
         }
 
     }
 );
 
 
-// ----------------------------------------------------------
-// Klikk på "Installer Team Sør"
-// ----------------------------------------------------------
+// ==========================================================
+// KLIKK PÅ INSTALLER
+// ==========================================================
 
 if (installButton) {
 
@@ -373,13 +498,15 @@ if (installButton) {
 
             // Hvis installasjonsdialogen ikke finnes
             if (!deferredPrompt) {
+
                 console.log(
                     "Ingen installasjonsdialog tilgjengelig."
                 );
+
                 return;
             }
 
- // Vis installasjonsdialogen
+            // Vis installasjonsdialogen
             deferredPrompt.prompt();
 
             // Vent på brukerens valg
@@ -391,22 +518,36 @@ if (installButton) {
                 result.outcome
             );
 
+
+            // ------------------------------------------------
+            // Brukeren installerte
+            // ------------------------------------------------
+
             if (result.outcome === "accepted") {
 
                 console.log(
-                    "Brukeren installerte Team Sør som app"
-                );
-
-            } else {
-
-                console.log(
-                    "Brukeren avbrøt installasjonen"
+                    "Brukeren installerte Team Sør som app."
                 );
 
             }
 
+
+            // ------------------------------------------------
+            // Brukeren avbrøt
+            // ------------------------------------------------
+
+            else {
+
+                console.log(
+                    "Brukeren avbrøt installasjonen."
+                );
+
+            }
+
+
             // Dialogen kan bare brukes én gang
             deferredPrompt = null;
+
 
             // Skjul knappen
             installButton.hidden = true;
@@ -417,40 +558,51 @@ if (installButton) {
 }
 
 
-// ----------------------------------------------------------
-// Når appen faktisk er installert
-// ----------------------------------------------------------
+// ==========================================================
+// APPEN ER INSTALLERT
+// ==========================================================
 
 window.addEventListener(
     "appinstalled",
     () => {
 
-        console.log("Team Sør er installert som app");
+        console.log(
+            "Team Sør er installert som app."
+        );
 
         if (installButton) {
+
             installButton.hidden = true;
+
         }
 
-       
         deferredPrompt = null;
 
     }
 );
-// Dette betyr:
-// Åpnes i nettleseren → knappen skjules
-// Åpnes som installert app → knappen vises
+
+
+// ==========================================================
+// SJEKK OM APPEN ALLEREDE KJØRER SOM INSTALLERT APP
+// ==========================================================
+
 const isStandalone =
-    window.matchMedia("(display-mode: standalone)").matches ||
+    window.matchMedia(
+        "(display-mode: standalone)"
+    ).matches ||
     window.navigator.standalone === true;
+
 
 if (isStandalone) {
 
-    console.log("Appen kjører som installert app");
+    console.log(
+        "Appen kjører som installert app."
+    );
 
     if (installButton) {
+
         installButton.hidden = true;
+
     }
 
 }
-
-
