@@ -515,6 +515,21 @@ fetch("manifest.json")
 // test for å sjekke om Chrome i det hele tatt sender beforeinstallprompt.
 console.log("=== VENTER PÅ BEFOREINSTALLPROMPT ===");
 
+setTimeout(() => {
+    console.log("=== SERVICE WORKER KONTROLL TEST ===");
+
+    console.log(
+        "Controller:",
+        navigator.serviceWorker.controller
+    );
+
+    if (navigator.serviceWorker.controller) {
+        console.log("✅ Service Worker kontrollerer siden");
+    } else {
+        console.log("❌ Service Worker kontrollerer IKKE siden");
+    }
+}, 3000);
+
 window.addEventListener("beforeinstallprompt", event => {
 
     console.log("INSTALL EVENT FUNNET");
