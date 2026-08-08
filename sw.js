@@ -12,12 +12,11 @@ const FILES = [
 
 self.addEventListener("install", event => {
 
-    self.skipWaiting();
-
     event.waitUntil(
 
         caches.open(CACHE_NAME)
             .then(cache => cache.addAll(FILES))
+            .then(() => self.skipWaiting())
 
     );
 
@@ -53,6 +52,8 @@ self.addEventListener("activate", event => {
             );
 
         }).then(() => {
+
+            console.log("SERVICE WORKER AKTIVERT");
 
             return self.clients.claim();
 
