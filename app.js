@@ -450,14 +450,14 @@ const installButton = document.getElementById("installApp");
             ANDROID – Chrome:
 
             1. Trykk på ⋮ øverst til høyre.
-            2. Velg «Legg til på startskjermen»
+            2. Velg «Installer og lag en snarvei»
             eller «Installer app».
             3. Trykk «Installer».
 
             ANDROID – Brave:
 
-            1. Trykk på ⋮ øverst til høyre.
-            2. Velg «Installer app»
+            1. Trykk på ⋮ nederst til høyre.
+            2. Velg «Installer og lag en snarvei»
             eller «Legg til på startskjermen».
             3. Trykk «Installer».
 
@@ -482,7 +482,7 @@ const installButton = document.getElementById("installApp");
 
             Hvis du ikke ser «Installer»:
             Siden kan fortsatt brukes som vanlig nettside.
-            
+
             `);
                 });
 
