@@ -12,6 +12,8 @@ const FILES = [
 
 self.addEventListener("install", event => {
 
+    self.skipWaiting();
+
     event.waitUntil(
 
         caches.open(CACHE_NAME)
@@ -36,30 +38,25 @@ self.addEventListener("activate", event => {
 
     event.waitUntil(
 
-        Promise.all([
+        caches.keys().then(keys => {
 
-            // Slett gamle cacher
-            caches.keys().then(keys => {
+            return Promise.all(
 
-                return Promise.all(
+                keys.map(key => {
 
-                    keys.map(key => {
+                    if (key !== CACHE_NAME) {
+                        return caches.delete(key);
+                    }
 
-                        if (key !== CACHE_NAME) {
-                            return caches.delete(key);
-                        }
+                })
 
-                    })
+            );
 
-                );
+        }).then(() => {
 
-            }),
+            return self.clients.claim();
 
-            // Gjør service workeren til kontroller
-            // for åpne sider med en gang
-            self.clients.claim()
-
-        ])
+        })
 
     );
 
