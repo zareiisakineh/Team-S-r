@@ -433,136 +433,40 @@ if ("serviceWorker" in navigator) {
 
 }
 // ==========================================================
-// INSTALLER APP
+// INSTALLER TEAM SØR – ENKEL LØSNING
+// Android / iPhone / iPad / PC
 // ==========================================================
-
-let deferredPrompt = null;
 
 const installButton = document.getElementById("installApp");
 
-console.log("installButton:", installButton);
-
-
-// ==========================================================
-// PC / ANDROID CHROME - INSTALLASJON
-// ==========================================================
-
-window.addEventListener("beforeinstallprompt", (event) => {
-
-    console.log("INSTALL EVENT FUNNET");
-
-    event.preventDefault();
-
-    deferredPrompt = event;
-
-    if (installButton) {
-        installButton.hidden = false;
-        console.log("Installer-knappen er synlig.");
-    }
-
-});
-
-
-// ==========================================================
-// KLIKK PÅ INSTALLER
-// ==========================================================
-
 if (installButton) {
 
-    installButton.addEventListener("click", async () => {
+    installButton.hidden = false;
 
-        // --------------------------------------------------
-        // Hvis Chrome har gitt oss installasjonsdialogen
-        // --------------------------------------------------
-
-        if (deferredPrompt) {
-
-            console.log("Starter installasjon...");
-
-            deferredPrompt.prompt();
-
-            const result = await deferredPrompt.userChoice;
-
-            console.log(
-                "Installasjonsvalg:",
-                result.outcome
-            );
-
-            deferredPrompt = null;
-
-            return;
-        }
-
-
-        // --------------------------------------------------
-        // MOBIL / IOS
-        // --------------------------------------------------
-
-        const isIOS =
-            /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-        const isAndroid =
-            /Android/i.test(navigator.userAgent);
-
-
-        if (isIOS) {
-
-            alert(
-                "📱 Installer Team Sør på iPhone/iPad\n\n" +
-
-                "1. Trykk på Del-knappen ⬆️ nederst eller øverst i Safari.\n\n" +
-
-                "2. Bla nedover i menyen.\n\n" +
-
-                "3. Velg «Legg til på Hjem-skjerm».\n\n" +
-
-                "4. Trykk «Legg til».\n\n" +
-
-                "Team Sør blir da lagt til på Hjem-skjermen."
-            );
-
-            return;
-        }
-
-
-        // --------------------------------------------------
-        // ANDROID
-        // --------------------------------------------------
-
-        if (isAndroid) {
-
-            alert(
-                "📱 Installer Team Sør på Android\n\n" +
-
-                "1. Trykk på ⋮ menyen øverst til høyre i Chrome.\n\n" +
-
-                "2. Velg «Installer app» eller «Legg til på startskjermen».\n\n" +
-
-                "3. Trykk «Installer».\n\n" +
-
-                "Team Sør blir da lagt til på startskjermen."
-            );
-
-            return;
-        }
-
-
-        // --------------------------------------------------
-        // PC
-        // --------------------------------------------------
+    installButton.addEventListener("click", () => {
 
         alert(
-            "💻 Installer Team Sør på PC\n\n" +
+`📲 Installer Team Sør
 
-            "Hvis installasjonsknappen ikke vises automatisk:\n\n" +
+ANDROID – Chrome:
+1. Trykk på ⋮ øverst til høyre.
+2. Velg «Legg til på startskjermen»
+   eller «Installer app».
+3. Trykk «Installer».
 
-            "1. Åpne Team Sør i Chrome eller Edge.\n\n" +
+IPHONE / IPAD – Safari:
+1. Trykk på Del-knappen ↗️.
+2. Velg «Legg til på Hjem-skjerm».
+3. Trykk «Legg til».
 
-            "2. Se etter et installasjonsikon ⊕ i adressefeltet.\n\n" +
+PC – Chrome:
+1. Trykk på ⋮ øverst til høyre.
+2. Velg «Installer Team Sør»
+   eller «Lagre og del» → «Installer Team Sør».
+3. Trykk «Installer».
 
-            "3. Klikk på ikonet og velg «Installer».\n\n" +
-
-            "Du kan også åpne nettlesermenyen ⋮ og velge «Installer Team Sør»."
+Hvis du ikke ser «Installer»:
+Siden kan fortsatt brukes som vanlig nettside.`
         );
 
     });
