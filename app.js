@@ -436,146 +436,33 @@ if ("serviceWorker" in navigator) {
 // INSTALLER APP
 // ==========================================================
 
-// Her lagres installasjonsdialogen
-let deferredPrompt = null;
-
-
-// Finn installer-knappen
 const installButton = document.getElementById("installApp");
 
-console.log("installButton:", installButton);
+if (installButton) {
+    installButton.addEventListener("click", () => {
 
-console.log("=== PWA TEST START ===");
-console.log("URL:", window.location.href);
-console.log("HTTPS:", location.protocol === "https:");
-console.log("Service Worker støttes:", "serviceWorker" in navigator);
-console.log("installButton:", installButton);
-console.log("display-mode standalone:",
-    window.matchMedia("(display-mode: standalone)").matches
+       alert(
+  "📲 Installer Team Sør\n\n" +
+
+  "🤖 ANDROID:\n" +
+  "1. Åpne Team Sør i Chrome.\n" +
+  "2. Trykk på ⋮ øverst til høyre.\n" +
+  "3. Velg «Legg til på startskjermen» eller «Installer app».\n" +
+  "4. Trykk «Installer».\n\n" +
+
+  "🍎 iPHONE / iPAD:\n" +
+  "1. Åpne Team Sør i Safari.\n" +
+  "2. Trykk på Del-knappen ⬆️.\n" +
+  "3. Velg «Legg til på Hjem-skjerm».\n" +
+  "4. Trykk «Legg til».\n\n" +
+
+  "💻 PC:\n" +
+  "1. Åpne Team Sør i Chrome eller Edge.\n" +
+  "2. Se etter et installasjonsikon ⊕ i adressefeltet.\n" +
+  "3. Trykk på ikonet og velg «Installer».\n\n" +
+
+  "Hvis installasjonsikonet ikke vises på PC, kan du bruke nettsiden direkte i nettleseren."
 );
-console.log("=== PWA TEST SLUTT ===");
-// ==========================================================
-// TEST: MANIFEST OG IKONER
-// ==========================================================
-
-console.log("=== TESTER MANIFEST ===");
-
-fetch("manifest.json")
-    .then(response => {
-        console.log("Manifest status:", response.status);
-        console.log("Manifest OK:", response.ok);
-
-        return response.json();
-    })
-    .then(manifest => {
-
-        console.log("Manifest:", manifest);
-
-        console.log("name:", manifest.name);
-        console.log("short_name:", manifest.short_name);
-        console.log("start_url:", manifest.start_url);
-        console.log("scope:", manifest.scope);
-        console.log("display:", manifest.display);
-        console.log("icons:", manifest.icons);
-
-        manifest.icons.forEach(icon => {
-
-            const img = new Image();
-
-            img.onload = () => {
-                console.log(
-                    "IKON OK:",
-                    icon.src,
-                    img.naturalWidth + "x" + img.naturalHeight
-                );
-            };
-
-            img.onerror = () => {
-                console.error(
-                    "IKON FEIL:",
-                    icon.src
-                );
-            };
-
-            img.src = icon.src;
-        });
-
-    })
-    .catch(error => {
-
-        console.error(
-            "MANIFEST FEIL:",
-            error
-        );
 
     });
-// ==========================================================
-// BEFOREINSTALLPROMPT
-// ==========================================================
-console.log("=== VENTER PÅ BEFOREINSTALLPROMPT ===");
-
-window.addEventListener( "beforeinstallprompt", event => {
-
-        console.log("INSTALL EVENT FUNNET");
-
-        // Hindrer Chrome fra å vise sitt eget
-        // installasjonsvindu automatisk
-        event.preventDefault();
-
-        // Lagre installasjonsdialogen
-        deferredPrompt = event;
-
-        console.log(
-            "Installasjonsdialog lagret."
-        );
-
-        // Vis vår egen knapp
-        if (installButton) {
-
-            installButton.hidden = false;
-
-            console.log(
-                "Installer-knappen er synlig."
-            );
-
-        }
-
-    }
-);
-
-
-// ==========================================================
-// KLIKK PÅ INSTALLER
-// ==========================================================
-
-if (installButton) {
-
-    installButton.addEventListener(
-        "click",
-        async () => {
-
-            if (!deferredPrompt) {
-
-                console.log(
-                    "Ingen installasjonsdialog tilgjengelig."
-                );
-
-                return;
-            }
-
-            deferredPrompt.prompt();
-
-            const result =
-                await deferredPrompt.userChoice;
-
-            console.log(
-                "Installasjonsvalg:",
-                result.outcome
-            );
-
-            deferredPrompt = null;
-
-        }
-    );
-
 }
