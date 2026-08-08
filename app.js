@@ -363,3 +363,17 @@ window.addEventListener(
 
     }
 );
+
+window.addEventListener(
+    "beforeinstallprompt",
+    (e) => {
+
+        console.log("INSTALL EVENT");
+
+        e.preventDefault();
+
+        deferredPrompt = e;
+
+        installButton.hidden = false;
+    }
+);
