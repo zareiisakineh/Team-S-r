@@ -59,11 +59,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         melding.innerHTML = `
             <div class="card">
-                🎂 Gratulerer med dagen kjære🎂
+                🎂 Gratulerer med dagen kjære
                 ❤️<strong>${navn}</strong>❤️  
                 <br> Alle oss i Team Sør ønsker deg 
                     en fantastisk dag fylt med glede, 
-                    smil og kake! 🎉
+                    smil og kake! 🎉🎂
                 
             </div>
         `;
