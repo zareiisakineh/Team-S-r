@@ -432,12 +432,58 @@ if ("serviceWorker" in navigator) {
     });
 
 }
+
 // ==========================================================
 // INSTALLER TEAM SØR – ENKEL LØSNING
-// Android / iPhone / iPad / PC
+// Android / iPhone / iPad / PC----Installasjonsboks
 // ==========================================================
 
 const installButton = document.getElementById("installApp");
+const installModal = document.getElementById("installModal");
+const closeInstallModal =
+document.getElementById("closeInstallModal");
+
+if (installButton) {
+
+    installButton.hidden = false;
+
+    installButton.addEventListener("click", () => {
+
+        installModal.style.display = "block";
+
+    });
+
+}
+
+if (closeInstallModal) {
+
+    closeInstallModal.addEventListener("click", () => {
+
+        installModal.style.display = "none";
+
+    });
+
+}
+
+window.addEventListener("click", (event) => {
+
+    if (event.target === installModal) {
+
+        installModal.style.display = "none";
+
+    }
+
+});
+
+
+
+
+// ==========================================================
+// INSTALLER TEAM SØR – ENKEL LØSNING
+// Android / iPhone / iPad / PC---- Viser alert
+// ==========================================================
+
+/*const installButton = document.getElementById("installApp");
 
     if (installButton) {
 
@@ -486,4 +532,4 @@ const installButton = document.getElementById("installApp");
             `);
                 });
 
-    }
+    }*/

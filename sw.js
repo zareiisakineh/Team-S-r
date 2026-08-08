@@ -1,4 +1,4 @@
-const CACHE_NAME = "team-sor-v38";
+const CACHE_NAME = "team-sor-v39";
 
 const FILES = [
     "./",

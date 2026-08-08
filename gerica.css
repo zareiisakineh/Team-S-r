@@ -683,3 +683,43 @@ header {
 .merkantiler .question {
     background-color: #607D8B;
 }
+
+/* INSTALLASJONSVINDU */
+
+.install-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    z-index:9999;
+}
+
+.install-content{
+    background:white;
+    width:min(90%,600px);
+    margin:40px auto;
+    padding:25px;
+    border-radius:15px;
+    max-height:85vh;
+    overflow:auto;
+    position:relative;
+}
+
+.install-content h2{
+    margin-bottom:20px;
+}
+
+.install-section{
+    margin-bottom:20px;
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+#closeInstallModal{
+    position:absolute;
+    right:15px;
+    top:10px;
+    font-size:2rem;
+    cursor:pointer;
+}
