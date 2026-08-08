@@ -336,16 +336,8 @@ if ("serviceWorker" in navigator) {
 let deferredPrompt = null;
 
 const installButton = document.getElementById("installApp");
-const uninstallButton = document.getElementById("uninstallApp");
+//const uninstallButton = document.getElementById("uninstallApp");
 
-// begge knappene starter skjult:
-if (installButton) {
-    installButton.hidden = false;
-}
-
-if (uninstallButton) {
-    uninstallButton.hidden = true;
-}
 
 // beforeinstallprompt kommer bare når siden har manifest.json, service worker fungerer, siden er HTTPS (GitHub Pages er HTTPS), appen ikke allerede er installert
 window.addEventListener(
@@ -439,10 +431,7 @@ window.addEventListener(
             installButton.hidden = true;
         }
 
-         if (uninstallButton) {
-            uninstallButton.hidden = false;
-        }
-
+       
         deferredPrompt = null;
 
     }
@@ -458,10 +447,6 @@ if (isStandalone) {
 
     console.log("Appen kjører som installert app");
 
-    if (uninstallButton) {
-        uninstallButton.hidden = false;
-    }
-
     if (installButton) {
         installButton.hidden = true;
     }
@@ -469,31 +454,3 @@ if (isStandalone) {
 }
 
 
-if (uninstallButton) {
-
-    uninstallButton.addEventListener(
-        "click",
-        () => {
-
-            alert(
-`For å avinstallere Team Sør:
-
-📱 Android:
-Hold fingeren på Team Sør-ikonet
-og velg Avinstaller.
-
-💻 Windows:
-Åpne Start-menyen,
-høyreklikk på Team Sør
-og velg Avinstaller.
-
-🌐 Chrome:
-Åpne appen,
-klikk ⋮ øverst til høyre
-og velg Avinstaller Team Sør.`
-            );
-
-        }
-    );
-
-}
