@@ -338,6 +338,15 @@ let deferredPrompt = null;
 const installButton = document.getElementById("installApp");
 const uninstallButton = document.getElementById("uninstallApp");
 
+// begge knappene starter skjult:
+if (installButton) {
+    installButton.hidden = true;
+}
+
+if (uninstallButton) {
+    uninstallButton.hidden = true;
+}
+
 // beforeinstallprompt kommer bare når siden har manifest.json, service worker fungerer, siden er HTTPS (GitHub Pages er HTTPS), appen ikke allerede er installert
 window.addEventListener(
     "beforeinstallprompt",
@@ -441,14 +450,20 @@ window.addEventListener(
 // Dette betyr:
 // Åpnes i nettleseren → knappen skjules
 // Åpnes som installert app → knappen vises
-if (
-    window.matchMedia(
-        "(display-mode: standalone)"
-    ).matches
-) {
+const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+
+if (isStandalone) {
+
+    console.log("Appen kjører som installert app");
 
     if (uninstallButton) {
         uninstallButton.hidden = false;
+    }
+
+    if (installButton) {
+        installButton.hidden = true;
     }
 
 }
