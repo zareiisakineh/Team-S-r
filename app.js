@@ -1,12 +1,14 @@
+//Når siden åpnes, hentes funksjonen hentAnsatte() fra firestore.
+
 import { hentAnsatte } from "./ansatteFirestore.js";
 
-
+//Dette er bare for testing. Når filen lastes inn, vises: app.js loaded
 console.log("app.js loaded");
+// Lager funksjonen toggleAccordion(). Når brukeren klikker på: <button class="question"> skjer dette:: 
 
 function toggleAccordion(button) {
-
+// Finner tilhørende svarfelt
     const item = button.parentElement;
-
     const answer = item.querySelector(".answer");
 
     // Lukk alle andre trekkspill
@@ -18,7 +20,7 @@ function toggleAccordion(button) {
 
     });
 
-    // Tilbakestill alle andre piler
+    // Tilbakestill alle andre piler. Fjerner: rotate fra alle pilene.
     document.querySelectorAll(".icon").forEach(icon => {
 
         if (icon !== button.querySelector(".icon")) {
@@ -27,14 +29,15 @@ function toggleAccordion(button) {
 
     });
 
-    // Åpne/lukk valgt trekkspill
+    // Åpne/lukk valgt trekkspill: 
+    // Hvis det er lukket → åpnes. Hvis det er åpent → lukkes.
     answer.classList.toggle("open");
 
     // Roter pilen
     button.querySelector(".icon")
         ?.classList.toggle("rotate");
 }
-// ----------------------------------------------------------
+// Finner alle trekkspillknapper.----------------------------------------------------------
 document.querySelectorAll(".question")
 .forEach(button => {
 
@@ -45,10 +48,8 @@ document.querySelectorAll(".question")
 });
 
 /* HENT ANSATTE FRA FIRESTORE */
+//Denne linjen: Denne linjen: 1. Kobler til Firestore 2. Leser alle ansatte 3. Lagrer dem i variabelen: ansatte
 const ansatte = await hentAnsatte();
-const khirad = ansatte.find(
-    person => person.navn === "Khirad"
-);
 
 // Kontakt-kort
 // Lager fire lister ut fra gruppene:
@@ -112,11 +113,11 @@ const fagsykepleier = ansatte.filter(person => {
  // ----------------------------
     // Vis ansatte
     // ----------------------------
-// Funksjon som skriver ut én gruppe
+// Funksjon som skriver ut én gruppe. brukes til å vise ansatte på siden.
 function visGruppe(containerId, liste) {
 
     const container = document.getElementById(containerId);
-
+// For hver person bygges HTML.
     liste.forEach(person => {
 
         container.innerHTML += `
@@ -154,7 +155,7 @@ function visGruppe(containerId, liste) {
 }
 
   // ----------------------------
-    // Koble til HTML
+    // Viser gruppene på siden med visGruppe-funksjonen
     // ----------------------------
 if (document.getElementById("SPL")) {
     visGruppe("SPL", sykepleier);
@@ -213,19 +214,19 @@ if (document.getElementById("fagSPL")) {
 }
 
 // ----------------------------------------------------------
-
-    // ------------------------------------------------------
+// Mobilmeny
+// ------------------------------------------------------
     const menuToggle = document.getElementById("menuToggle");
     const menu = document.getElementById("menu");
     // ------------------------------------------------------
     if (menuToggle && menu) {
-        // --------------------------------------------------
+// -----------Når brukeren trykker: hamburgermeny: ---------------------------------------
         menuToggle.addEventListener("click", (event) => {
              
             event.stopPropagation();
-            // ----------------------------------------------
+// -Kjøres: Hvis menyen er skjult(display:none;): blir den: (display:flex;)-----------------------------
             menu.classList.toggle("open");
-            // ----------------------------------------------
+// ----------------------------------------------
             menuToggle.setAttribute(
                 "aria-expanded",
                 menu.classList.contains("open")
@@ -233,7 +234,7 @@ if (document.getElementById("fagSPL")) {
         });
 
         // ==============================================
-        // Lukk meny når en lenke klikkes
+        // Lukk meny når en lenke klikkes. Når brukeren velger: Hjem, Bursdager, Album: lukkes menyen automatisk.
         // ==============================================
         const menuLinks = document.querySelectorAll("#menu a");
 
@@ -274,7 +275,7 @@ if (document.getElementById("fagSPL")) {
 
     }
 
-//for søkeboksen
+//for søkeboksen: Åpner riktig trekkspill ved søk
 window.addEventListener("load", () => {
 
     if (!location.hash) return;
@@ -331,30 +332,27 @@ if ("serviceWorker" in navigator) {
 // ----------------------------------------------------------
 // Installer-knappen
 // ----------------------------------------------------------
-
+// Variabelen opprettes. Her lagres installasjonsdialogen slik at du kan vise den senere når brukeren klikker på knappen.
 let deferredPrompt = null;
 
-const installButton =
-    document.getElementById("installApp");
+const installButton = document.getElementById("installApp");
 
-
-// beforeinstallprompt kommer bare når nettleseren mener
-// at siden kan installeres som app.
+// beforeinstallprompt kommer bare når siden har manifest.json, service worker fungerer, siden er HTTPS (GitHub Pages er HTTPS), appen ikke allerede er installert
 window.addEventListener(
     "beforeinstallprompt",
     (event) => {
 
         console.log("INSTALL EVENT FUNNET");
 
-        // Hindrer Chrome fra å vise sitt eget vindu med en gang
+// Hindrer Chrome fra å vise sitt eget vindu med en gang
         event.preventDefault();
 
-        // Lagre installasjonsdialogen
-        deferredPrompt = event;
+// Lagre installasjonsdialogen
+        deferredPrompt = event;    //Nå ligger installasjonsdialogen lagret i minnet.
 
-        // Vis vår egen installer-knapp
+// Vis vår egen installer-knapp
         if (installButton) {
-            installButton.hidden = false;
+            installButton.hidden = false;   // Dette hindrer feilen: Cannot read properties of null
         }
 
     }
@@ -379,7 +377,7 @@ if (installButton) {
                 return;
             }
 
-            // Vis installasjonsdialogen
+ // Vis installasjonsdialogen
             deferredPrompt.prompt();
 
             // Vent på brukerens valg
