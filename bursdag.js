@@ -112,10 +112,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.log(
             "bursdagsKalender finnes ikke i HTML."
         );
-
-        return;
     }
+    else{
 
+
+    
     // --------------------------------------------------
     // LAG KALENDER FOR ALLE MÅNEDER
     // --------------------------------------------------
@@ -246,6 +247,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
         });
+    }
+
+    
 
     // --------------------------------------------------
     // WHATSAPP
