@@ -441,10 +441,19 @@ let deferredPrompt = null;
 
 
 // Finn installer-knappen
-const installButton =
-    document.getElementById("installApp");
+const installButton = document.getElementById("installApp");
 
+console.log("installButton:", installButton);
 
+console.log("=== PWA TEST START ===");
+console.log("URL:", window.location.href);
+console.log("HTTPS:", location.protocol === "https:");
+console.log("Service Worker støttes:", "serviceWorker" in navigator);
+console.log("installButton:", installButton);
+console.log("display-mode standalone:",
+    window.matchMedia("(display-mode: standalone)").matches
+);
+console.log("=== PWA TEST SLUTT ===");
 // ==========================================================
 // BEFOREINSTALLPROMPT
 // ==========================================================
