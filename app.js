@@ -482,6 +482,7 @@ const installButton = document.getElementById("installApp");
 
             Hvis du ikke ser «Installer»:
             Siden kan fortsatt brukes som vanlig nettside.
+            
             `);
                 });
 
