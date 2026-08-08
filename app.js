@@ -432,7 +432,6 @@ if ("serviceWorker" in navigator) {
     });
 
 }
-
 // ==========================================================
 // INSTALLER TEAM SØR – ENKEL LØSNING
 // Android / iPhone / iPad / PC----Installasjonsboks
