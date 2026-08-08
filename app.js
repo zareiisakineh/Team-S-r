@@ -310,9 +310,9 @@ if ("serviceWorker" in navigator) {
 
         console.log("Prøver å registrere service worker");
 
-        navigator.serviceWorker.register("./sw.js")
+        navigator.serviceWorker.register("/Team-S-r/sw.js")
             .then(registration => {
-                console.log(
+                 console.log(
                     "Service Worker registrert:",
                     registration.scope
                 );
@@ -340,7 +340,7 @@ const uninstallButton = document.getElementById("uninstallApp");
 
 // begge knappene starter skjult:
 if (installButton) {
-    installButton.hidden = true;
+    installButton.hidden = false;
 }
 
 if (uninstallButton) {
