@@ -402,41 +402,36 @@ window.addEventListener("load", () => {
 // SERVICE WORKER
 // ==========================================================
 
+console.log("KOM TIL SERVICE WORKER DELEN");
 if ("serviceWorker" in navigator) {
 
-    window.addEventListener("load", () => {
+    console.log(
+        "Prøver å registrere service worker..."
+    );
+
+    navigator.serviceWorker.register(
+        "/Team-S-r/sw.js"
+    )
+
+    .then(registration => {
 
         console.log(
-            "Prøver å registrere service worker..."
+            "Service Worker registrert:",
+            registration.scope
         );
 
-        navigator.serviceWorker.register(
-            "/Team-S-r/sw.js"
-        )
+    })
 
-        .then(registration => {
+    .catch(error => {
 
-            console.log(
-                "Service Worker registrert:",
-                registration.scope
-            );
-
-        })
-
-        .catch(error => {
-
-            console.error(
-                "Service Worker kunne ikke registreres:",
-                error
-            );
-
-        });
+        console.error(
+            "Service Worker kunne ikke registreres:",
+            error
+        );
 
     });
 
 }
-
-
 // ==========================================================
 // INSTALLER APP
 // ==========================================================
