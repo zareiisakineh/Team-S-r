@@ -454,9 +454,7 @@ const installButton =
 // BEFOREINSTALLPROMPT
 // ==========================================================
 
-window.addEventListener(
-    "beforeinstallprompt",
-    event => {
+window.addEventListener( "beforeinstallprompt", event => {
 
         console.log("INSTALL EVENT FUNNET");
 
@@ -496,7 +494,6 @@ if (installButton) {
         "click",
         async () => {
 
-            // Hvis installasjonsdialogen ikke finnes
             if (!deferredPrompt) {
 
                 console.log(
@@ -506,10 +503,8 @@ if (installButton) {
                 return;
             }
 
-            // Vis installasjonsdialogen
             deferredPrompt.prompt();
 
-            // Vent på brukerens valg
             const result =
                 await deferredPrompt.userChoice;
 
@@ -518,91 +513,9 @@ if (installButton) {
                 result.outcome
             );
 
-
-            // ------------------------------------------------
-            // Brukeren installerte
-            // ------------------------------------------------
-
-            if (result.outcome === "accepted") {
-
-                console.log(
-                    "Brukeren installerte Team Sør som app."
-                );
-
-            }
-
-
-            // ------------------------------------------------
-            // Brukeren avbrøt
-            // ------------------------------------------------
-
-            else {
-
-                console.log(
-                    "Brukeren avbrøt installasjonen."
-                );
-
-            }
-
-
-            // Dialogen kan bare brukes én gang
             deferredPrompt = null;
 
-
-            // Skjul knappen
-            installButton.hidden = true;
-
         }
     );
-
-}
-
-
-// ==========================================================
-// APPEN ER INSTALLERT
-// ==========================================================
-
-window.addEventListener(
-    "appinstalled",
-    () => {
-
-        console.log(
-            "Team Sør er installert som app."
-        );
-
-        if (installButton) {
-
-            installButton.hidden = false;
-
-        }
-
-        deferredPrompt = null;
-
-    }
-);
-
-
-// ==========================================================
-// SJEKK OM APPEN ALLEREDE KJØRER SOM INSTALLERT APP
-// ==========================================================
-
-const isStandalone =
-    window.matchMedia(
-        "(display-mode: standalone)"
-    ).matches ||
-    window.navigator.standalone === true;
-
-
-if (isStandalone) {
-
-    console.log(
-        "Appen kjører som installert app."
-    );
-
-    if (installButton) {
-
-        installButton.hidden = true;
-
-    }
 
 }
