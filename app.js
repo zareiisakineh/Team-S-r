@@ -572,7 +572,7 @@ window.addEventListener(
 
         if (installButton) {
 
-            installButton.hidden = true;
+            installButton.hidden = false;
 
         }
 
