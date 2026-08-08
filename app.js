@@ -512,7 +512,27 @@ fetch("manifest.json")
 // ==========================================================
 // BEFOREINSTALLPROMPT
 // ==========================================================
+// test for å sjekke om Chrome i det hele tatt sender beforeinstallprompt.
+console.log("=== VENTER PÅ BEFOREINSTALLPROMPT ===");
 
+window.addEventListener("beforeinstallprompt", event => {
+
+    console.log("INSTALL EVENT FUNNET");
+
+    event.preventDefault();
+
+    deferredPrompt = event;
+
+    console.log("Installasjonsdialog lagret.");
+
+    if (installButton) {
+        installButton.hidden = false;
+
+        console.log("Installer-knappen er synlig.");
+    }
+});
+
+//slutt på testen for å sjekke om Chrome i det hele tatt sender beforeinstallprompt.
 window.addEventListener( "beforeinstallprompt", event => {
 
         console.log("INSTALL EVENT FUNNET");
