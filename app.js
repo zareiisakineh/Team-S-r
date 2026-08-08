@@ -297,83 +297,142 @@ window.addEventListener("load", () => {
 });
 
 
-// Installer-knappen 
-//Registrer service worker
+
+// ----------------------------------------------------------
+// INSTALLER APP
+// ----------------------------------------------------------
+
+// Registrer Service Worker
 if ("serviceWorker" in navigator) {
 
     window.addEventListener("load", () => {
 
+        console.log("Prøver å registrere service worker");
+
         navigator.serviceWorker.register("./sw.js")
-            .then(() => console.log("Service Worker registrert"))
-            .catch(error => console.log(error));
+            .then(registration => {
+                console.log(
+                    "Service Worker registrert:",
+                    registration.scope
+                );
+            })
+            .catch(error => {
+                console.error(
+                    "Service Worker kunne ikke registreres:",
+                    error
+                );
+            });
 
     });
 
 }
-//Knappen sombrukes til å installere app.
-let deferredPrompt;
+
+
+// ----------------------------------------------------------
+// Installer-knappen
+// ----------------------------------------------------------
+
+let deferredPrompt = null;
 
 const installButton =
-document.getElementById("installApp");
+    document.getElementById("installApp");
 
+
+// beforeinstallprompt kommer bare når nettleseren mener
+// at siden kan installeres som app.
 window.addEventListener(
     "beforeinstallprompt",
-    (e) => {
+    (event) => {
 
-        e.preventDefault();
+        console.log("INSTALL EVENT FUNNET");
 
-        deferredPrompt = e;
+        // Hindrer Chrome fra å vise sitt eget vindu med en gang
+        event.preventDefault();
 
-        installButton.hidden = false;
-    }
-);
-installButton.addEventListener(
-    "click",
-    async () => {
+        // Lagre installasjonsdialogen
+        deferredPrompt = event;
 
-        if (!deferredPrompt) return;
-
-        deferredPrompt.prompt();
-
-        const result =
-            await deferredPrompt.userChoice;
-
-        if(result.outcome === "accepted"){
-
-            console.log(
-                "Brukeren installerte appen"
-            );
-
+        // Vis vår egen installer-knapp
+        if (installButton) {
+            installButton.hidden = false;
         }
 
-        deferredPrompt = null;
-
-        installButton.hidden = true;
     }
-); 
+);
 
-// Skjuler knappen etter installasjon
+
+// ----------------------------------------------------------
+// Klikk på "Installer Team Sør"
+// ----------------------------------------------------------
+
+if (installButton) {
+
+    installButton.addEventListener(
+        "click",
+        async () => {
+
+            // Hvis installasjonsdialogen ikke finnes
+            if (!deferredPrompt) {
+                console.log(
+                    "Ingen installasjonsdialog tilgjengelig."
+                );
+                return;
+            }
+
+            // Vis installasjonsdialogen
+            deferredPrompt.prompt();
+
+            // Vent på brukerens valg
+            const result =
+                await deferredPrompt.userChoice;
+
+            console.log(
+                "Installasjonsvalg:",
+                result.outcome
+            );
+
+            if (result.outcome === "accepted") {
+
+                console.log(
+                    "Brukeren installerte Team Sør som app"
+                );
+
+            } else {
+
+                console.log(
+                    "Brukeren avbrøt installasjonen"
+                );
+
+            }
+
+            // Dialogen kan bare brukes én gang
+            deferredPrompt = null;
+
+            // Skjul knappen
+            installButton.hidden = true;
+
+        }
+    );
+
+}
+
+
+// ----------------------------------------------------------
+// Når appen faktisk er installert
+// ----------------------------------------------------------
+
 window.addEventListener(
     "appinstalled",
     () => {
 
-        installButton.hidden = true;
+        console.log("Team Sør er installert som app");
 
-        console.log("App installert");
+        if (installButton) {
+            installButton.hidden = true;
+        }
+
+        deferredPrompt = null;
 
     }
 );
 
-window.addEventListener(
-    "beforeinstallprompt",
-    (e) => {
-
-        console.log("INSTALL EVENT");
-
-        e.preventDefault();
-
-        deferredPrompt = e;
-
-        installButton.hidden = false;
-    }
-);
