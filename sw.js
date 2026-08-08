@@ -36,21 +36,29 @@ self.addEventListener("activate", event => {
 
     event.waitUntil(
 
-        caches.keys().then(keys => {
+        Promise.all([
 
-            return Promise.all(
+            // Slett gamle cacher
+            caches.keys().then(keys => {
 
-                keys.map(key => {
+                return Promise.all(
 
-                    if (key !== CACHE_NAME) {
-                        return caches.delete(key);
-                    }
+                    keys.map(key => {
 
-                })
+                        if (key !== CACHE_NAME) {
+                            return caches.delete(key);
+                        }
 
-            );
+                    })
 
-        })
+                );
+
+            }),
+
+            // La Service Worker ta kontroll over siden med en gang
+            self.clients.claim()
+
+        ])
 
     );
 
