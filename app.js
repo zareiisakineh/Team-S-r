@@ -455,6 +455,61 @@ console.log("display-mode standalone:",
 );
 console.log("=== PWA TEST SLUTT ===");
 // ==========================================================
+// TEST: MANIFEST OG IKONER
+// ==========================================================
+
+console.log("=== TESTER MANIFEST ===");
+
+fetch("manifest.json")
+    .then(response => {
+        console.log("Manifest status:", response.status);
+        console.log("Manifest OK:", response.ok);
+
+        return response.json();
+    })
+    .then(manifest => {
+
+        console.log("Manifest:", manifest);
+
+        console.log("name:", manifest.name);
+        console.log("short_name:", manifest.short_name);
+        console.log("start_url:", manifest.start_url);
+        console.log("scope:", manifest.scope);
+        console.log("display:", manifest.display);
+        console.log("icons:", manifest.icons);
+
+        manifest.icons.forEach(icon => {
+
+            const img = new Image();
+
+            img.onload = () => {
+                console.log(
+                    "IKON OK:",
+                    icon.src,
+                    img.naturalWidth + "x" + img.naturalHeight
+                );
+            };
+
+            img.onerror = () => {
+                console.error(
+                    "IKON FEIL:",
+                    icon.src
+                );
+            };
+
+            img.src = icon.src;
+        });
+
+    })
+    .catch(error => {
+
+        console.error(
+            "MANIFEST FEIL:",
+            error
+        );
+
+    });
+// ==========================================================
 // BEFOREINSTALLPROMPT
 // ==========================================================
 
