@@ -1,4 +1,4 @@
-const CACHE_NAME = "team-sor-v31";
+const CACHE_NAME = "team-sor-v32";
 
 const FILES = [
     "./",
@@ -55,7 +55,8 @@ self.addEventListener("activate", event => {
 
             }),
 
-            // La Service Worker ta kontroll over siden med en gang
+            // Gjør service workeren til kontroller
+            // for åpne sider med en gang
             self.clients.claim()
 
         ])
