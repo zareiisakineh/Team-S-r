@@ -36,14 +36,13 @@ table {
   width: 100%;
 }
 
-td, th, td{
+td, th, tr{
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  
 }
 th{
-  border: 1px solid #dddddd;
-  padding: 8px;
   background-color: #0669e1;
   
 }
@@ -58,11 +57,13 @@ td:first-child{
         margin: 10px auto;
         display: block;
     }
-
-    table, td, th, tr{
-      width: 100%;
-      font-size: 1rem;
-       margin: 10px auto;
+  }
+   @media screen and (max-width: 760px) {
+    table{
+     width: 100%;
+    }
+    tr, th, td{
+      font-size: 0,3rem;
     }
 }
 </style>
