@@ -532,3 +532,14 @@ window.addEventListener("click", (event) => {
                 });
 
     }*/
+
+    window.OneSignalDeferred =
+window.OneSignalDeferred || [];
+
+OneSignalDeferred.push(async function(OneSignal) {
+
+  await OneSignal.init({
+    appId: "DIN-APP-ID"
+  });
+
+});
