@@ -17,6 +17,7 @@ const FILES = [
     "./index.html",
     "./gerica.css",
     "./app.js",
+     "./ansatteFirestore.js",
     "./manifest.json",
     "./images/logo-192.png",
     "./images/logo-512.png"
