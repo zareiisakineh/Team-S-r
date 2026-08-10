@@ -12,10 +12,9 @@
    <link rel="icon" href="images/logo-192.png">
    <link rel="apple-touch-icon" href="images/logo-192.png">
    <style>
- .answer img{
-    width:100%;
-    max-width:520px;
-    height:auto;
+  .answer img{
+      width: 100%;
+      max-width: 520px;
   }
  .rutiner{
   margin-block: 50px;
@@ -62,18 +61,20 @@ th{
 }
   }
    @media screen and (max-width: 760px) {
-   
-   table{
-    width:100%;
-    table-layout: fixed;
-    font-size: 0.8rem;
-}
-
-td, th, tr{
-    word-wrap: break-word;
-    white-space: normal;
+    table{
+     
     
-}
+     
+    
+    }
+    table, tr, th, td{
+      font-size: 1rem;
+     
+    }
+    tr, td, th{
+       padding: 8px 12px;
+       white-space: nowrap;
+    }
 }
 </style>
 </head>
@@ -504,7 +505,15 @@ td, th, tr{
               <i class="fas fa-chevron-down icon"></i>
           </button>
           <div class="answer">
-            <img src="bilder/sårstell.png" >
+            <ul>
+              <li>➡️ </li>
+              <li>➡️ </li>
+              <li>➡️ </li>
+              <li>➡️ </li>
+              <li>➡️ </li>
+              <li>➡️ </li>
+            </ul>
+           
           </div>
   </div>
 
@@ -526,7 +535,7 @@ td, th, tr{
                 <th>  3  </th>
               </tr>
               <tr>
-                <td style=" background-color: #0669e1; color: white;">Respirasjons<br>frekvens (per minutt)</td>
+                <td style=" background-color: #0669e1; color: white;">Respirasjonsfrekvens (per minutt)</td>
                 <td style="background-color: rgb(248, 144, 59);"><= 8</td>
                 <td style="background-color: rgb(252, 187, 134);"></td>
                 <td style="background-color: rgb(235, 249, 184);"> 9-11 </td>
@@ -537,7 +546,7 @@ td, th, tr{
                
               </tr>
               <tr>
-                <td style=" background-color: #0669e1; color: white;">SpO2, <br>Skala 1 (%)</td>
+                <td style=" background-color: #0669e1; color: white;">SpO2, Skala 1 (%)</td>
                 <td style="background-color: rgb(248, 144, 59);"><= 91</td>
                 <td style="background-color: rgb(252, 187, 134);">92-93</td>
                 <td style="background-color: rgb(235, 249, 184);">94-95</td>
@@ -548,7 +557,7 @@ td, th, tr{
                
               </tr>
                <tr>
-                <td style=" background-color: #0669e1; color: white;">SpO2, <br>Skala 2 (%)</td>
+                <td style=" background-color: #0669e1; color: white;">SpO2, Skala 2 (%)</td>
                 <td style="background-color: rgb(248, 144, 59);"><= 83</td>
                 <td style="background-color: rgb(252, 187, 134);">84-85</td>
                 <td style="background-color: rgb(235, 249, 184);">86-87</td>
@@ -570,7 +579,7 @@ td, th, tr{
                
               </tr>
               <tr>
-                <td style=" background-color: #0669e1; color: white;">Systolisk blodtrykk<br> (mmHg)</td>
+                <td style=" background-color: #0669e1; color: white;">Systolisk blodtrykk (mmHg)</td>
                 <td style="background-color: rgb(248, 144, 59);"><= 90</td>
                 <td style="background-color: rgb(252, 187, 134);">91-100</td>
                 <td style="background-color: rgb(235, 249, 184);">101-110</td>
@@ -581,7 +590,7 @@ td, th, tr{
                
               </tr>
               <tr>
-                <td style=" background-color: #0669e1; color: white;">Pulsfrekvens <br>(pr. minutt)</td>
+                <td style=" background-color: #0669e1; color: white;">Pulsfrekvens (pr. minutt)</td>
                 <td style="background-color: rgb(248, 144, 59);"> <= 40 </td>
                 <td style="background-color: rgb(252, 187, 134);"></td>
                 <td style="background-color: rgb(235, 249, 184);"> 41-50 </td>
@@ -663,19 +672,19 @@ td, th, tr{
                 <th>NEWS-skår</th>
                 <th>Overvåkningsfrekvens</th>
                 <th>Klinisk respons</th>
-                <th>mortalitet</th>
+                <th>Fare for mortalitet</th>
               </tr>
 
               <tr>
                 <td style="background-color: rgb(213, 213, 212);">0</td>
-                <td style="background-color: rgb(213, 213, 212);">Minst hver 12 time</td>
+                <td style="background-color: rgb(213, 213, 212);">Minimum hver 12 time</td>
                 <td style="background-color: rgb(213, 213, 212);">Følg rutinene for MEWS2 overvåkning ved ditt arbeidssted</td>
                 <td style="background-color: rgb(213, 213, 212);">Lav</td>
               </tr>
 
               <tr>
                 <td style="background-color: rgb(213, 213, 212);">Totalt 1-4</td>
-                <td style="background-color: rgb(213, 213, 212);">Hver 4-6 time</td>
+                <td style="background-color: rgb(213, 213, 212);">Maksimum hver 4-6 time</td>
                 <td style="background-color: rgb(213, 213, 212);">-Informer ansvarlig sykepleier/helsepersonell på vakt om NEWS2 skår<br>
                   -Ansvarlig sykepleier/helsepersonell tar stilling til økt overvåknings-frekvens, 
                   behov for klinisk tiltak og/eller legevurdering</td>
@@ -684,15 +693,15 @@ td, th, tr{
 
               <tr>
                 <td style="background-color: rgb(235, 249, 184);">Skår 3 i ett parameter</td>
-                <td style="background-color: rgb(235, 249, 184);">Minst en gang/time</td>
+                <td style="background-color: rgb(235, 249, 184);">Minst en gang per time</td>
                 <td style="background-color: rgb(235, 249, 184);">- Ansvarlig sykepleier/helsepersonell skal kontakte lege umiddelbart for vurdering<br>
                 - Vurdere behov for tettere overvåkning eller høyere behandlingsnivå</td>
-                <td style="background-color: rgb(235, 249, 184);">Middels</td>
+                <td style="background-color: rgb(235, 249, 184);">Lav-Middels</td>
               </tr>
 
               <tr>
                 <td style="background-color: rgb(252, 187, 134);">Totalt 5 eller høyere grenseverdi for rask responssenter</td>
-                <td style="background-color: rgb(252, 187, 134);">En gang i timen</td>
+                <td style="background-color: rgb(252, 187, 134);">Minimum en gang i timen</td>
                 <td style="background-color: rgb(252, 187, 134);">- Ansvarlig sykepleier/helsepersonell skal umiddelbart kontakte lege<br>
                 - lege vurderer behov for overflytting til høyere behandlingsnivå</td>
                 <td style="background-color: rgb(252, 187, 134);">Middels</td>
@@ -769,8 +778,7 @@ td, th, tr{
                 </tr>
                 <tr>
                   <td>PSL: prate, smile, løfte <br> 
-                      Andre symptomer: <br>
-                      Akutt oppstått ensidig koordinasjonssvikt (akutt gangvansker) <br>
+                      Andre symptomer: <br>Akutt oppstått ensidig koordinasjonssvikt (akutt gangvansker) <br>
                       Halvsidig synsfeltutfall<br>
                       Hyperakutt hodepine<br>
                       Nedsatt snsibilitet<br>
