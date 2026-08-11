@@ -603,3 +603,10 @@ if (popupLukk) {
 console.log("KJØRER MELDINGSFUNKSJONEN NÅ");
 
 visMeldingFraFirestore();
+
+
+console.log("================================");
+console.log("MELDINGSDELEN I APP.JS ER LASTET");
+console.log("================================");
+
+visMeldingFraFirestore();
