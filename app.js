@@ -551,7 +551,7 @@ async function visMeldingFraFirestore() {
         }
 
         popup.style.display =
-            "block";
+            "flex";
 
         console.log(
             "Melding vist:",
