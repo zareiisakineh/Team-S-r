@@ -600,11 +600,6 @@ if (popupLukk) {
     VIS MELDING NÅR SIDEN LASTES
 ------------------------------------------------*/
 
-document.addEventListener(
-    "DOMContentLoaded",
-    async () => {
+console.log("KJØRER MELDINGSFUNKSJONEN NÅ");
 
-        await visMeldingFraFirestore();
-
-    }
-);
+visMeldingFraFirestore();
