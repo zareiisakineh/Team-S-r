@@ -9,6 +9,13 @@ console.log("app.js loaded");
 // ----------------------------------------------------------
 
 import { hentAnsatte } from "./ansatteFirestore.js";
+import { db } from "./firebase.js";
+
+
+import {
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 // ==========================================================
@@ -474,59 +481,130 @@ window.addEventListener("click", (event) => {
 
 });
 
-/*------------------------------------------------Pup-Up meldinger------------------------------------------------------------------ */
+/*------------------------------------------------
+    POP-UP MELDINGER
+------------------------------------------------*/
 
-import {
-    doc,
-    getDoc
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-/*-------------------------------------funksjon som viser popup-------------------------------------------------------------------------- */
 async function visMeldingFraFirestore() {
 
-    const ref =
-        doc(db, "system", "aktuellMelding");
+    try {
 
-    const snap =
-        await getDoc(ref);
+        const ref =
+            doc(db, "system", "aktuellMelding");
 
-    if (!snap.exists()) return;
+        const snap =
+            await getDoc(ref);
 
-    const melding =
-        snap.data();
+        if (!snap.exists()) {
 
-    if (!melding.aktiv) return;
+            console.log(
+                "Ingen aktuell melding."
+            );
 
-    document.getElementById("popupTittel")
-        .textContent = melding.tittel;
+            return;
+        }
 
-    document.getElementById("popupTekst")
-        .textContent = melding.tekst;
+        const melding =
+            snap.data();
 
-    document.getElementById("popupDato")
-        .textContent = melding.dato;
+        if (!melding.aktiv) {
 
-    document.getElementById("meldingPopup")
-        .style.display = "block";
+            console.log(
+                "Aktuell melding er deaktivert."
+            );
+
+            return;
+        }
+
+        const popup =
+            document.getElementById("meldingPopup");
+
+        const popupTittel =
+            document.getElementById("popupTittel");
+
+        const popupTekst =
+            document.getElementById("popupTekst");
+
+        const popupDato =
+            document.getElementById("popupDato");
+
+        if (!popup || !popupTittel || !popupTekst) {
+
+            console.log(
+                "Popup-elementene finnes ikke på denne siden."
+            );
+
+            return;
+        }
+
+        popupTittel.textContent =
+            melding.tittel ?? "";
+
+        popupTekst.textContent =
+            melding.tekst ?? "";
+
+        if (popupDato) {
+
+            popupDato.textContent =
+                melding.dato ?? "";
+
+        }
+
+        popup.style.display =
+            "block";
+
+        console.log(
+            "Melding vist:",
+            melding
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Kunne ikke hente melding fra Firestore:",
+            error
+        );
+
+    }
+
 }
 
-/*--------------------------------------------lukkeknapp------------------------------------------------------ */
-document
-.getElementById("popupLukk")
-.addEventListener("click", () => {
 
-    document
-    .getElementById("meldingPopup")
-    .style.display = "none";
+/*------------------------------------------------
+    LUKK POPUP
+------------------------------------------------*/
 
-});
+const popupLukk =
+    document.getElementById("popupLukk");
 
-/*---------------------------------------------------------Kjør funksjonen: Etter at siden er ferdig lastet:-------------------------------------------- */
+if (popupLukk) {
+
+    popupLukk.addEventListener("click", () => {
+
+        const popup =
+            document.getElementById("meldingPopup");
+
+        if (popup) {
+
+            popup.style.display =
+                "none";
+
+        }
+
+    });
+
+}
+
+
+/*------------------------------------------------
+    VIS MELDING NÅR SIDEN LASTES
+------------------------------------------------*/
+
 document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
         await visMeldingFraFirestore();
 
-});
+    }
+);
