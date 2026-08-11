@@ -453,6 +453,7 @@ if (installButton) {
 
 }
 
+
 if (closeInstallModal) {
 
     closeInstallModal.addEventListener("click", () => {
@@ -473,5 +474,59 @@ window.addEventListener("click", (event) => {
 
 });
 
+/*------------------------------------------------Pup-Up meldinger------------------------------------------------------------------ */
+
+import {
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
+/*-------------------------------------funksjon som viser popup-------------------------------------------------------------------------- */
+async function visMeldingFraFirestore() {
+
+    const ref =
+        doc(db, "system", "aktuellMelding");
+
+    const snap =
+        await getDoc(ref);
+
+    if (!snap.exists()) return;
+
+    const melding =
+        snap.data();
+
+    if (!melding.aktiv) return;
+
+    document.getElementById("popupTittel")
+        .textContent = melding.tittel;
+
+    document.getElementById("popupTekst")
+        .textContent = melding.tekst;
+
+    document.getElementById("popupDato")
+        .textContent = melding.dato;
+
+    document.getElementById("meldingPopup")
+        .style.display = "block";
+}
+
+/*--------------------------------------------lukkeknapp------------------------------------------------------ */
+document
+.getElementById("popupLukk")
+.addEventListener("click", () => {
+
+    document
+    .getElementById("meldingPopup")
+    .style.display = "none";
+
+});
+
+/*---------------------------------------------------------Kjør funksjonen: Etter at siden er ferdig lastet:-------------------------------------------- */
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+        await visMeldingFraFirestore();
+
+});

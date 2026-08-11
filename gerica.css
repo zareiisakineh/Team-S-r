@@ -723,3 +723,34 @@ header {
     font-size:2rem;
     cursor:pointer;
 }
+/*----------------------------------------Pop-Up meldinger----------------------------------------------------
+----------------------------------------------------------------------------------------------------------*/
+.popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:9999;
+}
+
+.popup-content{
+    background:white;
+    width:90%;
+    max-width:500px;
+    margin:120px auto;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+.popup-content h2{
+    color:#d35400;
+}
+
+.popup-content button{
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
