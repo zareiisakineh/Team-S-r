@@ -10,7 +10,7 @@
 // CACHE
 // ==================================================
 
-const CACHE_NAME = "team-sor-54";
+const CACHE_NAME = "team-sor-55";
 
 const FILES = [
     "./",
@@ -22,7 +22,6 @@ const FILES = [
     "./images/logo-192.png",
     "./images/logo-512.png"
 ];
-
 
 // ==================================================
 // INSTALL
