@@ -757,36 +757,18 @@ header {
 
 /* Lenker i sjekkliste for ansvarssykepleier*/
 .lenkeKort{
-    display: inline-flex;
-    align-items: center;
-  
-    padding: 24px 38px;
-
-    background: #2f5d9f;
-    color: white;
-
-    border: none;
-    border-radius: 12px;
-
-    font-size: 1.5rem;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);
+    color: rgb(59, 100, 147);
+    margin-top: 1rem;
+     transition: 0.3s ease;
+     gap: 30px;
 }
 
 .lenkeKort:hover{
-    background:#80ace5;
+    background:#d2d9e3;
     transform:translateY(-3px);
-}
-
-.lenkeKort:active{
-    transform:scale(.97);
-}
-
-.lenkeKort:focus{
-    outline:3px solid #7ab6ff;
-    outline-offset:3px;
 }
