@@ -160,6 +160,14 @@ const fagsykepleier = ansatte.filter(person =>
     person.gruppe === "fagsykepleiere"
 );
 
+const vaktmester = ansatte.filter(person =>
+    person.gruppe === "vaktmestre"
+);
+
+const saksbehandler = ansatte.filter(person =>
+    person.gruppe === "saksbehandlere"
+);
+
 
 // ==========================================================
 // VIS ANSATTE
@@ -274,6 +282,14 @@ if (document.getElementById("responssenter")) {
 
 if (document.getElementById("fagSPL")) {
     visGruppe("fagSPL", fagsykepleier);
+}
+
+if (document.getElementById("vaktmester")) {
+    visGruppe("vaktmester", vaktmester);
+}
+
+if (document.getElementById("saksbehandler")) {
+    visGruppe("saksbehandler", saksbehandler);
 }
 
 
