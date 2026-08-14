@@ -531,6 +531,10 @@ window.addEventListener("load", async () => {
 
     if (deferredPrompt) {
 
+         console.log(
+        "Starter installasjon"
+    );
+
     deferredPrompt.prompt();
 
     const result =
@@ -544,6 +548,10 @@ window.addEventListener("load", async () => {
     deferredPrompt = null;
 
 } else {
+
+     console.log(
+        "beforeinstallprompt ikke tilgjengelig"
+    );
 
     installModal.style.display =
         "block";
