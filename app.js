@@ -458,6 +458,22 @@ if ("serviceWorker" in navigator) {
 // INSTALLER TEAM SØR – ENKEL LØSNING
 // Android / iPhone / iPad / PC----Installasjonsboks
 // ==========================================================
+let deferredPrompt;
+//Denne koden lagrer installasjonsforespørselen slik at vi kan bruke den senere
+   window.addEventListener(
+    "beforeinstallprompt",
+    (e) => {
+
+        e.preventDefault();
+
+        deferredPrompt = e;
+
+        console.log(
+            "Appen kan installeres"
+        );
+
+    }
+);
 
 const installButton = document.getElementById("installApp");
 const installModal = document.getElementById("installModal");
@@ -497,6 +513,45 @@ window.addEventListener("click", (event) => {
 
 });
 
+window.addEventListener("load", async () => {
+
+    const erInstallert =
+        window.matchMedia(
+            "(display-mode: standalone)"
+        ).matches;
+
+    if (erInstallert) return;
+
+    const svar =
+        confirm(
+            "📲 Team Sør kan installeres som app. Vil du installere nå?"
+        );
+
+    if (!svar) return;
+
+    if (deferredPrompt) {
+
+    deferredPrompt.prompt();
+
+    const result =
+        await deferredPrompt.userChoice;
+
+    console.log(
+        "Installasjonsvalg:",
+        result.outcome
+    );
+
+    deferredPrompt = null;
+
+} else {
+
+    installModal.style.display =
+        "block";
+
+}
+
+});
+
 /*------------------------------------------------
     POP-UP MELDINGER
 ------------------------------------------------*/
@@ -505,11 +560,9 @@ async function visMeldingFraFirestore() {
 
     try {
 
-        const ref =
-            doc(db, "system", "aktuellMelding");
+        const ref = doc(db, "system", "aktuellMelding");
 
-        const snap =
-            await getDoc(ref);
+        const snap = await getDoc(ref);
 
         if (!snap.exists()) {
 
@@ -532,17 +585,13 @@ async function visMeldingFraFirestore() {
             return;
         }
 
-        const popup =
-            document.getElementById("meldingPopup");
+        const popup = document.getElementById("meldingPopup");
 
-        const popupTittel =
-            document.getElementById("popupTittel");
+        const popupTittel = document.getElementById("popupTittel");
 
-        const popupTekst =
-            document.getElementById("popupTekst");
+        const popupTekst = document.getElementById("popupTekst");
 
-        const popupDato =
-            document.getElementById("popupDato");
+        const popupDato = document.getElementById("popupDato");
 
         if (!popup || !popupTittel || !popupTekst) {
 
