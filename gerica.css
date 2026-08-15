@@ -838,7 +838,7 @@ Forslag for forbedring av nettsiden forslag.html
 #forslagForm button {
 
     background: var(--accent-color);
-    color: white;
+    color: rgb(6, 5, 5);
     border: none;
     padding: 12px;
     cursor: pointer;
@@ -848,8 +848,8 @@ Forslag for forbedring av nettsiden forslag.html
 .forslag-knapp {
     display: inline-block;
     background: #3A7D44;
-    color: white;
-    padding: 12px 20px;
+    color: rgb(249, 249, 249);
+    padding: 12px 90px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
