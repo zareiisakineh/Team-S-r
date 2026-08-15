@@ -82,7 +82,7 @@ Hjem  Print  Studenter  Prosedyrer
   transition: 0.2s;
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 6px;
   font-weight: 600;
   font-size: 1.3rem;
 }
@@ -126,6 +126,7 @@ Hjem  Print  Studenter  Prosedyrer
   border: 1px solid hsl(144, 57%, 91%);
   border-radius: 8px;
   overflow: hidden;
+   width: 100%;
 }
 .question {
   width: 100%;
@@ -301,7 +302,6 @@ h1{
 }
 
 
-
 /*---------------------------------------------------------------------------------------
 ------------------------------------Album------------------------------------------------
 ------------------------------------------------------------------------------------------*/
@@ -412,7 +412,52 @@ header {
     display:inline-block;
 }
 
-
+/*-----------------------------------------------------------------------------------------
+-------------------------------------Kontaktkort---------------------------------------------
+---------------------------------------------------------------------------------------------*/
+#ekstravakt, #SPL, #HPL, #PB, #fysio, #ergo, #AKS, #ernæringFysio, #leder, #merkantil, #nattevakt, #vurderingsteam, #responssenter, #fagSPL, #saksbehandler, #vaktmester{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+   
+}
+ 
+.ansattKort{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);
+}
+.ansattKort h3{
+    margin-bottom:8px;
+    color:#2f5d9f;
+}
+.ansattKort p{
+    color:#666;
+    margin-bottom:18px;
+}
+.ikoner{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+.ikoner a{
+    width:42px;
+    height:42px;
+    border-radius:50%; 
+    background:#2f5d9f;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    transition:.2s;
+}
+.ikoner a:hover{
+    background:#1e4374;
+    transform:scale(1.1);
+}
 
    /* ================================
    Firebase innlogging
@@ -590,37 +635,6 @@ header {
     font-size:2rem;
     cursor:pointer;
 }
-/*----------------------------------------Pop-Up meldinger----------------------------------------------------
-----------------------------------------------------------------------------------------------------------*/
-.popup{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-    z-index:9999;
-}
-
-.popup-content{
-    background:white;
-    width:90%;
-    max-width:500px;
-    margin:120px auto;
-    padding:20px;
-    border-radius:10px;
-    text-align:center;
-    box-shadow:0 0 20px rgba(0,0,0,0.3);
-}
-
-.popup-content h2{
-    color:#d35400;
-}
-
-.popup-content button{
-    padding:10px 20px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
 
 /* Lenker i sjekkliste for ansvarssykepleier*/
 .lenkeKort{
@@ -640,46 +654,3 @@ header {
     transform:translateY(-3px);
 }
 
-/*
-Forslag for forbedring av nettsiden forslag.html
-*/
-#forslagForm {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 600px;
-}
-
-#forslagForm input,
-#forslagForm select,
-#forslagForm textarea {
-
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#forslagForm button {
-
-    background: var(--accent-color);
-    color: rgb(6, 5, 5);
-    border: none;
-    padding: 12px;
-    cursor: pointer;
-}
-
-/*------------------------------forslag-knapp----------------------------->*/
-.forslag-knapp {
-    display: inline-block;
-    background: #3A7D44;
-    color: rgb(249, 249, 249);
-    padding: 12px 90px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    margin: 10px 0;
-}
-
-.forslag-knapp:hover {
-    opacity: 0.9;
-}
