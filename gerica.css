@@ -11,8 +11,9 @@
   --card-bg: #ffffff;
   --border-color: #fffafa;
 }
-#informasjon {
-    background: #2F5D9F;
+#natt {
+    background: #383b3e;
+    color: white;
 }
 
 #nyttig {
