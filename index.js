@@ -1,3 +1,13 @@
+// Bilder på første side
+const lightbox = GLightbox({
+    selector: '.glightbox',
+    loop: true,
+    touchNavigation: true,
+    keyboardNavigation: true,
+    closeButton: true
+});
+
+
 /*------------------------------------------------
     POP-UP MELDINGER
 ------------------------------------------------*/
@@ -130,8 +140,7 @@ let deferredPrompt;
 
 const installButton = document.getElementById("installApp");
 const installModal = document.getElementById("installModal");
-const closeInstallModal =
-document.getElementById("closeInstallModal");
+const closeInstallModal = document.getElementById("closeInstallModal");
 
 if (installButton) {
 
@@ -168,10 +177,7 @@ window.addEventListener("click", (event) => {
 
 window.addEventListener("load", async () => {
 
-    const erInstallert =
-        window.matchMedia(
-            "(display-mode: standalone)"
-        ).matches;
+    const erInstallert = window.matchMedia("(display-mode: standalone)").matches;
 
     if (erInstallert) return;
 
@@ -190,8 +196,7 @@ window.addEventListener("load", async () => {
 
     deferredPrompt.prompt();
 
-    const result =
-        await deferredPrompt.userChoice;
+    const result = await deferredPrompt.userChoice;
 
     console.log(
         "Installasjonsvalg:",

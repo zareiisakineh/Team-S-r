@@ -82,7 +82,7 @@ Hjem  Print  Studenter  Prosedyrer
   transition: 0.2s;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 3px;
   font-weight: 600;
   font-size: 1.3rem;
 }
