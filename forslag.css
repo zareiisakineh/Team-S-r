@@ -1,0 +1,43 @@
+/*
+Forslag for forbedring av nettsiden forslag.html
+*/
+#forslagForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+}
+
+#forslagForm input,
+#forslagForm select,
+#forslagForm textarea {
+
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#forslagForm button {
+
+    background: var(--accent-color);
+    color: rgb(6, 5, 5);
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+}
+
+/*------------------------------forslag-knapp----------------------------->*/
+.forslag-knapp {
+    display: inline-block;
+    background: #3A7D44;
+    color: rgb(249, 249, 249);
+    padding: 12px 90px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.forslag-knapp:hover {
+    opacity: 0.9;
+}

@@ -11,49 +11,6 @@
   --card-bg: #ffffff;
   --border-color: #fffafa;
 }
-#natt{
-    background: #383b3e;
-    color: white;
-}
-#natt:hover{
-    background: #6a7075;
-}
-
-#nyttig {
-    background:  #f9e1c8;
-}
-#nyttig:hover{
-     background:  #f6c894;
-}
-#nyttig:focus{
-     background:  #facb95;
-}
-
-#rutiner {
-    background: #6D5AA8;
-}
-
-#fag {
-    background: #c5d9de;
-}
-#fag:hover {
-    background: #d0e8ec;
-}
-#fag:focus {
-    background: #d0e8ec;
-}
-
-#meldinger {
-    background: #B54747;
-}
-
-#tips {
-    background: #A87800;
-}
-
-#administrasjon {
-    background: #d5d9dd;
-}
 
 * {
   box-sizing: border-box;
@@ -125,7 +82,7 @@ Hjem  Print  Studenter  Prosedyrer
   transition: 0.2s;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 3px;
   font-weight: 600;
   font-size: 1.3rem;
 }
@@ -343,47 +300,6 @@ h1{
     max-width:500px;
 }
 
-#searchInput{
-    width:100%;
-    padding:12px 18px;
-    border-radius:10px;
-    border:1px solid hsl(152, 38%, 30%);
-    font-size:1.5rem;
-}
-
-/*flex:1 gjør at søkefeltet fyller plassen mellom logoen og menyen.*/
-
-#searchResults{
-    position:absolute;
-    top:55px;
-    left:0;
-    width:100%;
-    background:white;
-    border-radius:10px;
-    box-shadow:0 5px 15px rgba(0,0,0,.2);
-    z-index:1000;
-}
-
-.result{
-    padding:12px;
-    border-bottom:1px solid #eee;
-}
-
-.result:hover{
-    background:#eef4ff;
-}
-
-/*På mobil er det bedre at søkefeltet legger seg under logoen. Legg til:*/
- @media (max-width:760px){
-    
-  .search-box{
-        order:3;
-        flex:0 0 100%;
-        max-width:100%;
-       margin-top: 5px;
-    }
-
-}
 
 
 /*---------------------------------------------------------------------------------------
@@ -496,99 +412,7 @@ header {
     display:inline-block;
 }
 
-/*------------------------Install-app knappen-------------------------------------------
----------------------------------------------------------------------------------------*/
-#installApp {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
 
-    margin-top: 25px;
-    padding: 14px 28px;
-
-    background: #2f5d9f;
-    color: white;
-
-    border: none;
-    border-radius: 12px;
-
-    font-size: 1rem;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,.15);
-}
-
-#installApp:hover{
-    background:#244a7d;
-    transform:translateY(-3px);
-}
-
-#installApp:active{
-    transform:scale(.97);
-}
-
-#installApp:focus{
-    outline:3px solid #7ab6ff;
-    outline-offset:3px;
-}
-.installInfo{
-    margin-top:12px;
-    color:#555;
-    font-size:.95rem;
-}
-#installApp[hidden]{
-    display:none;
-}
-
-/*-----------------------------------------------------------------------------------------
--------------------------------------Kontaktkort---------------------------------------------
----------------------------------------------------------------------------------------------*/
-#ekstravakt, #SPL, #HPL, #PB, #fysio, #ergo, #AKS, #ernæringFysio, #leder, #merkantil, #nattevakt, #vurderingsteam, #responssenter, #fagSPL, #saksbehandler, #vaktmester{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-   
-}
- 
-.ansattKort{
-    background:white;
-    border-radius:12px;
-    padding:20px;
-    text-align:center;
-    box-shadow:0 3px 8px rgba(0,0,0,.15);
-}
-.ansattKort h3{
-    margin-bottom:8px;
-    color:#2f5d9f;
-}
-.ansattKort p{
-    color:#666;
-    margin-bottom:18px;
-}
-.ikoner{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-}
-.ikoner a{
-    width:42px;
-    height:42px;
-    border-radius:50%; 
-    background:#2f5d9f;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-decoration:none;
-    transition:.2s;
-}
-.ikoner a:hover{
-    background:#1e4374;
-    transform:scale(1.1);
-}
 
    /* ================================
    Firebase innlogging
