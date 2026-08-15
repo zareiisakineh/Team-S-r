@@ -517,15 +517,11 @@ window.addEventListener("click", (event) => {
 
 window.addEventListener("load", async () => {
 
-    const erInstallert =
-        window.matchMedia(
-            "(display-mode: standalone)"
-        ).matches;
+    const erInstallert = window.matchMedia("(display-mode: standalone)").matches;
 
     if (erInstallert) return;
 
-    const svar =
-        confirm(
+    const svar = confirm(
             "📲 Team Sør kan installeres som app. Vil du installere nå?"
         );
 
@@ -539,11 +535,9 @@ window.addEventListener("load", async () => {
 
     deferredPrompt.prompt();
 
-    const result =
-        await deferredPrompt.userChoice;
+    const result = await deferredPrompt.userChoice;
 
-    console.log(
-        "Installasjonsvalg:",
+    console.log("Installasjonsvalg:",
         result.outcome
     );
 
@@ -551,12 +545,9 @@ window.addEventListener("load", async () => {
 
 } else {
 
-     console.log(
-        "beforeinstallprompt ikke tilgjengelig"
-    );
+     console.log("beforeinstallprompt ikke tilgjengelig");
 
-    installModal.style.display =
-        "block";
+    installModal.style.display = "block";
 
 }
 
@@ -564,7 +555,7 @@ window.addEventListener("load", async () => {
 
 /*------------------------------------------------
     POP-UP MELDINGER
-------------------------------------------------*/
+------------------------------------------------
 
 async function visMeldingFraFirestore() {
 
@@ -644,9 +635,9 @@ async function visMeldingFraFirestore() {
 }
 
 
-/*------------------------------------------------
+//------------------------------------------------
     LUKK POPUP
-------------------------------------------------*/
+//------------------------------------------------
 
 const popupLukk = document.getElementById("popupLukk");
 
@@ -670,7 +661,7 @@ if (popupLukk) {
     });
 
 }
-
+*/
 
 /*------------------------------------------------
     VIS MELDING NÅR SIDEN LASTES
