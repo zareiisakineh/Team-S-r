@@ -4,12 +4,51 @@
   --primary-hover: hsl(102, 34%, 77%);
   --primary-light: #e8f0f9;
   --secondary-color: #6c5ce7;
-  --accent-color: #fce2cb;
+  --accent-color: #f9e9cf;
   --text-color: #2b2d42;
   --text-light: #8d99ae;
   --bg-color: #f8f9fa;
   --card-bg: #ffffff;
   --border-color: #fffafa;
+}
+#informasjon {
+    background: #2F5D9F;
+}
+
+#nyttig {
+    background:  #f9e1c8;
+}
+#nyttig:hover{
+     background:  #f6c894;
+}
+#nyttig:focus{
+     background:  #facb95;
+}
+
+#rutiner {
+    background: #6D5AA8;
+}
+
+#fag {
+    background: #c5d9de;
+}
+#fag:hover {
+    background: #d0e8ec;
+}
+#fag:focus {
+    background: #d0e8ec;
+}
+
+#meldinger {
+    background: #B54747;
+}
+
+#tips {
+    background: #A87800;
+}
+
+#administrasjon {
+    background: #d5d9dd;
 }
 
 * {

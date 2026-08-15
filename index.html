@@ -272,8 +272,14 @@ Search-felt
           <strong>**Velkommen til Team Sør!**</strong></p>
     </section>     
 
-    <section class="card">
-        <h2>Nyttige telefonummere</h2>
+      <section class="card">
+      <div class="item">
+        <button class="question" id="nyttig">  
+            <h2> Nyttige telefonummere</h2>
+            <i class="fas fa-chevron-down icon"></i>
+        </button >
+            <div class="answer" > 
+               <h2>Nyttige telefonummere</h2>
         <ul>
           <li>➡️ Lgevakt: <a href="tel:116117" >📞</a></li>
           <li>➡️ Legevakt for helsepersonell:<a href="tel:23487210" >📞</a></li>
@@ -303,10 +309,14 @@ Search-felt
       </section>
 
 
+            </div>
+          </div>
+       </div>
+       
 
     <section class="card">
       <div class="item">
-        <button class="question" onclick="toggleAccordion(this)">  
+        <button class="question">  
             <h2> Hvem jobber i team Sør?</h2>
             <i class="fas fa-chevron-down icon"></i>
         </button >
@@ -333,8 +343,8 @@ Search-felt
       </section>
 
        <section class="card">
-        <div class="item">
-          <button class="question" onclick="toggleAccordion(this)">
+        <div class="item" >
+          <button class="question" id="nyttig">
           <h2>Info om Nord, Øst, Vest</h2>
            <i class="fas fa-chevron-down icon"></i>
           </button>
@@ -364,7 +374,7 @@ Search-felt
 <!--------------------------------------------------------------------------------------------->
 <!-------------------------------------------åpne accordion, Ledere----------------------------------->
         <div class="item">
-          <button class="question">
+          <button class="question" id="administrasjon">
               <h2><i class="fa-solid fa-user-tie"></i> Ledere:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
@@ -380,7 +390,7 @@ Search-felt
 
 <!-------------------------------------------åpne accordion, Merkantiler----------------------------------->
         <div class="item">
-          <button class="question">
+          <button class="question" id="administrasjon">
               <h2><i class="fa-solid fa-folder-open"></i> Merkantiler:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
@@ -395,7 +405,7 @@ Search-felt
     <!-------------------------------------------------lukk accordion, Merkantiler----------------------->
 <!-------------------------------------------åpne accordion, Vurderingsteam----------------------------------->
         <div class="item">
-          <button class="question">
+          <button class="question" id="administrasjon">
               <h2><i class="fa-solid fa-scale-balanced"></i></i> Vurderingsteam:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
@@ -411,7 +421,7 @@ Search-felt
 
 <!-------------------------------------------åpne accordion, Saksbehandlere----------------------------------->
         <div class="item">
-          <button class="question">
+          <button class="question" id="administrasjon">
               <h2><i class="fa-solid fa-file-lines"></i> Saksbehandlere:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
@@ -444,7 +454,7 @@ Search-felt
 
 <!-------------------------------------------åpne accordion, Vaktmestre----------------------------------->
         <div class="item">
-          <button class="question">
+          <button class="question" id="nyttig">
               <h2><i class="fa-solid fa-tools"></i> Vaktmestre:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
@@ -461,7 +471,7 @@ Search-felt
 
 <!-------------------------------------------åpne accordion, Responsesenteret----------------------------------->
         <div class="item">
-          <button class="question">
+          <button class="question" id="fag">
               <h2><i class="fa-solid fa-headset"></i> Responsesenteret:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
@@ -477,7 +487,7 @@ Search-felt
 
 <!-------------------------------------------åpne accordion, Ernæringsfysiolog----------------------------------->
         <div class="item">
-          <button class="question">
+          <button class="question" id="fag">
               <h2><i class="fa-solid fa-apple-whole"></i> Ernæringsfysiolog:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
@@ -492,7 +502,7 @@ Search-felt
     <!-------------------------------------------------lukk accordion, Ernæringsfysiolog--------------------------------->     
 <!-------------------------------------------åpne accordion, AKS----------------------------------->
         <div class="item">
-          <button class="question" >
+          <button class="question" id="fag">
               <h2>🩺 Avansert klininisk sykepleiere:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
@@ -507,7 +517,7 @@ Search-felt
     <!-------------------------------------------------lukk accordion, AKS--------------------------------->     
 <!-------------------------------------------åpne accordion, Ergoterapeuter----------------------------------->
         <div class="item">
-          <button class="question">
+          <button class="question" id="fag">
               <h2><i class="fa-solid fa-hand-holding-medical"></i>Ergoterapeuter:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
@@ -522,7 +532,7 @@ Search-felt
     <!-------------------------------------------------lukk accordion, Ergoterapeuter--------------------------------->     
 <!-------------------------------------------Åpene accordion, sykepleiere----------------------------------->
         <div class="item">
-          <button class="question">
+          <button class="question" id="fag">
               <h2><i class="fa-solid fa-person-running"></i> Fysioterapeuter:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
@@ -537,7 +547,7 @@ Search-felt
     <!-------------------------------------------------lukk accordion---------------------------------> 
 <!--------------------------------------Accordion, fagsykepleiere----------------------------------->
         <div class="item">
-          <button class="question">
+          <button class="question" id="fag">
               <h2>🩺 Fagsykepleiere:</h2> 
               <i class="fas fa-chevron-down icon"></i> 
           </button>
