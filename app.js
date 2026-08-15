@@ -581,8 +581,7 @@ async function visMeldingFraFirestore() {
             return;
         }
 
-        const melding =
-            snap.data();
+        const melding = snap.data();
 
         if (!melding.aktiv) {
 
@@ -647,20 +646,22 @@ async function visMeldingFraFirestore() {
     LUKK POPUP
 ------------------------------------------------*/
 
-const popupLukk =
-    document.getElementById("popupLukk");
+const popupLukk = document.getElementById("popupLukk");
 
 if (popupLukk) {
 
     popupLukk.addEventListener("click", () => {
 
-        const popup =
-            document.getElementById("meldingPopup");
+        const popup = document.getElementById("meldingPopup");
 
         if (popup) {
 
-            popup.style.display =
-                "none";
+            popup.style.display = "none";
+
+             sessionStorage.setItem(
+            "meldingVist",
+            "ja"
+        );
 
         }
 
