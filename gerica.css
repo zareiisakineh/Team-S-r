@@ -15,6 +15,9 @@
     background: #383b3e;
     color: white;
 }
+#natt:hover{
+    background: #6a7075;
+}
 
 #nyttig {
     background:  #f9e1c8;
@@ -811,4 +814,32 @@ header {
 .lenkeKort:hover{
     background:#d2d9e3;
     transform:translateY(-3px);
+}
+
+/*
+Forslag for forbedring av nettsiden forslag.html
+*/
+#forslagForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+}
+
+#forslagForm input,
+#forslagForm select,
+#forslagForm textarea {
+
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#forslagForm button {
+
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
 }

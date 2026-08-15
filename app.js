@@ -11,11 +11,20 @@ console.log("app.js loaded");
 import { hentAnsatte } from "./ansatteFirestore.js";
 import { db } from "./firebase.js";
 
-
+// import fra firestore for å håndtere meldinger
 import {
     doc,
     getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+// import fra firestore for å håndtere forslag
+import {
+    collection,
+    addDoc,
+    serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 // ==========================================================
@@ -684,3 +693,42 @@ console.log("MELDINGSDELEN I APP.JS ER LASTET");
 console.log("================================");
 
 visMeldingFraFirestore();
+
+// ==========================================================
+// Lagre forslag i Firestore
+// ==========================================================
+const forslagForm = document.getElementById("forslagForm");
+
+forslagForm.addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        try {
+
+            await addDoc(
+                collection(db, "forslag"),
+                {
+                    navn: document.getElementById("navn").value,
+
+                    kategori: document.getElementById("kategori").value,
+
+                    tekst: document.getElementById("forslag").value,
+
+                    dato: serverTimestamp(),
+
+                    status: "Ny"
+                }
+            );
+
+            document.getElementById("melding").textContent = "Forslaget er sendt!";
+
+            forslagForm.reset();
+
+        } catch (error) {
+
+            console.error(error);
+
+            document.getElementById("melding").textContent = "Feil ved sending.";
+        }
+    }
+);
