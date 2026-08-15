@@ -843,3 +843,19 @@ Forslag for forbedring av nettsiden forslag.html
     padding: 12px;
     cursor: pointer;
 }
+
+/*------------------------------forslag-knapp----------------------------->*/
+.forslag-knapp {
+    display: inline-block;
+    background: #3A7D44;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.forslag-knapp:hover {
+    opacity: 0.9;
+}
