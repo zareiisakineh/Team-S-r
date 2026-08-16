@@ -477,10 +477,10 @@ Forslag for forbedring av nettsiden forslag.html
     gap: 10px;
 
     margin-top: 25px;
-    padding: 14px 28px;
+    padding: 14px 38px;
 
-    background: #2f5d9f;
-    color: white;
+    background:  #e5ec9e;
+    color: rgb(13, 13, 13);
 
     border: none;
     border-radius: 12px;
@@ -495,7 +495,7 @@ Forslag for forbedring av nettsiden forslag.html
 }
 
 #arbeidsmiljø:hover{
-    background:#244a7d;
+    background:  #d3df58;
     transform:translateY(-3px);
 }
 
@@ -504,6 +504,6 @@ Forslag for forbedring av nettsiden forslag.html
 }
 
 #arbeidsmiljø:focus{
-    outline:3px solid #7ab6ff;
+    outline:3px solid #7aff99;
     outline-offset:3px;
 }
