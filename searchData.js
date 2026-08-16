@@ -91,74 +91,111 @@ const searchData = [
     // ===========================
 
     {
-        title: "Elink",
+        title: "Sjekkliste for ansvalig sykepleier",
         keywords: "elink epikrise innleggelse fastlege sykehus",
         page: "sjekkliste.html",
         anchor: "elink"
     },
 
     {
-        title: "OL-beskjedjournal",
-        keywords: "ol beskjedjournal rapport",
+        title: "Skrive ut arbeidsliste per ansatt",
+        keywords: "arbeidsplanlegging arbeidslister per ansatt",
         page: "sjekkliste.html",
-        anchor: "ol"
+        anchor: "print1"
     },
 
     {
-        title: "Rapporter og praktiske oppgaver",
-        keywords: "rapport oppgaver",
+        title: "Lage enkel oppdrag",
+        keywords: "journaltype 7 oppgaver brukeroversikt",
         page: "sjekkliste.html",
-        anchor: "rapport"
+        anchor: "print3"
     },
 
     {
-        title: "Multidoseimport",
-        keywords: "multidose import torsdag medisiner",
+        title: "Flytt alle besøk fra en ansatt til en annen",
+        keywords: "alle besøk fra en ansatt til en annen etternavnet flyttes",
         page: "sjekkliste.html",
-        anchor: "multidose"
+        anchor: "print4"
     },
 
     {
-        title: "Medisinendringer",
-        keywords: "medisin legemiddel gerica",
+        title: "Printe ut journal/rapport",
+        keywords: "ol-Rapport-hjemmesykepleie journalene kommer på skjermen",
+        page: "sjekkliste.html",
+        anchor: "print2"
+    },
+
+    {
+        title: "Tiltaksplan V1",
+        keywords: "tiltaksplan tidsplan kommer opp startdato, tidspunkt og rute",
+        page: "sjekkliste.html",
+        anchor: "print10"
+    },
+
+    {
+        title: "Tiltaksplan V2",
+        keywords: "situasjon tidsplan nødvendig kompetanse nivå tidsestimat antall utførere nivå",
+        page: "sjekkliste.html",
+        anchor: "print11"
+    },
+
+    {
+        title: "medisinEndring",
+        keywords: "doseringsliste kompakt",
         page: "sjekkliste.html",
         anchor: "medisinEndring"
     },
 
     {
-        title: "Tiltaksplaner",
-        keywords: "tiltaksplan tjenesteansvarlig ta",
+        title: "Skjemaer",
+        keywords: "Samtykkeskjema Praktisk bistand Søknad om trygghetsalarm Tannhelse-skjema",
         page: "sjekkliste.html",
-        anchor: "tiltak"
+        anchor: "print9"
     },
 
     {
-        title: "Kommunikasjon",
-        keywords: "pasientnett journal epikrise medisingylle",
-        page: "sjekkliste.html",
-        anchor: "kommunikasjon"
-    },
-
-    {
-        title: "Medisinrom",
-        keywords: "medisinrom narkoskap a preparat b preparat sårutstyr",
-        page: "sjekkliste.html",
-        anchor: "medisinrom"
-    },
-
-    {
-        title: "Pasientnett",
-        keywords: "pasientnett melde inn",
+        title: "Hvordan melde brukere inn i pasientnett?",
+        keywords: "pasientnett melde brukere inn",
         page: "sjekkliste.html",
         anchor: "pasientnett"
     },
 
-    {
+     {
         title: "Oppfølging av alarmer",
-        keywords: "alarm dignio ansvarstelefon varsler",
+        keywords: "ansvarstelefon og dignio for varsler og behandle",
         page: "sjekkliste.html",
-        anchor: "alarmer"
+        anchor: "ansvarstelefon og dignio for varsler og behandl"
     },
+
+     {
+        title: "Når bruker skal flytte til en annen bydel/kommune",
+        keywords: "pasientnett melde brukere inn",
+        page: "sjekkliste.html",
+        anchor: "ol"
+    },
+
+     {
+        title: "Nyttige lenker og prosedyrer",
+        keywords: "KnuseDeleListen sår sårstell TIMES",
+        page: "sjekkliste.html",
+        anchor: "rapport"
+    },
+
+    {
+        title: "Rutiner for Multidoseimport",
+        keywords: "multidosedagen team Sør(ulike uker) Bytt rolle til multidoseimport institusjonssymbol notatark",
+        page: "sjekkliste.html",
+        anchor: "multidose"
+    },
+
+    {
+        title: "Nyttige lenker og prosedyrer",
+        keywords: "KnuseDeleListen sår sårstell TIMES",
+        page: "sjekkliste.html",
+        anchor: "rapport"
+    },
+
+    
 
     // ===========================
     // Velferdsteknologi

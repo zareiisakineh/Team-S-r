@@ -26,12 +26,15 @@ if (searchInput && searchResults) {
         // Finn alle treff
         const matches = searchData.filter(item => {
 
-            return (
-                item.title.toLowerCase().includes(text) ||
-                item.keywords.toLowerCase().includes(text)
-            );
+    const title = item.title?.toLowerCase() || "";
+    const keywords = item.keywords?.toLowerCase() || "";
 
-        });
+    return (
+        title.includes(text) ||
+        keywords.includes(text)
+    );
+
+});
 
         // Ingen treff
         if (matches.length === 0) {

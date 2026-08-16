@@ -438,7 +438,7 @@ Forslag for forbedring av nettsiden forslag.html
 }
 
 /*------------------------------forslag-knapp----------------------------->*/
-.forslag-knapp {
+#forslag-knapp {
     display: inline-block;
     background: #3A7D44;
     color: white;
@@ -450,7 +450,60 @@ Forslag for forbedring av nettsiden forslag.html
      transition: 0.3s ease;
 }
 
-.forslag-knapp:hover {
+#forslag-knapp:hover {
     opacity: 0.9;
 }
+#forslag-knapp:hover{
+    background:#1f4525;
+    transform:translateY(-3px);
+}
 
+#forslag-knapp:active{
+    transform:scale(.97);
+}
+
+#forslag-knapp:focus{
+    outline:3px solid #7ca883;
+    outline-offset:3px;
+}
+
+#forslag-knapp h2{
+    padding: 1rem;
+    font-size: 12rem;
+}
+#arbeidsmiljø{
+     display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 25px;
+    padding: 14px 28px;
+
+    background: #2f5d9f;
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+}
+
+#arbeidsmiljø:hover{
+    background:#244a7d;
+    transform:translateY(-3px);
+}
+
+#arbeidsmiljø:active{
+    transform:scale(.97);
+}
+
+#arbeidsmiljø:focus{
+    outline:3px solid #7ab6ff;
+    outline-offset:3px;
+}
