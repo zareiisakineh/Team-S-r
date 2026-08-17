@@ -73,4 +73,4 @@ export async function hentAnsatte() {
 
     return ansatte;
 }
-```
+
