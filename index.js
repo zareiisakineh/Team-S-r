@@ -1,14 +1,3 @@
-import { db } from "./firebase.js";
-
-import {
-    doc,
-    getDoc,
-    collection,
-    addDoc,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-
 // Bilder på første side
 const lightbox = GLightbox({
     selector: '.glightbox',
@@ -238,56 +227,3 @@ window.addEventListener("load", async () => {
 console.log("KJØRER MELDINGSFUNKSJONEN NÅ");
 
 visMeldingFraFirestore();
-
-
-// ==========================================================
-// LAGRE FORSLAG I FIRESTORE
-// ==========================================================
-
-const forslagForm = document.getElementById("forslagForm");
-
-if (forslagForm) {
-
-    forslagForm.addEventListener("submit", async (e) => {
-
-        e.preventDefault();
-
-        try {
-
-            await addDoc(
-                collection(db, "forslag"),
-                {
-                    navn: document.getElementById("navn").value,
-
-                    kategori:
-                        document.getElementById("kategori").value,
-
-                    tekst:
-                        document.getElementById("forslag").value,
-
-                    dato: serverTimestamp(),
-
-                    status: "Ny"
-                }
-            );
-
-            document.getElementById("melding").textContent =
-                "Forslaget er sendt!";
-
-            forslagForm.reset();
-
-        } catch (error) {
-
-            console.error(
-                "Feil ved lagring av forslag:",
-                error
-            );
-
-            document.getElementById("melding").textContent =
-                "Feil ved sending.";
-
-        }
-
-    });
-
-}
