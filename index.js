@@ -1,3 +1,31 @@
+
+
+// ==========================================================
+// FIRESTORE - HENT ANSATTE
+// ==========================================================
+
+const ansatte = await hentAnsatte();
+
+console.log("Antall ansatte:", ansatte.length);
+
+import { hentAnsatte } from "./ansatteFirestore.js";
+import { db } from "./firebase.js";
+
+// import fra firestore for å håndtere meldinger
+import {
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+// import fra firestore for å håndtere forslag
+import {
+    collection,
+    addDoc,
+    serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
 // Bilder på første side
 const lightbox = GLightbox({
     selector: '.glightbox',
@@ -7,6 +35,197 @@ const lightbox = GLightbox({
     closeButton: true
 });
 
+// ==========================================================
+// DEL ANSATTE INN I GRUPPER
+// ==========================================================
+
+const sykepleier = ansatte.filter(person =>
+    person.gruppe === "Sykepleiere"
+);
+
+const hjelpepleier = ansatte.filter(person =>
+    person.gruppe === "Helsefagarbeidere"
+);
+
+const praktiskBistand = ansatte.filter(person =>
+    person.gruppe === "PraktiskBistand"
+);
+
+const ekstravakt = ansatte.filter(person =>
+    person.gruppe === "Ekstravakter"
+);
+
+const fysioterapeut = ansatte.filter(person =>
+    person.gruppe === "fysioterapeuter"
+);
+
+const ergoterapeut = ansatte.filter(person =>
+    person.gruppe === "ergoterapeuter"
+);
+
+const AKS = ansatte.filter(person =>
+    person.gruppe === "AKS"
+);
+
+const ernæringsfysiolog = ansatte.filter(person =>
+    person.gruppe === "ernæringsfysiologer"
+);
+
+const leder = ansatte.filter(person =>
+    person.gruppe === "ledere"
+);
+
+const merkantil = ansatte.filter(person =>
+    person.gruppe === "merkantiler"
+);
+
+const nattevakt = ansatte.filter(person =>
+    person.gruppe === "nattevakter"
+);
+
+const vurderingsteam = ansatte.filter(person =>
+    person.gruppe === "vurderingsteam"
+);
+
+const responssenter = ansatte.filter(person =>
+    person.gruppe === "responssenter"
+);
+
+const fagsykepleier = ansatte.filter(person =>
+    person.gruppe === "fagsykepleiere"
+);
+
+const vaktmester = ansatte.filter(person =>
+    person.gruppe === "vaktmestre"
+);
+
+const saksbehandler = ansatte.filter(person =>
+    person.gruppe === "saksbehandlere"
+);
+
+
+// ==========================================================
+// VIS ANSATTE
+// ==========================================================
+
+function visGruppe(containerId, liste) {
+
+    const container = document.getElementById(containerId);
+
+    // Hvis containeren ikke finnes på denne siden,
+    // gjør vi ingenting.
+    if (!container) {
+        return;
+    }
+
+    // Tøm containeren før vi legger inn ansatte
+    container.innerHTML = "";
+
+    // Legg inn hver person
+    liste.forEach(person => {
+
+        container.innerHTML += `
+
+            <div class="ansattKort">
+
+                <h3>${person.navn ?? ""}</h3>
+
+                <p>${person.rolle ?? ""}</p>
+
+                <div class="ikoner">
+
+                    <a href="${person.bilde ?? "#"}"
+                       class="glightbox"
+                       title="${person.navn ?? ""}">
+                        <i class="fas fa-image"></i>
+                    </a>
+
+                    <a href="tel:${person.telefon ?? ""}">
+                        <i class="fas fa-phone"></i>
+                    </a>
+
+                    <a href="mailto:${person.epost ?? ""}">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+// ==========================================================
+// VIS GRUPPENE
+// ==========================================================
+
+if (document.getElementById("SPL")) {
+    visGruppe("SPL", sykepleier);
+}
+
+if (document.getElementById("HPL")) {
+    visGruppe("HPL", hjelpepleier);
+}
+
+if (document.getElementById("PB")) {
+    visGruppe("PB", praktiskBistand);
+}
+
+if (document.getElementById("ekstravakt")) {
+    visGruppe("ekstravakt", ekstravakt);
+}
+
+if (document.getElementById("fysio")) {
+    visGruppe("fysio", fysioterapeut);
+}
+
+if (document.getElementById("ergo")) {
+    visGruppe("ergo", ergoterapeut);
+}
+
+if (document.getElementById("AKS")) {
+    visGruppe("AKS", AKS);
+}
+
+if (document.getElementById("ernæringFysio")) {
+    visGruppe("ernæringFysio", ernæringsfysiolog);
+}
+
+if (document.getElementById("leder")) {
+    visGruppe("leder", leder);
+}
+
+if (document.getElementById("merkantil")) {
+    visGruppe("merkantil", merkantil);
+}
+
+if (document.getElementById("nattevakt")) {
+    visGruppe("nattevakt", nattevakt);
+}
+
+if (document.getElementById("vurderingsteam")) {
+    visGruppe("vurderingsteam", vurderingsteam);
+}
+
+if (document.getElementById("responssenter")) {
+    visGruppe("responssenter", responssenter);
+}
+
+if (document.getElementById("fagSPL")) {
+    visGruppe("fagSPL", fagsykepleier);
+}
+
+if (document.getElementById("vaktmester")) {
+    visGruppe("vaktmester", vaktmester);
+}
+
+if (document.getElementById("saksbehandler")) {
+    visGruppe("saksbehandler", saksbehandler);
+}
 
 /*------------------------------------------------
     POP-UP MELDINGER
@@ -140,7 +359,8 @@ let deferredPrompt;
 
 const installButton = document.getElementById("installApp");
 const installModal = document.getElementById("installModal");
-const closeInstallModal = document.getElementById("closeInstallModal");
+const closeInstallModal =
+document.getElementById("closeInstallModal");
 
 if (installButton) {
 
@@ -177,7 +397,10 @@ window.addEventListener("click", (event) => {
 
 window.addEventListener("load", async () => {
 
-    const erInstallert = window.matchMedia("(display-mode: standalone)").matches;
+    const erInstallert =
+        window.matchMedia(
+            "(display-mode: standalone)"
+        ).matches;
 
     if (erInstallert) return;
 
@@ -196,7 +419,8 @@ window.addEventListener("load", async () => {
 
     deferredPrompt.prompt();
 
-    const result = await deferredPrompt.userChoice;
+    const result =
+        await deferredPrompt.userChoice;
 
     console.log(
         "Installasjonsvalg:",
@@ -219,7 +443,6 @@ window.addEventListener("load", async () => {
 });
 
 
-
 /*------------------------------------------------
     VIS MELDING NÅR SIDEN LASTES
 ------------------------------------------------*/
@@ -227,3 +450,13 @@ window.addEventListener("load", async () => {
 console.log("KJØRER MELDINGSFUNKSJONEN NÅ");
 
 visMeldingFraFirestore();
+
+
+console.log("================================");
+console.log("MELDINGSDELEN I APP.JS ER LASTET");
+console.log("================================");
+
+
+
+
+

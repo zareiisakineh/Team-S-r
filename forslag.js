@@ -7,8 +7,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
-const forslagForm =
-    document.getElementById("forslagForm");
+const forslagForm = document.getElementById("forslagForm");
 
 
 if (forslagForm) {
