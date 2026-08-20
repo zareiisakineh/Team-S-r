@@ -13,8 +13,11 @@
    <link rel="apple-touch-icon" href="images/logo-192.png">
    <style>
   .answer img{
-      width: 100%;
-      max-width: 820px;
+     display: block;
+    width: 100%;
+    max-width: 820px;
+    height: auto;
+    margin: 10px auto;
   }
  .rutiner{
   margin-block: 50px;
@@ -50,16 +53,19 @@ th{
 
 
    @media screen and (max-width: 760px) {
-    .answer img{
-        width: 800rem;
-        max-width: 520px;
-        margin: 10px auto;
-        display: block;
+
+    .answer img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 10px 0;
     }
-    .answer{
-  overflow-x: auto;
-}
-  }
+
+    .answer {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+  
     table, tr, th, td{
       font-size: 1rem;
      
@@ -68,7 +74,7 @@ th{
        padding: 8px 12px;
        white-space: nowrap;
     }
-
+  }
 </style>
 </head>
 <body>
@@ -114,7 +120,7 @@ th{
             <h3>➡️ Medisinrom</h3>
             <p>Ta ut A og B preparater til neste dag, gå gjennom utstyr og sårutstyr og skriv opp på liste om noe mangler, rydde narkoskap og send tilbake gamle medisiner</p><br> 
             <h3>➡️ OL-beskjedjournal</h3>
-            <p>Se gjennom OL beskjeder for å danne en oversikt</p><br>
+            <p>➡️ Se gjennom OL beskjeder for å danne en oversikt</p><br>
             <h3>➡️ Rapporter og praktiske oppgaver</h3>
             <p>Gjennomgang av aktuelle problemstillinger fra rapport. Utføre praktiske oppgaver knyttet til dette</p><br>
             <h3>➡️ Multidoseimport</h3>
@@ -130,26 +136,26 @@ th{
         <i class="fas fa-chevron-down icon"></i>
         </button>
         <div class ="answer">
-          <ul class = "tekst">
-            <li>Klikk på aktivitet</li>
+          <div class = "tekst">
+            <p>➡️ Klikk på aktivitet</p>
             <img src="bilder/arbeidslite/liste4.png" >
-            <li>Klikk på arbeidsplanlegging</li>
-            <li>Velg rapport </li>
+            <p>➡️ Klikk på arbeidsplanlegging</p>
+            <p>➡️ Velg rapport </p>
             <img src="bilder/arbeidslite/liste5.png" >
-            <li>Deretter arbeidslister per ansatt</li>
+            <p>➡️ Deretter arbeidslister per ansatt</p>
             <img src="bilder/arbeidslite/liste6.png" >
-            <li><strong>Ansatt: </strong>Mulighet for å kunne skrive ut arbeidslister for en gitt ansatt eller rute. Trykk F4 i verdifeltet og søk opp ansatt. Hvis det skal skrives ut arbeidslister på flere ansatte eller ruter, så fylles ikke feltet ut</li>
-            <li><strong>Nivå: </strong></li>
-            <li><strong>Type tjeneste:</strong>høyreklikk eller trykk på F4 for å søke opp i nivåetre </li>
-            <li><strong>Fra/til dato:</strong> Datoen du skal skrive ut lister for. 
-            <li>Hent frem ansattes navn ved å høyreklikke i ansattfeltet og husk og skriv etternavn først. Deretter er det viktig å skrive dato for arbeidslisten. Dersom ansatt jobber dobbelvakt må du skrive inn klokkeslett for å unngå en hel arbeidsliste for hele dagen. Helt til slutt må du taste ikon for skriver øverst til venstre.</li>
+            <p>➡️<strong> Ansatt: </strong>Mulighet for å kunne skrive ut arbeidslister for en gitt ansatt eller rute. Trykk F4 i verdifeltet og søk opp ansatt. Hvis det skal skrives ut arbeidslister på flere ansatte eller ruter, så fylles ikke feltet ut</p>
+            <p><strong>➡️ Nivå: </strong></li>
+            <p><strong>➡️ Type tjeneste:</strong>høyreklikk eller trykk på F4 for å søke opp i nivåetre </p>
+            <p><strong>➡️ Fra/til dato:</strong> Datoen du skal skrive ut lister for. 
+            <p>➡️ Hent frem ansattes navn ved å høyreklikke i ansattfeltet og husk og skriv etternavn først. Deretter er det viktig å skrive dato for arbeidslisten. Dersom ansatt jobber dobbelvakt må du skrive inn klokkeslett for å unngå en hel arbeidsliste for hele dagen. Helt til slutt må du taste ikon for skriver øverst til venstre.</p>
               <img src="bilder/arbeidslite/liste7.png" ><br>
-            <li>Hvis det skrives ut arbeidslister for flere ansatte eller ruter, så  vil oppdragene i aktuell periode komme opp som er fordelt på ansatte/rute</li>
-            <li><strong>Fra/Til klokke/utført: </strong>Sett inn tidspunkt. Oppdrag som starter innen for gitt kl.slett blir med</li>
-            <li><strong>Bachnr: </strong>Evnt. sett inn sats/bach nummer(kun per tjenestetype)</li>
-            <li>Tast ikon for skriver slik at du får ut arbeidslisten.</li>
+            <p>➡️ Hvis det skrives ut arbeidslister for flere ansatte eller ruter, så  vil oppdragene i aktuell periode komme opp som er fordelt på ansatte/rute</p>
+            <p>➡️<strong> Fra/Til klokke/utført: </strong>Sett inn tidspunkt. Oppdrag som starter innen for gitt kl.slett blir med</p>
+            <p>➡️<strong> Bachnr: </strong>Evnt. sett inn sats/bach nummer(kun per tjenestetype)</p>
+            <p>➡️ Tast ikon for skriver slik at du får ut arbeidslisten.</p>
               <img src="bilder/arbeidslite/liste8.png" >
-          </ul>
+          </div >
       </div >
     </div>
 
@@ -159,22 +165,21 @@ th{
         <i class="fas fa-chevron-down icon"></i>
       </button>
       <div class= "answer">
-      <ul>
-        <li>Klikk på brukeroversikt i gerica</li>
+      
+        <p>➡️ Klikk på brukeroversikt i gerica</p>
         <img src="bilder/arbeidslite/liste26.png" >
-        <li>Finn riktig bruker</li>
-        <li>klikk på journal</li>
-        <li>Klikk på "Ny</li>
-        <li>Velg journaltype 7, og trykk på tab</li>
-        <li>Høyrklikk på tjeneste, velg hjemmesykepleien</li>
+        <p>➡️ Finn riktig bruker</p>
+        <p>➡️ klikk på journal</p>
+        <p>➡️ Klikk på "Ny</p>
+        <p>➡️ Velg journaltype 7, og trykk på tab</p>
+        <p>➡️Høyrklikk på tjeneste, velg hjemmesykepleien</p>
         <img src="bilder/arbeidslite/liste31.png" >
-        <li>Sett inn riktig dato og klokkeslett</li>
-        <li>Sett inn tiltak: trykk på "ny" - høyreklikk på tiltakstype- finn riktig tiltak-legg inn tid</li>
+        <p>➡️ Sett inn riktig dato og klokkeslett</p>
+        <p>➡️ Sett inn tiltak: trykk på "ny" - høyreklikk på tiltakstype- finn riktig tiltak-legg inn tid</p>
         <img src="bilder/arbeidslite/liste32.png" >
         <img src="bilder/arbeidslite/liste33.png" >
         <img src="bilder/arbeidslite/liste28.png" >
       
-      </ul>>
       </div>
   </div>
   <div class="item" id="print4">
@@ -183,22 +188,22 @@ th{
     <i class="fas fa-chevron-down icon"></i>
     </button>
     <div class= "answer">
-      <ul>
-        <li>Klikk på aktivitiet- øverst i siden</li>
+      
+        <p>➡️ Klikk på aktivitiet- øverst i siden</p>
           <img src="bilder/arbeidslite/liste1.jpg" >
-        <li>i feltet "tjeneste", ser du bare tallet 3 som er hjemmesykepleien, velg høyreklikk på feltet for å få alle tjenestene opp </li>
-        <li>Velg: hjemmesykepleie(tjeneste 3), praktisk bistand(tjeneste 4) og avklaring og mestring(tjeneste 15?)</li>
+        <p>➡️ i feltet "tjeneste", ser du bare tallet 3 som er hjemmesykepleien, velg høyreklikk på feltet for å få alle tjenestene opp </p>
+        <p>➡️ Velg: hjemmesykepleie(tjeneste 3), praktisk bistand(tjeneste 4) og avklaring og mestring(tjeneste 15?)</p>
           <img src="bilder/arbeidslite/liste16.png" >
-        <li>Velg dato og om du vil se på dag eller kvelds-ruter. 0730-15 eller 15-22</li>
-        <li>Klikk på ok og oppdater siden ved å klikke på oppdater-knappen</li>
-        <li>Nå ser du alle ruter og besøkene per rute for valgt dato</li>
+        <p>➡️ Velg dato og om du vil se på dag eller kvelds-ruter. 0730-15 eller 15-22</p>
+        <p>➡️ Klikk på ok og oppdater siden ved å klikke på oppdater-knappen</p>
+        <p>➡️Nå ser du alle ruter og besøkene per rute for valgt dato</p>
           <img src="bilder/arbeidslite/liste2.jpg" >
-        <li>Velg og høyreklikk på ansattes navn</li>
-        <li>Navnet til alle ansatte som er på jobb, kommer opp</li>
-        <li>velg riktig ansatt og flytt alle besøk</li>
-        <li>Hvis du skal velge en ansatt som ikke har arbeidsliste: velg en "annen ansatt" og da kan du skrive etternavnet til den ansatte, besøkene skal flyttes til</li>
-        <li>***Viktig*** Ikke glem å velge alle tjenestene som skal bli med, DVS nr 3, 4 og 15</li>
-      </ul>
+        <p>➡️ Velg og høyreklikk på ansattes navn</p>
+        <p>➡️ Navnet til alle ansatte som er på jobb, kommer opp</p>
+        <p>➡️ velg riktig ansatt og flytt alle besøk</p>
+        <p>➡️ Hvis du skal velge en ansatt som ikke har arbeidsliste: velg en "annen ansatt" og da kan du skrive etternavnet til den ansatte, besøkene skal flyttes til</p>
+        <h2>***Viktig*** Ikke glem å velge alle tjenestene som skal bli med, DVS nr 3, 4 og 15</h2>
+      
     </div>
   </div>
 
@@ -208,20 +213,20 @@ th{
       <i class="fas fa-chevron-down icon"></i>
     </button>
     <div class="answer">
-      <ul>
-        <li>Klikk på journal-ikonet øverst på siden</li>
+     
+        <p>➡️ Klikk på journal-ikonet øverst på siden</p>
         <img src="bilder/arbeidslite/liste25.png" >
-        <li>Et nytt vindu åpner seg, klikk på printer-ikonet</li>
-        <li>Skroll ned i det nye vinduet som åpner seg</li>
-        <li>Velg ol-Rapport-hjemmesykepleie Ny(dobbelklikk på den)</li>
+        <p>➡️ Et nytt vindu åpner seg, klikk på printer-ikonet</p>
+        <p>➡️ Skroll ned i det nye vinduet som åpner seg</p>
+        <p>➡️ Velg ol-Rapport-hjemmesykepleie Ny(dobbelklikk på den)</p>
         <img src="bilder/arbeidslite/liste12.png" >
-        <li>velg nivå: dobbelklikk i feltet nivå, høyreklikk og velg hjemmesykepleie team Sør</li>
+        <p>➡️ velg nivå: dobbelklikk i feltet nivå, høyreklikk og velg hjemmesykepleie team Sør</p>
         <img src="bilder/arbeidslite/liste24.png" >
-        <li>Velg Fra/Til dato</li>
-        <li>Klikk på printer-ikonet</li>
-        <li>Vent til journalene kommer på skjermen, det kan ta noen sekunder</li>
-        <li>Klikk på printer. Riktig printer er printix-anywhere</li>
-      </ul>
+        <p>➡️ Velg Fra/Til dato</p>
+        <p>➡️ Klikk på printer-ikonet</p>
+        <p>➡️ Vent til journalene kommer på skjermen, det kan ta noen sekunder</p>
+        <p>➡️ Klikk på printer. Riktig printer er printix-anywhere</p>
+      
     </div>
   </div>
   <div class="item" id="print10">
@@ -230,18 +235,18 @@ th{
       <i class="fas fa-chevron-down icon"></i>
     </button >
       <div class="answer"> 
-        <ul>
-          <li>Klikk på brukeroversikt i gerica. Finn og velg brukers navn</li>
+        
+          <p>➡️ Klikk på brukeroversikt i gerica. Finn og velg brukers navn</p>
           <li></li>
           <img src="bilder/arbeidslite/liste26.png" >
-          <li>Klikk på tjeneste</li>
-          <li>Klikk på tiltak og deretter "ny"</li>
-          <li>Velg riktig tiltak</li>
+          <p>➡️ Klikk på tjeneste</p>
+          <p>➡️ Klikk på tiltak og deretter "ny"</p>
+          <p>➡️ Velg riktig tiltak</p>
           <img src="bilder/arbeidslite/liste17.png" >
-          <li>velg tiltaket og klikk på ny. vindu for tidsplan kommer opp</li>
+          <p>➡️ velg tiltaket og klikk på ny. vindu for tidsplan kommer opp</p>
           <img src="bilder/arbeidslite/liste18.png" >
-          <li>Velg startdato, tidspunkt og rute</li>
-        </ul>
+          <p>➡️ Velg startdato, tidspunkt og rute</p>
+        
     </div>
   </div>
 
@@ -421,7 +426,7 @@ th{
                 <p>- <strong><i class="fa-solid fa-circle-info"></i> Blå sirkel med «i»:</strong> Legemiddelet er registrert manuelt i Gerica som multidoselegemiddel, men finnes ikke på ordinasjonskortet. Hva skal vi gjøre??????</p>
                  <p>- <i class="fa-solid fa-circle-question"></i><strong> Blått spørsmålstegn:</strong> Medisiner er blitt manuelt registrert i Gerica av en medarbeider. Kontroller om de har kommet i ordinasjonskortet med en grønn hakke ved siden av.Sammenlign også siste epikrise.<br> 
                   Gerica mangler tilstrekkelig strukturert informasjon til å gjennomføre full automatisk oppdatering.Hva skal vi gjøre????</p>     
-                <img src="Multidose/Bilde12.png" style="width: 1000rem;">
+                <img src="Multidose/Bilde12.png">
 
                 <p>--- I bildet over, var Simvastatin lagt manuelt i Gerica og nå har den kommet i multidose. Boksen ved siden av blå 'i' kan hukes av. tabletten importeres og fjernes fra 'faste ordinasjoner utenom multidose'. 
                   Vurder nøye om legemiddelet skal beholdes eller ikke. Hvis legen ikke har skrevet  merknad(gult lapp) om hva dosering/tidsplanen er, må vi beholde den manuelle registreringen i Gerica</p>
@@ -464,7 +469,7 @@ th{
               <p>Klikk på madisin-knappen, velg Multidoseimport<br>    
                 Da kommer dette bildet opp (brukerbilde til venstre og legemiddeloversikt til høyre):
               </p>
-              <img src="Multidose/Bilde5.png" style="width: 800rem;">
+              <img src="Multidose/Bilde5.png">
           
               <div class="steg">Steg 3:Gå gjennom brukerbilde og leggemiddeloversikten</div>
               <p>Se igjennom brukerbildet og legemiddeloversikten for å få et helhetlig bilde over:</p>
@@ -476,7 +481,7 @@ th{
               <p>Venstre side i multidoseimportbildet viser oversikt over alle pasienter. Pasienten kommer med på multidoseimportlisten i tilfeller der pasienten har:</p>
               <p>et legemiddel i medisinkortet som er merket som multidose</p>
               <p>mottatt ordinasjonskort som enda ikke er importert</p>
-              <img src="Multidose/Bilde8.png" style="width: 800rem;">
+              <img src="Multidose/Bilde8.png">
               <p>Nullstill avkrysningskolonnen "Mottatt" ved å trykke på .  </p>
               <p>Huk så av avkrysningsboksen "Mottatt" for hver multidoserull som er fysisk mottatt fra apoteket.</p>
               <div class="steg">Steg 4:Gjennomgang av ordinasjonskort og ligemiddelliste</div>
@@ -495,7 +500,7 @@ th{
               <p>Husk å ta multidoseimport på multidoserullene som kommer til tjenestestedet utenom vanlige multidoseleveranser (eksempel: hastebestillinger, nye pasienter til avdelingen).</p>
               <p>Dersom multidoseimport ikke er mulig å gjennomføre, må alle legemidler skrives manuelt inn i Gerica.</p>
               <p>NB! Dersom et legemiddel er lagt inn manuelt, vil legemiddelet ligge dobbelt i sammenstillingsmodulen når det mottas nytt ordinasjonskort hvor dette legemiddelet er lagt inn. Det er da viktig å sette hake for å seponere den manuelle registreringen med symbol slik at legemiddelet kun kommer opp en gang i legemiddellisten i Gerica.</p>
-              <img src="Multidose/Bilde12.png" style="width: 800rem;">
+              <img src="Multidose/Bilde12.png">
               <div class="steg">Steg 6: Etterarbeid og kontroll etter at multidoseimport er utført</div>
               <p>Sjekk alltid legemiddellisten i Gerica etter at multidoseimporten er utført.</p>
               <p>Alle legemidler pasienten bruker skal gis etter skriftlig ordinering fra legen. Hvis det ikke foreligger en slik ordinering, skal de ikke stå på legemiddellisten og skal heller ikke gis til pasienten.</p>
