@@ -10,7 +10,7 @@
 // CACHE
 // ==================================================
 
-const CACHE_NAME = "team-sor-100";
+const CACHE_NAME = "team-sor-101";
 
 const FILES = [
     "./",
