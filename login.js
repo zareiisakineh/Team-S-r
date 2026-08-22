@@ -7,9 +7,11 @@ const loginBtn = document.getElementById("loginBtn");
 
 if (loginBtn) {
 
-    loginBtn.addEventListener("click", async () => {
+    loginBtn.addEventListener("click", async (event) => {
 
-        const email = document.getElementById("email").value;
+        event.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
 
         const password = document.getElementById("password").value;
 
@@ -26,6 +28,8 @@ if (loginBtn) {
             location.reload();
 
         } catch (error) {
+
+             console.error(error);
 
             alert("Feil brukernavn eller passord");
 
