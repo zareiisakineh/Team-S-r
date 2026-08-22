@@ -4,10 +4,6 @@
 // FIRESTORE - HENT ANSATTE
 // ==========================================================
 
-const ansatte = await hentAnsatte();
-
-console.log("Antall ansatte:", ansatte.length);
-
 import { hentAnsatte } from "./ansatteFirestore.js";
 import { db } from "./firebase.js";
 
@@ -16,6 +12,11 @@ import {
     doc,
     getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const ansatte = await hentAnsatte();
+
+console.log("Antall ansatte:", ansatte.length);
+
 
 // import fra firestore for å håndtere forslag
 import {

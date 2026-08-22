@@ -58,6 +58,9 @@
   <section class="card">
   <h2>Saker som påvirker arbeidsmiljøet</h2>
   </section>
+<!----------------------------div som skjuler innholdet--------------------------------------->
+<div id="beskyttetInnhold" style="display:none;">
+<!--------------------------------------------------------------------------------------------->
   <section class="card">
   <h2>Vedrørende viderekobling av saksbehandlertelefoner til vakttelefonen</h2>
   <p>I forbindelse med saksbehandlers sykefravær har det blitt opprettet en ordning der eksterne saksbehandlertelefoner viderekobles til hjemmesykepleiens vakttelefon.</p>
@@ -112,9 +115,40 @@
       <a href="https://www.arbeidstilsynet.no/arbeidsmiljo/vold-og-trusler" target="_blank" >Psykososialt arbeidsmiljø</a>
      </div>
 </section>
+      
+<!--------------------------logginn og loggut------------------------------------------------------------------------------->
+</div>
+    <div id="team">
+      <form id="loginBox">
+        <h3>🔒Logg inn med brukernavn <strong>teamsør@teamsør.no</strong>, for å se innholdet. Passord er samme som før. Spør Sakineh hvis du ikke har den(93674937)</h3>
 
+          <input id="email" type="email" placeholder="E-post">
+          <input id="password" type="password" placeholder="Passord">
+
+          <button id="loginBtn">
+              Logg inn
+          </button>
+          <h5>
+            Kontaktkortene er skjult av hensyn til personvern.
+            Logg inn med brukernavn teamsør@teamsør.no for tilgang. Passord er samme som før. Spør Sakineh hvis du ikke har den(93674937)
+          </h5>
+      </div>
+    </form>
+
+<!--------------logg ut-knapp: Fjerner ansatteTilgang. Neste gang må de logge inn på nyttig*/-->
+      <div id="logutBox">    
+        <button id="loggutKnapp" style="display:none;">
+        🔒 Logg ut
+        </button>
+        <h5>Når du logger ut, må du skrive brukernavn:<strong>(teamsør@teamsør.no)</strong></h5>
+      </div>
+      
+      </section>
 </main>
 <script type="module" src="app.js"></script>
+<script type="module" src="auth.js"></script>
 
+<script type="module" src="login.js"></script>
+<script type="module" src="logout.js"></script>
 </body>
 </html>

@@ -6,19 +6,13 @@ onAuthStateChanged
 from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
-const innhold = document.getElementById(
-    "beskyttetInnhold"
-);
+const innhold = document.getElementById("beskyttetInnhold");
 
-const loginBox = document.getElementById(
-    "loginBox"
-);
+const loginBox = document.getElementById("loginBox");
 
-const loggutKnapp =
-document.getElementById("loggutKnapp");
+const loggutKnapp = document.getElementById("loggutKnapp");
 
 onAuthStateChanged(auth, user => {
-
 
 if(user){
 
@@ -36,9 +30,7 @@ if(user){
     loginBox.style.display="block";
 
     loggutKnapp.style.display="none";
-
 }
-
 
 });
 
