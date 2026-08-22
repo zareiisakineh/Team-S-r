@@ -591,7 +591,7 @@ header {
 
 /* Lenker i sjekkliste for ansvarssykepleier*/
 .lenkeKort{
-    background:rgb(247, 250, 245);
+    background:#edf7cc;
     border-radius:12px;
     padding:20px;
     text-align:center;
@@ -609,7 +609,7 @@ header {
 }
 
 .lenkeKort:hover{
-    background:#eaede0;
+    background:#e8fbab;
     transform:translateY(-3px);
     cursor: pointer;
 }
