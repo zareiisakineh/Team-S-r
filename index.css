@@ -507,3 +507,7 @@ Forslag for forbedring av nettsiden forslag.html
     outline:3px solid #7aff99;
     outline-offset:3px;
 }
+
+#kart{
+    padding: 4px 25px;
+}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hjemmesykepleie – Teamområder, Bydel Gamle Oslo</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+ <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!------------------Reduserer sjansen for at Google finner siden.----------------------------------->
+     <meta name="robots" content="noindex, nofollow">
+<!------------------------------------------------------------------------------------------>
+    <title>Velferdsteknologi</title>
+    <link rel="stylesheet" href="gerica.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2f5d9f">
+    <link rel="icon" href="images/logo-192.png">
+    <link rel="apple-touch-icon" href="images/logo-192.png">
+<style>
+html,body,#map{height:100%;margin:0}
+body{font-family:Arial,sans-serif}
+.legend{background:#fff;padding:10px 12px;border-radius:6px;box-shadow:0 1px 5px rgba(0,0,0,.35);line-height:1.45}
+.legend h3{margin:0 0 7px;font-size:15px}
+.sw{display:inline-block;width:14px;height:14px;margin-right:7px;vertical-align:-2px;border:2px solid rgba(0,0,0,.35)}
+.note{background:#fff;padding:8px 10px;border-radius:5px;box-shadow:0 1px 5px rgba(0,0,0,.25);max-width:300px;font-size:12px}
+.teamlabel{font-weight:700;font-size:15px;text-shadow:0 1px 2px #fff,0 -1px 2px #fff,1px 0 2px #fff,-1px 0 2px #fff}
+</style>
+</head>
+<body>
+    <header class="topbar">
+    <!--logo-->
+    <div class="brand">
+        <img src="images/logo-192.png" alt="Team Sør">
+        
+    </div>
+    <nav class="nav" aria-label="Hovedmeny">
+      <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
+         <ul id="menu"> 
+              <li><a href="index.html" > Hjem</a></li>
+              <li><a href="ekstravakter.html" > Vaktbok</a></li>
+              <li><a href="arbeidsliste.html">Print</a></li>
+              <li><a href="sjekkliste.html">Rutiner </a></li>
+              <li><a href="velferdsTeknologi.html">Velferdsteknologi</a></li>
+              <li><a href="arbeidsmiljø.html" >Arbeidsmiljø</a></li>
+              <li><a href="Bursdager.html">Bursdager</a></li>
+              <li><a href="album.html">Sør-album </a></li>
+          </ul>
+       </nav>
+    </header>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map=L.map('map',{zoomControl:true}).setView([59.912,10.775],14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19, attribution:'© OpenStreetMap contributors'
+}).addTo(map);
+
+// Teamområdene er en visuell digitalisering av grensene i brukerens innsendte oversiktskart.
+// De er IKKE offisielle bydels-/hjemmesykepleiegrenser.
+const teams = [
+ {name:'TEAM VEST',color:'#2e8b57',fill:'#8fd18f',pts:[
+ [59.930,10.735],[59.936,10.750],[59.932,10.770],[59.923,10.785],
+ [59.907,10.790],[59.899,10.779],[59.898,10.756],[59.907,10.741],[59.920,10.733]
+ ]},
+ {name:'TEAM NORD',color:'#1769d1',fill:'#7fb3ff',pts:[
+ [59.936,10.770],[59.944,10.800],[59.936,10.825],[59.918,10.835],
+ [59.905,10.824],[59.905,10.793],[59.916,10.782],[59.928,10.776]
+ ]},
+ {name:'TEAM SØR',color:'#e88a00',fill:'#ffd083',pts:[
+ [59.905,10.750],[59.899,10.770],[59.893,10.786],[59.885,10.789],
+ [59.889,10.755],[59.896,10.739],[59.904,10.738]
+ ]},
+ {name:'TEAM ØST',color:'#d62f2f',fill:'#ff9b9b',pts:[
+ [59.918,10.793],[59.905,10.792],[59.892,10.789],[59.889,10.807],
+ [59.900,10.828],[59.918,10.832],[59.928,10.818],[59.927,10.800]
+ ]},
+ {name:'TEAM KAMPEN',color:'#6a35c2',fill:'#c6a7ff',pts:[
+ [59.922,10.776],[59.928,10.786],[59.929,10.798],[59.921,10.799],
+ [59.916,10.791],[59.916,10.780]
+ ]}
+];
+
+teams.forEach(t=>{
+  const poly=L.polygon(t.pts,{color:t.color,weight:3,fillColor:t.fill,fillOpacity:.28}).addTo(map);
+  poly.bindTooltip(t.name,{permanent:true,direction:'center',className:'teamlabel',opacity:0.95});
+  poly.bindPopup('<b>'+t.name+'</b><br>Grensen er digitalisert fra oversiktskartet du lastet opp. Ikke en offisiell GIS-grense.');
+});
+
+const legend=L.control({position:'topright'});
+legend.onAdd=function(){
+ const d=L.DomUtil.create('div','legend');
+ d.innerHTML='<h3>Teamområder</h3>'+
+ teams.map(t=>'<div><span class="sw" style="background:'+t.fill+';border-color:'+t.color+'"></span>'+t.name+'</div>').join('')+
+ '<hr><div>Gatenavn, veier og kartgrunnlag: OpenStreetMap</div>';
+ return d;
+};
+legend.addTo(map);
+
+const note=L.control({position:'bottomleft'});
+note.onAdd=function(){
+ const d=L.DomUtil.create('div','note');
+ d.innerHTML='<b>Merk:</b> Kartgrunnlaget og gatenavnene er fra OpenStreetMap. Teamgrensene er foreløpig en digitalisering av grensene i originalbildet, fordi det ikke følger med et offisielt GIS-lag for hjemmesykepleiegruppene.';
+ return d;
+};
+note.addTo(map);
+</script>
+
+<script type="module" src="app.js"></script>
+<script type="module" src="auth.js"></script>
+
+<script type="module" src="login.js"></script>
+<script type="module" src="logout.js"></script>
+
+</body>
+</html>
