@@ -148,6 +148,69 @@
             right: 15px !important;
         }
 
+        /* Kompass */
+            .compass {
+                width: 70px;
+                height: 70px;
+                background: rgba(255,255,255,0.95);
+                border-radius: 50%;
+                border: 2px solid #555;
+                box-shadow: 0 1px 6px rgba(0,0,0,.35);
+                position: relative;
+                font-family: Arial, sans-serif;
+                font-weight: bold;
+                text-align: center;
+                z-index: 1000;
+            }
+
+            .compass .n {
+                position: absolute;
+                top: 4px;
+                left: 0;
+                right: 0;
+                color: #d62f2f;
+            }
+
+            .compass .s {
+                position: absolute;
+                bottom: 4px;
+                left: 0;
+                right: 0;
+            }
+
+            .compass .e {
+                position: absolute;
+                right: 6px;
+                top: 25px;
+            }
+
+            .compass .w {
+                position: absolute;
+                left: 6px;
+                top: 25px;
+            }
+
+            .compass .arrow {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 4px;
+                height: 25px;
+                background: #d62f2f;
+                transform: translate(-50%, -50%);
+            }
+
+            .compass .center {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                width: 9px;
+                height: 9px;
+                background: #333;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+            }
+
     </style>
 
 </head>
@@ -296,6 +359,35 @@ L.tileLayer(
 ).addTo(map);
 
 
+// =====================================================
+// KOMPASS
+// =====================================================
+
+const compass = L.control({
+    position: 'topright'
+});
+
+compass.onAdd = function() {
+
+    const div = L.DomUtil.create('div', 'compass');
+
+    div.innerHTML = `
+        <div class="n">N</div>
+        <div class="e">Ø</div>
+        <div class="s">S</div>
+        <div class="w">V</div>
+
+        <div class="arrow"></div>
+        <div class="center"></div>
+    `;
+
+    // Hindrer at klikk på kompasset påvirker kartet
+    L.DomEvent.disableClickPropagation(div);
+
+    return div;
+};
+
+compass.addTo(map);
 
 /* =====================================================
    TEAMOMRÅDER
@@ -436,27 +528,35 @@ const teams = [
 
         pts: [
 
-            [59.915, 10.7585],
+            [59.914900, 10.759220],
 
             [59.9140, 10.7690],
-
-            [59.909, 10.7780],
-
-            [59.9050, 10.7820],
-
-           
-
-            [59.8990, 10.7750],
-
             
 
-           
+            [59.909, 10.7780],
+            
 
-            [59.8950, 10.7530],
+            [59.9050, 10.780],
+            
 
-            [59.9130, 10.7488],
+            [59.8990, 10.7750],
+            
 
-            [59.9120, 10.7590]
+             [59.905123, 10.779991],
+
+                       [59.89999, 10.769863],
+
+            [59.8990, 10.7560],
+
+        [59.902799, 10.751839],
+
+            [59.9110, 10.7498],
+            
+
+
+            [59.9150, 10.7590],
+
+            
 
         ]
 
