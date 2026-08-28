@@ -2,122 +2,821 @@
 <html>
 <head>
      <meta charset="utf-8" />
+     <link rel="stylesheet" href="gerica.css" />
+        <link rel="stylesheet" href="index.css" />
+<!------------------Reduserer sjansen for at Google finner siden.----------------------------------->
+     <meta name="robots" content="noindex, nofollow">
+<!------------------------------------------------------------------------------------------>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gericaopplæring</title>
+  <title>Rutiner</title>
   <link rel="stylesheet" href="gerica.css" />
-  <style>
-    #mittForslag {
-    width: 100%;
-    max-width: 800px;
-    min-height: 200px;
-    padding: 0.5rem;
-    border-radius: 5px;
-    background-color: var(--primary-light);
-    resize: vertical; /* brukeren kan gjøre den høyere */
-    
-}
-.gang-wrapper {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    margin-top: 20px;
-}
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2f5d9f">
+     <link rel="icon" href="images/logo-192.png">
+          <link rel="apple-touch-icon" href="images/logo-192.png">
 
-#medGang {
-    width: 900px;
-    height: auto;
-    flex-shrink: 0;
-}
+    <style>
 
-.gang-tekst {
-    flex: 1;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-.gang-tekst p {
-    margin-bottom: 1rem;
-}
-@media (max-width: 900px) {
-    .gang-wrapper {
-        flex-direction: column;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f4f6f8;
+        }
 
-    #medGang {
-        width: 100%;
-        max-width: 500px;
-    }
-}
-  </style>
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .info {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .adresse {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .adresse input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .nummer {
+            width: 35px;
+            padding-top: 12px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            background: #2f5d9f;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .knapper {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .secondary {
+            background: #666;
+        }
+
+        .resultat {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .resultat-rad {
+            display: grid;
+            grid-template-columns: 1fr 1fr 100px;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .total {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .status {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            background: #eef3f8;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .adresse {
+                flex-direction: column;
+            }
+
+            .nummer {
+                padding-top: 0;
+            }
+
+            .resultat-rad {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
-
-  <header class="topbar">
-    <!--logo-->
+     <header class="topbar">
+     <!--logo-->
     <div class="brand">
-    <span class="brand-title">
-        <img src="bilder/logo.png" width="350">
-    </span>
-</div>
-
+        <img src="images/logo-192.png" alt="Team Sør">
+       
+    </div>
+    
     <nav class="nav" aria-label="Hovedmeny">
-      <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">||||</button>
-      <ul id="menu"> 
-         <li><a href="index.html" > Hjem</a></li>
-         <li><a href="forStudenter.html">For studenter</a></li>
-        <li><a href="arbeidsliste.html"> Print</a></li>
-        <!--
-        <li><a href="prosedyrer.html" >prosedyrer</a></li>
-       -->
-        <li><a href="sjekkliste.html">Ansvarsykepleier </a></li>
-        <li><a href="velferdsTeknologi.html">Velferdsteknologi</a></li>
-        <li><a href="gangTid.html" aria-current="page">Gangtid</a></li>
-         <li><a href="Bursdager.html">Bursdager</a></li>
-        <li><a href="rutiner.html" >Rutiner</a></li>
-      </ul>
-      
+      <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
+          <ul id="menu"> 
+              <li><a href="index.html" > Hjem</a></li>
+              <li><a href="ekstravakter.html" > Vaktbok</a></li>
+              <li><a href="arbeidsliste.html">Merkantil</a></li>
+              <li><a href="sjekkliste.html">Rutiner </a></li>
+              <li><a href="velferdsTeknologi.html">Velferdsteknologi</a></li>
+              <li><a href="arbeidsmiljø.html" aria-current="page">Arbeidsmiljø</a></li>
+              <li><a href="Bursdager.html">Bursdager</a></li>
+              <li><a href="album.html">Sør-album </a></li>
+          </ul>
     </nav>
   </header>
-  <main id="main-content" class="container">
-<h2>Nyttige Gerica-funksjoner</h2>
-<section class="hero card">
-     <p class="lead">
-        <strong>Har du glemt hvordan du printer ut arbeidsliste for ansatte fra Gerica?.<br> Husker du ikke hvordan du lager nytt besøk?<br>Slike nyttige funksjoner finner du på denne siden</strong> 
-      </p>
-</section>
 
-<section class="hero card">
-    <label id = "minLable">Hvordan har dagen din vært?</label><br>
-<textarea id="mittForslag"></textarea><br>
-   
-<button type="submit" id = "minSubmit" class = "btn">Send</button>
-    <p id = "resultatElement"></p>
-</section>
+   <main class="container1">
 
-   <section class="hero card" id="gang">
-    <h2>Ruteplanlegger med gangtid</h2>
+<div class="container">
 
-    <div class="gang-wrapper">
+    <h1>🚶 Beregn gangtid</h1>
 
-        <img src="image8.png" alt="Med gangtid" id="medGang">
 
-        <div class="gang-tekst">
-            <p>
-                <strong>Hva er gangtid:</strong><br>
-                Tiden man bruker fra adresse til adresse
-                (tiden Google Maps viser) + tiden man bruker
-                fra porten til brukers leilighet.
-            </p>
+    <div class="info">
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+        <p>
+            Skriv inn adressene i den rekkefølgen du besøker brukerne.
+        </p>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+        <p>
+            Verktøyet beregner gangtid mellom hvert stopp og total gangtid.
+        </p>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+        <p>
+            <strong>
+                Ikke skriv navn eller andre personopplysninger om brukere.
+            </strong>
+        </p>
+
+    </div>
+
+
+    <div id="adresser">
+
+        <div class="adresse">
+
+            <span class="nummer">1.</span>
+
+            <input
+                type="text"
+                placeholder="For eksempel: Schweigaards gate 10, Oslo"
+            >
+
+        </div>
+
+
+        <div class="adresse">
+
+            <span class="nummer">2.</span>
+
+            <input
+                type="text"
+                placeholder="Neste adresse"
+            >
+
+        </div>
+
+
+        <div class="adresse">
+
+            <span class="nummer">3.</span>
+
+            <input
+                type="text"
+                placeholder="Neste adresse"
+            >
+
+        </div>
+
+
+        <div class="adresse">
+
+            <span class="nummer">4.</span>
+
+            <input
+                type="text"
+                placeholder="Neste adresse"
+            >
+
         </div>
 
     </div>
-</section>
+
+
+    <div class="knapper">
+
+        <button onclick="leggTilAdresse()">
+            + Legg til adresse
+        </button>
+
+        <button
+            class="secondary"
+            onclick="beregnGangtid()"
+        >
+            🚶 Beregn gangtid
+        </button>
+
+    </div>
+
+
+    <div
+        id="status"
+        class="status"
+        style="display:none;"
+    ></div>
+
+
+    <div
+        id="resultat"
+        class="resultat"
+        style="display:none;"
+    >
+
+        <h2>Resultat</h2>
+
+        <div id="resultatListe"></div>
+
+        <div
+            id="total"
+            class="total"
+        ></div>
+
+    </div>
+
+</div>
 
 </main>
- <script src="app.js" defer></script>
+
+<script>
+
+let antallAdresser = 4;
+
+
+/*
+    Legger til en ny adresse
+*/
+function leggTilAdresse() {
+
+    antallAdresser++;
+
+    const container =
+        document.getElementById("adresser");
+
+
+    const div =
+        document.createElement("div");
+
+
+    div.className = "adresse";
+
+
+    div.innerHTML = `
+
+        <span class="nummer">
+            ${antallAdresser}.
+        </span>
+
+        <input
+            type="text"
+            placeholder="Neste adresse"
+        >
+
+    `;
+
+
+    container.appendChild(div);
+
+}
+
+
+/*
+    Viser statusmelding
+*/
+function visStatus(melding) {
+
+    const status =
+        document.getElementById("status");
+
+    status.style.display = "block";
+
+    status.textContent = melding;
+
+}
+
+
+/*
+    Henter alle adressene
+*/
+function hentAdresser() {
+
+    const inputs =
+        document.querySelectorAll(
+            "#adresser input"
+        );
+
+
+    const adresser = [];
+
+
+    inputs.forEach(input => {
+
+        const adresse =
+            input.value.trim();
+
+
+        if (adresse !== "") {
+
+            adresser.push(adresse);
+
+        }
+
+    });
+
+
+    return adresser;
+
+}
+
+
+/*
+    Hovedfunksjon
+*/
+async function beregnGangtid() {
+
+    const adresser =
+        hentAdresser();
+
+
+    if (adresser.length < 2) {
+
+        alert(
+            "Du må skrive inn minst to adresser."
+        );
+
+        return;
+
+    }
+
+
+    visStatus(
+        "🔎 Finner adressene..."
+    );
+
+
+    try {
+
+        /*
+            Først finner vi koordinatene
+            til hver adresse.
+        */
+
+        const koordinater = [];
+
+
+        for (let i = 0; i < adresser.length; i++) {
+
+            visStatus(
+                `🔎 Finner adresse ${i + 1} av ${adresser.length}...`
+            );
+
+
+            const koordinat =
+                await geokodAdresse(
+                    adresser[i]
+                );
+
+
+            if (!koordinat) {
+
+                throw new Error(
+                    `Fant ikke adressen: ${adresser[i]}`
+                );
+
+            }
+
+
+            koordinater.push(koordinat);
+
+
+            /*
+                Nominatim har en streng
+                bruksgrense. Vi venter derfor
+                litt mellom forespørslene.
+            */
+
+            if (i < adresser.length - 1) {
+
+                await vent(1100);
+
+            }
+
+        }
+
+
+        visStatus(
+            "🚶 Beregner gangrutene..."
+        );
+
+
+        /*
+            Beregn hver etappe separat.
+        */
+
+        const resultater = [];
+
+        let totalSekunder = 0;
+
+
+        for (
+            let i = 0;
+            i < koordinater.length - 1;
+            i++
+        ) {
+
+            const fra =
+                koordinater[i];
+
+            const til =
+                koordinater[i + 1];
+
+
+            const rute =
+                await beregnRute(
+                    fra,
+                    til
+                );
+
+
+            if (!rute) {
+
+                throw new Error(
+                    `Kunne ikke finne gangrute mellom adresse ${i + 1} og ${i + 2}.`
+                );
+
+            }
+
+
+            totalSekunder +=
+                rute.duration;
+
+
+            resultater.push({
+
+                fra:
+                    adresser[i],
+
+                til:
+                    adresser[i + 1],
+
+                sekunder:
+                    rute.duration,
+
+                meter:
+                    rute.distance
+
+            });
+
+
+            /*
+                Litt pause mellom
+                forespørslene.
+            */
+
+            if (i < koordinater.length - 2) {
+
+                await vent(1100);
+
+            }
+
+        }
+
+
+        visResultat(
+            resultater,
+            totalSekunder
+        );
+
+
+        visStatus(
+            "✅ Beregningen er ferdig."
+        );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        visStatus(
+            "❌ " + error.message
+        );
+
+    }
+
+}
+
+
+/*
+    Gjør adresse om til koordinater
+    ved hjelp av Nominatim.
+*/
+async function geokodAdresse(adresse) {
+
+    const url =
+        "https://nominatim.openstreetmap.org/search" +
+        "?format=json" +
+        "&limit=1" +
+        "&countrycodes=no" +
+        "&q=" +
+        encodeURIComponent(adresse);
+
+
+    const response =
+        await fetch(url);
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Feil ved oppslag av adresse."
+        );
+
+    }
+
+
+    const data =
+        await response.json();
+
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        return null;
+
+    }
+
+
+    return {
+
+        lat:
+            Number(data[0].lat),
+
+        lon:
+            Number(data[0].lon)
+
+    };
+
+}
+
+
+/*
+    Beregner gangrute mellom
+    to koordinater.
+*/
+async function beregnRute(fra, til) {
+
+    const url =
+        "https://router.project-osrm.org/route/v1/foot/" +
+        `${fra.lon},${fra.lat};${til.lon},${til.lat}` +
+        "?overview=false";
+
+
+    const response =
+        await fetch(url);
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Feil ved beregning av rute."
+        );
+
+    }
+
+
+    const data =
+        await response.json();
+
+
+    if (
+        data.code !== "Ok" ||
+        !data.routes ||
+        data.routes.length === 0
+    ) {
+
+        return null;
+
+    }
+
+
+    return {
+
+        duration:
+            data.routes[0].duration,
+
+        distance:
+            data.routes[0].distance
+
+    };
+
+}
+
+
+/*
+    Viser resultatet
+*/
+function visResultat(
+    resultater,
+    totalSekunder
+) {
+
+    const resultat = document.getElementById("resultat");
+
+
+    const liste = document.getElementById("resultatListe");
+
+
+    resultat.style.display = "block";
+
+
+    liste.innerHTML = "";
+
+
+    resultater.forEach(
+        (resultat, index) => {
+
+            const rad =
+                document.createElement("div");
+
+
+            rad.className =
+                "resultat-rad";
+
+
+            rad.innerHTML = `
+
+                <div>
+                    <strong>
+                        ${index + 1}.
+                        ${resultat.fra}
+                    </strong>
+                </div>
+
+                <div>
+                    → ${resultat.til}
+                </div>
+
+                <div>
+                    ${formaterTid(resultat.sekunder)}
+                    <br>
+                    <small>
+                        ${formaterAvstand(resultat.meter)}
+                    </small>
+                </div>
+
+            `;
+
+
+            liste.appendChild(rad);
+
+        }
+    );
+
+
+    document.getElementById(
+        "total"
+    ).textContent =
+
+        "Total gangtid: " +
+        formaterTid(totalSekunder);
+
+}
+
+
+/*
+    Gjør sekunder om til timer/minutter
+*/
+function formaterTid(sekunder) {
+
+    const minutter =
+        Math.round(
+            sekunder / 60
+        );
+
+
+    const timer =
+        Math.floor(
+            minutter / 60
+        );
+
+
+    const rest =
+        minutter % 60;
+
+
+    if (timer > 0) {
+
+        return `${timer} t ${rest} min`;
+
+    }
+
+
+    return `${rest} min`;
+
+}
+
+
+/*
+    Gjør meter om til meter/km
+*/
+function formaterAvstand(meter) {
+
+    if (meter >= 1000) {
+
+        return (
+            (meter / 1000)
+            .toFixed(1)
+            + " km"
+        );
+
+    }
+
+
+    return (
+        Math.round(meter)
+        + " m"
+    );
+
+}
+
+
+/*
+    Pause mellom API-kall
+*/
+function vent(ms) {
+
+    return new Promise(
+        resolve =>
+            setTimeout(
+                resolve,
+                ms
+            )
+    );
+
+}
+
+</script>
+
+<script type="module" src="app.js"></script>
+<script type="module" src="auth.js"></script>
+
+<script type="module" src="login.js"></script>
+<script type="module" src="logout.js"></script>
+
 </body>
+
 </html>
