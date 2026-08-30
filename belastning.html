@@ -3,13 +3,11 @@
 <head>
      <meta charset="utf-8" />
      <link rel="stylesheet" href="gerica.css" />
-        <link rel="stylesheet" href="index.css" />
 <!------------------Reduserer sjansen for at Google finner siden.----------------------------------->
      <meta name="robots" content="noindex, nofollow">
 <!------------------------------------------------------------------------------------------>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>belastning</title>
-  <link rel="stylesheet" href="gerica.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2f5d9f">
@@ -17,26 +15,6 @@
   <link rel="apple-touch-icon" href="images/logo-192.png">
 
     <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f4f6f8;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        h1 {
-            margin-bottom: 10px;
-        }
 
         .info {
             background: white;
@@ -120,10 +98,6 @@
 
         @media (max-width: 600px) {
 
-            body {
-                padding: 10px;
-            }
-
             .adresse {
                 flex-direction: column;
             }
@@ -139,37 +113,63 @@
 
         }
 
+        /* ==========================================================
+   HAMBURGERKNAPP
+   ========================================================== */
+
+.menu-toggle {
+    display: none;
+    color: rgb(12, 12, 12) !important;
+    font-size: 36px !important;
+    line-height: 1 !important;
+   
+    border: none !important;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block !important;
+    }
+
+}
+
     </style>
 
 </head>
 
 
 <body>
-     <header class="topbar">
-     <!--logo-->
+    <header class="topbar">
+   <!--logo-->
     <div class="brand">
         <img src="images/logo-192.png" alt="Team Sør">
-       
+        
     </div>
-    
+
     <nav class="nav" aria-label="Hovedmeny">
       <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
-          <ul id="menu"> 
-              <li><a href="index.html" > Hjem</a></li>
-              <li><a href="ekstravakter.html" > Vaktbok</a></li>
-              <li><a href="arbeidsliste.html">Merkantil</a></li>
-              <li><a href="sjekkliste.html">Rutiner </a></li>
-              <li><a href="belastning.html" aria-current="page">Arbeidsbelastning</a></li>
-              <li><a href="arbeidsmiljø.html" >Arbeidsmiljø</a></li>
-              <li><a href="Bursdager.html">Bursdager</a></li>
-              <li><a href="album.html">Sør-album </a></li>
-          </ul>
+      <ul id="menu"> 
+          <li><a href="index.html" > Hjem</a></li>
+          <li><a href="ekstravakter.html" > Vaktbok</a></li>
+          <li><a href="arbeidsliste.html" >Merkantil</a></li>
+          <li><a href="sjekkliste.html">Rutiner </a></li>
+          <li><a href="belastning.html" aria-current="page">Arbeidsbelastning</a></li>
+          <li><a href="arbeidsmiljø.html" >Arbeidsmiljø</a></li>
+          <li><a href="Bursdager.html">Bursdager</a></li>
+          <li><a href="album.html">Sør-album </a></li>
+      </ul>
+    
     </nav>
   </header>
-
-   <main class="container1">
-
-<div class="container">
+   <main id="main-content" class="container">
+    <section class="hero card">
+       <p class="lead">
+        <h2>Arbeidsbelastning</h2> 
+      </p>
+</section> 
 
     <h1>🚶 Beregn gangtid</h1>
 
@@ -797,12 +797,9 @@ function vent(ms) {
 
 </script>
 
+<script src="searchData.js" defer></script>
+<script src="search.js" defer></script>
 <script type="module" src="app.js"></script>
-<script type="module" src="auth.js"></script>
-
-<script type="module" src="login.js"></script>
-<script type="module" src="logout.js"></script>
-
 </body>
 
 </html>
