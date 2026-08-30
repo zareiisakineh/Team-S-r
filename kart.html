@@ -2,6 +2,7 @@
 <html lang="no">
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,17 +13,23 @@
     <link rel="stylesheet"
           href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
-    <link rel="stylesheet" href="gerica.css">
+    <link rel="stylesheet"
+          href="gerica.css">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest"
+          href="manifest.json">
 
-    <meta name="theme-color" content="#2f5d9f">
+    <meta name="theme-color"
+          content="#2f5d9f">
 
-    <link rel="icon" href="images/logo-192.png">
-    <link rel="apple-touch-icon" href="images/logo-192.png">
+    <link rel="icon"
+          href="images/logo-192.png">
+
+    <link rel="apple-touch-icon"
+          href="images/logo-192.png">
 
 
     <style>
@@ -30,63 +37,39 @@
         html,
         body,
         #map {
+
             height: 100%;
             margin: 0;
+
         }
+
 
         body {
+
             font-family: Arial, sans-serif;
+
         }
 
 
-        /* -----------------------------------------
+        /* =========================================
            KART
-        ----------------------------------------- */
+        ========================================= */
 
         #map {
+
             width: 100%;
+
             height: calc(100vh - 65px);
+
         }
 
 
-        /* -----------------------------------------
-           LEGEND
-        ----------------------------------------- */
-
-        .legend {
-            background: white;
-            padding: 10px 12px;
-            border-radius: 6px;
-
-            box-shadow:
-                0 1px 5px rgba(0,0,0,.35);
-
-            line-height: 1.45;
-        }
-
-        .legend h3 {
-            margin: 0 0 7px;
-            font-size: 15px;
-        }
-
-        .sw {
-            display: inline-block;
-            width: 14px;
-            height: 14px;
-
-            margin-right: 7px;
-
-            vertical-align: -2px;
-
-            border: 2px solid rgba(0,0,0,.35);
-        }
-
-
-        /* -----------------------------------------
+        /* =========================================
            INFORMASJONSBOKS
-        ----------------------------------------- */
+        ========================================= */
 
         .note {
+
             background: white;
 
             padding: 8px 10px;
@@ -101,12 +84,13 @@
             font-size: 12px;
 
             line-height: 1.4;
+
         }
 
 
-        /* -----------------------------------------
-           TEAM NAVN
-        ----------------------------------------- */
+        /* =========================================
+           TEAMNAVN
+        ========================================= */
 
         .teamlabel {
 
@@ -123,93 +107,482 @@
         }
 
 
-        /* -----------------------------------------
+        /* =========================================
            HEADER
-        ----------------------------------------- */
+        ========================================= */
 
-            .topbar {
+        .topbar {
+
             height: 65px;
+
             position: relative;
+
             z-index: 2000;
+
         }
 
-       .nav {
-      position: relative !important;
-       }
+
+        .nav {
+
+            position: relative !important;
+
+        }
+
 
         #menu {
+
             position: relative;
+
             z-index: 2002;
+
         }
+
 
         .menu-toggle {
-           position: absolute !important;
+
+            position: absolute !important;
+
             top: 50% !important;
+
             right: 15px !important;
+
         }
 
-        /* Kompass */
-            .compass {
-                width: 70px;
-                height: 70px;
-                background: rgba(255,255,255,0.95);
-                border-radius: 50%;
-                border: 2px solid #555;
-                box-shadow: 0 1px 6px rgba(0,0,0,.35);
-                position: relative;
-                font-family: Arial, sans-serif;
-                font-weight: bold;
-                text-align: center;
-                z-index: 1000;
+
+        /* =========================================
+           KOMPASS
+        ========================================= */
+
+        .compass {
+
+            width: 70px;
+
+            height: 70px;
+
+            background:
+                rgba(255,255,255,0.95);
+
+            border-radius: 50%;
+
+            border: 2px solid #555;
+
+            box-shadow:
+                0 1px 6px rgba(0,0,0,.35);
+
+            position: relative;
+
+            font-family: Arial, sans-serif;
+
+            font-weight: bold;
+
+            text-align: center;
+
+            z-index: 1000;
+
+        }
+
+
+        .compass .n {
+
+            position: absolute;
+
+            top: 4px;
+
+            left: 0;
+
+            right: 0;
+
+            color: #d62f2f;
+
+        }
+
+
+        .compass .s {
+
+            position: absolute;
+
+            bottom: 4px;
+
+            left: 0;
+
+            right: 0;
+
+        }
+
+
+        .compass .e {
+
+            position: absolute;
+
+            right: 6px;
+
+            top: 25px;
+
+        }
+
+
+        .compass .w {
+
+            position: absolute;
+
+            left: 6px;
+
+            top: 25px;
+
+        }
+
+
+        .compass .arrow {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 50%;
+
+            width: 4px;
+
+            height: 25px;
+
+            background: #d62f2f;
+
+            transform:
+                translate(-50%, -50%);
+
+        }
+
+
+        .compass .center {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 50%;
+
+            width: 9px;
+
+            height: 9px;
+
+            background: #333;
+
+            border-radius: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+        }
+
+
+        /* =========================================
+           REDIGERINGSKNAPP
+        ========================================= */
+
+        .edit-control {
+
+            background: white;
+
+            padding: 8px;
+
+            border-radius: 6px;
+
+            box-shadow:
+                0 1px 6px rgba(0,0,0,.35);
+
+        }
+
+
+        .edit-control button {
+
+            border: 1px solid #999;
+
+            background: white;
+
+            padding: 8px 10px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+        }
+
+
+        .edit-control button:hover {
+
+            background: #f1f1f1;
+
+        }
+
+
+        .edit-info {
+
+            margin-top: 8px;
+
+            font-size: 12px;
+
+            line-height: 1.4;
+
+            max-width: 240px;
+
+        }
+
+
+        /* =========================================
+           PUNKT P1, P2, P3...
+        ========================================= */
+
+        .edit-marker {
+
+            background: white;
+
+            border: 2px solid #222;
+
+            border-radius: 6px;
+
+            width: 38px !important;
+
+            height: 26px !important;
+
+            line-height: 22px;
+
+            text-align: center;
+
+            font-weight: bold;
+
+            font-size: 11px;
+
+            box-sizing: border-box;
+
+            box-shadow:
+                0 1px 4px rgba(0,0,0,.45);
+
+        }
+
+
+        .edit-marker:hover {
+
+            transform: scale(1.12);
+
+        }
+
+
+        /* =========================================
+           KOORDINAT POPUP
+        ========================================= */
+
+        .coordinate-popup {
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            min-width: 180px;
+
+        }
+
+
+        .coordinate-popup hr {
+
+            border: 0;
+
+            border-top: 1px solid #ddd;
+
+            margin: 7px 0;
+
+        }
+
+
+        .coordinate-popup button {
+
+            margin-top: 7px;
+
+            padding: 6px 9px;
+
+            border: 1px solid #999;
+
+            border-radius: 4px;
+
+            background: white;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =========================================
+           TEAM SØR PANEL
+        ========================================= */
+
+        .south-panel {
+
+            background: white;
+
+            width: 280px;
+
+            max-height: 65vh;
+
+            overflow-y: auto;
+
+            padding: 12px;
+
+            border-radius: 7px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,.35);
+
+            font-size: 12px;
+
+        }
+
+
+        .south-panel h3 {
+
+            margin: 0 0 5px;
+
+            font-size: 15px;
+
+        }
+
+
+        .south-panel .panel-info {
+
+            margin-bottom: 10px;
+
+            color: #555;
+
+            line-height: 1.4;
+
+        }
+
+
+        .point-row {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 5px 4px;
+
+            border-bottom: 1px solid #eee;
+
+            cursor: pointer;
+
+        }
+
+
+        .point-row:hover {
+
+            background: #f2f2f2;
+
+        }
+
+
+        .point-number {
+
+            flex: 0 0 38px;
+
+            font-weight: bold;
+
+        }
+
+
+        .point-coordinate {
+
+            font-family: monospace;
+
+            font-size: 11px;
+
+        }
+
+
+        .copy-all-button {
+
+            width: 100%;
+
+            margin-top: 10px;
+
+            padding: 8px;
+
+            border: 1px solid #888;
+
+            border-radius: 5px;
+
+            background: white;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .copy-all-button:hover {
+
+            background: #f1f1f1;
+
+        }
+
+
+        /* =========================================
+           PANEL KNAPP
+        ========================================= */
+
+        .panel-toggle {
+
+            margin-top: 6px;
+
+            width: 100%;
+
+            padding: 6px;
+
+            border: 1px solid #aaa;
+
+            border-radius: 5px;
+
+            background: #fafafa;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =========================================
+           MOBIL
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .south-panel {
+
+                width: 245px;
+
+                max-height: 50vh;
+
             }
 
-            .compass .n {
-                position: absolute;
-                top: 4px;
-                left: 0;
-                right: 0;
-                color: #d62f2f;
+
+            .edit-control {
+
+                padding: 6px;
+
             }
 
-            .compass .s {
-                position: absolute;
-                bottom: 4px;
-                left: 0;
-                right: 0;
+
+            .edit-control button {
+
+                font-size: 12px;
+
+                padding: 7px 8px;
+
             }
 
-            .compass .e {
-                position: absolute;
-                right: 6px;
-                top: 25px;
-            }
-
-            .compass .w {
-                position: absolute;
-                left: 6px;
-                top: 25px;
-            }
-
-            .compass .arrow {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                width: 4px;
-                height: 25px;
-                background: #d62f2f;
-                transform: translate(-50%, -50%);
-            }
-
-            .compass .center {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                width: 9px;
-                height: 9px;
-                background: #333;
-                border-radius: 50%;
-                transform: translate(-50%, -50%);
-            }
+        }
 
     </style>
 
@@ -220,6 +593,7 @@
 
 
 <header class="topbar">
+
 
     <!-- LOGO -->
 
@@ -238,6 +612,7 @@
         class="nav"
         aria-label="Hovedmeny">
 
+
         <button
             class="menu-toggle"
             aria-label="Åpne meny"
@@ -251,11 +626,13 @@
 
         <ul id="menu">
 
+
             <li>
                 <a href="index.html">
                     Hjem
                 </a>
             </li>
+
 
             <li>
                 <a href="ekstravakter.html">
@@ -263,11 +640,13 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="arbeidsliste.html">
                     Print
                 </a>
             </li>
+
 
             <li>
                 <a href="sjekkliste.html">
@@ -275,11 +654,13 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="velferdsTeknologi.html">
                     Velferdsteknologi
                 </a>
             </li>
+
 
             <li>
                 <a href="arbeidsmiljø.html">
@@ -287,17 +668,20 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="Bursdager.html">
                     Bursdager
                 </a>
             </li>
 
+
             <li>
                 <a href="album.html">
                     Sør-album
                 </a>
             </li>
+
 
         </ul>
 
@@ -314,8 +698,9 @@
 <div id="map"></div>
 
 
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
 
 
 <script>
@@ -338,7 +723,6 @@ const map = L.map('map', {
 );
 
 
-
 /* =====================================================
    OPENSTREETMAP
 ===================================================== */
@@ -359,79 +743,62 @@ L.tileLayer(
 ).addTo(map);
 
 
-// =====================================================
-// KOMPASS
-// =====================================================
+
+/* =====================================================
+   KOMPASS
+===================================================== */
 
 const compass = L.control({
+
     position: 'topright'
+
 });
+
 
 compass.onAdd = function() {
 
-    const div = L.DomUtil.create('div', 'compass');
+
+    const div = L.DomUtil.create(
+
+        'div',
+
+        'compass'
+
+    );
+
 
     div.innerHTML = `
+
         <div class="n">N</div>
+
         <div class="e">Ø</div>
+
         <div class="s">S</div>
+
         <div class="w">V</div>
 
         <div class="arrow"></div>
+
         <div class="center"></div>
+
     `;
 
-    // Hindrer at klikk på kompasset påvirker kartet
+
     L.DomEvent.disableClickPropagation(div);
 
+
     return div;
+
 };
+
 
 compass.addTo(map);
 
+
+
 /* =====================================================
    TEAMOMRÅDER
-=====================================================
-
-   VIKTIG:
-
-   Oslo kommune publiserer områdene som tekst,
-   men ikke GIS-polygoner for hjemmesykepleieteamene.
-
-   Polygonene nedenfor er derfor en geografisk
-   visualisering av områdene, ikke et offisielt
-   GIS-lag fra Oslo kommune.
-
-   Offisiell inndeling:
-
-   TEAM VEST:
-   - Tøyen
-   - Kjølberggata
-   - Ringgata
-   - Hagegata
-   - Kolstadgata
-   - Kampen
-
-   TEAM ØST:
-   - Ekeberg
-   - Kværnerbyen
-   - Galgeberg
-   - Jordal Terrasse
-   - Schweigaards gate
-   - Etterstadsletta 1–46
-
-   TEAM NORD:
-   - Ensjø
-   - Valle
-   - Etterstad
-
-   TEAM SØR:
-   - Grønland
-   - Tøyen
-   - Sørenga
-
 ===================================================== */
-
 
 const teams = [
 
@@ -528,35 +895,153 @@ const teams = [
 
         pts: [
 
-            [59.914900, 10.759220],
+            /* P1 */
 
-            [59.9140, 10.7690],
-            
+            [59.913300, 10.758018],
 
-            [59.909, 10.7780],
-            
+            /* P2 */
 
-            [59.9050, 10.780],
-            
+            [59.913650, 10.758850],
 
-            [59.8990, 10.7750],
-            
+            /* P3 */
 
-             [59.905123, 10.779991],
+            [59.914117, 10.759907],
 
-                       [59.89979, 10.769863],
+            /* P4 */
 
-            [59.8990, 10.7560],
+            [59.914120, 10.761500],
 
-        [59.902799, 10.751839],
+            /* P5 */
 
-            [59.9110, 10.7498],
-            
+            [59.914014, 10.769000],
 
+            /* P6 */
 
-            [59.9150, 10.7590],
+            [59.913700, 10.770000],
 
-            
+            /* P7 */
+
+            [59.913300, 10.771000],
+
+            /* P8 */
+
+            [59.912800, 10.772000],
+
+            /* P9 */
+
+            [59.912400, 10.773500],
+
+            /* P10 */
+
+            [59.911900, 10.774500],
+
+            /* P11 */
+
+            [59.911300, 10.775500],
+
+            /* P12 */
+
+            [59.910800, 10.776500],
+
+            /* P13 */
+
+            [59.910300, 10.777500],
+
+            /* P14 */
+
+            [59.909700, 10.778500],
+
+            /* P15 */
+
+            [59.909200, 10.779300],
+
+            /* P16 */
+
+            [59.908500, 10.780000],
+
+            /* P17 */
+
+            [59.907800, 10.780500],
+
+            /* P18 */
+
+            [59.906800, 10.780700],
+
+            /* P19 */
+
+            [59.905090, 10.780910],
+
+            /* P20 */
+
+            [59.904300, 10.780000],
+
+            /* P21 */
+
+            [59.903500, 10.778900],
+
+            /* P22 */
+
+            [59.902700, 10.776500],
+
+            /* P23 */
+
+            [59.901766, 10.768661],
+
+            /* P24 */
+
+            [59.901766, 10.765000],
+
+            /* P25 */
+
+            [59.901766, 10.761500],
+
+            /* P26 */
+
+            [59.901766, 10.757847],
+
+            /* P27 */
+
+            [59.902500, 10.756800],
+
+            /* P28 */
+
+            [59.904000, 10.755500],
+
+            /* P29 */
+
+            [59.905500, 10.754500],
+
+            /* P30 */
+
+            [59.906800, 10.753500],
+
+            /* P31 */
+
+            [59.908000, 10.752500],
+
+            /* P32 */
+
+            [59.909000, 10.751800],
+
+            /* P33 */
+
+            [59.909599, 10.751410],
+
+            /* P34 */
+
+            [59.910500, 10.752200],
+
+            /* P35 */
+
+            [59.911500, 10.753500],
+
+            /* P36 */
+
+            [59.912300, 10.755000],
+
+            /* P37 */
+
+            [59.913000, 10.756500]
 
         ]
 
@@ -606,7 +1091,7 @@ const teams = [
 
 
 /* =====================================================
-   TEGN TEAMOMRÅDENE
+   TEGN TEAMOMRÅDER
 ===================================================== */
 
 teams.forEach(team => {
@@ -628,17 +1113,15 @@ teams.forEach(team => {
 
             fillOpacity: 0.28,
 
-             interactive: false
+            interactive: false
 
         }
 
     ).addTo(map);
 
 
+    team._polygon = polygon;
 
-    /* -----------------------------------------
-       TEAMNAVN
-    ----------------------------------------- */
 
     polygon.bindTooltip(
 
@@ -659,108 +1142,16 @@ teams.forEach(team => {
     );
 
 
-    /* -----------------------------------------
-       POPUP
-    ----------------------------------------- */
-
     polygon.bindPopup(
 
         `<b>${team.name}</b><br><br>
-         Klikk på kartet for å se gatenavn.
-         `
+         Bruk "Rediger grenser" for å flytte punktene.`
 
     );
 
 });
 
 
-
-/* =====================================================
-   LEGENDE
-===================================================== */
-
-const legend = L.control({
-
-    position: 'topright'
-
-});
-
-/*
-legend.onAdd = function() {
-
-
-    const div = L.DomUtil.create(
-
-        'div',
-
-        'legend'
-
-    );
-
-
-    div.innerHTML = `
-
-        <h3>Hjemmesykepleie</h3>
-
-        <div>
-            <span
-                class="sw"
-                style="
-                    background:#ffd083;
-                    border-color:#e88a00;
-                ">
-            </span>
-
-            Team Sør
-        </div>
-
-        <div>
-            <span
-                class="sw"
-                style="
-                    background:#8fd18f;
-                    border-color:#2e8b57;
-                ">
-            </span>
-
-            Team Vest
-        </div>
-
-        <div>
-            <span
-                class="sw"
-                style="
-                    background:#7fb3ff;
-                    border-color:#1769d1;
-                ">
-            </span>
-
-            Team Nord
-        </div>
-
-        <div>
-            <span
-                class="sw"
-                style="
-                    background:#ff9b9b;
-                    border-color:#d62f2f;
-                ">
-            </span>
-
-            Team Øst
-        </div>
-
-    `;
-
-
-    return div;
-
-};
-
-
-legend.addTo(map);
-
-*/
 
 /* =====================================================
    INFORMASJONSBOKS
@@ -803,21 +1194,924 @@ note.addTo(map);
 
 
 /* =====================================================
-   TILPASS KARTET TIL ALLE TEAMENE
+   REDIGERINGSPUNKTER
+===================================================== */
+
+let editMode = false;
+
+const editMarkers = [];
+
+let coordinateMarker = null;
+
+
+/* =====================================================
+   LAG REDIGERINGSPUNKTER
+===================================================== */
+
+teams.forEach((team) => {
+
+
+    team.pts.forEach((point, pointIndex) => {
+
+
+        const pointNumber =
+            pointIndex + 1;
+
+
+        const marker = L.marker(
+
+            point,
+
+            {
+
+                draggable: true,
+
+                autoPan: true,
+
+                icon: L.divIcon({
+
+                    className:
+                        'edit-marker',
+
+                    html:
+                        `P${pointNumber}`,
+
+                    iconSize:
+                        [38, 26],
+
+                    iconAnchor:
+                        [19, 13]
+
+                })
+
+            }
+
+        );
+
+
+        marker.bindTooltip(
+
+            `${team.name} – P${pointNumber}`,
+
+            {
+
+                direction: 'top'
+
+            }
+
+        );
+
+
+        /* -----------------------------------------
+           NÅR PUNKTET DRAS
+        ----------------------------------------- */
+
+        marker.on('drag', function(e) {
+
+
+            const position =
+                e.target.getLatLng();
+
+
+            team.pts[pointIndex] = [
+
+                position.lat,
+
+                position.lng
+
+            ];
+
+
+            team._polygon.setLatLngs(
+
+                team.pts
+
+            );
+
+
+            /* Oppdater Team Sør-panelet */
+
+            updateSouthPanel();
+
+        });
+
+
+        /* -----------------------------------------
+           NÅR PUNKTET SLIPPES
+        ----------------------------------------- */
+
+        marker.on('dragend', function(e) {
+
+
+            const position =
+                e.target.getLatLng();
+
+
+            const lat =
+                Number(
+                    position.lat.toFixed(6)
+                );
+
+
+            const lng =
+                Number(
+                    position.lng.toFixed(6)
+                );
+
+
+            team.pts[pointIndex] = [
+
+                lat,
+
+                lng
+
+            ];
+
+
+            team._polygon.setLatLngs(
+
+                team.pts
+
+            );
+
+
+            marker.bindPopup(`
+
+                <div class="coordinate-popup">
+
+                    <b>${team.name}</b>
+
+                    <br>
+
+                    <b>P${pointNumber}</b>
+
+                    <hr>
+
+                    Koordinat i koden:
+
+                    <br>
+
+                    <b>[${lat}, ${lng}]</b>
+
+                    <br><br>
+
+                    <button
+                        onclick="
+                            copyCoordinate(
+                                ${lat},
+                                ${lng}
+                            )
+                        ">
+
+                        📋 Kopier
+
+                    </button>
+
+                </div>
+
+            `).openPopup();
+
+
+            console.log(
+
+                `${team.name} P${pointNumber}: ` +
+
+                `[${lat}, ${lng}]`
+
+            );
+
+
+            updateSouthPanel();
+
+        });
+
+
+        editMarkers.push({
+
+            marker: marker,
+
+            team: team,
+
+            pointIndex: pointIndex
+
+        });
+
+    });
+
+});
+
+
+
+/* =====================================================
+   KOORDINAT-PANEL FOR TEAM SØR
+===================================================== */
+
+const southPanel =
+    L.control({
+
+        position: 'bottomright'
+
+    });
+
+
+southPanel.onAdd = function() {
+
+
+    const div =
+        L.DomUtil.create(
+
+            'div',
+
+            'south-panel'
+
+        );
+
+
+    div.id =
+        'southCoordinatePanel';
+
+
+    div.innerHTML = `
+
+        <h3>
+            🟠 TEAM SØR
+        </h3>
+
+        <div class="panel-info">
+
+            Punktene nedenfor tilsvarer
+            nøyaktig P1, P2, P3 osv.
+            i <b>pts</b>-listen.
+
+        </div>
+
+        <div id="southPointList">
+
+        </div>
+
+
+        <button
+            class="copy-all-button"
+            id="copySouthCoordinates">
+
+            📋 Kopier hele Team Sør-listen
+
+        </button>
+
+
+        <button
+            class="panel-toggle"
+            id="closeSouthPanel">
+
+            Skjul panel
+
+        </button>
+
+    `;
+
+
+    L.DomEvent.disableClickPropagation(div);
+
+
+    return div;
+
+};
+
+
+southPanel.addTo(map);
+
+
+
+/* =====================================================
+   OPPDATER TEAM SØR-PANEL
+===================================================== */
+
+function updateSouthPanel() {
+
+
+    const southTeam =
+        teams.find(
+
+            team =>
+                team.name === 'TEAM SØR'
+
+        );
+
+
+    if (!southTeam) {
+
+        return;
+
+    }
+
+
+    const list =
+        document.getElementById(
+            'southPointList'
+        );
+
+
+    if (!list) {
+
+        return;
+
+    }
+
+
+    list.innerHTML = '';
+
+
+    southTeam.pts.forEach(
+
+        (point, index) => {
+
+
+            const lat =
+                Number(
+                    point[0].toFixed(6)
+                );
+
+
+            const lng =
+                Number(
+                    point[1].toFixed(6)
+                );
+
+
+            const row =
+                document.createElement(
+                    'div'
+                );
+
+
+            row.className =
+                'point-row';
+
+
+            row.innerHTML = `
+
+                <div class="point-number">
+
+                    P${index + 1}
+
+                </div>
+
+                <div class="point-coordinate">
+
+                    [${lat}, ${lng}]
+
+                </div>
+
+            `;
+
+
+            /* Klikk på punktet i panelet */
+
+            row.addEventListener(
+
+                'click',
+
+                function() {
+
+
+                    const item =
+                        editMarkers.find(
+
+                            item =>
+                                item.team ===
+                                southTeam &&
+
+                                item.pointIndex ===
+                                index
+
+                        );
+
+
+                    if (!item) {
+
+                        return;
+
+                    }
+
+
+                    map.setView(
+
+                        item.marker.getLatLng(),
+
+                        Math.max(
+                            map.getZoom(),
+                            17
+                        )
+
+                    );
+
+
+                    item.marker.openPopup();
+
+
+                }
+
+            );
+
+
+            list.appendChild(row);
+
+        }
+
+    );
+
+}
+
+
+updateSouthPanel();
+
+
+
+/* =====================================================
+   KOPIER HELE TEAM SØR-LISTEN
+===================================================== */
+
+function copySouthCoordinates() {
+
+
+    const southTeam =
+        teams.find(
+
+            team =>
+                team.name === 'TEAM SØR'
+
+        );
+
+
+    if (!southTeam) {
+
+        return;
+
+    }
+
+
+    let text =
+        'pts: [\n';
+
+
+    southTeam.pts.forEach(
+
+        (point, index) => {
+
+
+            const lat =
+                Number(
+                    point[0].toFixed(6)
+                );
+
+
+            const lng =
+                Number(
+                    point[1].toFixed(6)
+                );
+
+
+            text +=
+
+                `    /* P${index + 1} */\n` +
+
+                `    [${lat}, ${lng}]`;
+
+
+            if (
+                index <
+                southTeam.pts.length - 1
+            ) {
+
+                text += ',';
+
+            }
+
+
+            text += '\n';
+
+        }
+
+    );
+
+
+    text += ']';
+
+
+    navigator.clipboard
+        .writeText(text)
+
+        .then(() => {
+
+
+            alert(
+                'Hele Team Sør-listen er kopiert.'
+            );
+
+
+            console.log(text);
+
+        })
+
+        .catch(() => {
+
+
+            console.log(text);
+
+
+            alert(
+                'Listen kunne ikke kopieres automatisk. ' +
+                'Se konsollen (F12).'
+            );
+
+        });
+
+}
+
+
+document
+    .getElementById(
+        'copySouthCoordinates'
+    )
+    .addEventListener(
+
+        'click',
+
+        copySouthCoordinates
+
+    );
+
+
+
+/* =====================================================
+   SKJUL TEAM SØR-PANEL
+===================================================== */
+
+document
+    .getElementById(
+        'closeSouthPanel'
+    )
+    .addEventListener(
+
+        'click',
+
+        function() {
+
+
+            const panel =
+                document.getElementById(
+                    'southCoordinatePanel'
+                );
+
+
+            if (
+                panel.style.display ===
+                'none'
+            ) {
+
+
+                panel.style.display =
+                    'block';
+
+
+                this.textContent =
+                    'Skjul panel';
+
+
+            }
+
+            else {
+
+
+                panel.style.display =
+                    'none';
+
+
+                this.textContent =
+                    'Vis Team Sør-punkter';
+
+            }
+
+        }
+
+    );
+
+
+
+/* =====================================================
+   KOPIER ETT KOORDINAT
+===================================================== */
+
+function copyCoordinate(
+    lat,
+    lng
+) {
+
+
+    const text =
+        `[${lat}, ${lng}]`;
+
+
+    navigator.clipboard
+        .writeText(text)
+
+        .then(() => {
+
+
+            alert(
+                `Koordinater kopiert:\n${text}`
+            );
+
+        })
+
+        .catch(() => {
+
+
+            alert(text);
+
+        });
+
+}
+
+
+window.copyCoordinate =
+    copyCoordinate;
+
+
+
+/* =====================================================
+   REDIGERINGSPANEL
+===================================================== */
+
+const editControl =
+    L.control({
+
+        position: 'topright'
+
+    });
+
+
+editControl.onAdd =
+    function() {
+
+
+        const div =
+            L.DomUtil.create(
+
+                'div',
+
+                'edit-control'
+
+            );
+
+
+        div.innerHTML = `
+
+            <button
+                id="editMapButton">
+
+                ✏️ Rediger grenser
+
+            </button>
+
+
+            <div
+                id="editInfo"
+                class="edit-info"
+                style="display:none;">
+
+                <b>Redigeringsmodus</b>
+
+                <br><br>
+
+                Dra P1, P2, P3 osv.
+                til riktig sted.
+
+                <br><br>
+
+                Team Sør-listen viser
+                samtidig hvilket punkt
+                du redigerer.
+
+            </div>
+
+        `;
+
+
+        L.DomEvent.disableClickPropagation(
+            div
+        );
+
+
+        return div;
+
+    };
+
+
+editControl.addTo(map);
+
+
+
+/* =====================================================
+   REDIGERING PÅ / AV
+===================================================== */
+
+document
+    .getElementById(
+        'editMapButton'
+    )
+    .addEventListener(
+
+        'click',
+
+        function() {
+
+
+            editMode =
+                !editMode;
+
+
+            editMarkers.forEach(
+
+                item => {
+
+
+                    if (editMode) {
+
+
+                        item.marker.addTo(
+                            map
+                        );
+
+
+                    }
+
+                    else {
+
+
+                        map.removeLayer(
+                            item.marker
+                        );
+
+                    }
+
+                }
+
+            );
+
+
+            const info =
+                document.getElementById(
+                    'editInfo'
+                );
+
+
+            if (editMode) {
+
+
+                this.textContent =
+                    '❌ Avslutt redigering';
+
+
+                info.style.display =
+                    'block';
+
+
+            }
+
+            else {
+
+
+                this.textContent =
+                    '✏️ Rediger grenser';
+
+
+                info.style.display =
+                    'none';
+
+            }
+
+        }
+
+    );
+
+
+
+/* =====================================================
+   KLIKK PÅ KARTET FOR Å FINNE KOORDINATER
+===================================================== */
+
+map.on('click', function(e) {
+
+
+    if (editMode) {
+
+        return;
+
+    }
+
+
+    const lat =
+        e.latlng.lat.toFixed(6);
+
+
+    const lng =
+        e.latlng.lng.toFixed(6);
+
+
+    console.log(
+
+        `Latitude: ${lat}, Longitude: ${lng}`
+
+    );
+
+
+    if (coordinateMarker) {
+
+        map.removeLayer(
+            coordinateMarker
+        );
+
+    }
+
+
+    coordinateMarker =
+        L.marker(e.latlng)
+
+            .addTo(map)
+
+            .bindPopup(`
+
+                <div class="coordinate-popup">
+
+                    <b>Koordinater</b>
+
+                    <br><br>
+
+                    Latitude:
+
+                    <br>
+
+                    ${lat}
+
+                    <br><br>
+
+                    Longitude:
+
+                    <br>
+
+                    ${lng}
+
+                    <br><br>
+
+                    <button
+                        onclick="
+                            copyCoordinate(
+                                ${lat},
+                                ${lng}
+                            )
+                        ">
+
+                        📋 Kopier
+
+                    </button>
+
+                </div>
+
+            `)
+
+            .openPopup();
+
+});
+
+
+
+/* =====================================================
+   TILPASS KARTET
 ===================================================== */
 
 const allPoints = [];
 
 
-teams.forEach(team => {
+teams.forEach(
 
-    team.pts.forEach(point => {
+    team => {
 
-        allPoints.push(point);
 
-    });
+        team.pts.forEach(
 
-});
+            point => {
+
+
+                allPoints.push(point);
+
+            }
+
+        );
+
+    }
+
+);
 
 
 map.fitBounds(
@@ -831,21 +2125,6 @@ map.fitBounds(
     }
 
 );
-map.on('click', function(e) {
-    console.log(
-        e.latlng.lat.toFixed(6),
-        e.latlng.lng.toFixed(6)
-    );
-
-    L.marker(e.latlng)
-        .addTo(map)
-        .bindPopup(
-            e.latlng.lat.toFixed(6) +
-            ', ' +
-            e.latlng.lng.toFixed(6)
-        )
-        .openPopup();
-});
 
 
 </script>
