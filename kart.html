@@ -608,83 +608,18 @@
 
     <!-- NAVIGASJON -->
 
-    <nav
-        class="nav"
-        aria-label="Hovedmeny">
-
-
-        <button
-            class="menu-toggle"
-            aria-label="Åpne meny"
-            id="menuToggle"
-            aria-expanded="false">
-
-            ☰
-
-        </button>
-
-
-        <ul id="menu">
-
-
-            <li>
-                <a href="index.html">
-                    Hjem
-                </a>
-            </li>
-
-
-            <li>
-                <a href="ekstravakter.html">
-                    Vaktbok
-                </a>
-            </li>
-
-
-            <li>
-                <a href="arbeidsliste.html">
-                    Print
-                </a>
-            </li>
-
-
-            <li>
-                <a href="sjekkliste.html">
-                    Rutiner
-                </a>
-            </li>
-
-
-            <li>
-                <a href="velferdsTeknologi.html">
-                    Velferdsteknologi
-                </a>
-            </li>
-
-
-            <li>
-                <a href="arbeidsmiljø.html">
-                    Arbeidsmiljø
-                </a>
-            </li>
-
-
-            <li>
-                <a href="Bursdager.html">
-                    Bursdager
-                </a>
-            </li>
-
-
-            <li>
-                <a href="album.html">
-                    Sør-album
-                </a>
-            </li>
-
-
-        </ul>
-
+    <nav class="nav" aria-label="Hovedmeny">
+      <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
+           <ul id="menu"> 
+              <li><a href="index.html" > Hjem</a></li>
+              <li><a href="ekstravakter.html" > Vaktbok</a></li>
+              <li><a href="arbeidsliste.html">Merkantil</a></li>
+              <li><a href="sjekkliste.html" aria-current="page">Rutiner</a></li>
+              <li><a href="belastning.html">Arbeidsbelastning</a></li>
+              <li><a href="arbeidsmiljø.html" >Arbeidsmiljø</a></li>
+              <li><a href="Bursdager.html">Bursdager</a></li>
+              <li><a href="album.html">Sør-album </a></li>
+            </ul>
     </nav>
 
 </header>
@@ -817,25 +752,25 @@ const teams = [
 
         pts: [
 
-            [59.9305, 10.7540],
+            [59.921517, 10.774455],
 
-            [59.9330, 10.7620],
+            [59.92171, 10.776987],
 
-            [59.9300, 10.7720],
+            [59.921839, 10.779905],
 
-            [59.9240, 10.7790],
+            [59.922033, 10.783296],
 
-            [59.9200, 10.7830],
+            [59.916311, 10.795441],
 
-            [59.9160, 10.7780],
+            [59.910976, 10.782909],
 
             [59.9140, 10.7680],
 
-            [59.9180, 10.7580],
+            [59.916677, 10.767031],
 
-            [59.9230, 10.7500],
+            [59.918269, 10.767803],
 
-            [59.9280, 10.7480]
+            [59.920527, 10.770078]
 
         ]
 
@@ -856,15 +791,15 @@ const teams = [
 
         pts: [
 
-            [59.9300, 10.7720],
+            [59.931108, 10.783253],
 
-            [59.9370, 10.7800],
+            [59.934548, 10.793209],
 
-            [59.9440, 10.7980],
+           [59.935494, 10.805225],
 
-            [59.9430, 10.8140],
+            [59.933602, 10.8181],
 
-            [59.9360, 10.8260],
+            [59.929732, 10.825825],
 
             [59.9230, 10.8320],
 
@@ -872,9 +807,9 @@ const teams = [
 
             [59.9140, 10.8070],
 
-            [59.9200, 10.7900],
+            [59.919258, 10.789518],
 
-            [59.9240, 10.7790]
+           [59.922829, 10.781665]
 
         ]
 
@@ -1062,25 +997,42 @@ const teams = [
 
         pts: [
 
+            /* P1 */
             [59.9140, 10.8070],
 
+             /* P2 */
             [59.9140, 10.8250],
 
+             /* P3 */
             [59.9050, 10.8290],
 
+             /* P4 */
             [59.8970, 10.8250],
 
-            [59.8900, 10.8120],
+             /* P5 */
+            [59.894965, 10.802994],
 
-            [59.8880, 10.7990],
+             /* P6 */
+            [59.892468, 10.784283],
 
-            [59.8960, 10.7880],
+             /* P7 */
+            [59.894448, 10.772266],
 
-            [59.9020, 10.7840],
+             /* P8 */
+            [59.897849, 10.764713],
 
-            [59.9080, 10.7780],
+             /* P9 */
+            [59.901529, 10.768104],
 
-            [59.9140, 10.7900]
+             /* P10 */
+            [59.902153, 10.772781],
+
+            [59.902864, 10.779219],
+            [59.906275, 10.781236],
+            [59.909599, 10.781708],
+
+            [59.9140, 10.7900],
+            [59.915709, 10.798101]
 
         ]
 
@@ -1401,7 +1353,7 @@ teams.forEach((team) => {
 });
 
 
-
+/*
 /* =====================================================
    KOORDINAT-PANEL FOR TEAM SØR
 ===================================================== */
