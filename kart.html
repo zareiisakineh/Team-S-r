@@ -58,7 +58,6 @@
         #map {
 
             width: 100%;
-
             height: calc(100vh - 65px);
 
         }
@@ -84,25 +83,6 @@
             font-size: 12px;
 
             line-height: 1.4;
-
-        }
-
-
-        /* =========================================
-           TEAMNAVN
-        ========================================= */
-
-        .teamlabel {
-
-            font-weight: 700;
-
-            font-size: 15px;
-
-            text-shadow:
-                0 1px 2px white,
-                0 -1px 2px white,
-                1px 0 2px white,
-                -1px 0 2px white;
 
         }
 
@@ -275,7 +255,68 @@
 
 
         /* =========================================
-           REDIGERINGSKNAPP
+           FARGELEGEND
+        ========================================= */
+
+        .team-legend {
+
+            background: white;
+
+            padding: 12px 14px;
+
+            border-radius: 7px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,.35);
+
+            min-width: 180px;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .team-legend h3 {
+
+            margin: 0 0 10px;
+
+            font-size: 15px;
+
+        }
+
+
+        .legend-row {
+
+            display: flex;
+
+            align-items: center;
+
+            margin: 6px 0;
+
+        }
+
+
+        .legend-color {
+
+            width: 22px;
+
+            height: 18px;
+
+            margin-right: 9px;
+
+            border: 2px solid rgba(0,0,0,.35);
+
+            border-radius: 3px;
+
+            box-sizing: border-box;
+
+        }
+
+
+        /* =========================================
+           REDIGERINGSPANEL
         ========================================= */
 
         .edit-control {
@@ -414,155 +455,25 @@
 
 
         /* =========================================
-           TEAM SØR PANEL
-        ========================================= */
-
-        .south-panel {
-
-            background: white;
-
-            width: 280px;
-
-            max-height: 65vh;
-
-            overflow-y: auto;
-
-            padding: 12px;
-
-            border-radius: 7px;
-
-            box-shadow:
-                0 2px 8px rgba(0,0,0,.35);
-
-            font-size: 12px;
-
-        }
-
-
-        .south-panel h3 {
-
-            margin: 0 0 5px;
-
-            font-size: 15px;
-
-        }
-
-
-        .south-panel .panel-info {
-
-            margin-bottom: 10px;
-
-            color: #555;
-
-            line-height: 1.4;
-
-        }
-
-
-        .point-row {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 7px;
-
-            padding: 5px 4px;
-
-            border-bottom: 1px solid #eee;
-
-            cursor: pointer;
-
-        }
-
-
-        .point-row:hover {
-
-            background: #f2f2f2;
-
-        }
-
-
-        .point-number {
-
-            flex: 0 0 38px;
-
-            font-weight: bold;
-
-        }
-
-
-        .point-coordinate {
-
-            font-family: monospace;
-
-            font-size: 11px;
-
-        }
-
-
-        .copy-all-button {
-
-            width: 100%;
-
-            margin-top: 10px;
-
-            padding: 8px;
-
-            border: 1px solid #888;
-
-            border-radius: 5px;
-
-            background: white;
-
-            cursor: pointer;
-
-            font-weight: bold;
-
-        }
-
-
-        .copy-all-button:hover {
-
-            background: #f1f1f1;
-
-        }
-
-
-        /* =========================================
-           PANEL KNAPP
-        ========================================= */
-
-        .panel-toggle {
-
-            margin-top: 6px;
-
-            width: 100%;
-
-            padding: 6px;
-
-            border: 1px solid #aaa;
-
-            border-radius: 5px;
-
-            background: #fafafa;
-
-            cursor: pointer;
-
-        }
-
-
-        /* =========================================
            MOBIL
         ========================================= */
 
         @media (max-width: 600px) {
 
-            .south-panel {
+            .team-legend {
 
-                width: 245px;
+                min-width: 160px;
 
-                max-height: 50vh;
+                padding: 10px;
+
+                font-size: 12px;
+
+            }
+
+
+            .team-legend h3 {
+
+                font-size: 14px;
 
             }
 
@@ -609,17 +520,71 @@
     <!-- NAVIGASJON -->
 
     <nav class="nav" aria-label="Hovedmeny">
-      <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
-           <ul id="menu"> 
-              <li><a href="index.html" > Hjem</a></li>
-              <li><a href="ekstravakter.html" > Vaktbok</a></li>
-              <li><a href="arbeidsliste.html">Merkantil</a></li>
-              <li><a href="sjekkliste.html" aria-current="page">Rutiner</a></li>
-              <li><a href="belastning.html">Arbeidsbelastning</a></li>
-              <li><a href="arbeidsmiljø.html" >Arbeidsmiljø</a></li>
-              <li><a href="Bursdager.html">Bursdager</a></li>
-              <li><a href="album.html">Sør-album </a></li>
-            </ul>
+
+        <button
+            class="menu-toggle"
+            aria-label="Åpne meny"
+            id="menuToggle"
+            aria-expanded="false">
+
+            ☰
+
+        </button>
+
+
+        <ul id="menu">
+
+            <li>
+                <a href="index.html">
+                    Hjem
+                </a>
+            </li>
+
+            <li>
+                <a href="ekstravakter.html">
+                    Vaktbok
+                </a>
+            </li>
+
+            <li>
+                <a href="arbeidsliste.html">
+                    Merkantil
+                </a>
+            </li>
+
+            <li>
+                <a href="sjekkliste.html"
+                   aria-current="page">
+                    Rutiner
+                </a>
+            </li>
+
+            <li>
+                <a href="belastning.html">
+                    Arbeidsbelastning
+                </a>
+            </li>
+
+            <li>
+                <a href="arbeidsmiljø.html">
+                    Arbeidsmiljø
+                </a>
+            </li>
+
+            <li>
+                <a href="Bursdager.html">
+                    Bursdager
+                </a>
+            </li>
+
+            <li>
+                <a href="album.html">
+                    Sør-album
+                </a>
+            </li>
+
+        </ul>
+
     </nav>
 
 </header>
@@ -631,6 +596,7 @@
 ========================================= -->
 
 <div id="map"></div>
+
 
 
 <script
@@ -656,6 +622,7 @@ const map = L.map('map', {
     14
 
 );
+
 
 
 /* =====================================================
@@ -691,7 +658,6 @@ const compass = L.control({
 
 
 compass.onAdd = function() {
-
 
     const div = L.DomUtil.create(
 
@@ -752,49 +718,49 @@ const teams = [
 
         pts: [
 
-    /* P1 */
-    [59.925800, 10.762000],
+            /* P1 */
+            [59.925800, 10.762000],
 
-    /* P2 */
-    [59.928500, 10.766500],
+            /* P2 */
+            [59.928500, 10.766500],
 
-    /* P3 */
-    [59.931000, 10.772000],
+            /* P3 */
+            [59.931000, 10.772000],
 
-    /* P4 */
-    [59.930500, 10.778000],
+            /* P4 */
+            [59.930500, 10.778000],
 
-    /* P5 */
-    [59.927500, 10.783000],
+            /* P5 */
+            [59.927500, 10.783000],
 
-    /* P6 */
-    [59.923500, 10.786000],
+            /* P6 */
+            [59.923500, 10.786000],
 
-    /* P7 */
-    [59.919500, 10.785000],
+            /* P7 */
+            [59.919500, 10.785000],
 
-    /* P8 */
-    [59.916000, 10.782000],
+            /* P8 */
+            [59.916000, 10.782000],
 
-    /* P9 */
-    [59.913500, 10.777000],
+            /* P9 */
+            [59.913500, 10.777000],
 
-    /* P10 */
-    [59.912000, 10.771000],
+            /* P10 */
+            [59.912000, 10.771000],
 
-    /* P11 */
-    [59.913500, 10.765000],
+            /* P11 */
+            [59.913500, 10.765000],
 
-    /* P12 */
-    [59.917000, 10.761000],
+            /* P12 */
+            [59.917000, 10.761000],
 
-    /* P13 */
-    [59.921000, 10.759000],
+            /* P13 */
+            [59.921000, 10.759000],
 
-    /* P14 */
-    [59.924000, 10.760000]
+            /* P14 */
+            [59.924000, 10.760000]
 
-]
+        ]
 
     },
 
@@ -813,55 +779,55 @@ const teams = [
 
         pts: [
 
-    /* P1 */
-    [59.930500, 10.778000],
+            /* P1 */
+            [59.930500, 10.778000],
 
-    /* P2 */
-    [59.935000, 10.782000],
+            /* P2 */
+            [59.935000, 10.782000],
 
-    /* P3 */
-    [59.939000, 10.788000],
+            /* P3 */
+            [59.939000, 10.788000],
 
-    /* P4 */
-    [59.941500, 10.795000],
+            /* P4 */
+            [59.941500, 10.795000],
 
-    /* P5 */
-    [59.943000, 10.802000],
+            /* P5 */
+            [59.943000, 10.802000],
 
-    /* P6 */
-    [59.942000, 10.810000],
+            /* P6 */
+            [59.942000, 10.810000],
 
-    /* P7 */
-    [59.939000, 10.817000],
+            /* P7 */
+            [59.939000, 10.817000],
 
-    /* P8 */
-    [59.934000, 10.821000],
+            /* P8 */
+            [59.934000, 10.821000],
 
-    /* P9 */
-    [59.929000, 10.821000],
+            /* P9 */
+            [59.929000, 10.821000],
 
-    /* P10 */
-    [59.924000, 10.818000],
+            /* P10 */
+            [59.924000, 10.818000],
 
-    /* P11 */
-    [59.919000, 10.814000],
+            /* P11 */
+            [59.919000, 10.814000],
 
-    /* P12 */
-    [59.916000, 10.808000],
+            /* P12 */
+            [59.916000, 10.808000],
 
-    /* P13 */
-    [59.916000, 10.800000],
+            /* P13 */
+            [59.916000, 10.800000],
 
-    /* P14 */
-    [59.920000, 10.792000],
+            /* P14 */
+            [59.920000, 10.792000],
 
-    /* P15 */
-    [59.924000, 10.786000],
+            /* P15 */
+            [59.924000, 10.786000],
 
-    /* P16 */
-    [59.928000, 10.781000]
+            /* P16 */
+            [59.928000, 10.781000]
 
-]
+        ]
 
     },
 
@@ -878,78 +844,79 @@ const teams = [
 
         fill: '#ffd083',
 
-       pts: [
+        pts: [
 
-    /* P1 */
-    [59.914000, 10.758000],
+            /* P1 */
+            [59.914000, 10.758000],
 
-    /* P2 */
-    [59.914300, 10.761000],
+            /* P2 */
+            [59.914300, 10.761000],
 
-    /* P3 */
-    [59.914000, 10.765000],
+            /* P3 */
+            [59.914000, 10.765000],
 
-    /* P4 */
-    [59.912633, 10.767975],
+            /* P4 */
+            [59.912633, 10.767975],
 
-    /* P5 */
-    [59.912095, 10.77261],
+            /* P5 */
+            [59.912095, 10.772610],
 
-    /* P6 */
-    [59.912500, 10.776000],
+            /* P6 */
+            [59.912500, 10.776000],
 
-    /* P7 */
-    [59.911500, 10.778500],
+            /* P7 */
+            [59.911500, 10.778500],
 
-    /* P8 */
-    [59.910500, 10.780500],
+            /* P8 */
+            [59.910500, 10.780500],
 
-    /* P9 */
-    [59.909000, 10.782000],
+            /* P9 */
+            [59.909000, 10.782000],
 
-    /* P10 */
-    [59.907000, 10.783000],
+            /* P10 */
+            [59.907000, 10.783000],
 
-    /* P11 */
-    [59.905000, 10.783000],
+            /* P11 */
+            [59.905000, 10.783000],
 
-    /* P12 */
-    [59.903000, 10.781000],
+            /* P12 */
+            [59.903000, 10.781000],
 
-    /* P13 */
-    [59.901000, 10.777000],
+            /* P13 */
+            [59.901000, 10.777000],
 
-    /* P14 */
-    [59.899500, 10.773000],
+            /* P14 */
+            [59.899500, 10.773000],
 
-    /* P15 */
-    [59.898500, 10.768000],
+            /* P15 */
+            [59.898500, 10.768000],
 
-    /* P16 */
-    [59.898000, 10.763000],
+            /* P16 */
+            [59.898000, 10.763000],
 
-    /* P17 */
-    [59.899000, 10.758000],
+            /* P17 */
+            [59.899000, 10.758000],
 
-    /* P18 */
-    [59.901000, 10.754000],
+            /* P18 */
+            [59.901000, 10.754000],
 
-    /* P19 */
-    [59.904000, 10.751000],
+            /* P19 */
+            [59.904000, 10.751000],
 
-    /* P20 */
-    [59.907000, 10.750000],
+            /* P20 */
+            [59.907000, 10.750000],
 
-    /* P21 */
-    [59.909500, 10.751000],
+            /* P21 */
+            [59.909500, 10.751000],
 
-    /* P22 */
-    [59.912000, 10.753000],
+            /* P22 */
+            [59.912000, 10.753000],
 
-    /* P23 */
-    [59.913500, 10.755000]
+            /* P23 */
+            [59.913500, 10.755000]
 
-]
+        ]
+
     },
 
 
@@ -967,130 +934,134 @@ const teams = [
 
         pts: [
 
-    /* P1 */
-    [59.916000, 10.808000],
+            /* P1 */
+            [59.916000, 10.808000],
 
-    /* P2 */
-    [59.916000, 10.817000],
+            /* P2 */
+            [59.916000, 10.817000],
 
-    /* P3 */
-    [59.914000, 10.824000],
+            /* P3 */
+            [59.914000, 10.824000],
 
-    /* P4 */
-    [59.909000, 10.828000],
+            /* P4 */
+            [59.909000, 10.828000],
 
-    /* P5 */
-    [59.904000, 10.829000],
+            /* P5 */
+            [59.904000, 10.829000],
 
-    /* P6 */
-    [59.899000, 10.827000],
+            /* P6 */
+            [59.899000, 10.827000],
 
-    /* P7 */
-    [59.894000, 10.823000],
+            /* P7 */
+            [59.894000, 10.823000],
 
-    /* P8 */
-    [59.890000, 10.817000],
+            /* P8 */
+            [59.890000, 10.817000],
 
-    /* P9 */
-    [59.889000, 10.810000],
+            /* P9 */
+            [59.889000, 10.810000],
 
-    /* P10 */
-    [59.891000, 10.803000],
+            /* P10 */
+            [59.891000, 10.803000],
 
-    /* P11 */
-    [59.895000, 10.797000],
+            /* P11 */
+            [59.895000, 10.797000],
 
-    /* P12 */
-    [59.900000, 10.792000],
+            /* P12 */
+            [59.900000, 10.792000],
 
-    /* P13 */
-    [59.905000, 10.788000],
+            /* P13 */
+            [59.905000, 10.788000],
 
-    /* P14 */
-    [59.910000, 10.791000],
+            /* P14 */
+            [59.910000, 10.791000],
 
-    /* P15 */
-    [59.914000, 10.798000],
+            /* P15 */
+            [59.914000, 10.798000],
 
-    /* P16 */
-    [59.916000, 10.803000]
+            /* P16 */
+            [59.916000, 10.803000]
 
-]
+        ]
 
     },
 
- /* =================================================
-       TEAM Kampen
+
+    /* =================================================
+       TEAM KAMPEN
     ================================================= */
-{
-    name: 'TEAM KAMPEN',
 
-    color: '#7b2cbf',
+    {
 
-    fill: '#c99bea',
+        name: 'TEAM KAMPEN',
 
-    pts: [
+        color: '#7b2cbf',
 
-        /* P1 */
-        [59.91529, 10.780807],
+        fill: '#c99bea',
 
-        /* P2 */
-        [59.917387, 10.783854],
+        pts: [
 
-        /* P3 */
-        [59.918764, 10.784626],
+            /* P1 */
+            [59.915290, 10.780807],
 
-        /* P4 */
-        [59.921646, 10.785656],
+            /* P2 */
+            [59.917387, 10.783854],
 
-        /* P5 */
-        [59.923057, 10.786042],
+            /* P3 */
+            [59.918764, 10.784626],
 
-        /* P6 */
-        [59.923022, 10.787287],
+            /* P4 */
+            [59.921646, 10.785656],
 
-        /* P7 */
-        [59.922188, 10.78866],
+            /* P5 */
+            [59.923057, 10.786042],
 
-        /* P8 */
-        [59.919108, 10.793638],
+            /* P6 */
+            [59.923022, 10.787287],
 
-        /* P9 */
-        [59.915322, 10.801105],
+            /* P7 */
+            [59.922188, 10.788660],
 
-        /* P10 */
-        [59.910739, 10.792179],
+            /* P8 */
+            [59.919108, 10.793638],
 
-        /* P11 */
-        [59.905747, 10.788231],
+            /* P9 */
+            [59.915322, 10.801105],
 
-        /* P12 */
-        [59.905683, 10.786343],
+            /* P10 */
+            [59.910739, 10.792179],
 
-        /* P13 */
-        [59.906425, 10.783274],
+            /* P11 */
+            [59.905747, 10.788231],
 
-        /* P14 */
-        [59.909857, 10.781493],
+            /* P12 */
+            [59.905683, 10.786343],
 
-        /* P15 */
-        [59.912159, 10.777845],
-        /* P16 */
-        [59.912538, 10.776858],
+            /* P13 */
+            [59.906425, 10.783274],
 
-        /* P17 */
-        [59.91309, 10.776258]
+            /* P14 */
+            [59.909857, 10.781493],
 
-    ]
-}
+            /* P15 */
+            [59.912159, 10.777845],
 
+            /* P16 */
+            [59.912538, 10.776858],
+
+            /* P17 */
+            [59.913090, 10.776258]
+
+        ]
+
+    }
 
 ];
 
 
 
 /* =====================================================
-   TEGN TEAMOMRÅDER
+   TEGN TEAMOMRÅDENE
 ===================================================== */
 
 teams.forEach(team => {
@@ -1119,36 +1090,150 @@ teams.forEach(team => {
     ).addTo(map);
 
 
+    /*
+       LAGRE REFERANSE TIL POLYGONET.
+
+       Dette er viktig fordi redigeringsfunksjonen
+       bruker team._polygon når et punkt flyttes.
+    */
+
     team._polygon = polygon;
 
 
-    polygon.bindTooltip(
+    /*
+       TEAMNAVN ER BEVISST IKKE VIST.
 
-        team.name,
+       Derfor bruker vi ikke bindTooltip().
+    */
 
-        {
-
-            permanent: true,
-
-            direction: 'center',
-
-            className: 'teamlabel',
-
-            opacity: 0.95
-
-        }
-
-    );
-
-
-    polygon.bindPopup(
-
-        `<b>${team.name}</b><br><br>
-         Bruk "Rediger grenser" for å flytte punktene.`
-
-    );
 
 });
+
+
+
+/* =====================================================
+   FARGELEGEND
+===================================================== */
+
+const legend = L.control({
+
+    position: 'bottomright'
+
+});
+
+
+legend.onAdd = function() {
+
+
+    const div = L.DomUtil.create(
+
+        'div',
+
+        'team-legend'
+
+    );
+
+
+    div.innerHTML = `
+
+        <h3>Teamområder</h3>
+
+        <div class="legend-row">
+
+            <span
+                class="legend-color"
+                style="
+                    background:#8fd18f;
+                    border-color:#2e8b57;
+                ">
+            </span>
+
+            <span>
+                Team Vest
+            </span>
+
+        </div>
+
+
+        <div class="legend-row">
+
+            <span
+                class="legend-color"
+                style="
+                    background:#7fb3ff;
+                    border-color:#1769d1;
+                ">
+            </span>
+
+            <span>
+                Team Nord
+            </span>
+
+        </div>
+
+
+        <div class="legend-row">
+
+            <span
+                class="legend-color"
+                style="
+                    background:#ffd083;
+                    border-color:#e88a00;
+                ">
+            </span>
+
+            <span>
+                Team Sør
+            </span>
+
+        </div>
+
+
+        <div class="legend-row">
+
+            <span
+                class="legend-color"
+                style="
+                    background:#ff9b9b;
+                    border-color:#d62f2f;
+                ">
+            </span>
+
+            <span>
+                Team Øst
+            </span>
+
+        </div>
+
+
+        <div class="legend-row">
+
+            <span
+                class="legend-color"
+                style="
+                    background:#c99bea;
+                    border-color:#7b2cbf;
+                ">
+            </span>
+
+            <span>
+                Team Kampen
+            </span>
+
+        </div>
+
+    `;
+
+
+    L.DomEvent.disableClickPropagation(div);
+
+
+    return div;
+
+};
+
+
+legend.addTo(map);
 
 
 
@@ -1201,6 +1286,7 @@ let editMode = false;
 const editMarkers = [];
 
 let coordinateMarker = null;
+
 
 
 /* =====================================================
@@ -1261,9 +1347,10 @@ teams.forEach((team) => {
         );
 
 
-        /* -----------------------------------------
+
+        /* =========================================
            NÅR PUNKTET DRAS
-        ----------------------------------------- */
+        ========================================= */
 
         marker.on('drag', function(e) {
 
@@ -1287,17 +1374,13 @@ teams.forEach((team) => {
 
             );
 
-
-            /* Oppdater Team Sør-panelet */
-
-            updateSouthPanel();
-
         });
 
 
-        /* -----------------------------------------
+
+        /* =========================================
            NÅR PUNKTET SLIPPES
-        ----------------------------------------- */
+        ========================================= */
 
         marker.on('dragend', function(e) {
 
@@ -1379,10 +1462,8 @@ teams.forEach((team) => {
 
             );
 
-
-            updateSouthPanel();
-
         });
+
 
 
         editMarkers.push({
@@ -1400,410 +1481,17 @@ teams.forEach((team) => {
 });
 
 
-/*
-/* =====================================================
-   KOORDINAT-PANEL FOR TEAM SØR
-===================================================== */
-
-const southPanel =
-    L.control({
-
-        position: 'bottomright'
-
-    });
-
-
-southPanel.onAdd = function() {
-
-
-    const div =
-        L.DomUtil.create(
-
-            'div',
-
-            'south-panel'
-
-        );
-
-
-    div.id =
-        'southCoordinatePanel';
-
-
-    div.innerHTML = `
-
-        <h3>
-            🟠 TEAM SØR
-        </h3>
-
-        <div class="panel-info">
-
-            Punktene nedenfor tilsvarer
-            nøyaktig P1, P2, P3 osv.
-            i <b>pts</b>-listen.
-
-        </div>
-
-        <div id="southPointList">
-
-        </div>
-
-
-        <button
-            class="copy-all-button"
-            id="copySouthCoordinates">
-
-            📋 Kopier hele Team Sør-listen
-
-        </button>
-
-
-        <button
-            class="panel-toggle"
-            id="closeSouthPanel">
-
-            Skjul panel
-
-        </button>
-
-    `;
-
-
-    L.DomEvent.disableClickPropagation(div);
-
-
-    return div;
-
-};
-
-
-southPanel.addTo(map);
-
-
-
-/* =====================================================
-   OPPDATER TEAM SØR-PANEL
-===================================================== */
-
-function updateSouthPanel() {
-
-
-    const southTeam =
-        teams.find(
-
-            team =>
-                team.name === 'TEAM SØR'
-
-        );
-
-
-    if (!southTeam) {
-
-        return;
-
-    }
-
-
-    const list =
-        document.getElementById(
-            'southPointList'
-        );
-
-
-    if (!list) {
-
-        return;
-
-    }
-
-
-    list.innerHTML = '';
-
-
-    southTeam.pts.forEach(
-
-        (point, index) => {
-
-
-            const lat =
-                Number(
-                    point[0].toFixed(6)
-                );
-
-
-            const lng =
-                Number(
-                    point[1].toFixed(6)
-                );
-
-
-            const row =
-                document.createElement(
-                    'div'
-                );
-
-
-            row.className =
-                'point-row';
-
-
-            row.innerHTML = `
-
-                <div class="point-number">
-
-                    P${index + 1}
-
-                </div>
-
-                <div class="point-coordinate">
-
-                    [${lat}, ${lng}]
-
-                </div>
-
-            `;
-
-
-            /* Klikk på punktet i panelet */
-
-            row.addEventListener(
-
-                'click',
-
-                function() {
-
-
-                    const item =
-                        editMarkers.find(
-
-                            item =>
-                                item.team ===
-                                southTeam &&
-
-                                item.pointIndex ===
-                                index
-
-                        );
-
-
-                    if (!item) {
-
-                        return;
-
-                    }
-
-
-                    map.setView(
-
-                        item.marker.getLatLng(),
-
-                        Math.max(
-                            map.getZoom(),
-                            17
-                        )
-
-                    );
-
-
-                    item.marker.openPopup();
-
-
-                }
-
-            );
-
-
-            list.appendChild(row);
-
-        }
-
-    );
-
-}
-
-
-updateSouthPanel();
-
-
-
-/* =====================================================
-   KOPIER HELE TEAM SØR-LISTEN
-===================================================== */
-
-function copySouthCoordinates() {
-
-
-    const southTeam =
-        teams.find(
-
-            team =>
-                team.name === 'TEAM SØR'
-
-        );
-
-
-    if (!southTeam) {
-
-        return;
-
-    }
-
-
-    let text =
-        'pts: [\n';
-
-
-    southTeam.pts.forEach(
-
-        (point, index) => {
-
-
-            const lat =
-                Number(
-                    point[0].toFixed(6)
-                );
-
-
-            const lng =
-                Number(
-                    point[1].toFixed(6)
-                );
-
-
-            text +=
-
-                `    /* P${index + 1} */\n` +
-
-                `    [${lat}, ${lng}]`;
-
-
-            if (
-                index <
-                southTeam.pts.length - 1
-            ) {
-
-                text += ',';
-
-            }
-
-
-            text += '\n';
-
-        }
-
-    );
-
-
-    text += ']';
-
-
-    navigator.clipboard
-        .writeText(text)
-
-        .then(() => {
-
-
-            alert(
-                'Hele Team Sør-listen er kopiert.'
-            );
-
-
-            console.log(text);
-
-        })
-
-        .catch(() => {
-
-
-            console.log(text);
-
-
-            alert(
-                'Listen kunne ikke kopieres automatisk. ' +
-                'Se konsollen (F12).'
-            );
-
-        });
-
-}
-
-
-document
-    .getElementById(
-        'copySouthCoordinates'
-    )
-    .addEventListener(
-
-        'click',
-
-        copySouthCoordinates
-
-    );
-
-
-
-/* =====================================================
-   SKJUL TEAM SØR-PANEL
-===================================================== */
-
-document
-    .getElementById(
-        'closeSouthPanel'
-    )
-    .addEventListener(
-
-        'click',
-
-        function() {
-
-
-            const panel =
-                document.getElementById(
-                    'southCoordinatePanel'
-                );
-
-
-            if (
-                panel.style.display ===
-                'none'
-            ) {
-
-
-                panel.style.display =
-                    'block';
-
-
-                this.textContent =
-                    'Skjul panel';
-
-
-            }
-
-            else {
-
-
-                panel.style.display =
-                    'none';
-
-
-                this.textContent =
-                    'Vis Team Sør-punkter';
-
-            }
-
-        }
-
-    );
-
-
 
 /* =====================================================
    KOPIER ETT KOORDINAT
 ===================================================== */
 
 function copyCoordinate(
+
     lat,
+
     lng
+
 ) {
 
 
@@ -1812,13 +1500,16 @@ function copyCoordinate(
 
 
     navigator.clipboard
+
         .writeText(text)
 
         .then(() => {
 
 
             alert(
+
                 `Koordinater kopiert:\n${text}`
+
             );
 
         })
@@ -1888,9 +1579,9 @@ editControl.onAdd =
 
                 <br><br>
 
-                Team Sør-listen viser
-                samtidig hvilket punkt
-                du redigerer.
+                Klikk på et punkt
+                etter at du har flyttet det
+                for å se koordinatene.
 
             </div>
 
@@ -1898,7 +1589,9 @@ editControl.onAdd =
 
 
         L.DomEvent.disableClickPropagation(
+
             div
+
         );
 
 
@@ -1916,9 +1609,11 @@ editControl.addTo(map);
 ===================================================== */
 
 document
+
     .getElementById(
         'editMapButton'
     )
+
     .addEventListener(
 
         'click',
@@ -1939,7 +1634,9 @@ document
 
 
                         item.marker.addTo(
+
                             map
+
                         );
 
 
@@ -1949,7 +1646,9 @@ document
 
 
                         map.removeLayer(
+
                             item.marker
+
                         );
 
                     }
@@ -1961,7 +1660,9 @@ document
 
             const info =
                 document.getElementById(
+
                     'editInfo'
+
                 );
 
 
@@ -2027,14 +1728,18 @@ map.on('click', function(e) {
 
     if (coordinateMarker) {
 
+
         map.removeLayer(
+
             coordinateMarker
+
         );
 
     }
 
 
     coordinateMarker =
+
         L.marker(e.latlng)
 
             .addTo(map)
