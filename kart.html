@@ -4,20 +4,45 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
 
-    <title>Hjemmesykepleie – Teamområder, Bydel Gamle Oslo</title>
+    <meta name="robots"
+          content="noindex, nofollow">
+
+    <title>
+        Hjemmesykepleie – Teamområder, Bydel Gamle Oslo
+    </title>
+
+
+    <!-- =========================================
+         LEAFLET
+    ========================================= -->
 
     <link rel="stylesheet"
           href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
+
+    <!-- =========================================
+         EGEN CSS
+    ========================================= -->
+
     <link rel="stylesheet"
           href="gerica.css">
 
+
+    <!-- =========================================
+         FONT AWESOME
+    ========================================= -->
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+    <!-- =========================================
+         PWA
+    ========================================= -->
 
     <link rel="manifest"
           href="manifest.json">
@@ -34,12 +59,18 @@
 
     <style>
 
+        /* =========================================
+           GRUNNLEGGENDE
+        ========================================= */
+
         html,
-        body,
-        #map {
+        body {
 
             height: 100%;
+
             margin: 0;
+
+            padding: 0;
 
         }
 
@@ -58,31 +89,8 @@
         #map {
 
             width: 100%;
+
             height: calc(100vh - 65px);
-
-        }
-
-
-        /* =========================================
-           INFORMASJONSBOKS
-        ========================================= */
-
-        .note {
-
-            background: white;
-
-            padding: 8px 10px;
-
-            border-radius: 5px;
-
-            box-shadow:
-                0 1px 5px rgba(0,0,0,.25);
-
-            max-width: 320px;
-
-            font-size: 12px;
-
-            line-height: 1.4;
 
         }
 
@@ -125,6 +133,96 @@
             top: 50% !important;
 
             right: 15px !important;
+
+        }
+
+
+        /* =========================================
+           INFORMASJONSBOKS
+        ========================================= */
+
+        .note {
+
+            background: white;
+
+            padding: 8px 10px;
+
+            border-radius: 6px;
+
+            box-shadow:
+                0 1px 5px rgba(0,0,0,.25);
+
+            max-width: 300px;
+
+            font-size: 12px;
+
+            line-height: 1.4;
+
+        }
+
+
+        /* =========================================
+           FARGEPANEL / LEGENDE
+        ========================================= */
+
+        .team-legend {
+
+            background: white;
+
+            padding: 12px;
+
+            border-radius: 7px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,.35);
+
+            width: 220px;
+
+            font-size: 13px;
+
+        }
+
+
+        .team-legend h3 {
+
+            margin: 0 0 10px;
+
+            font-size: 16px;
+
+        }
+
+
+        .team-legend-row {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .team-color {
+
+            width: 22px;
+
+            height: 22px;
+
+            border-radius: 4px;
+
+            border: 2px solid rgba(0,0,0,.35);
+
+            flex-shrink: 0;
+
+        }
+
+
+        .team-legend-name {
+
+            font-weight: bold;
 
         }
 
@@ -255,68 +353,147 @@
 
 
         /* =========================================
-           FARGELEGEND
+           ADRESSESØK
         ========================================= */
 
-        .team-legend {
+        .search-control {
 
             background: white;
 
-            padding: 12px 14px;
+            padding: 10px;
 
             border-radius: 7px;
 
             box-shadow:
                 0 2px 8px rgba(0,0,0,.35);
 
-            min-width: 180px;
-
-            font-size: 13px;
-
-            line-height: 1.5;
+            width: 300px;
 
         }
 
 
-        .team-legend h3 {
+        .search-title {
 
-            margin: 0 0 10px;
+            font-weight: bold;
 
             font-size: 15px;
 
+            margin-bottom: 7px;
+
         }
 
 
-        .legend-row {
+        .search-row {
 
             display: flex;
 
-            align-items: center;
-
-            margin: 6px 0;
+            gap: 5px;
 
         }
 
 
-        .legend-color {
+        #addressSearch {
 
-            width: 22px;
+            flex: 1;
 
-            height: 18px;
+            min-width: 0;
 
-            margin-right: 9px;
+            padding: 8px;
 
-            border: 2px solid rgba(0,0,0,.35);
+            border: 1px solid #aaa;
 
-            border-radius: 3px;
+            border-radius: 5px;
+
+            font-size: 13px;
 
             box-sizing: border-box;
 
         }
 
 
+        #searchAddressButton {
+
+            padding: 8px 10px;
+
+            border: 1px solid #777;
+
+            border-radius: 5px;
+
+            background: #f5f5f5;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        #searchAddressButton:hover {
+
+            background: #e8e8e8;
+
+        }
+
+
+        .search-result {
+
+            margin-top: 8px;
+
+            padding: 8px;
+
+            border-radius: 5px;
+
+            background: #f5f5f5;
+
+            font-size: 12px;
+
+            line-height: 1.45;
+
+            display: none;
+
+        }
+
+
+        .search-result.success {
+
+            display: block;
+
+            border-left: 5px solid #2e8b57;
+
+        }
+
+
+        .search-result.warning {
+
+            display: block;
+
+            border-left: 5px solid #e88a00;
+
+        }
+
+
+        .search-result.error {
+
+            display: block;
+
+            border-left: 5px solid #d62f2f;
+
+        }
+
+
+        .team-answer {
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            margin-top: 4px;
+
+        }
+
+
         /* =========================================
-           REDIGERINGSPANEL
+           REDIGERINGSKONTROLL
         ========================================= */
 
         .edit-control {
@@ -349,6 +526,8 @@
 
             font-weight: bold;
 
+            margin-bottom: 5px;
+
         }
 
 
@@ -361,19 +540,19 @@
 
         .edit-info {
 
-            margin-top: 8px;
+            margin-top: 5px;
 
             font-size: 12px;
 
             line-height: 1.4;
 
-            max-width: 240px;
+            max-width: 250px;
 
         }
 
 
         /* =========================================
-           PUNKT P1, P2, P3...
+           REDIGERINGSPUNKT P1, P2...
         ========================================= */
 
         .edit-marker {
@@ -412,7 +591,7 @@
 
 
         /* =========================================
-           KOORDINAT POPUP
+           KOORDINATPOPUP
         ========================================= */
 
         .coordinate-popup {
@@ -421,7 +600,7 @@
 
             line-height: 1.5;
 
-            min-width: 180px;
+            min-width: 190px;
 
         }
 
@@ -460,20 +639,18 @@
 
         @media (max-width: 600px) {
 
-            .team-legend {
+            .search-control {
 
-                min-width: 160px;
-
-                padding: 10px;
-
-                font-size: 12px;
+                width: 245px;
 
             }
 
 
-            .team-legend h3 {
+            .team-legend {
 
-                font-size: 14px;
+                width: 200px;
+
+                font-size: 12px;
 
             }
 
@@ -503,6 +680,10 @@
 <body>
 
 
+<!-- =========================================
+     HEADER
+========================================= -->
+
 <header class="topbar">
 
 
@@ -519,7 +700,10 @@
 
     <!-- NAVIGASJON -->
 
-    <nav class="nav" aria-label="Hovedmeny">
+    <nav
+        class="nav"
+        aria-label="Hovedmeny">
+
 
         <button
             class="menu-toggle"
@@ -540,11 +724,13 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="ekstravakter.html">
                     Vaktbok
                 </a>
             </li>
+
 
             <li>
                 <a href="arbeidsliste.html">
@@ -552,12 +738,13 @@
                 </a>
             </li>
 
+
             <li>
-                <a href="sjekkliste.html"
-                   aria-current="page">
+                <a href="sjekkliste.html">
                     Rutiner
                 </a>
             </li>
+
 
             <li>
                 <a href="belastning.html">
@@ -565,17 +752,20 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="arbeidsmiljø.html">
                     Arbeidsmiljø
                 </a>
             </li>
 
+
             <li>
                 <a href="Bursdager.html">
                     Bursdager
                 </a>
             </li>
+
 
             <li>
                 <a href="album.html">
@@ -599,9 +789,14 @@
 
 
 
+<!-- =========================================
+     LEAFLET
+========================================= -->
+
 <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
 </script>
+
 
 
 <script>
@@ -659,13 +854,11 @@ const compass = L.control({
 
 compass.onAdd = function() {
 
-    const div = L.DomUtil.create(
-
-        'div',
-
-        'compass'
-
-    );
+    const div =
+        L.DomUtil.create(
+            'div',
+            'compass'
+        );
 
 
     div.innerHTML = `
@@ -780,28 +973,28 @@ const teams = [
         pts: [
 
             /* P1 */
-            [59.929001, 10.781021],
+            [59.930500, 10.778000],
 
             /* P2 */
-            [59.933129, 10.784883],
+            [59.935000, 10.782000],
 
             /* P3 */
-            [59.934806, 10.789261],
+            [59.939000, 10.788000],
 
             /* P4 */
-            [59.936311, 10.795956],
+            [59.941500, 10.795000],
 
             /* P5 */
-            [59.936913, 10.802393],
+            [59.943000, 10.802000],
 
             /* P6 */
-            [59.936096, 10.810032],
+            [59.942000, 10.810000],
 
             /* P7 */
-            [59.934333, 10.815611],
+            [59.939000, 10.817000],
 
             /* P8 */
-            [59.932054, 10.820332],
+            [59.934000, 10.821000],
 
             /* P9 */
             [59.929000, 10.821000],
@@ -950,22 +1143,22 @@ const teams = [
             [59.904000, 10.829000],
 
             /* P6 */
-            [59.901422, 10.824451],
+            [59.899000, 10.827000],
 
             /* P7 */
-            [59.899011, 10.819988],
+            [59.894000, 10.823000],
 
             /* P8 */
-            [59.896428, 10.815697],
+            [59.890000, 10.817000],
 
             /* P9 */
-            [59.895826, 10.809689],
+            [59.889000, 10.810000],
 
             /* P10 */
-            [59.897634, 10.802135],
+            [59.891000, 10.803000],
 
             /* P11 */
-            [59.898839, 10.797329],
+            [59.895000, 10.797000],
 
             /* P12 */
             [59.900000, 10.792000],
@@ -1061,163 +1254,156 @@ const teams = [
 
 
 /* =====================================================
-   TEGN TEAMOMRÅDENE
+   TEGN TEAMOMRÅDER
 ===================================================== */
 
 teams.forEach(team => {
 
+    const polygon =
+        L.polygon(
 
-    const polygon = L.polygon(
+            team.pts,
 
-        team.pts,
+            {
 
-        {
+                color: team.color,
 
-            color: team.color,
+                weight: 3,
 
-            weight: 3,
+                opacity: 1,
 
-            opacity: 1,
+                fillColor: team.fill,
 
-            fillColor: team.fill,
+                fillOpacity: 0.28,
 
-            fillOpacity: 0.28,
+                interactive: false
 
-            interactive: false
+            }
 
-        }
-
-    ).addTo(map);
+        ).addTo(map);
 
 
     /*
-       LAGRE REFERANSE TIL POLYGONET.
+       VIKTIG:
 
-       Dette er viktig fordi redigeringsfunksjonen
-       bruker team._polygon når et punkt flyttes.
+       Vi lagrer polygonet på team-objektet.
+       Dette gjør at redigeringspunktene senere
+       kan oppdatere polygonet.
     */
 
     team._polygon = polygon;
-
-
-    /*
-       TEAMNAVN ER BEVISST IKKE VIST.
-
-       Derfor bruker vi ikke bindTooltip().
-    */
-
 
 });
 
 
 
 /* =====================================================
-   FARGELEGEND
+   FARGEPANEL
 ===================================================== */
 
-const legend = L.control({
+const legend =
+    L.control({
 
-    position: 'bottomright'
+        position: 'bottomright'
 
-});
+    });
 
 
 legend.onAdd = function() {
 
-
-    const div = L.DomUtil.create(
-
-        'div',
-
-        'team-legend'
-
-    );
+    const div =
+        L.DomUtil.create(
+            'div',
+            'team-legend'
+        );
 
 
     div.innerHTML = `
 
-        <h3>Teamområder</h3>
+        <h3>
+            Teamområder
+        </h3>
 
-        <div class="legend-row">
-
-            <span
-                class="legend-color"
-                style="
-                    background:#8fd18f;
-                    border-color:#2e8b57;
-                ">
-            </span>
-
-            <span>
-                Team Vest
-            </span>
-
-        </div>
-
-
-        <div class="legend-row">
+        <div class="team-legend-row">
 
             <span
-                class="legend-color"
-                style="
-                    background:#7fb3ff;
-                    border-color:#1769d1;
-                ">
-            </span>
-
-            <span>
-                Team Nord
-            </span>
-
-        </div>
-
-
-        <div class="legend-row">
-
-            <span
-                class="legend-color"
-                style="
-                    background:#ffd083;
-                    border-color:#e88a00;
-                ">
-            </span>
-
-            <span>
-                Team Sør
-            </span>
-
-        </div>
-
-
-        <div class="legend-row">
-
-            <span
-                class="legend-color"
-                style="
-                    background:#ff9b9b;
-                    border-color:#d62f2f;
-                ">
-            </span>
-
-            <span>
-                Team Øst
-            </span>
-
-        </div>
-
-
-        <div class="legend-row">
-
-            <span
-                class="legend-color"
+                class="team-color"
                 style="
                     background:#c99bea;
                     border-color:#7b2cbf;
                 ">
             </span>
 
-            <span>
+            <span class="team-legend-name">
                 Team Kampen
+            </span>
+
+        </div>
+
+
+        <div class="team-legend-row">
+
+            <span
+                class="team-color"
+                style="
+                    background:#7fb3ff;
+                    border-color:#1769d1;
+                ">
+            </span>
+
+            <span class="team-legend-name">
+                Team Nord
+            </span>
+
+        </div>
+
+
+        <div class="team-legend-row">
+
+            <span
+                class="team-color"
+                style="
+                    background:#8fd18f;
+                    border-color:#2e8b57;
+                ">
+            </span>
+
+            <span class="team-legend-name">
+                Team Vest
+            </span>
+
+        </div>
+
+
+        <div class="team-legend-row">
+
+            <span
+                class="team-color"
+                style="
+                    background:#ffd083;
+                    border-color:#e88a00;
+                ">
+            </span>
+
+            <span class="team-legend-name">
+                Team Sør
+            </span>
+
+        </div>
+
+
+        <div class="team-legend-row">
+
+            <span
+                class="team-color"
+                style="
+                    background:#ff9b9b;
+                    border-color:#d62f2f;
+                ">
+            </span>
+
+            <span class="team-legend-name">
+                Team Øst
             </span>
 
         </div>
@@ -1232,8 +1418,8 @@ legend.onAdd = function() {
 
 };
 
-/* ------------------------------kode for å legge panellet i kartet(den er deaktivert)------------------------------------*/
-//legend.addTo(map);
+
+legend.addTo(map);
 
 
 
@@ -1241,29 +1427,32 @@ legend.onAdd = function() {
    INFORMASJONSBOKS
 ===================================================== */
 
-const note = L.control({
+const note =
+    L.control({
 
-    position: 'bottomleft'
+        position: 'bottomleft'
 
-});
+    });
 
 
 note.onAdd = function() {
 
-
-    const div = L.DomUtil.create(
-
-        'div',
-
-        'note'
-
-    );
+    const div =
+        L.DomUtil.create(
+            'div',
+            'note'
+        );
 
 
     div.innerHTML = `
 
         Kartgrunnlaget er hentet fra
         OpenStreetMap.
+
+        <br><br>
+
+        Bruk søkefeltet for å finne
+        hvilket team en adresse ligger i.
 
     `;
 
@@ -1278,205 +1467,895 @@ note.addTo(map);
 
 
 /* =====================================================
-   REDIGERINGSPUNKTER
+   ADRESSESØK
 ===================================================== */
 
-let editMode = false;
+const searchControl =
+    L.control({
 
-const editMarkers = [];
+        position: 'topleft'
 
-let coordinateMarker = null;
+    });
+
+
+searchControl.onAdd = function() {
+
+    const div =
+        L.DomUtil.create(
+            'div',
+            'search-control'
+        );
+
+
+    div.innerHTML = `
+
+        <div class="search-title">
+
+            🔍 Finn team ut fra adresse
+
+        </div>
+
+
+        <div class="search-row">
+
+            <input
+                type="text"
+                id="addressSearch"
+                placeholder="Skriv adresse..."
+                autocomplete="off">
+
+            <button
+                id="searchAddressButton">
+
+                Finn
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="searchResult"
+            class="search-result">
+
+        </div>
+
+    `;
+
+
+    L.DomEvent.disableClickPropagation(div);
+
+
+    return div;
+
+};
+
+
+searchControl.addTo(map);
 
 
 
 /* =====================================================
-   LAG REDIGERINGSPUNKTER
+   MARKØR FOR SØKT ADRESSE
 ===================================================== */
 
-teams.forEach((team) => {
-
-
-    team.pts.forEach((point, pointIndex) => {
-
-
-        const pointNumber =
-            pointIndex + 1;
-
-
-        const marker = L.marker(
-
-            point,
-
-            {
-
-                draggable: true,
-
-                autoPan: true,
-
-                icon: L.divIcon({
-
-                    className:
-                        'edit-marker',
-
-                    html:
-                        `P${pointNumber}`,
-
-                    iconSize:
-                        [38, 26],
-
-                    iconAnchor:
-                        [19, 13]
-
-                })
-
-            }
-
-        );
-
-
-        marker.bindTooltip(
-
-            `${team.name} – P${pointNumber}`,
-
-            {
-
-                direction: 'top'
-
-            }
-
-        );
+let addressMarker = null;
 
 
 
-        /* =========================================
-           NÅR PUNKTET DRAS
-        ========================================= */
+/* =====================================================
+   POINT-IN-POLYGON
+===================================================== */
 
-        marker.on('drag', function(e) {
+/*
+   Undersøker om et koordinat ligger inne i
+   et polygon.
+
+   point = [latitude, longitude]
+
+   polygon = [
+       [latitude, longitude],
+       ...
+   ]
+*/
+
+function pointInPolygon(point, polygon) {
+
+    const lat =
+        point[0];
+
+    const lng =
+        point[1];
 
 
-            const position =
-                e.target.getLatLng();
+    let inside = false;
 
 
-            team.pts[pointIndex] = [
+    for (
+        let i = 0,
+        j = polygon.length - 1;
 
-                position.lat,
+        i < polygon.length;
 
-                position.lng
+        j = i++
+    ) {
 
-            ];
+        const latI =
+            polygon[i][0];
+
+        const lngI =
+            polygon[i][1];
 
 
-            team._polygon.setLatLngs(
+        const latJ =
+            polygon[j][0];
 
+        const lngJ =
+            polygon[j][1];
+
+
+        const intersects =
+
+            (
+                (latI > lat) !==
+                (latJ > lat)
+            )
+
+            &&
+
+            (
+                lng <
+                (
+                    (lngJ - lngI)
+                    *
+                    (lat - latI)
+                    /
+                    (latJ - latI)
+                    +
+                    lngI
+                )
+            );
+
+
+        if (intersects) {
+
+            inside = !inside;
+
+        }
+
+    }
+
+
+    return inside;
+
+}
+
+
+
+/* =====================================================
+   FINN TEAM FOR KOORDINAT
+===================================================== */
+
+function findTeamsForCoordinate(
+    lat,
+    lng
+) {
+
+    const point =
+        [lat, lng];
+
+
+    const matchingTeams =
+        [];
+
+
+    teams.forEach(team => {
+
+        if (
+            pointInPolygon(
+                point,
                 team.pts
+            )
+        ) {
+
+            matchingTeams.push(team);
+
+        }
+
+    });
+
+
+    return matchingTeams;
+
+}
+
+
+
+/* =====================================================
+   VIS SØKERESULTAT
+===================================================== */
+
+function showSearchResult(
+    html,
+    type
+) {
+
+    const result =
+        document.getElementById(
+            'searchResult'
+        );
+
+
+    result.innerHTML =
+        html;
+
+
+    result.className =
+        'search-result ' + type;
+
+}
+
+
+
+/* =====================================================
+   SØK ADRESSE
+===================================================== */
+
+async function searchAddress() {
+
+    const input =
+        document.getElementById(
+            'addressSearch'
+        );
+
+
+    const query =
+        input.value.trim();
+
+
+    if (!query) {
+
+        showSearchResult(
+
+            'Skriv inn en adresse først.',
+
+            'warning'
+
+        );
+
+        return;
+
+    }
+
+
+    const button =
+        document.getElementById(
+            'searchAddressButton'
+        );
+
+
+    button.disabled = true;
+
+    button.textContent =
+        'Søker...';
+
+
+    try {
+
+        const url =
+            'https://nominatim.openstreetmap.org/search?' +
+
+            new URLSearchParams({
+
+                q:
+                    query + ', Oslo, Norge',
+
+                format:
+                    'jsonv2',
+
+                addressdetails:
+                    '1',
+
+                limit:
+                    '1',
+
+                countrycodes:
+                    'no'
+
+            });
+
+
+        const response =
+            await fetch(url);
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                'Kunne ikke kontakte adressesøket.'
+            );
+
+        }
+
+
+        const results =
+            await response.json();
+
+
+        if (
+            !results ||
+            results.length === 0
+        ) {
+
+            showSearchResult(
+
+                `
+                <b>Fant ikke adressen.</b>
+                <br><br>
+                Prøv for eksempel:
+                <br>
+                <b>Schweigaards gate 50</b>
+                `,
+
+                'error'
 
             );
 
-        });
+            return;
+
+        }
 
 
-
-        /* =========================================
-           NÅR PUNKTET SLIPPES
-        ========================================= */
-
-        marker.on('dragend', function(e) {
+        const result =
+            results[0];
 
 
-            const position =
-                e.target.getLatLng();
+        const lat =
+            Number(result.lat);
 
 
-            const lat =
-                Number(
-                    position.lat.toFixed(6)
-                );
+        const lng =
+            Number(result.lon);
 
 
-            const lng =
-                Number(
-                    position.lng.toFixed(6)
-                );
-
-
-            team.pts[pointIndex] = [
-
+        const matchingTeams =
+            findTeamsForCoordinate(
                 lat,
-
                 lng
-
-            ];
-
-
-            team._polygon.setLatLngs(
-
-                team.pts
-
             );
 
 
-            marker.bindPopup(`
+        /* -----------------------------------------
+           FJERN GAMMEL ADRESSEMARKØR
+        ----------------------------------------- */
 
-                <div class="coordinate-popup">
+        if (addressMarker) {
 
-                    <b>${team.name}</b>
+            map.removeLayer(
+                addressMarker
+            );
 
-                    <br>
+        }
 
-                    <b>P${pointNumber}</b>
 
-                    <hr>
+        /* -----------------------------------------
+           LAG NY ADRESSEMARKØR
+        ----------------------------------------- */
 
-                    Koordinat i koden:
+        addressMarker =
+            L.marker(
 
-                    <br>
+                [lat, lng]
 
-                    <b>[${lat}, ${lng}]</b>
+            ).addTo(map);
 
-                    <br><br>
 
-                    <button
-                        onclick="
-                            copyCoordinate(
-                                ${lat},
-                                ${lng}
-                            )
-                        ">
+        addressMarker.bindPopup(`
 
-                        📋 Kopier
+            <div class="coordinate-popup">
 
-                    </button>
+                <b>📍 Adresse</b>
+
+                <br><br>
+
+                ${result.display_name}
+
+                <hr>
+
+                Latitude:
+                ${lat.toFixed(6)}
+
+                <br>
+
+                Longitude:
+                ${lng.toFixed(6)}
+
+            </div>
+
+        `);
+
+
+        addressMarker.openPopup();
+
+
+        /* -----------------------------------------
+           ZOOM TIL ADRESSEN
+        ----------------------------------------- */
+
+        map.setView(
+
+            [lat, lng],
+
+            17
+
+        );
+
+
+        /* -----------------------------------------
+           TEAM FUNNET
+        ----------------------------------------- */
+
+        if (
+            matchingTeams.length === 1
+        ) {
+
+            const team =
+                matchingTeams[0];
+
+
+            showSearchResult(
+
+                `
+
+                <b>📍 Adresse</b>
+
+                <br>
+
+                ${result.display_name}
+
+                <div class="team-answer"
+                     style="color:${team.color};">
+
+                    ${team.name}
 
                 </div>
 
-            `).openPopup();
+                <br>
 
+                Adressen ligger innenfor
+                dette teamområdet.
 
-            console.log(
+                `,
 
-                `${team.name} P${pointNumber}: ` +
-
-                `[${lat}, ${lng}]`
+                'success'
 
             );
 
-        });
+        }
+
+
+        /* -----------------------------------------
+           FLERE TEAM
+        ----------------------------------------- */
+
+        else if (
+            matchingTeams.length > 1
+        ) {
+
+            const teamNames =
+                matchingTeams
+                    .map(team => {
+
+                        return `
+
+                            <span
+                                style="
+                                    color:${team.color};
+                                    font-weight:bold;
+                                ">
+
+                                ${team.name}
+
+                            </span>
+
+                        `;
+
+                    })
+                    .join('<br>');
+
+
+            showSearchResult(
+
+                `
+
+                <b>⚠️ Adressen ligger i et
+                overlappende område.</b>
+
+                <br><br>
+
+                ${teamNames}
+
+                <br><br>
+
+                Grensene for disse områdene
+                overlapper hverandre.
+                Finjuster polygonene med
+                «Rediger grenser».
+
+                `,
+
+                'warning'
+
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           INGEN TEAM
+        ----------------------------------------- */
+
+        else {
+
+            showSearchResult(
+
+                `
+
+                <b>⚠️ Adressen ligger utenfor
+                de definerte teamområdene.</b>
+
+                <br><br>
+
+                Adresse:
+
+                <br>
+
+                ${result.display_name}
+
+                <br><br>
+
+                Kontroller grensene ved å
+                bruke «Rediger grenser».
+
+                `,
+
+                'warning'
+
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            'Feil ved adressesøk:',
+            error
+        );
+
+
+        showSearchResult(
+
+            `
+
+            <b>❌ Det oppstod en feil.</b>
+
+            <br><br>
+
+            Kunne ikke gjennomføre
+            adressesøket akkurat nå.
+
+            `,
+
+            'error'
+
+        );
+
+    }
+
+    finally {
+
+        button.disabled =
+            false;
+
+        button.textContent =
+            'Finn';
+
+    }
+
+}
 
 
 
-        editMarkers.push({
+/* =====================================================
+   SØKEKNAPP
+===================================================== */
 
-            marker: marker,
+document
+    .getElementById(
+        'searchAddressButton'
+    )
+    .addEventListener(
 
-            team: team,
+        'click',
 
-            pointIndex: pointIndex
+        searchAddress
 
-        });
+    );
 
-    });
+
+
+/* =====================================================
+   ENTER I SØKEFELT
+===================================================== */
+
+document
+    .getElementById(
+        'addressSearch'
+    )
+    .addEventListener(
+
+        'keydown',
+
+        function(event) {
+
+            if (
+                event.key ===
+                'Enter'
+            ) {
+
+                event.preventDefault();
+
+                searchAddress();
+
+            }
+
+        }
+
+    );
+
+
+
+/* =====================================================
+   REDIGERING
+===================================================== */
+
+let editMode =
+    false;
+
+
+const editMarkers =
+    [];
+
+
+
+/* =====================================================
+   OPPRETT REDIGERINGSPUNKTER
+===================================================== */
+
+teams.forEach(team => {
+
+
+    team.pts.forEach(
+
+        (point, pointIndex) => {
+
+
+            const pointNumber =
+                pointIndex + 1;
+
+
+            const marker =
+                L.marker(
+
+                    point,
+
+                    {
+
+                        draggable:
+                            true,
+
+                        autoPan:
+                            true,
+
+                        icon:
+                            L.divIcon({
+
+                                className:
+                                    'edit-marker',
+
+                                html:
+                                    `P${pointNumber}`,
+
+                                iconSize:
+                                    [38, 26],
+
+                                iconAnchor:
+                                    [19, 13]
+
+                            })
+
+                    }
+
+                );
+
+
+            marker.bindTooltip(
+
+                `${team.name} – P${pointNumber}`,
+
+                {
+
+                    direction:
+                        'top'
+
+                }
+
+            );
+
+
+            /* -----------------------------------------
+               DRAG
+            ----------------------------------------- */
+
+            marker.on(
+
+                'drag',
+
+                function(e) {
+
+                    const position =
+                        e.target.getLatLng();
+
+
+                    team.pts[pointIndex] = [
+
+                        position.lat,
+
+                        position.lng
+
+                    ];
+
+
+                    if (
+                        team._polygon
+                    ) {
+
+                        team._polygon
+                            .setLatLngs(
+                                team.pts
+                            );
+
+                    }
+
+                }
+
+            );
+
+
+            /* -----------------------------------------
+               DRAGEND
+            ----------------------------------------- */
+
+            marker.on(
+
+                'dragend',
+
+                function(e) {
+
+                    const position =
+                        e.target.getLatLng();
+
+
+                    const lat =
+                        Number(
+                            position.lat
+                                .toFixed(6)
+                        );
+
+
+                    const lng =
+                        Number(
+                            position.lng
+                                .toFixed(6)
+                        );
+
+
+                    team.pts[pointIndex] = [
+
+                        lat,
+
+                        lng
+
+                    ];
+
+
+                    if (
+                        team._polygon
+                    ) {
+
+                        team._polygon
+                            .setLatLngs(
+                                team.pts
+                            );
+
+                    }
+
+
+                    marker.bindPopup(`
+
+                        <div
+                            class="coordinate-popup">
+
+                            <b>
+                                ${team.name}
+                            </b>
+
+                            <br>
+
+                            <b>
+                                P${pointNumber}
+                            </b>
+
+                            <hr>
+
+                            Koordinat:
+
+                            <br>
+
+                            <b>
+                                [${lat}, ${lng}]
+                            </b>
+
+                            <br>
+
+                            <button
+                                onclick="
+                                    copyCoordinate(
+                                        ${lat},
+                                        ${lng}
+                                    )
+                                ">
+
+                                📋 Kopier
+
+                            </button>
+
+                        </div>
+
+                    `).openPopup();
+
+
+                    console.log(
+
+                        `${team.name} P${pointNumber}: ` +
+
+                        `[${lat}, ${lng}]`
+
+                    );
+
+                }
+
+            );
+
+
+            editMarkers.push({
+
+                marker:
+                    marker,
+
+                team:
+                    team,
+
+                pointIndex:
+                    pointIndex
+
+            });
+
+        }
+
+    );
 
 });
 
@@ -1487,35 +2366,26 @@ teams.forEach((team) => {
 ===================================================== */
 
 function copyCoordinate(
-
     lat,
-
     lng
-
 ) {
-
 
     const text =
         `[${lat}, ${lng}]`;
 
 
     navigator.clipboard
-
         .writeText(text)
 
         .then(() => {
 
-
             alert(
-
                 `Koordinater kopiert:\n${text}`
-
             );
 
         })
 
         .catch(() => {
-
 
             alert(text);
 
@@ -1530,20 +2400,133 @@ window.copyCoordinate =
 
 
 /* =====================================================
+   LAGRE GRENSER I LOCALSTORAGE
+===================================================== */
+
+function saveTeamCoordinates() {
+
+    const data =
+        teams.map(team => ({
+
+            name:
+                team.name,
+
+            pts:
+                team.pts
+
+        }));
+
+
+    localStorage.setItem(
+
+        'teamOmraderCoordinates',
+
+        JSON.stringify(data)
+
+    );
+
+
+    alert(
+        'Teamgrensene er lagret på denne enheten.'
+    );
+
+}
+
+
+
+/* =====================================================
+   LAST INN LAGREDE GRENSER
+===================================================== */
+
+function loadSavedCoordinates() {
+
+    const saved =
+        localStorage.getItem(
+            'teamOmraderCoordinates'
+        );
+
+
+    if (!saved) {
+
+        return false;
+
+    }
+
+
+    try {
+
+        const savedTeams =
+            JSON.parse(saved);
+
+
+        savedTeams.forEach(savedTeam => {
+
+            const team =
+                teams.find(
+
+                    t =>
+                        t.name ===
+                        savedTeam.name
+
+                );
+
+
+            if (
+                team &&
+                Array.isArray(savedTeam.pts)
+            ) {
+
+                team.pts =
+                    savedTeam.pts;
+
+            }
+
+        });
+
+
+        return true;
+
+    }
+
+    catch (error) {
+
+        console.error(
+            'Kunne ikke laste lagrede koordinater:',
+            error
+        );
+
+
+        return false;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LAST LAGREDE GRENSER FØR KARTET BRUKES
+===================================================== */
+
+loadSavedCoordinates();
+
+
+
+/* =====================================================
    REDIGERINGSPANEL
 ===================================================== */
 
 const editControl =
     L.control({
 
-        position: 'topright'
+        position:
+            'topright'
 
     });
 
 
 editControl.onAdd =
     function() {
-
 
         const div =
             L.DomUtil.create(
@@ -1565,6 +2548,28 @@ editControl.onAdd =
             </button>
 
 
+            <br>
+
+
+            <button
+                id="saveMapButton">
+
+                💾 Lagre grenser
+
+            </button>
+
+
+            <br>
+
+
+            <button
+                id="copyTeamsButton">
+
+                📋 Kopier koordinater
+
+            </button>
+
+
             <div
                 id="editInfo"
                 class="edit-info"
@@ -1579,9 +2584,20 @@ editControl.onAdd =
 
                 <br><br>
 
-                Klikk på et punkt
-                etter at du har flyttet det
-                for å se koordinatene.
+                Når du er ferdig:
+
+                <br>
+
+                1. Trykk
+                <b>💾 Lagre grenser</b>
+
+                <br>
+
+                2. Trykk
+                <b>📋 Kopier koordinater</b>
+
+                hvis du vil oppdatere
+                koordinatene i HTML-koden.
 
             </div>
 
@@ -1589,9 +2605,7 @@ editControl.onAdd =
 
 
         L.DomEvent.disableClickPropagation(
-
             div
-
         );
 
 
@@ -1609,17 +2623,14 @@ editControl.addTo(map);
 ===================================================== */
 
 document
-
     .getElementById(
         'editMapButton'
     )
-
     .addEventListener(
 
         'click',
 
         function() {
-
 
             editMode =
                 !editMode;
@@ -1629,26 +2640,19 @@ document
 
                 item => {
 
+                    if (
+                        editMode
+                    ) {
 
-                    if (editMode) {
-
-
-                        item.marker.addTo(
-
-                            map
-
-                        );
-
+                        item.marker
+                            .addTo(map);
 
                     }
 
                     else {
 
-
                         map.removeLayer(
-
                             item.marker
-
                         );
 
                     }
@@ -1660,14 +2664,13 @@ document
 
             const info =
                 document.getElementById(
-
                     'editInfo'
-
                 );
 
 
-            if (editMode) {
-
+            if (
+                editMode
+            ) {
 
                 this.textContent =
                     '❌ Avslutt redigering';
@@ -1676,11 +2679,9 @@ document
                 info.style.display =
                     'block';
 
-
             }
 
             else {
-
 
                 this.textContent =
                     '✏️ Rediger grenser';
@@ -1698,57 +2699,234 @@ document
 
 
 /* =====================================================
-   KLIKK PÅ KARTET FOR Å FINNE KOORDINATER
+   LAGRE-KNAPP
 ===================================================== */
 
-map.on('click', function(e) {
+document
+    .getElementById(
+        'saveMapButton'
+    )
+    .addEventListener(
 
+        'click',
 
-    if (editMode) {
-
-        return;
-
-    }
-
-
-    const lat =
-        e.latlng.lat.toFixed(6);
-
-
-    const lng =
-        e.latlng.lng.toFixed(6);
-
-
-    console.log(
-
-        `Latitude: ${lat}, Longitude: ${lng}`
+        saveTeamCoordinates
 
     );
 
 
-    if (coordinateMarker) {
+
+/* =====================================================
+   KOPIER ALLE TEAMKOORDINATER
+===================================================== */
+
+function copyAllTeamCoordinates() {
+
+    let text =
+        'const teams = [\n\n';
 
 
-        map.removeLayer(
+    teams.forEach(
 
-            coordinateMarker
+        (team, teamIndex) => {
+
+            text +=
+                `    {\n`;
+
+            text +=
+                `        name: '${team.name}',\n`;
+
+            text +=
+                `        color: '${team.color}',\n`;
+
+            text +=
+                `        fill: '${team.fill}',\n`;
+
+            text +=
+                `        pts: [\n`;
+
+
+            team.pts.forEach(
+
+                (point, index) => {
+
+                    const lat =
+                        Number(
+                            point[0]
+                                .toFixed(6)
+                        );
+
+
+                    const lng =
+                        Number(
+                            point[1]
+                                .toFixed(6)
+                        );
+
+
+                    text +=
+
+                        `            /* P${index + 1} */\n` +
+
+                        `            [${lat}, ${lng}]`;
+
+
+                    if (
+                        index <
+                        team.pts.length - 1
+                    ) {
+
+                        text += ',';
+
+                    }
+
+
+                    text += '\n';
+
+                }
+
+            );
+
+
+            text +=
+                `        ]\n`;
+
+            text +=
+                `    }`;
+
+
+            if (
+                teamIndex <
+                teams.length - 1
+            ) {
+
+                text += ',';
+
+            }
+
+
+            text +=
+                '\n\n';
+
+        }
+
+    );
+
+
+    text +=
+        '];';
+
+
+    navigator.clipboard
+        .writeText(text)
+
+        .then(() => {
+
+            alert(
+                'Alle teamkoordinater er kopiert.'
+            );
+
+
+            console.log(text);
+
+        })
+
+        .catch(() => {
+
+            console.log(text);
+
+
+            alert(
+                'Kunne ikke kopiere automatisk. ' +
+                'Koordinatene ligger i konsollen (F12).'
+            );
+
+        });
+
+}
+
+
+document
+    .getElementById(
+        'copyTeamsButton'
+    )
+    .addEventListener(
+
+        'click',
+
+        copyAllTeamCoordinates
+
+    );
+
+
+
+/* =====================================================
+   KLIKK PÅ KARTET FOR KOORDINATER
+===================================================== */
+
+let coordinateMarker =
+    null;
+
+
+map.on(
+
+    'click',
+
+    function(e) {
+
+
+        if (
+            editMode
+        ) {
+
+            return;
+
+        }
+
+
+        const lat =
+            e.latlng.lat.toFixed(6);
+
+
+        const lng =
+            e.latlng.lng.toFixed(6);
+
+
+        console.log(
+
+            `Latitude: ${lat}, Longitude: ${lng}`
 
         );
 
-    }
+
+        if (
+            coordinateMarker
+        ) {
+
+            map.removeLayer(
+                coordinateMarker
+            );
+
+        }
 
 
-    coordinateMarker =
+        coordinateMarker =
+            L.marker(
 
-        L.marker(e.latlng)
+                e.latlng
+
+            )
 
             .addTo(map)
 
             .bindPopup(`
 
-                <div class="coordinate-popup">
+                <div
+                    class="coordinate-popup">
 
-                    <b>Koordinater</b>
+                    <b>
+                        📍 Koordinater
+                    </b>
 
                     <br><br>
 
@@ -1786,7 +2964,9 @@ map.on('click', function(e) {
 
             .openPopup();
 
-});
+    }
+
+);
 
 
 
@@ -1794,18 +2974,17 @@ map.on('click', function(e) {
    TILPASS KARTET
 ===================================================== */
 
-const allPoints = [];
+const allPoints =
+    [];
 
 
 teams.forEach(
 
     team => {
 
-
         team.pts.forEach(
 
             point => {
-
 
                 allPoints.push(point);
 
@@ -1824,7 +3003,8 @@ map.fitBounds(
 
     {
 
-        padding: [30, 30]
+        padding:
+            [30, 30]
 
     }
 
@@ -1835,9 +3015,9 @@ map.fitBounds(
 
 
 
-<!-- =================================================
+<!-- =========================================
      APP
-================================================= -->
+========================================= -->
 
 <script
     type="module"
