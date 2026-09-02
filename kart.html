@@ -1300,7 +1300,7 @@ teams.forEach(team => {
 /* =====================================================
    FARGEPANEL
 ===================================================== */
-
+/*
 const legend =
     L.control({
 
@@ -1445,11 +1445,6 @@ note.onAdd = function() {
 
 
     div.innerHTML = `
-
-        Kartgrunnlaget er hentet fra
-        OpenStreetMap.
-
-        <br><br>
 
         Bruk søkefeltet for å finne
         hvilket team en adresse ligger i.
@@ -1703,36 +1698,24 @@ function showSearchResult(
 
 async function searchAddress() {
 
-    const input =
-        document.getElementById(
+    const input = document.getElementById(
             'addressSearch'
         );
 
 
-    const query =
-        input.value.trim();
+    const query = input.value.trim();
 
 
     if (!query) {
 
-        showSearchResult(
-
-            'Skriv inn en adresse først.',
-
-            'warning'
-
-        );
+        showSearchResult('Skriv inn en adresse først.', 'warning');
 
         return;
 
     }
 
 
-    const button =
-        document.getElementById(
-            'searchAddressButton'
-        );
-
+    const button = document.getElementById('searchAddressButton');
 
     button.disabled = true;
 
@@ -2072,11 +2055,7 @@ async function searchAddress() {
    SØKEKNAPP
 ===================================================== */
 
-document
-    .getElementById(
-        'searchAddressButton'
-    )
-    .addEventListener(
+document.getElementById('searchAddressButton').addEventListener(
 
         'click',
 
@@ -2090,15 +2069,7 @@ document
    ENTER I SØKEFELT
 ===================================================== */
 
-document
-    .getElementById(
-        'addressSearch'
-    )
-    .addEventListener(
-
-        'keydown',
-
-        function(event) {
+document.getElementById('addressSearch').addEventListener('keydown', function(event) {
 
             if (
                 event.key ===
@@ -2248,11 +2219,7 @@ teams.forEach(team => {
                         e.target.getLatLng();
 
 
-                    const lat =
-                        Number(
-                            position.lat
-                                .toFixed(6)
-                        );
+                    const lat = Number(position.lat.toFixed(6));
 
 
                     const lng =
@@ -2402,11 +2369,10 @@ window.copyCoordinate =
 /* =====================================================
    LAGRE GRENSER I LOCALSTORAGE
 ===================================================== */
-
+/*
 function saveTeamCoordinates() {
 
-    const data =
-        teams.map(team => ({
+    const data = teams.map(team => ({
 
             name:
                 team.name,
@@ -2417,22 +2383,18 @@ function saveTeamCoordinates() {
         }));
 
 
-    localStorage.setItem(
-
-        'teamOmraderCoordinates',
+    localStorage.setItem('teamOmraderCoordinates',
 
         JSON.stringify(data)
 
     );
 
 
-    alert(
-        'Teamgrensene er lagret på denne enheten.'
-    );
+    alert('Teamgrensene er lagret på denne enheten.');
 
 }
 
-
+*/
 
 /* =====================================================
    LAST INN LAGREDE GRENSER
@@ -2440,11 +2402,7 @@ function saveTeamCoordinates() {
 
 function loadSavedCoordinates() {
 
-    const saved =
-        localStorage.getItem(
-            'teamOmraderCoordinates'
-        );
-
+    const saved = localStorage.getItem('teamOmraderCoordinates');
 
     if (!saved) {
 
@@ -2455,9 +2413,7 @@ function loadSavedCoordinates() {
 
     try {
 
-        const savedTeams =
-            JSON.parse(saved);
-
+        const savedTeams = JSON.parse(saved);
 
         savedTeams.forEach(savedTeam => {
 
@@ -2516,8 +2472,7 @@ loadSavedCoordinates();
    REDIGERINGSPANEL
 ===================================================== */
 
-const editControl =
-    L.control({
+const editControl = L.control({
 
         position:
             'topright'
@@ -2525,8 +2480,7 @@ const editControl =
     });
 
 
-editControl.onAdd =
-    function() {
+editControl.onAdd = function() {
 
         const div =
             L.DomUtil.create(
@@ -2540,8 +2494,7 @@ editControl.onAdd =
 
         div.innerHTML = `
 
-            <button
-                id="editMapButton">
+            <button id="editMapButton">
 
                 ✏️ Rediger grenser
 
@@ -2551,8 +2504,7 @@ editControl.onAdd =
             <br>
 
 
-            <button
-                id="saveMapButton">
+            <button id="saveMapButton">
 
                 💾 Lagre grenser
 
@@ -2562,18 +2514,14 @@ editControl.onAdd =
             <br>
 
 
-            <button
-                id="copyTeamsButton">
+            <button id="copyTeamsButton">
 
                 📋 Kopier koordinater
 
             </button>
 
 
-            <div
-                id="editInfo"
-                class="edit-info"
-                style="display:none;">
+            <div id="editInfo" class="edit-info" style="display:none;">
 
                 <b>Redigeringsmodus</b>
 
@@ -2622,15 +2570,8 @@ editControl.addTo(map);
    REDIGERING PÅ / AV
 ===================================================== */
 
-document
-    .getElementById(
-        'editMapButton'
-    )
-    .addEventListener(
-
-        'click',
-
-        function() {
+document.getElementById('editMapButton')
+    .addEventListener('click', function() {
 
             editMode =
                 !editMode;
@@ -2701,11 +2642,8 @@ document
 /* =====================================================
    LAGRE-KNAPP
 ===================================================== */
-
-document
-    .getElementById(
-        'saveMapButton'
-    )
+/*
+document.getElementById('saveMapButton')
     .addEventListener(
 
         'click',
@@ -2714,7 +2652,7 @@ document
 
     );
 
-
+*/
 
 /* =====================================================
    KOPIER ALLE TEAMKOORDINATER
