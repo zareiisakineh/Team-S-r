@@ -978,6 +978,13 @@ th{
     <h2>Hvor finner jeg ofte brukte skjemaer:</h2>
    
       <h2>Samtykkeskjema</h2>-> trenger hjelp til å finne skjemaet i Gerica<br>
+      <h2>Hent ut samtykkeerklæring fra Gerica</h2>
+      <p>-1 Søk opp relevant bruker</p>
+      <p>2- Trykk fletting</p>
+      <p>3- Dobbeltklikk på OK_Samtykkeerklæring Pasientnet</p>
+      <p>4- Trykk "Nei" på neste vindu som kommer opp</p>
+      <p>5- Skriv ut samtykkeerklæring som kommer opp (ikke lagre, da det senere skal skannes inn etter det er signert av pasienten) </p>
+      <p></p>
       <hr>
       <h2>Praktisk bistand </h2>trenger hjelp til å finne skjemaet i Gerica<br>
       <hr>
@@ -1028,6 +1035,67 @@ th{
         <i class="fas fa-chevron-down icon"></i>
     </button>
       <div class="answer">
+        <h2>Versjon 1</h2>
+        <p>App/link til Pasientnett finnes under Citrix portalen og krever innlogging med BankID via ID-portalen (for at personvernregler overholdes ved overføring av personsensitiv informasjon).</p><br>
+        <h2>Steg 1: Hent ut samtykkeerklæring fra Gerica</h2>
+        <p>- Søk opp relevant bruker</p>
+        <p>- Trykk fletting</p>
+        <p>- Dobbeltklikk på OK_Samtykkeerklæring Pasientnett</p>
+        <p>- Trykk "Nei" på neste vindu som kommer opp</p>
+        <p>- Skriv ut samtykkeerklæring som kommer opp (ikke lagre, da det senere skal skannes inn etter det er signert av pasienten) </p><br>
+
+        <h2>Steg 2: Få pasient (med beslutningskompetanse) pårørende eller verge til å skrive under på skjemaet</h2>
+        <p>Når samtykkeskjemaet er signert og mottatt på tjenestestedet skal skjemaet påføres om pasient har multidose (+MD), og hvilken avdeling/hvilket team den er tilknyttet. </p>
+        <p>Hvis pasienten ikke har multidose påføres det (- MD) og tjenestested.</p>
+        <p>Signert samtykkeerklæring skal skannes inn i pasientens elektroniske pasientjournal og en kopi skal leveres til pasienten.</p><br>
+       
+
+        <h2>Steg 3: Skanne signert samtykkeskjema</h2>
+         <p>Hvert tjenestested har egen QR-kode for skanning inn i Gerica.</p><br>
+       
+
+        <h2>Steg 4: Hente opp dokument i Gerica</h2>
+         <p>1- Åpne Gerica</p>
+        <p>2- Trykk på "Aktivitet" i menylinjen øverst</p>
+        <p>3- Trykk videre inn på "Håndtering av skannede dokumenter" (dokumentet du har skannet inn skal ligge her)</p>
+        <p>4- Trykk på riktig dokument</p>
+        <p>5- Finn riktig pasient (F4)</p>
+        <p>6- Trykk "Tittel" og lag navn på dokumentet (eksempel: Samtykkeskjema pasientnett)</p>
+        <p>7- Trykk "Opprett kobling"</p>
+        <p>8- Trykk på dokumentet (nå med grønn hake) og trykk "Utfør"</p>
+        <p>9- Svar "Ja" på dialogboks som kommer opp.</p>
+        <p>Det skannede dokumentet finnes nå i pasientens journal, journaltype 200.</p><br>
+
+        <h2>Steg 5: Overføre dokument i Gerica til "Felles sikkert område (x:)"</h2>
+         <p>1- Åpne dokumentet du har lagret i Gerica.</p>
+        <p>2- Lagre fil i egen mappe på "Felles sikkert område" (Hvert tjenestested har egne mapper, hør med leder hvilken mappe som skal brukes).</p>
+        <p>3- Lagre dokumentet med pasientens navn og fødselsdato for å kunne lettere finne det frem.</p><br>
+      
+        <h2>Steg 6: Last opp signert samtykkeskjema i pasientnett</h2>
+         <p>1- Logg inn i pasientnett med din egen bank ID (på grunn av hensyn til personvernets regelverk)</p>
+        <p>2- Velg "Innmelding" i menyen</p>
+        <p>3- Trykk på knappen "Innmelding", et felt for innføring av pasientens fødselsnummer kommer opp. </p>
+        <p>4- Last opp signert samtykkeskjema fra "Felles sikkert langringsområde"</p>
+        <p>5- Trykk "neste" til du kommer til knappen "send"</p>
+        <p>6- Trykk "send"</p><br>
+       
+
+        <h2>Steg 7: Slett dokumentet fra Felles sikkert lagringsområde (X:)</h2>
+         <p>1- Felles sikkert lagringsområde finner du på citrix portalen</p>
+        <p>2- Gå inn på citrix portalen og finn ﻿Felles sikkert lagringsområde mappen</p>
+        <p>3- Når mappen åpner seg, gå inn på ﻿Felles sikkert lagringsområde (X:)</p>
+        <p>4- Gå inn på Gerica mappen, og så inn på pasientnettmappen</p>
+        <p>5- Slett dokumentet som nå er ferdig lastet opp i pasientnett</p>
+        <p>6- Felles sikkert lagringsområde mappen skal kun benyttes som et mellomlagringssted ved overføring fra Gerica til Pasientnett  </p><br>
+        
+        <h2>Steg 8: Apoteket legger inn pasienten i Pasientnett</h2>
+         <p>Pasienten er synlig i Pasientnett for det tilhørende teamet og nå kan bestillinger av reseptpliktige/ reseptfrie legemidler, medisinsk utstyr og andre varer utføres </p>
+
+        <div class="lenkeKort">
+          <a href="https://oslo.extend.no/cgi-bin/document.pl?pid=oslo&DocumentID=50345&UnitID=1782" target="_blank">Innmelding i pasientnett (EQS)</a>
+        </div>
+  
+       <h2>Versjon 2</h2>
         <p>1- Send samtykkeskjema til bruker og få signatur</p>
         <p>2- Skann skjemaet og send det til din outlook</p>
         <p>3- Åpne outlook og mailen, lagre som -> lagre filen et sted du kan finne senere</p>
