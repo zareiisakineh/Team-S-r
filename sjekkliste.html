@@ -12,6 +12,16 @@
    <link rel="icon" href="images/logo-192.png">
    <link rel="apple-touch-icon" href="images/logo-192.png">
    <style>
+#nyttig {
+    background:  #eef3cd;
+}
+#nyttig:hover{
+     background:  #f5f566;
+}
+#nyttig:focus{
+     background:  #ddf887;
+}
+
   .answer img{
      display: block;
     width: 100%;
@@ -98,6 +108,10 @@ th{
     }
 
       }
+
+.lenkeKort{
+  background-color: #f9fcf0;
+}
 </style>
 </head>
 <body>
@@ -309,6 +323,11 @@ th{
       <h2>Helg og kveld:</h2>
       <p>Ring vaktelefon og skriv melding</p>
        <p>👉 Vakttelefon team Sør  <a href="tel:99285051" >📞</a></p><br>
+
+      <h2>Send forespørsel om egenmelding;</h2>
+      <div class="lenkeKort">
+        <a href="https://mingat.gat.oslo.kommune.no/mingat/Employee/Home/Index#!/selfservicelist/" target="_blank">Min Gat</a>
+      </div>
     </div>
     </div>
   </div>
@@ -335,7 +354,7 @@ th{
       </button >
     <div class="answer"> 
       <div class="rutiner"> 
-      <h2>Kommer senere</h2>
+       <div class="lenkeKort"><a href="https://oslo.extend.no/cgi-bin/search.pl?pid=oslo&UnitID=1782&topframe=1&search_string=skademelding" target="_blank">Meld avvik i EQS</a></div>
     </div>
   </div>
 </div>
@@ -347,7 +366,7 @@ th{
     </button >
     <div class="answer"> 
       <div class="rutiner"> 
-      <h2>Kommer senere</h2>
+       <div class="lenkeKort"><a href="https://oslo.extend.no/cgi-bin/search.pl?pid=oslo&UnitID=1782&topframe=1&search_string=skademelding" target="_blank">Melde skademelding i EQS</a></div>
     </div>
   </div>
 </div>
@@ -375,6 +394,20 @@ th{
   </div>
 </div>
 
+ <div class="item" id="rapport">
+  <button class="question" id="nyttig">
+              <h3>Nyttige lenker</h3>
+              <i class="fas fa-chevron-down icon"></i>
+          </button>
+          <div class="answer">
+           <div class="lenkeKort"><a href="KnuseDeleListen.pdf" target="_blank">Åpne Knuse / dele - liste<br>Hentet fra oslo universitetssykehus </a></div>
+           <div class="lenkeKort"><a href="https://www.kompetansebroen.no/alle-kurs" target="_blank">Kompetansebroen </a></div>   
+           <div class="lenkeKort"><a href="https://www.varhealthcare.com/no/?gad_source=1&gad_campaignid=22478634128&gbraid=0AAAAA_P8MBbB7ndoaJTGkAcrzpU2GMuQA&gclid=CjwKCAjwkaXUBhASEiwAZI3ds_uu-8fNvEYa-R4XxbgfIpCHqpdtXisySjkcwFzgVMeohDkkzK8rYhoCRZkQAvD_BwE" target="_blank">Varnett </a></div>   
+           <div class="lenkeKort"><a href="https://www.wounds.no/times-verkt%C3%B8y" target="_blank">Sårstell<br>fra wound.no </a></div>
+           <div class="lenkeKort"><a href="https://oslo.extend.no/cgi-bin/menu.pl?pid=oslo&UnitID=1782&MenuID=1287" target="_blank">EQS</a></div>
+           <div class="lenkeKort"><a href="https://mingat.gat.oslo.kommune.no/mingat/Employee/Home/Index#!/selfservicelist/">Min Gat</a></div>
+        </div>
+ </div>
 
    <div class="item" id="medisinrom">
   <button class="question">
@@ -916,7 +949,7 @@ th{
 
    <div class="item" id="rapport">
   <button class="question" id="hlpOgSpl">
-              <h3>Nyttige lenker og prosedyrer</h3>
+              <h3>Nyttige lenker</h3>
               <i class="fas fa-chevron-down icon"></i>
           </button>
           <div class="answer">
@@ -924,7 +957,8 @@ th{
            <div class="lenkeKort"><a href="https://www.kompetansebroen.no/alle-kurs" target="_blank">Kompetansebroen </a></div>   
            <div class="lenkeKort"><a href="https://www.varhealthcare.com/no/?gad_source=1&gad_campaignid=22478634128&gbraid=0AAAAA_P8MBbB7ndoaJTGkAcrzpU2GMuQA&gclid=CjwKCAjwkaXUBhASEiwAZI3ds_uu-8fNvEYa-R4XxbgfIpCHqpdtXisySjkcwFzgVMeohDkkzK8rYhoCRZkQAvD_BwE" target="_blank">Varnett </a></div>   
            <div class="lenkeKort"><a href="https://www.wounds.no/times-verkt%C3%B8y" target="_blank">Sårstell<br>fra wound.no </a></div>
-           
+           <div class="lenkeKort"><a href="https://oslo.extend.no/cgi-bin/menu.pl?pid=oslo&UnitID=1782&MenuID=1287" target="_blank">EQS</a></div>
+           <div class="lenkeKort"><a href="https://mingat.gat.oslo.kommune.no/mingat/Employee/Home/Index#!/selfservicelist/" target="_blank">Min Gat</a></div>
         </div>
 
   </div>
