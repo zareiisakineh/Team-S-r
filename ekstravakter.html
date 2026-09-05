@@ -1,297 +1,665 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
+
 <head>
-     <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow">
-  <title>Vaktbok</title>
-  <link rel="stylesheet" href="gerica.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2f5d9f">
-   <link rel="icon" href="images/logo-192.png">
-   <link rel="apple-touch-icon" href="images/logo-192.png">
-  
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Vaktbok</title>
+
+    <link rel="stylesheet" href="gerica.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    >
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#2f5d9f">
+
+    <link rel="icon" href="images/logo-192.png">
+
+    <link
+        rel="apple-touch-icon"
+        href="images/logo-192.png"
+    >
+
+
     <style>
-        .vaktKort{
-            background:white;
-            border-radius:12px;
-            padding:15px;
-            margin-bottom:10px;
-            box-shadow:0 2px 8px rgba(0,0,0,.1);
+
+        /* =====================================================
+           VAKTKORT
+        ===================================================== */
+
+        .vaktKort {
+
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 15px;
+
+            margin-bottom: 10px;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,.1);
+
         }
 
-        #vaktForm{
-            display:flex;
-            flex-direction:column;
-            gap:10px;
+
+        /* =====================================================
+           SKJEMA
+        ===================================================== */
+
+        #vaktForm {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
         }
+
 
         #vaktForm input,
         #vaktForm textarea,
-        #vaktForm select,
-        #vaktForm option{
-            padding:15px;
-            border-radius:8px;
-            border:1px solid hsl(102, 12%, 57%);
-            cursor: pointer;
+        #vaktForm select {
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+            border: 1px solid hsl(102, 12%, 57%);
+
             font-size: 1rem;
+
+            width: 100%;
+
+            box-sizing: border-box;
+
         }
 
-        #vaktForm button{
-            background:#2f5d9f;
-            color:white;
-            border:none;
-            padding:17px;
-            border-radius:10px;
-            font-weight: bold;
-            font-size: 1rem;
+
+        #vaktForm textarea {
+
+            min-height: 100px;
+
+            resize: vertical;
+
         }
-   
+
+
+        /* =====================================================
+           BESKRIVELSE
+        ===================================================== */
+
+        .vaktInfo {
+
+            background: #eef3f8;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            margin-bottom: 20px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .vaktInfo strong {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        /* =====================================================
+           KATEGORI
+        ===================================================== */
+
+        .kategori {
+
+            margin-top: 5px;
+
+        }
+
+
+        .kategori-label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            font-size: 1.05rem;
+
+        }
+
+
+        .kategori-hjelp {
+
+            font-size: 0.9rem;
+
+            margin-top: 5px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* =====================================================
+           KNAPP
+        ===================================================== */
+
+        #vaktForm button {
+
+            background: #2f5d9f;
+
+            color: white;
+
+            border: none;
+
+            padding: 17px;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+            font-size: 1rem;
+
+            cursor: pointer;
+
+        }
+
+
+        #vaktForm button:hover {
+
+            opacity: 0.9;
+
+        }
+
+
+        /* =====================================================
+           VELG VAKT
+        ===================================================== */
+
+        .vaktvalg {
+
+            margin-top: 5px;
+
+        }
+
+
+        /* =====================================================
+           KATEGORIER I LISTEN
+        ===================================================== */
+
+        .kategoriTag {
+
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding: 6px 10px;
+
+            border-radius: 6px;
+
+            background: #eef3f8;
+
+            font-size: 0.9rem;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        #status {
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            display: none;
+
+        }
+
+
+        /* =====================================================
+           MOBIL
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .vaktKort {
+
+                padding: 13px;
+
+            }
+
+        }
+
     </style>
 
 </head>
+
+
 <body>
-    <header class="topbar">
-     <!--logo-->
-        <div class="brand">
-        <img src="images/logo-192.png" alt="Team Sør">
+
+
+<!-- =========================================================
+     MENY
+========================================================= -->
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <img
+            src="images/logo-192.png"
+            alt="Team Sør"
+        >
+
+    </div>
+
+
+    <nav
+        class="nav"
+        aria-label="Hovedmeny"
+    >
+
+        <button
+            class="menu-toggle"
+            aria-label="Åpne meny"
+            id="menuToggle"
+            aria-expanded="false"
+            type="button"
+        >
+            ☰
+        </button>
+
+
+        <ul id="menu">
+
+            <li>
+                <a href="index.html">
+                    Hjem
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="ekstravakter.html"
+                    aria-current="page"
+                >
+                    Vaktbok
+                </a>
+            </li>
+
+            <li>
+                <a href="arbeidsliste.html">
+                    Merkantil
+                </a>
+            </li>
+
+            <li>
+                <a href="sjekkliste.html">
+                    Rutiner
+                </a>
+            </li>
+
+            <li>
+                <a href="belastning.html">
+                    Arbeidsbelastning
+                </a>
+            </li>
+
+            <li>
+                <a href="arbeidsmiljø.html">
+                    Arbeidsmiljø
+                </a>
+            </li>
+
+            <li>
+                <a href="Bursdager.html">
+                    Bursdager
+                </a>
+            </li>
+
+            <li>
+                <a href="album.html">
+                    Sør-album
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================================================
+     HOVEDINNHOLD
+========================================================= -->
+
+<main
+    id="main-content"
+    class="container"
+>
+
+
+    <!-- =====================================================
+         FORKLARING
+    ====================================================== -->
+
+    <section class="card">
+
+        <h1>
+            📅 Vaktbok
+        </h1>
+
+
+        <div class="vaktInfo">
+
+            <strong>
+                Hvorfor bruker vi Vaktbok?
+            </strong>
+
+            Når en ansatt blir syk, spesielt i helgen,
+            kan det være vanskelig å finne noen som kan
+            ta vakten på kort tid.
+
+            <br><br>
+
+            Hvis du har mulighet til å jobbe ekstra,
+            kan du registrere deg her.
+
+            <br><br>
+
+            Da kan ansvarssykepleier se hvem som har
+            meldt at de kan jobbe, og kontakte riktig
+            person.
+
+            <br><br>
+
+            <strong>
+                Du blir ikke automatisk satt opp på en vakt.
+            </strong>
+
+            Du blir kontaktet dersom det er behov.
+
         </div>
-        <nav class="nav" aria-label="Hovedmeny">
-         <button class="menu-toggle" aria-label="Åpne meny" id="menuToggle" aria-expanded="false">☰</button>
-            <ul id="menu"> 
-              <li><a href="index.html" > Hjem</a></li>
-              <li><a href="ekstravakter.html" aria-current="page"> Vaktbok</a></li>
-              <li><a href="arbeidsliste.html">Merkantil</a></li>
-              <li><a href="sjekkliste.html">Rutiner </a></li>
-              <li><a href="belastning.html">Arbeidsbelastning</a></li>
-              <li><a href="arbeidsmiljø.html" >Arbeidsmiljø</a></li>
-              <li><a href="Bursdager.html">Bursdager</a></li>
-              <li><a href="album.html">Sør-album </a></li>
-            </ul>
-        </nav>
-    </header>
-    <main id="main-content" class="container">
-        <section class="card">
 
-           <div class="info">
 
-                <h1>📅 Vaktbok for helg</h1>
+        <!-- =================================================
+             SKJEMA
+        ================================================== -->
 
-                <h2>Hvorfor bruker vi Vaktboken?</h2><br>
+        <form id="vaktForm">
 
-                <p>
-                    Noen ganger blir en ansatt syk før en vakt på en lørdag eller søndag morgen.
-                    Da må vi raskt finne en annen person som kan jobbe.
+
+            <!-- NAVN -->
+
+            <input
+                type="text"
+                id="navn"
+                placeholder="Navn"
+                autocomplete="name"
+                required
+            >
+
+
+
+            <!-- DATO -->
+
+            <input
+                type="date"
+                id="dato"
+                required
+            >
+
+
+
+            <!-- =================================================
+                 TILGJENGELIGHETSTYPE
+            ================================================== -->
+
+            <div class="kategori">
+
+                <label
+                    class="kategori-label"
+                    for="tilgjengelighetstype"
+                >
+                    Hva gjelder for deg?
+                </label>
+
+
+                <p class="kategori-hjelp">
+
+                    Velg det alternativet som passer best.
+
                 </p>
 
-                <p>
-                    Dette kan skape mye stress for de som allerede er på jobb.
-                    Vi må ringe mange personer, og det tar tid.
-                    Hvis vi ikke finner en erstatter, må arbeidsoppgavene
-                    fordeles mellom de ansatte som allerede er på jobb.
-                </p>
 
-                <p><br>
-                    <strong>
-                        Vaktboken skal gjøre det enklere og raskere
-                        å finne personer som kan ta en vakt.
-                    </strong>
-                </p><br>
+                <select
+                    id="tilgjengelighetstype"
+                    required
+                >
+
+                    <option value="">
+                        Velg alternativ
+                    </option>
 
 
-                <h2>👥 Hvem kan registrere seg?</h2><br>
+                    <option value="Ekstravakt – under 5 vakter denne uken">
+
+                        🟢 Ekstravakt – under 5 vakter denne uken
+
+                    </option>
 
 
-                <h3>1. 🟢 Ekstravakt – under 5 vakter</h3>
+                    <option value="Ekstravakt – allerede 5 vakter, kan ta flere">
 
-                <p>
-                    For deg som er ekstravakt og kan ta en vakt,
-                    og som ikke har jobbet 5 vakter denne uken.
-                </p>
+                        🟡 Ekstravakt – allerede 5 vakter,
+                        men kan ta flere
 
-                <p>
-                    Skriv hvilken dato og hvilken vakt du kan jobbe.
-                </p><br>
+                    </option>
 
 
-                <h3>2. 🟡 Ekstravakt – 5 vakter eller mer</h3>
+                    <option value="Fast ansatt – kan jobbe utover stilling">
 
-                <p>
-                    For deg som allerede har jobbet 5 vakter denne uken,
-                    men som fortsatt har mulighet til å jobbe ekstra.
-                </p>
+                        🔵 Fast ansatt – kan jobbe utover stilling
 
-                <p>
-                    Registrer deg hvis du ønsker å bli kontaktet.
-                    Ansvarlig på jobb vurderer om vakten kan gis til deg.
-                </p><br>
+                    </option>
 
 
-                <h3>3. 🔵 Fast ansatt – kan jobbe ekstra</h3>
+                    <option value="Kveldsvakt – kan ta dagvakt">
 
-                <p>
-                    For faste ansatte som har mulighet til å jobbe
-                    utover sin vanlige turnus eller stilling.
-                </p>
+                        🌞 Jeg jobber kveld,
+                        men kan ta dagvakt
 
-                <p>
-                    Skriv hvilken dato og hvilken vakt du kan jobbe.
-                    Arbeidstid og eventuelle regler må vurderes
-                    før vakten avtales.
-                </p><br>
+                    </option>
 
-
-                <h3>🟠 Kveldsvakt – kan komme på dagvakt</h3>
-
-                <p>
-                    For deg som egentlig skal jobbe kveld,
-                    men som har mulighet til å komme på dagvakt
-                    hvis det mangler en ansatt.
-                </p>
-
-                <p>
-                    Dette kan være spesielt nyttig hvis vi mangler
-                    en person på dagvakt samme dag.
-                </p><br>
-
-
-                <h2>💡 Hvordan brukes Vaktboken?</h2>
-
-                <p>
-                    Når en ansatt blir syk, kan ansvarlig på jobb
-                    sjekke Vaktboken før det begynner å ringes rundt.
-                </p>
-
-                <p>
-                    Da kan man se hvem som har meldt at de kan jobbe,
-                    hvilken vakt de kan ta og hvordan de kan kontaktes.
-                </p><br>
-
-                <p>
-                    <strong>
-                        Målet er å spare tid og redusere stress
-                        for de ansatte som allerede er på jobb.
-                    </strong>
-                </p><br>
-
-                <p>
-                    <strong>
-                        Det er frivillig å registrere seg.
-                        Registrering betyr ikke at du automatisk får vakten.
-                    </strong>
-                </p><br>
+                </select>
 
             </div>
 
-            <form id="vaktForm">
 
-                <input type="text" id="navn" placeholder="Navn" required>
 
-                <input type="date" id="dato" required>
-                    <label for="personType">Jeg er:</label>
+            <!-- =================================================
+                 VAKTTYPE
+            ================================================== -->
 
-                <select id="personType" required>
-                    <option value="">Velg kategori</option>
+            <div class="vaktvalg">
 
-                    <option value="Ekstravakt under 5 vakter">
-                        Ekstravakt – under 5 vakter denne uken
+                <label
+                    class="kategori-label"
+                    for="vaktType"
+                >
+                    Hvilken vakt kan du jobbe?
+                </label>
+
+
+                <select
+                    id="vaktType"
+                    required
+                >
+
+                    <option value="">
+                        Velg vakt
                     </option>
 
-                    <option value="Ekstravakt 5 vakter eller mer">
-                        Ekstravakt – 5 vakter eller mer, men kan jobbe ekstra
+
+                    <option value="Dag 🌞">
+                        Dag
                     </option>
 
-                    <option value="Fast ansatt">
-                        Fast ansatt – kan jobbe ekstra
+
+                    <option value="Kveld 🌆">
+                        Kveld
                     </option>
 
-                    <option value="Kveldsvakt kan dagvakt">
-                        Jobber kveld – kan komme på dagvakt
+
+                    <option value="Natt 🌙">
+                        Natt
                     </option>
+
                 </select>
 
-                <input type="tel" id="telefon" placeholder="Telefon">
+            </div>
 
-                <textarea id="kommentar" placeholder="Kommentar"> </textarea>
 
-                <button type="submit"> Registrer tilgjengelighet </button>
 
-            </form>
+            <!-- TELEFON -->
 
-        </section>
+            <input
+                type="tel"
+                id="telefon"
+                placeholder="Telefon"
+                autocomplete="tel"
+                required
+            >
 
-        <section class="card">
 
-            <h2>Tilgjengelige ekstravakter</h2>
 
-            <div id="vaktListe"></div>
+            <!-- KOMMENTAR -->
 
-        </section>
-    </main>
+            <textarea
+                id="kommentar"
+                placeholder="Kommentar (valgfritt)"
+            ></textarea>
+
+
+
+            <!-- SEND -->
+
+            <button type="submit">
+
+                Registrer tilgjengelighet
+
+            </button>
+
+
+        </form>
+
+
+        <div id="status"></div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LISTE
+    ====================================================== -->
+
+    <section class="card">
+
+        <h2>
+            👥 Tilgjengelige ekstravakter
+        </h2>
+
+
+        <p>
+            Her ser du hvem som har meldt at de kan jobbe.
+        </p>
+
+
+        <div id="vaktListe"></div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
 <script>
+
+
+/* ==========================================================
+   GOOGLE APPS SCRIPT
+========================================================== */
 
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwhy06__anXxP-60uKHvxh_5fiA1D7ZhxMuw5si4Ppgn0aMq5a9LiKFcKHuXGC0ByGS/exec";
 
 
+
+/* ==========================================================
+   SKJEMA
+========================================================== */
+
 document
-.getElementById("vaktForm")
-.addEventListener("submit", sendData);
+    .getElementById("vaktForm")
+    .addEventListener("submit", sendData);
 
 
 
-async function sendData(e){
+/* ==========================================================
+   STATUSMELDING
+========================================================== */
 
-    e.preventDefault();
+function visStatus(melding, feil = false) {
 
-
-    const data = {
-
-    navn: document.getElementById("navn").value,
-
-    dato: document.getElementById("dato").value,
-
-    vaktType: document.getElementById("vaktType").value,
-
-    telefon: document.getElementById("telefon").value,
-
-    kommentar: document.getElementById("kommentar").value
-
-};
-
-    try {
-
-        await fetch(SCRIPT_URL, {
-
-            method: "POST",
-
-            mode: "no-cors",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify(data)
-
-        });
+    const status =
+        document.getElementById("status");
 
 
-        alert("Registrert!");
-
-        document
-        .getElementById("vaktForm")
-        .reset();
+    status.style.display = "block";
 
 
-    } catch(error){
+    status.textContent = melding;
 
-        console.error(
-            "Feil ved registrering:",
-            error
-        );
 
-        alert("Kunne ikke registrere vakten");
+    if (feil) {
+
+        status.style.background = "#f8d7da";
+
+    } else {
+
+        status.style.background = "#d4edda";
 
     }
 
@@ -299,9 +667,178 @@ async function sendData(e){
 
 
 
-// Hent data fra Google Sheets
+/* ==========================================================
+   SEND DATA
+========================================================== */
 
-async function loadVakter(){
+async function sendData(e) {
+
+    e.preventDefault();
+
+
+    const knapp =
+        document.querySelector(
+            "#vaktForm button"
+        );
+
+
+    const data = {
+
+        navn:
+            document
+                .getElementById("navn")
+                .value
+                .trim(),
+
+
+        dato:
+            document
+                .getElementById("dato")
+                .value,
+
+
+        tilgjengelighetstype:
+            document
+                .getElementById(
+                    "tilgjengelighetstype"
+                )
+                .value,
+
+
+        vaktType:
+            document
+                .getElementById("vaktType")
+                .value,
+
+
+        telefon:
+            document
+                .getElementById("telefon")
+                .value
+                .trim(),
+
+
+        kommentar:
+            document
+                .getElementById("kommentar")
+                .value
+                .trim()
+
+    };
+
+
+    /* ------------------------------------------------------
+       Sjekk at kategori er valgt
+    ------------------------------------------------------ */
+
+    if (!data.tilgjengelighetstype) {
+
+        alert(
+            "Du må velge hva som gjelder for deg."
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        knapp.disabled = true;
+
+        knapp.textContent =
+            "Registrerer...";
+
+
+        visStatus(
+            "Registrerer tilgjengelighet..."
+        );
+
+
+        await fetch(
+            SCRIPT_URL,
+            {
+
+                method: "POST",
+
+                mode: "no-cors",
+
+                headers: {
+
+                    "Content-Type":
+                        "application/json"
+
+                },
+
+                body:
+                    JSON.stringify(data)
+
+            }
+        );
+
+
+        alert(
+            "Tilgjengeligheten er registrert!"
+        );
+
+
+        document
+            .getElementById("vaktForm")
+            .reset();
+
+
+        visStatus(
+            "✅ Tilgjengeligheten er registrert."
+        );
+
+
+        /* Oppdater listen */
+
+        await loadVakter();
+
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Feil ved registrering:",
+            error
+        );
+
+
+        alert(
+            "Kunne ikke registrere tilgjengeligheten."
+        );
+
+
+        visStatus(
+            "❌ Kunne ikke registrere.",
+            true
+        );
+
+    }
+
+
+    finally {
+
+        knapp.disabled = false;
+
+        knapp.textContent =
+            "Registrer tilgjengelighet";
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   HENT VAKTER
+========================================================== */
+
+async function loadVakter() {
 
     try {
 
@@ -309,69 +846,270 @@ async function loadVakter(){
             await fetch(SCRIPT_URL);
 
 
+        if (!response.ok) {
+
+            throw new Error(
+                "Feil ved henting av data."
+            );
+
+        }
+
+
         const data =
             await response.json();
 
 
         const liste =
-            document.getElementById("vaktListe");
+            document.getElementById(
+                "vaktListe"
+            );
 
 
         liste.innerHTML = "";
 
 
-       data.slice(1).forEach(rad => {
+        /* --------------------------------------------------
+           Hvis ingen vakter
+        -------------------------------------------------- */
 
-        liste.innerHTML += `
+        if (
+            !data ||
+            data.length <= 1
+        ) {
 
-            <div class="vaktKort">
+            liste.innerHTML =
 
-            <h3>👤 ${rad[1]}</h3>
+                "<p>Ingen tilgjengelige vakter registrert.</p>";
 
-            📅 Dato:
-            ${new Date(rad[2]).toLocaleDateString("no-NO")}
+            return;
 
-            <br>
-
-            🕒 Vakt:
-            ${rad[3]}
-
-            <br>
-
-            📞 Telefon:
-            <a href="tel:${rad[4]}">
-            ${rad[4]}
-            </a>
-
-            <br>
-
-            💬 ${rad[5] || ""}
-
-            </div>
-
-            `;
-                    });
+        }
 
 
-                } catch(error){
+
+        /* --------------------------------------------------
+           Hopp over overskriftsraden
+        -------------------------------------------------- */
+
+        data
+            .slice(1)
+            .forEach(rad => {
+
+
+                /*
+                    Kolonner:
+
+                    A = Tidspunkt
+                    B = Navn
+                    C = Dato
+                    D = Tilgjengelighetstype
+                    E = Vakt
+                    F = Telefon
+                    G = Kommentar
+                */
+
+
+                const navn =
+                    rad[1] || "";
+
+
+                const dato =
+                    rad[2] || "";
+
+
+                const tilgjengelighetstype =
+                    rad[3] || "";
+
+
+                const vaktType =
+                    rad[4] || "";
+
+
+                const telefon =
+                    rad[5] || "";
+
+
+                const kommentar =
+                    rad[6] || "";
+
+
+
+                /* ------------------------------------------------
+                   Formater dato
+                ------------------------------------------------ */
+
+                let datoTekst = dato;
+
+
+                if (dato) {
+
+                    const datoObjekt =
+                        new Date(dato);
+
+
+                    if (
+                        !isNaN(
+                            datoObjekt.getTime()
+                        )
+                    ) {
+
+                        datoTekst =
+                            datoObjekt.toLocaleDateString(
+                                "no-NO"
+                            );
+
+                    }
+
+                }
+
+
+
+                /* ------------------------------------------------
+                   Lag kort
+                ------------------------------------------------ */
+
+                liste.innerHTML += `
+
+                    <div class="vaktKort">
+
+                        <h3>
+                            👤 ${escapeHtml(navn)}
+                        </h3>
+
+
+                        📅 Dato:
+                        ${escapeHtml(datoTekst)}
+
+                        <br><br>
+
+
+                        🕒 Vakt:
+                        ${escapeHtml(vaktType)}
+
+                        <br>
+
+
+                        <span class="kategoriTag">
+
+                            ${escapeHtml(
+                                tilgjengelighetstype
+                            )}
+
+                        </span>
+
+                        <br><br>
+
+
+                        📞 Telefon:
+
+                        <a
+                            href="tel:${escapeHtml(telefon)}"
+                        >
+                            ${escapeHtml(telefon)}
+                        </a>
+
+
+                        ${
+                            kommentar
+                            ?
+                            `
+                            <br><br>
+
+                            💬
+                            ${escapeHtml(kommentar)}
+                            `
+                            :
+                            ""
+                        }
+
+                    </div>
+
+                `;
+
+            });
+
+
+    }
+
+
+    catch (error) {
 
         console.error(
             "Feil ved henting:",
             error
         );
 
+
+        document
+            .getElementById("vaktListe")
+            .innerHTML =
+
+            "<p>Kunne ikke hente tilgjengelige vakter.</p>";
+
     }
 
 }
 
+
+
+/* ==========================================================
+   SIKKER VISNING AV TEKST
+========================================================== */
+
+function escapeHtml(text) {
+
+    return String(text)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* ==========================================================
+   START
+========================================================== */
 
 loadVakter();
 
 
 </script>
 
-<script type="module" src="app.js"></script>
+
+
+<!-- =========================================================
+     TEAM SØR APP.JS
+========================================================= -->
+
+<script
+    type="module"
+    src="app.js"
+></script>
+
 
 </body>
-</html>
 
+</html>
