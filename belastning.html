@@ -1960,12 +1960,14 @@
         defer>
 </script>
 
+
 <!-- ======================================================
      GLIGHTBOX
 ======================================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js">
 </script>
+
 
 <!-- ======================================================
      APP
@@ -1975,6 +1977,7 @@
         src="app.js">
 </script>
 
+
 <!-- ======================================================
      BURSDAG
 ======================================================= -->
@@ -1983,6 +1986,7 @@
         src="bursdag.js">
 </script>
 
+
 <!-- ======================================================
      INDEX
 ======================================================= -->
@@ -1990,6 +1994,7 @@
 <script type="module"
         src="index.js">
 </script>
+
 
 <!-- ======================================================
      AUTH
@@ -2185,27 +2190,32 @@ function formaterTid(
 
 /* ======================================================
    API POST
-   CORS-SIKKER LAGRING
 ======================================================= */
+
+/*
+ * VIKTIG:
+ *
+ * GitHub Pages -> Apps Script gir CORS-problem
+ * når nettleseren prøver å lese POST-svaret.
+ *
+ * Derfor bruker vi:
+ *
+ *     mode: "no-cors"
+ *
+ * Vi setter heller IKKE Content-Type manuelt.
+ *
+ * Apps Script kan fortsatt lese:
+ *
+ *     e.postData.contents
+ *
+ * og JSON.parse() på innholdet.
+ *
+ * Response kan ikke leses av nettleseren.
+ */
 
 async function postTilArbeidsbelastningAPI(
     data
 ) {
-
-    /*
-     * GitHub Pages og Google Apps Script
-     * ligger på forskjellige domener.
-     *
-     * Derfor bruker vi no-cors ved POST.
-     *
-     * Det er viktig at vi IKKE setter
-     * Content-Type manuelt.
-     *
-     * Apps Script kan fortsatt lese
-     * JSON-innholdet fra:
-     *
-     * e.postData.contents
-     */
 
     await fetch(
         ARBEIDSBELASTNING_API,
@@ -2217,16 +2227,18 @@ async function postTilArbeidsbelastningAPI(
         }
     );
 
+
     /*
-     * Med no-cors kan nettleseren ikke lese
-     * svaret fra Apps Script.
+     * Vi kan ikke lese response.ok eller response.json()
+     * med no-cors.
      *
-     * Derfor returnerer vi en lokal
-     * suksessstatus når fetch ikke kaster feil.
+     * Hvis fetch ikke kaster nettverksfeil,
+     * er forespørselen sendt.
      */
 
     return {
-        success: true
+        success: true,
+        sent: true
     };
 
 }
@@ -2284,6 +2296,15 @@ async function hentFraArbeidsbelastningAPI(
         );
 
 
+    if (!response.ok) {
+
+        throw new Error(
+            `API-feil (${response.status})`
+        );
+
+    }
+
+
     const tekst =
         await response.text();
 
@@ -2300,19 +2321,6 @@ async function hentFraArbeidsbelastningAPI(
 
         throw new Error(
             "Apps Script returnerte ikke gyldig JSON."
-        );
-
-    }
-
-
-    if (
-        !response.ok
-    ) {
-
-        throw new Error(
-            resultat.error ||
-            resultat.message ||
-            `API-feil (${response.status})`
         );
 
     }
@@ -2419,8 +2427,8 @@ async function lastAnsatte() {
             lagretAnsatt &&
             ansatte.some(
                 person =>
-                    person.id ===
-                    lagretAnsatt
+                    String(person.id) ===
+                    String(lagretAnsatt)
             )
         ) {
 
@@ -2713,7 +2721,7 @@ async function stoppAktivTimer() {
 
 
     statusMelding.textContent =
-        "Lagrer registreringen...";
+        "Sender registreringen til serveren...";
 
 
     try {
@@ -2791,24 +2799,43 @@ async function stoppAktivTimer() {
 
 
         statusMelding.textContent =
-            `✅ Registrert ${formaterTid(
+            `✅ Registreringen er sendt. ${formaterTid(
                 varighetSekunder
             )}.`;
 
 
-        await lastDagensRegistreringer();
+        /*
+         * Vi prøver å hente dagens data igjen.
+         *
+         * Dersom GET fortsatt har CORS-problem,
+         * beholdes registreringen på Google Sheet,
+         * men listen i nettleseren kan ikke oppdateres.
+         */
+
+        try {
+
+            await lastDagensRegistreringer();
+
+        } catch (error) {
+
+            console.warn(
+                "Registreringen er sendt, men kunne ikke hente dagens data:",
+                error
+            );
+
+        }
 
 
     } catch (error) {
 
         console.error(
-            "Kunne ikke lagre registrering:",
+            "Kunne ikke sende registrering:",
             error
         );
 
 
         statusMelding.textContent =
-            "❌ Kunne ikke lagre registreringen. " +
+            "❌ Kunne ikke sende registreringen. " +
             error.message;
 
     }
@@ -2972,6 +2999,8 @@ async function lastDagensRegistreringer() {
                 ${escapeHtml(error.message)}
             </p>
         `;
+
+        throw error;
 
     }
 
@@ -3140,7 +3169,7 @@ async function slettRegistrering(
     try {
 
         statusMelding.textContent =
-            "Sletter registrering...";
+            "Sender sletteforespørsel...";
 
 
         await postTilArbeidsbelastningAPI({
@@ -3155,10 +3184,21 @@ async function slettRegistrering(
 
 
         statusMelding.textContent =
-            "✅ Registreringen er slettet.";
+            "✅ Sletteforespørselen er sendt.";
 
 
-        await lastDagensRegistreringer();
+        try {
+
+            await lastDagensRegistreringer();
+
+        } catch (error) {
+
+            console.warn(
+                "Kunne ikke hente data etter sletting:",
+                error
+            );
+
+        }
 
 
     } catch (error) {
@@ -3170,7 +3210,7 @@ async function slettRegistrering(
 
 
         statusMelding.textContent =
-            "❌ Kunne ikke slette registreringen. " +
+            "❌ Kunne ikke sende sletteforespørselen. " +
             error.message;
 
     }
@@ -3397,7 +3437,7 @@ async function lagreDagensSvar() {
 
 
     surveyStatus.textContent =
-        "Lagrer...";
+        "Sender svarene til serveren...";
 
 
     try {
@@ -3444,7 +3484,7 @@ async function lagreDagensSvar() {
 
 
         surveyStatus.textContent =
-            "✅ Svarene er lagret.";
+            "✅ Svarene er sendt til serveren.";
 
 
     } catch (error) {
@@ -3456,7 +3496,7 @@ async function lagreDagensSvar() {
 
 
         surveyStatus.textContent =
-            "❌ Kunne ikke lagre svarene. " +
+            "❌ Kunne ikke sende svarene. " +
             error.message;
 
     }
@@ -3825,8 +3865,8 @@ async function beregnGangtid() {
 
                             })
 
-                        }
-                    );
+                    }
+                );
 
 
             if (!response.ok) {
