@@ -1,4 +1,3 @@
-
 import { auth } from "./firebase.js";
 
 import {
@@ -6,24 +5,17 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 
-// ==========================================================
-// FINN ELEMENTER
-// ==========================================================
+const innhold =
+    document.getElementById("beskyttetInnhold");
 
-const innhold = document.getElementById("beskyttetInnhold");
-const loginBox = document.getElementById("loginBox");
-const loggutKnapp = document.getElementById("loggutKnapp");
+const loginBox =
+    document.getElementById("loginBox");
 
+const loggutKnapp =
+    document.getElementById("loggutKnapp");
 
-// ==========================================================
-// SJEKK INNLOGGING
-// ==========================================================
 
 onAuthStateChanged(auth, user => {
-
-    // ------------------------------------------------------
-    // BRUKER ER LOGGET INN
-    // ------------------------------------------------------
 
     if (user) {
 
@@ -39,13 +31,7 @@ onAuthStateChanged(auth, user => {
             loggutKnapp.style.display = "block";
         }
 
-    }
-
-    // ------------------------------------------------------
-    // BRUKER ER IKKE LOGGET INN
-    // ------------------------------------------------------
-
-    else {
+    } else {
 
         if (innhold) {
             innhold.style.display = "none";
@@ -62,4 +48,3 @@ onAuthStateChanged(auth, user => {
     }
 
 });
-
