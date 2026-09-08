@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <!-- Reduserer sjansen for at Google finner siden -->
+    <meta name="robots"
+          content="noindex, nofollow">
+
+    <title>Arbeidsbelastning – Team Sør</title>
+
+    <link rel="stylesheet"
+          href="gerica.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="manifest"
+          href="manifest.json">
+
+    <meta name="theme-color"
+          content="#2f5d9f">
+
+    <link rel="icon"
+          href="images/logo-192.png">
+
+    <link rel="apple-touch-icon"
+          href="images/logo-192.png">
+
+
+    <style>
+
+        /* =========================================================
+           INFORMASJON
+        ========================================================= */
+
+        .info {
+
+            background: white;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* =========================================================
+           ADRESSEFELT
+        ========================================================= */
+
+        .adresse {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 10px;
+
+            align-items: center;
+
+        }
+
+
+        .adresse input {
+
+            flex: 1;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            font-size: 16px;
+
+            box-sizing: border-box;
+
+        }
+
+
+        .nummer {
+
+            width: 35px;
+
+            padding-top: 0;
+
+            font-weight: bold;
+
+            flex-shrink: 0;
+
+        }
+
+
+        /* =========================================================
+           KNAPPER
+        ========================================================= */
+
+        button {
+
+            padding: 12px 18px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            background: #2f5d9f;
+
+            color: white;
+
+        }
+
+
+        button:hover {
+
+            opacity: 0.9;
+
+        }
+
+
+        .knapper {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 15px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .secondary {
+
+            background: #666;
+
+        }
+
+
+        /* =========================================================
+           STATUS
+        ========================================================= */
+
+        .status {
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 6px;
+
+            background: #eef3f8;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =========================================================
+           RESULTAT
+        ========================================================= */
+
+        .resultat {
+
+            background: white;
+
+            padding: 20px;
+
+            margin-top: 20px;
+
+            border-radius: 10px;
+
+        }
+
+
+        .resultat-rad {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr 120px;
+
+            gap: 10px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #ddd;
+
+            line-height: 1.5;
+
+        }
+
+
+        .resultat-rad:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .etappe {
+
+            font-weight: bold;
+
+        }
+
+
+        .adresse-fra {
+
+            font-weight: bold;
+
+        }
+
+
+        .adresse-til {
+
+            color: #333;
+
+        }
+
+
+        .tid {
+
+            font-weight: bold;
+
+            text-align: right;
+
+        }
+
+
+        .avstand {
+
+            color: #666;
+
+            font-size: 13px;
+
+            font-weight: normal;
+
+        }
+
+
+        /* =========================================================
+           TOTAL
+        ========================================================= */
+
+        .total {
+
+            margin-top: 20px;
+
+            padding-top: 15px;
+
+            border-top: 2px solid #ddd;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+        }
+
+
+        .total-avstand {
+
+            margin-top: 8px;
+
+            font-size: 18px;
+
+            font-weight: normal;
+
+        }
+
+
+        /* =========================================================
+           FEIL
+        ========================================================= */
+
+        .status.error {
+
+            background: #fdeaea;
+
+            color: #a40000;
+
+        }
+
+
+        .status.success {
+
+            background: #eaf7ea;
+
+            color: #176b17;
+
+        }
+
+
+        /* =========================================================
+           LASTING
+        ========================================================= */
+
+        .loading {
+
+            display: inline-block;
+
+            margin-left: 5px;
+
+        }
+
+
+        /* =========================================================
+           INFORMASJON OM API
+        ========================================================= */
+
+        .api-info {
+
+            margin-top: 15px;
+
+            padding: 10px;
+
+            background: #f5f5f5;
+
+            border-radius: 6px;
+
+            font-size: 13px;
+
+            color: #555;
+
+        }
+
+
+        /* =========================================================
+           HAMBURGERKNAPP
+        ========================================================= */
+
+        .menu-toggle {
+
+            display: none;
+
+            color: rgb(12, 12, 12) !important;
+
+            font-size: 36px !important;
+
+            line-height: 1 !important;
+
+            border: none !important;
+
+            cursor: pointer;
+
+            z-index: 1000;
+
+        }
+
+
+        @media (max-width: 768px) {
+
+            .menu-toggle {
+
+                display: block !important;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           MOBIL
+        ========================================================= */
+
+        @media (max-width: 600px) {
+
+            .adresse {
+
+                flex-direction: row;
+
+                align-items: center;
+
+            }
+
+
+            .adresse input {
+
+                min-width: 0;
+
+            }
+
+
+            .nummer {
+
+                width: 25px;
+
+                font-size: 14px;
+
+            }
+
+
+            .resultat-rad {
+
+                grid-template-columns: 1fr;
+
+                gap: 4px;
+
+            }
+
+
+            .tid {
+
+                text-align: left;
+
+            }
+
+
+            .knapper {
+
+                flex-direction: column;
+
+            }
+
+
+            .knapper button {
+
+                width: 100%;
+
+            }
+
+
+            .resultat {
+
+                padding: 15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+
+    <!-- =====================================================
+         LOGO
+    ====================================================== -->
+
+    <div class="brand">
+
+        <img
+            src="images/logo-192.png"
+            alt="Team Sør">
+
+    </div>
+
+
+    <!-- =====================================================
+         NAVIGASJON
+    ====================================================== -->
+
+    <nav class="nav"
+         aria-label="Hovedmeny">
+
+
+        <button
+            class="menu-toggle"
+            aria-label="Åpne meny"
+            id="menuToggle"
+            aria-expanded="false">
+
+            ☰
+
+        </button>
+
+
+        <ul id="menu">
+
+
+            <li>
+                <a href="index.html">
+                    Hjem
+                </a>
+            </li>
+
+
+            <li>
+                <a href="ekstravakter.html">
+                    Vaktbok
+                </a>
+            </li>
+
+
+            <li>
+                <a href="arbeidsliste.html">
+                    Merkantil
+                </a>
+            </li>
+
+
+            <li>
+                <a href="sjekkliste.html">
+                    Rutiner
+                </a>
+            </li>
+
+
+            <li>
+                <a href="belastning.html"
+                   aria-current="page">
+
+                    Arbeidsbelastning
+
+                </a>
+            </li>
+
+
+            <li>
+                <a href="arbeidsmiljø.html">
+                    Arbeidsmiljø
+                </a>
+            </li>
+
+
+            <li>
+                <a href="Bursdager.html">
+                    Bursdager
+                </a>
+            </li>
+
+
+            <li>
+                <a href="album.html">
+                    Sør-album
+                </a>
+            </li>
+
+
+        </ul>
+
+
+    </nav>
+
+
+</header>
+
+
+
+<!-- =========================================================
+     HOVEDINNHOLD
+========================================================= -->
+
+<main id="main-content"
+      class="container">
+
+
+    <!-- =====================================================
+         OVERSKRIFT
+    ====================================================== -->
+
+    <section class="hero card">
+
+
+        <h2>
+            Arbeidsbelastning
+        </h2>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         GANGTID
+    ====================================================== -->
+
+    <h1>
+        🚶 Beregn gangtid
+    </h1>
+
+
+
+    <div class="info">
+
+
+        <p>
+
+            Skriv inn adressene i den rekkefølgen
+            du besøker brukerne.
+
+        </p>
+
+
+        <p>
+
+            Verktøyet beregner gangtid og
+            gangavstand mellom hvert stopp
+            og total gangtid.
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Ikke skriv navn eller andre
+                personopplysninger om brukere.
+            </strong>
+
+        </p>
+
+
+        <div class="api-info">
+
+            🚶 Beregningen bruker Google Routes API
+            via Team Sør sitt Gangtid API.
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ADRESSER
+    ====================================================== -->
+
+    <div id="adresser">
+
+
+        <!-- ADRESSE 1 -->
+
+        <div class="adresse">
+
+            <span class="nummer">
+                1.
+            </span>
+
+            <input
+                type="text"
+                placeholder="For eksempel: Schweigaards gate 10, Oslo"
+                autocomplete="street-address">
+
+        </div>
+
+
+
+        <!-- ADRESSE 2 -->
+
+        <div class="adresse">
+
+            <span class="nummer">
+                2.
+            </span>
+
+            <input
+                type="text"
+                placeholder="Neste adresse"
+                autocomplete="street-address">
+
+        </div>
+
+
+
+        <!-- ADRESSE 3 -->
+
+        <div class="adresse">
+
+            <span class="nummer">
+                3.
+            </span>
+
+            <input
+                type="text"
+                placeholder="Neste adresse"
+                autocomplete="street-address">
+
+        </div>
+
+
+
+        <!-- ADRESSE 4 -->
+
+        <div class="adresse">
+
+            <span class="nummer">
+                4.
+            </span>
+
+            <input
+                type="text"
+                placeholder="Neste adresse"
+                autocomplete="street-address">
+
+        </div>
+
+
+    </div>
+<br>
+
+
+    <!-- =====================================================
+         KNAPPER
+    ====================================================== -->
+
+    <div class="knapper">
+
+
+        <button
+            onclick="leggTilAdresse()">
+
+            + Legg til adresse
+
+        </button>
+
+
+        <button
+            class="secondary"
+            onclick="beregnGangtid()">
+
+            🚶 Beregn gangtid
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         STATUS
+    ====================================================== -->
+
+    <div id="status"
+         class="status"
+         style="display:none;">
+
+    </div>
+
+
+
+    <!-- =====================================================
+         RESULTAT
+    ====================================================== -->
+
+    <div id="resultat"
+         class="resultat"
+         style="display:none;">
+
+
+        <h2>
+            Resultat
+        </h2>
+
+
+        <div id="resultatListe">
+
+        </div>
+
+
+        <div id="total"
+             class="total">
+
+        </div>
+
+
+        <div id="totalAvstand"
+             class="total-avstand">
+
+        </div>
+
+
+    </div>
+<br>
+
+
+    <!-- =====================================================
+         MELDING
+    ====================================================== -->
+
+    
+
+
+
+    <!-- =====================================================
+         DOKUMENTASJON
+    ====================================================== -->
+
+    <section class="card">
+
+        <h1>
+            Dokumentasjon-tid
+        </h1>
+
+    </section> 
+
+    <section class="card">
+        <h2>Legg tiden du har brukt på dokumentasjon i arbeidslisten din:</h2>
+
+        <br>
+
+
+        <p>
+            1- Finn brukeren under brukersøk
+        </p>
+
+
+        <p>
+            2- Klikk på navnet
+        </p>
+
+
+        <p>
+            3- Klikk på plusstegnet nederst til høyre
+        </p>
+
+
+        <p>
+            4- Velg nytt besøk
+        </p>
+
+
+        <p>
+            5- Velg dato, starttid og sluttid
+        </p>
+
+
+        <p>
+            6- Legg til oppdrag
+        </p>
+
+
+        <p>
+            7- Velg "Ekstra besøk"
+        </p>
+
+
+        <p>
+            8- Skriv tiden du har brukt på dokumentasjonen
+            (varighet)
+        </p>
+
+
+        <p>
+            9- Lagre
+        </p>
+
+
+        <p>
+            10- Nå kommer besøket på din liste
+        </p>
+
+
+        <p>
+            11- Registrer og skriv det du skal dokumentere
+            om brukeren der
+        </p>
+
+        <br>
+    </section>
+
+    <br>
+
+    <!-- =====================================================
+         ANNEN IKKE-PLANLAGT TID
+    ====================================================== -->
+    <section class="card">
+    <h2>
+
+        Gjør det samme for å registrere tiden når du
+        henter medisiner fra apoteket, har telefonsamtaler
+        om brukere, samtaler med pårørende eller når du
+        må gjøre noe som ikke er planlagt i arbeidslisten din.
+
+    </h2>
+</section>
+
+    <section class="card">
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     GANGTID JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   GANGTID API
+=========================================================
+
+   Dette er adressen til Cloud Run-tjenesten.
+
+   API-et mottar:
+
+   {
+       origin: "...",
+       destination: "..."
+   }
+
+   og returnerer blant annet:
+
+   distance
+   walkingTime
+   polyline
+
+========================================================= */
+
+const GANGTID_API =
+    "https://gangtid-740297234658.europe-north1.run.app/gangtid";
+
+
+
+/* =========================================================
+   ANTALL ADRESSER
+========================================================= */
+
+let antallAdresser = 4;
+
+
+
+/* =========================================================
+   LEGG TIL ADRESSE
+========================================================= */
+
+function leggTilAdresse() {
+
+
+    antallAdresser++;
+
+
+    const container =
+        document.getElementById("adresser");
+
+
+    const div =
+        document.createElement("div");
+
+
+    div.className =
+        "adresse";
+
+
+    div.innerHTML = `
+
+        <span class="nummer">
+
+            ${antallAdresser}.
+
+        </span>
+
+
+        <input
+            type="text"
+            placeholder="Neste adresse"
+            autocomplete="street-address">
+
+    `;
+
+
+    container.appendChild(div);
+
+
+}
+
+
+
+/* =========================================================
+   STATUSMELDING
+========================================================= */
+
+function visStatus(
+    melding,
+    type = ""
+) {
+
+
+    const status =
+        document.getElementById("status");
+
+
+    status.style.display =
+        "block";
+
+
+    status.textContent =
+        melding;
+
+
+    status.className =
+        "status";
+
+
+    if (type) {
+
+        status.classList.add(type);
+
+    }
+
+}
+
+
+
+/* =========================================================
+   HENT ALLE ADRESSER
+========================================================= */
+
+function hentAdresser() {
+
+
+    const inputs =
+        document.querySelectorAll(
+            "#adresser input"
+        );
+
+
+    const adresser = [];
+
+
+    inputs.forEach(input => {
+
+
+        const adresse =
+            input.value.trim();
+
+
+        if (adresse !== "") {
+
+            adresser.push(adresse);
+
+        }
+
+    });
+
+
+    return adresser;
+
+}
+
+
+
+/* =========================================================
+   HOVEDFUNKSJON
+========================================================= */
+
+async function beregnGangtid() {
+
+
+    const adresser =
+        hentAdresser();
+
+
+    /* ---------------------------------------------------------
+       Minst to adresser
+    --------------------------------------------------------- */
+
+    if (adresser.length < 2) {
+
+
+        alert(
+            "Du må skrive inn minst to adresser."
+        );
+
+
+        return;
+
+    }
+
+
+
+    /* ---------------------------------------------------------
+       Skjul gammelt resultat
+    --------------------------------------------------------- */
+
+    document.getElementById(
+        "resultat"
+    ).style.display = "none";
+
+
+
+    visStatus(
+        "🚶 Beregner gangtid..."
+    );
+
+
+
+    try {
+
+
+        const resultater = [];
+
+
+        let totalSekunder = 0;
+
+
+        let totalMeter = 0;
+
+
+
+        /* =====================================================
+           BEREGN HVER ETAPPE
+        ===================================================== */
+
+        for (
+            let i = 0;
+            i < adresser.length - 1;
+            i++
+        ) {
+
+
+            const fra =
+                adresser[i];
+
+
+            const til =
+                adresser[i + 1];
+
+
+
+            visStatus(
+
+                `🚶 Beregner etappe ${i + 1} av ${adresser.length - 1}...`
+
+            );
+
+
+
+            /* -------------------------------------------------
+               Send forespørsel til vårt Cloud Run API
+            ------------------------------------------------- */
+
+            const response =
+                await fetch(
+
+                    GANGTID_API,
+
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                origin:
+                                    fra,
+
+                                destination:
+                                    til
+
+                            })
+
+                    }
+
+                );
+
+
+
+            /* -------------------------------------------------
+               Kontroller HTTP-status
+            ------------------------------------------------- */
+
+            if (!response.ok) {
+
+
+                let detaljer =
+                    "";
+
+
+                try {
+
+                    const feil =
+                        await response.json();
+
+
+                    if (feil.error) {
+
+                        detaljer =
+                            feil.error;
+
+                    }
+
+                }
+
+                catch {
+
+                    // Ingen JSON-feil tilgjengelig
+
+                }
+
+
+                throw new Error(
+
+                    detaljer ||
+                    `API-feil (${response.status})`
+
+                );
+
+            }
+
+
+
+            /* -------------------------------------------------
+               Les JSON fra API-et
+            ------------------------------------------------- */
+
+            const data =
+                await response.json();
+
+
+
+            /* -------------------------------------------------
+               Kontroller API-svaret
+            ------------------------------------------------- */
+
+            if (
+                data.status !== "OK" ||
+                !data.walkingTime ||
+                !data.distance
+            ) {
+
+
+                throw new Error(
+
+                    data.error ||
+                    "Gangtid API returnerte ikke et gyldig resultat."
+
+                );
+
+            }
+
+
+
+            /* -------------------------------------------------
+               Hent gangtid
+            ------------------------------------------------- */
+
+            const sekunder =
+                Number(
+                    data.walkingTime.seconds
+                );
+
+
+
+            /* -------------------------------------------------
+               Hent avstand
+            ------------------------------------------------- */
+
+            const meter =
+                Number(
+                    data.distance.meters
+                );
+
+
+
+            /* -------------------------------------------------
+               Legg til totalen
+            ------------------------------------------------- */
+
+            totalSekunder +=
+                sekunder;
+
+
+            totalMeter +=
+                meter;
+
+
+
+            /* -------------------------------------------------
+               Lagre resultatet
+            ------------------------------------------------- */
+
+            resultater.push({
+
+                fra:
+                    fra,
+
+                til:
+                    til,
+
+                sekunder:
+                    sekunder,
+
+                meter:
+                    meter,
+
+                polyline:
+                    data.polyline || ""
+
+            });
+
+
+        }
+
+
+
+        /* =====================================================
+           VIS RESULTAT
+        ===================================================== */
+
+        visResultat(
+
+            resultater,
+
+            totalSekunder,
+
+            totalMeter
+
+        );
+
+
+
+        visStatus(
+
+            "✅ Beregningen er ferdig.",
+
+            "success"
+
+        );
+
+
+    }
+
+    catch (error) {
+
+
+        console.error(
+            "Feil:",
+            error
+        );
+
+
+        visStatus(
+
+            "❌ " +
+            error.message,
+
+            "error"
+
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   VIS RESULTAT
+========================================================= */
+
+function visResultat(
+
+    resultater,
+
+    totalSekunder,
+
+    totalMeter
+
+) {
+
+
+    const resultat =
+        document.getElementById(
+            "resultat"
+        );
+
+
+    const liste =
+        document.getElementById(
+            "resultatListe"
+        );
+
+
+    resultat.style.display =
+        "block";
+
+
+    liste.innerHTML =
+        "";
+
+
+
+    /* =====================================================
+       VIS HVER ETAPPE
+    ===================================================== */
+
+    resultater.forEach(
+
+        (rute, index) => {
+
+
+            const rad =
+                document.createElement(
+                    "div"
+                );
+
+
+            rad.className =
+                "resultat-rad";
+
+
+
+            rad.innerHTML = `
+
+                <div>
+
+                    <div class="etappe">
+
+                        Etappe ${index + 1}
+
+                    </div>
+
+
+                    <div class="adresse-fra">
+
+                        ${escapeHtml(rute.fra)}
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="adresse-til">
+
+                        → ${escapeHtml(rute.til)}
+
+                    </div>
+
+                </div>
+
+
+                <div class="tid">
+
+                    🚶 ${formaterTid(
+                        rute.sekunder
+                    )}
+
+                    <br>
+
+                    <span class="avstand">
+
+                        ${formaterAvstand(
+                            rute.meter
+                        )}
+
+                    </span>
+
+                </div>
+
+            `;
+
+
+            liste.appendChild(
+                rad
+            );
+
+        }
+
+    );
+
+
+
+    /* =====================================================
+       TOTAL GANGTID
+    ===================================================== */
+
+    document.getElementById(
+        "total"
+    ).textContent =
+
+        "🚶 Total gangtid: " +
+
+        formaterTid(
+            totalSekunder
+        );
+
+
+
+    /* =====================================================
+       TOTAL GANGAVSTAND
+    ===================================================== */
+
+    document.getElementById(
+        "totalAvstand"
+    ).textContent =
+
+        "📍 Total gangavstand: " +
+
+        formaterAvstand(
+            totalMeter
+        );
+
+}
+
+
+
+/* =========================================================
+   FORMATER TID
+========================================================= */
+
+function formaterTid(
+    sekunder
+) {
+
+
+    const minutter =
+        Math.round(
+            sekunder / 60
+        );
+
+
+    const timer =
+        Math.floor(
+            minutter / 60
+        );
+
+
+    const rest =
+        minutter % 60;
+
+
+
+    if (timer > 0) {
+
+
+        if (rest === 0) {
+
+            return `${timer} t`;
+
+        }
+
+
+        return `${timer} t ${rest} min`;
+
+    }
+
+
+
+    return `${rest} min`;
+
+}
+
+
+
+/* =========================================================
+   FORMATER AVSTAND
+========================================================= */
+
+function formaterAvstand(
+    meter
+) {
+
+
+    if (meter >= 1000) {
+
+
+        return (
+
+            (meter / 1000)
+            .toFixed(1)
+
+            + " km"
+
+        );
+
+    }
+
+
+
+    return (
+
+        Math.round(meter)
+
+        + " m"
+
+    );
+
+}
+
+
+
+/* =========================================================
+   SIKRERE VISNING AV ADRESSER
+=========================================================
+
+   Vi bruker denne funksjonen slik at en adresse som
+   inneholder HTML-tegn ikke kan tolkes som HTML.
+
+========================================================= */
+
+function escapeHtml(
+    tekst
+) {
+
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        tekst;
+
+
+    return div.innerHTML;
+
+}
+
+</script>
+
+
+
+<!-- =========================================================
+     SØK
+========================================================= -->
+
+<script
+    src="searchData.js"
+    defer>
+</script>
+
+
+<script
+    src="search.js"
+    defer>
+</script>
+
+
+
+<!-- =========================================================
+     APP
+========================================================= -->
+
+<script
+    type="module"
+    src="app.js">
+</script>
+
+
+</body>
+
+</html>
+```

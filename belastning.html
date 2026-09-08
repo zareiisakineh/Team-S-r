@@ -8,7 +8,6 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
 
-    <!-- Reduserer sjansen for at Google finner siden -->
     <meta name="robots"
           content="noindex, nofollow">
 
@@ -33,413 +32,585 @@
           href="images/logo-192.png">
 
 
-    <style>
+<style>
 
-        /* =========================================================
-           INFORMASJON
-        ========================================================= */
+/* =========================================================
+   INFORMASJON
+========================================================= */
 
-        .info {
+.info {
 
-            background: white;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 
-            padding: 15px;
+}
 
-            border-radius: 10px;
 
-            margin-bottom: 20px;
+/* =========================================================
+   ADRESSEFELT
+========================================================= */
 
-        }
+.adresse {
 
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
 
-        /* =========================================================
-           ADRESSEFELT
-        ========================================================= */
+}
 
-        .adresse {
 
-            display: flex;
+.adresse input {
 
-            gap: 10px;
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
 
-            margin-bottom: 10px;
+}
 
-            align-items: center;
 
-        }
+.nummer {
 
+    width: 35px;
+    padding-top: 0;
+    font-weight: bold;
+    flex-shrink: 0;
 
-        .adresse input {
+}
 
-            flex: 1;
 
-            padding: 12px;
+/* =========================================================
+   KNAPPER
+========================================================= */
 
-            border: 1px solid #ccc;
+button {
 
-            border-radius: 6px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    background: #2f5d9f;
+    color: white;
 
-            font-size: 16px;
+}
 
-            box-sizing: border-box;
 
-        }
+button:hover {
 
+    opacity: 0.9;
 
-        .nummer {
+}
 
-            width: 35px;
 
-            padding-top: 0;
+button:disabled {
 
-            font-weight: bold;
+    opacity: 0.5;
+    cursor: not-allowed;
 
-            flex-shrink: 0;
+}
 
-        }
 
+.knapper {
 
-        /* =========================================================
-           KNAPPER
-        ========================================================= */
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
 
-        button {
+}
 
-            padding: 12px 18px;
 
-            border: none;
+.secondary {
 
-            border-radius: 6px;
+    background: #666;
 
-            cursor: pointer;
+}
 
-            font-size: 16px;
 
-            background: #2f5d9f;
+/* =========================================================
+   STATUS
+========================================================= */
 
-            color: white;
+.status {
 
-        }
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 6px;
+    background: #eef3f8;
+    line-height: 1.5;
 
+}
 
-        button:hover {
 
-            opacity: 0.9;
+.status.error {
 
-        }
+    background: #fdeaea;
+    color: #a40000;
 
+}
 
-        .knapper {
 
-            display: flex;
+.status.success {
 
-            gap: 10px;
+    background: #eaf7ea;
+    color: #176b17;
 
-            margin-top: 15px;
+}
 
-            flex-wrap: wrap;
 
-        }
+/* =========================================================
+   RESULTAT
+========================================================= */
 
+.resultat {
 
-        .secondary {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
 
-            background: #666;
+}
 
-        }
 
+.resultat-rad {
 
-        /* =========================================================
-           STATUS
-        ========================================================= */
+    display: grid;
+    grid-template-columns: 1fr 1fr 120px;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+    line-height: 1.5;
 
-        .status {
+}
 
-            margin-top: 15px;
 
-            padding: 12px;
+.resultat-rad:last-child {
 
-            border-radius: 6px;
+    border-bottom: none;
 
-            background: #eef3f8;
+}
 
-            line-height: 1.5;
 
-        }
+.etappe {
 
+    font-weight: bold;
 
-        /* =========================================================
-           RESULTAT
-        ========================================================= */
+}
 
-        .resultat {
 
-            background: white;
+.adresse-fra {
 
-            padding: 20px;
+    font-weight: bold;
 
-            margin-top: 20px;
+}
 
-            border-radius: 10px;
 
-        }
+.adresse-til {
 
+    color: #333;
 
-        .resultat-rad {
+}
 
-            display: grid;
 
-            grid-template-columns: 1fr 1fr 120px;
+.tid {
 
-            gap: 10px;
+    font-weight: bold;
+    text-align: right;
 
-            padding: 12px 0;
+}
 
-            border-bottom: 1px solid #ddd;
 
-            line-height: 1.5;
+.avstand {
 
-        }
+    color: #666;
+    font-size: 13px;
+    font-weight: normal;
 
+}
 
-        .resultat-rad:last-child {
 
-            border-bottom: none;
+/* =========================================================
+   TOTAL
+========================================================= */
 
-        }
+.total {
 
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #ddd;
+    font-size: 22px;
+    font-weight: bold;
 
-        .etappe {
+}
 
-            font-weight: bold;
 
-        }
+.total-avstand {
 
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: normal;
 
-        .adresse-fra {
+}
 
-            font-weight: bold;
 
-        }
+/* =========================================================
+   API INFO
+========================================================= */
 
+.api-info {
 
-        .adresse-til {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #555;
 
-            color: #333;
+}
 
-        }
 
+/* =========================================================
+   TIMERSEKSJON
+========================================================= */
 
-        .tid {
+.timer-container {
 
-            font-weight: bold;
+    margin-top: 25px;
 
-            text-align: right;
+}
 
-        }
 
+.timer-card {
 
-        .avstand {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 
-            color: #666;
+}
 
-            font-size: 13px;
 
-            font-weight: normal;
+.timer-card h2 {
 
-        }
+    margin-top: 0;
+    margin-bottom: 8px;
 
+}
 
-        /* =========================================================
-           TOTAL
-        ========================================================= */
 
-        .total {
+.timer-beskrivelse {
 
-            margin-top: 20px;
+    color: #555;
+    margin-bottom: 15px;
 
-            padding-top: 15px;
+}
 
-            border-top: 2px solid #ddd;
 
-            font-size: 22px;
+.timer-display {
 
-            font-weight: bold;
+    font-size: 42px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    font-variant-numeric: tabular-nums;
 
-        }
+}
 
 
-        .total-avstand {
+.timer-status {
 
-            margin-top: 8px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
 
-            font-size: 18px;
+}
 
-            font-weight: normal;
 
-        }
+.start-knapp {
 
+    width: 100%;
+    font-size: 18px;
+    padding: 15px;
 
-        /* =========================================================
-           FEIL
-        ========================================================= */
+}
 
-        .status.error {
 
-            background: #fdeaea;
+.stop-knapp {
 
-            color: #a40000;
+    width: 100%;
+    background: #a40000;
+    font-size: 18px;
+    padding: 15px;
 
-        }
+}
 
 
-        .status.success {
+.timer-info {
 
-            background: #eaf7ea;
+    background: #eef3f8;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 15px;
+    line-height: 1.5;
 
-            color: #176b17;
+}
 
-        }
 
+/* =========================================================
+   AKTIV TIMER
+========================================================= */
 
-        /* =========================================================
-           LASTING
-        ========================================================= */
+.aktiv-timer {
 
-        .loading {
+    background: #fff8e6;
+    border: 2px solid #e0a800;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
 
-            display: inline-block;
+}
 
-            margin-left: 5px;
 
-        }
+.aktiv-timer h2 {
 
+    margin-top: 0;
 
-        /* =========================================================
-           INFORMASJON OM API
-        ========================================================= */
+}
 
-        .api-info {
 
-            margin-top: 15px;
+.aktiv-timer-type {
 
-            padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
 
-            background: #f5f5f5;
+}
 
-            border-radius: 6px;
 
-            font-size: 13px;
+.aktiv-timer-display {
 
-            color: #555;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    margin: 15px 0;
+    font-variant-numeric: tabular-nums;
 
-        }
+}
 
 
-        /* =========================================================
-           HAMBURGERKNAPP
-        ========================================================= */
+/* =========================================================
+   DAGSREGISTRERINGER
+========================================================= */
 
-        .menu-toggle {
+.registreringer {
 
-            display: none;
+    margin-top: 25px;
 
-            color: rgb(12, 12, 12) !important;
+}
 
-            font-size: 36px !important;
 
-            line-height: 1 !important;
+.registrering {
 
-            border: none !important;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 5px solid #2f5d9f;
 
-            cursor: pointer;
+}
 
-            z-index: 1000;
 
-        }
+.registrering-header {
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 
-        @media (max-width: 768px) {
+}
 
-            .menu-toggle {
 
-                display: block !important;
+.registrering-type {
 
-            }
+    font-weight: bold;
+    font-size: 17px;
 
-        }
+}
 
 
-        /* =========================================================
-           MOBIL
-        ========================================================= */
+.registrering-tid {
 
-        @media (max-width: 600px) {
+    font-weight: bold;
 
-            .adresse {
+}
 
-                flex-direction: row;
 
-                align-items: center;
+.registrering-detaljer {
 
-            }
+    margin-top: 8px;
+    color: #555;
+    font-size: 14px;
 
+}
 
-            .adresse input {
 
-                min-width: 0;
+.slett-knapp {
 
-            }
+    background: #777;
+    padding: 7px 10px;
+    font-size: 13px;
 
+}
 
-            .nummer {
 
-                width: 25px;
+.total-registrert {
 
-                font-size: 14px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
 
-            }
+}
 
 
-            .resultat-rad {
+/* =========================================================
+   HAMBURGERKNAPP
+========================================================= */
 
-                grid-template-columns: 1fr;
+.menu-toggle {
 
-                gap: 4px;
+    display: none;
 
-            }
+    color: rgb(12, 12, 12) !important;
 
+    font-size: 36px !important;
 
-            .tid {
+    line-height: 1 !important;
 
-                text-align: left;
+    border: none !important;
 
-            }
+    cursor: pointer;
 
+    z-index: 1000;
 
-            .knapper {
+}
 
-                flex-direction: column;
 
-            }
+@media (max-width: 768px) {
 
+    .menu-toggle {
 
-            .knapper button {
+        display: block !important;
 
-                width: 100%;
+    }
 
-            }
+}
 
 
-            .resultat {
+/* =========================================================
+   MOBIL
+========================================================= */
 
-                padding: 15px;
+@media (max-width: 600px) {
 
-            }
+    .adresse {
 
-        }
+        flex-direction: row;
+        align-items: center;
 
-    </style>
+    }
+
+
+    .adresse input {
+
+        min-width: 0;
+
+    }
+
+
+    .nummer {
+
+        width: 25px;
+        font-size: 14px;
+
+    }
+
+
+    .resultat-rad {
+
+        grid-template-columns: 1fr;
+        gap: 4px;
+
+    }
+
+
+    .tid {
+
+        text-align: left;
+
+    }
+
+
+    .knapper {
+
+        flex-direction: column;
+
+    }
+
+
+    .knapper button {
+
+        width: 100%;
+
+    }
+
+
+    .resultat {
+
+        padding: 15px;
+
+    }
+
+
+    .timer-card {
+
+        padding: 15px;
+
+    }
+
+
+    .timer-display {
+
+        font-size: 36px;
+
+    }
+
+
+    .aktiv-timer-display {
+
+        font-size: 40px;
+
+    }
+
+
+    .registrering-header {
+
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -450,9 +621,7 @@
 <header class="topbar">
 
 
-    <!-- =====================================================
-         LOGO
-    ====================================================== -->
+    <!-- LOGO -->
 
     <div class="brand">
 
@@ -463,9 +632,7 @@
     </div>
 
 
-    <!-- =====================================================
-         NAVIGASJON
-    ====================================================== -->
+    <!-- NAVIGASJON -->
 
     <nav class="nav"
          aria-label="Hovedmeny">
@@ -553,7 +720,6 @@
 </header>
 
 
-
 <!-- =========================================================
      HOVEDINNHOLD
 ========================================================= -->
@@ -562,30 +728,364 @@
       class="container">
 
 
-    <!-- =====================================================
-         OVERSKRIFT
-    ====================================================== -->
+    <!-- OVERSKRIFT -->
 
     <section class="hero card">
-
 
         <h2>
             Arbeidsbelastning
         </h2>
-
 
     </section>
 
 
 
     <!-- =====================================================
-         GANGTID
+         DEL 1 – FAKTISK TIDSREGISTRERING
+    ====================================================== -->
+
+    <h1>
+        ⏱️ Registrer faktisk arbeidstid
+    </h1>
+
+
+    <div class="info">
+
+        <p>
+            Her kan du registrere tiden du faktisk bruker
+            på ulike arbeidsoppgaver.
+        </p>
+
+        <p>
+            Trykk <strong>Start</strong> når du begynner
+            og <strong>Stopp</strong> når du er ferdig.
+        </p>
+
+        <p>
+            Registreringen gjelder tiden du faktisk bruker,
+            ikke tiden som står planlagt i arbeidslisten.
+        </p>
+
+        <p>
+            <strong>
+                Ikke skriv navn eller andre personopplysninger
+                om brukere.
+            </strong>
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         AKTIV TIMER
+    ====================================================== -->
+
+    <div id="aktivTimer"
+         class="aktiv-timer"
+         style="display:none;">
+
+        <h2>
+            🟢 Aktiv registrering
+        </h2>
+
+        <div id="aktivTimerType"
+             class="aktiv-timer-type">
+
+        </div>
+
+        <div id="aktivTimerDisplay"
+             class="aktiv-timer-display">
+
+            00:00:00
+
+        </div>
+
+        <button
+            id="stoppAktivTimer"
+            class="stop-knapp"
+            onclick="stoppAktivTimer()">
+
+            ⏹ Stopp og registrer
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         AKTIVITETER
+    ====================================================== -->
+
+    <div id="timerContainer"
+         class="timer-container">
+
+
+        <!-- OVERGANG -->
+
+        <div class="timer-card">
+
+            <h2>
+                🚶 Overgang dør → dør
+            </h2>
+
+            <p class="timer-beskrivelse">
+
+                Registrer tiden fra du forlater døren
+                hos én bruker til du kommer frem til
+                døren hos neste bruker.
+
+            </p>
+
+
+            <div class="timer-info">
+
+                Dette inkluderer blant annet korridor,
+                heis, trapper, utgang fra bygningen,
+                utendørs gange og inngang i neste bygning.
+
+            </div>
+
+            <br>
+
+            <button
+                id="start-overgang"
+                class="start-knapp"
+                onclick="startTimer('overgang')">
+
+                ▶ Start overgang
+
+            </button>
+
+        </div>
+
+
+
+        <!-- DOKUMENTASJON -->
+
+        <div class="timer-card">
+
+            <h2>
+                📝 Dokumentasjon
+            </h2>
+
+            <p class="timer-beskrivelse">
+
+                Registrer tiden du bruker på nødvendig
+                dokumentasjon.
+
+            </p>
+
+
+            <button
+                id="start-dokumentasjon"
+                class="start-knapp"
+                onclick="startTimer('dokumentasjon')">
+
+                ▶ Start dokumentasjon
+
+            </button>
+
+        </div>
+
+
+
+        <!-- APOTEK -->
+
+        <div class="timer-card">
+
+            <h2>
+                💊 Apotek / medisinhenting
+            </h2>
+
+            <p class="timer-beskrivelse">
+
+                Registrer tiden du bruker på å hente
+                medisiner eller gjøre nødvendig arbeid
+                på apotek.
+
+            </p>
+
+
+            <button
+                id="start-apotek"
+                class="start-knapp"
+                onclick="startTimer('apotek')">
+
+                ▶ Start apotek
+
+            </button>
+
+        </div>
+
+
+
+        <!-- TELEFON -->
+
+        <div class="timer-card">
+
+            <h2>
+                📞 Telefonsamtale
+            </h2>
+
+            <p class="timer-beskrivelse">
+
+                Registrer nødvendig arbeidstid brukt
+                på telefonsamtaler.
+
+            </p>
+
+
+            <button
+                id="start-telefon"
+                class="start-knapp"
+                onclick="startTimer('telefon')">
+
+                ▶ Start telefonsamtale
+
+            </button>
+
+        </div>
+
+
+
+        <!-- PÅRØRENDE -->
+
+        <div class="timer-card">
+
+            <h2>
+                👨‍👩‍👧 Samtale med pårørende
+            </h2>
+
+            <p class="timer-beskrivelse">
+
+                Registrer nødvendig arbeidstid brukt
+                på samtaler med pårørende.
+
+            </p>
+
+
+            <button
+                id="start-parorende"
+                class="start-knapp"
+                onclick="startTimer('parorende')">
+
+                ▶ Start samtale
+
+            </button>
+
+        </div>
+
+
+
+        <!-- UPLANLAGT -->
+
+        <div class="timer-card">
+
+            <h2>
+                ⚠️ Uplanlagt oppgave
+            </h2>
+
+            <p class="timer-beskrivelse">
+
+                Registrer arbeid som ikke var planlagt
+                i arbeidslisten.
+
+            </p>
+
+
+            <button
+                id="start-uplanlagt"
+                class="start-knapp"
+                onclick="startTimer('uplanlagt')">
+
+                ▶ Start uplanlagt oppgave
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ANNEN -->
+
+        <div class="timer-card">
+
+            <h2>
+                ➕ Annet
+            </h2>
+
+            <p class="timer-beskrivelse">
+
+                Registrer annen nødvendig arbeidstid
+                som ikke passer i kategoriene over.
+
+            </p>
+
+
+            <button
+                id="start-annet"
+                class="start-knapp"
+                onclick="startTimer('annet')">
+
+                ▶ Start annet
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         DAGSREGISTRERINGER
+    ====================================================== -->
+
+    <section class="registreringer">
+
+        <h2>
+            📋 Dagens registreringer
+        </h2>
+
+
+        <div id="ingenRegistreringer"
+             class="info">
+
+            Ingen registreringer ennå.
+
+        </div>
+
+
+        <div id="registreringerListe">
+
+        </div>
+
+
+        <div id="totalRegistrert"
+             class="total-registrert">
+
+            ⏱️ Total registrert tid i dag: 0 min
+
+        </div>
+
+    </section>
+
+
+
+    <br>
+
+
+
+    <!-- =====================================================
+         DEL 2 – BEREGN GANGTID
     ====================================================== -->
 
     <h1>
         🚶 Beregn gangtid
     </h1>
-
 
 
     <div class="info">
@@ -630,14 +1130,10 @@
 
 
 
-    <!-- =====================================================
-         ADRESSER
-    ====================================================== -->
+    <!-- ADRESSER -->
 
     <div id="adresser">
 
-
-        <!-- ADRESSE 1 -->
 
         <div class="adresse">
 
@@ -654,8 +1150,6 @@
 
 
 
-        <!-- ADRESSE 2 -->
-
         <div class="adresse">
 
             <span class="nummer">
@@ -670,8 +1164,6 @@
         </div>
 
 
-
-        <!-- ADRESSE 3 -->
 
         <div class="adresse">
 
@@ -688,8 +1180,6 @@
 
 
 
-        <!-- ADRESSE 4 -->
-
         <div class="adresse">
 
             <span class="nummer">
@@ -705,12 +1195,12 @@
 
 
     </div>
-<br>
 
 
-    <!-- =====================================================
-         KNAPPER
-    ====================================================== -->
+    <br>
+
+
+    <!-- KNAPPER -->
 
     <div class="knapper">
 
@@ -736,9 +1226,7 @@
 
 
 
-    <!-- =====================================================
-         STATUS
-    ====================================================== -->
+    <!-- STATUS -->
 
     <div id="status"
          class="status"
@@ -748,9 +1236,7 @@
 
 
 
-    <!-- =====================================================
-         RESULTAT
-    ====================================================== -->
+    <!-- RESULTAT -->
 
     <div id="resultat"
          class="resultat"
@@ -780,31 +1266,30 @@
 
 
     </div>
-<br>
 
 
-    <!-- =====================================================
-         MELDING
-    ====================================================== -->
-
-    
+    <br>
 
 
 
     <!-- =====================================================
-         DOKUMENTASJON
+         INFORMASJON OM DOKUMENTASJON
     ====================================================== -->
 
     <section class="card">
 
         <h1>
-            Dokumentasjon-tid
+            Dokumentasjon
         </h1>
 
-    </section> 
+    </section>
+
 
     <section class="card">
-        <h2>Legg tiden du har brukt på dokumentasjon i arbeidslisten din:</h2>
+
+        <h2>
+            Registrering av dokumentasjon i arbeidslisten
+        </h2>
 
         <br>
 
@@ -846,7 +1331,6 @@
 
         <p>
             8- Skriv tiden du har brukt på dokumentasjonen
-            (varighet)
         </p>
 
 
@@ -865,27 +1349,8 @@
             om brukeren der
         </p>
 
+
         <br>
-    </section>
-
-    <br>
-
-    <!-- =====================================================
-         ANNEN IKKE-PLANLAGT TID
-    ====================================================== -->
-    <section class="card">
-    <h2>
-
-        Gjør det samme for å registrere tiden når du
-        henter medisiner fra apoteket, har telefonsamtaler
-        om brukere, samtaler med pårørende eller når du
-        må gjøre noe som ikke er planlagt i arbeidslisten din.
-
-    </h2>
-</section>
-
-    <section class="card">
-
 
     </section>
 
@@ -895,49 +1360,626 @@
 
 
 <!-- =========================================================
-     GANGTID JAVASCRIPT
+     JAVASCRIPT – TIDSREGISTRERING
 ========================================================= -->
 
 <script>
 
 
 /* =========================================================
-   GANGTID API
-=========================================================
-
-   Dette er adressen til Cloud Run-tjenesten.
-
-   API-et mottar:
-
-   {
-       origin: "...",
-       destination: "..."
-   }
-
-   og returnerer blant annet:
-
-   distance
-   walkingTime
-   polyline
-
+   AKTIVITETSNAVN
 ========================================================= */
 
-const GANGTID_API =
-    "https://gangtid-740297234658.europe-north1.run.app/gangtid";
+const aktivitetNavn = {
+
+    overgang:
+        "🚶 Overgang dør → dør",
+
+    dokumentasjon:
+        "📝 Dokumentasjon",
+
+    apotek:
+        "💊 Apotek / medisinhenting",
+
+    telefon:
+        "📞 Telefonsamtale",
+
+    parorende:
+        "👨‍👩‍👧 Samtale med pårørende",
+
+    uplanlagt:
+        "⚠️ Uplanlagt oppgave",
+
+    annet:
+        "➕ Annet"
+
+};
 
 
 
 /* =========================================================
-   ANTALL ADRESSER
+   TIMERDATA
+========================================================= */
+
+let aktivTimer = null;
+
+let timerInterval = null;
+
+let registreringer = [];
+
+
+
+/* =========================================================
+   START TIMER
+========================================================= */
+
+function startTimer(type) {
+
+
+    /* -------------------------------------------------------
+       Kontroller om en annen timer allerede kjører
+    ------------------------------------------------------- */
+
+    if (aktivTimer !== null) {
+
+        alert(
+            "En annen timer er allerede aktiv.\n\n" +
+            "Stopp den aktive timeren før du starter en ny."
+        );
+
+        return;
+
+    }
+
+
+    /* -------------------------------------------------------
+       Lagre starttid
+    ------------------------------------------------------- */
+
+    aktivTimer = {
+
+        type: type,
+
+        start:
+            Date.now()
+
+    };
+
+
+    /* -------------------------------------------------------
+       Vis aktiv timer
+    ------------------------------------------------------- */
+
+    document.getElementById(
+        "aktivTimer"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "aktivTimerType"
+    ).textContent =
+        aktivitetNavn[type];
+
+
+    oppdaterAktivTimer();
+
+
+    timerInterval =
+        setInterval(
+            oppdaterAktivTimer,
+            1000
+        );
+
+
+    /* -------------------------------------------------------
+       Deaktiver alle startknapper
+    ------------------------------------------------------- */
+
+    oppdaterStartknapper();
+
+}
+
+
+
+/* =========================================================
+   OPPDATER AKTIV TIMER
+========================================================= */
+
+function oppdaterAktivTimer() {
+
+
+    if (!aktivTimer) {
+
+        return;
+
+    }
+
+
+    const sekunder =
+        Math.floor(
+            (Date.now() - aktivTimer.start) / 1000
+        );
+
+
+    document.getElementById(
+        "aktivTimerDisplay"
+    ).textContent =
+        formaterTimer(sekunder);
+
+}
+
+
+
+/* =========================================================
+   STOPP AKTIV TIMER
+========================================================= */
+
+function stoppAktivTimer() {
+
+
+    if (!aktivTimer) {
+
+        return;
+
+    }
+
+
+    const slutt =
+        Date.now();
+
+
+    const sekunder =
+        Math.floor(
+            (slutt - aktivTimer.start) / 1000
+        );
+
+
+    const registrering = {
+
+        id:
+            Date.now(),
+
+        type:
+            aktivTimer.type,
+
+        start:
+            aktivTimer.start,
+
+        slutt:
+            slutt,
+
+        sekunder:
+            sekunder
+
+    };
+
+
+    registreringer.push(
+        registrering
+    );
+
+
+    /* -------------------------------------------------------
+       Stopp intervallet
+    ------------------------------------------------------- */
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    timerInterval =
+        null;
+
+
+    aktivTimer =
+        null;
+
+
+    /* -------------------------------------------------------
+       Skjul aktiv timer
+    ------------------------------------------------------- */
+
+    document.getElementById(
+        "aktivTimer"
+    ).style.display = "none";
+
+
+    /* -------------------------------------------------------
+       Aktiver startknapper igjen
+    ------------------------------------------------------- */
+
+    oppdaterStartknapper();
+
+
+    /* -------------------------------------------------------
+       Oppdater listen
+    ------------------------------------------------------- */
+
+    visRegistreringer();
+
+
+    /* -------------------------------------------------------
+       Status
+    ------------------------------------------------------- */
+
+    visStatus(
+
+        "✅ Registrert " +
+        formaterTimer(sekunder) +
+        " på " +
+        aktivitetNavn[registrering.type],
+
+        "success"
+
+    );
+
+}
+
+
+
+/* =========================================================
+   AKTIVER / DEAKTIVER STARTKNAPPER
+========================================================= */
+
+function oppdaterStartknapper() {
+
+
+    const knapper =
+        document.querySelectorAll(
+            ".start-knapp"
+        );
+
+
+    knapper.forEach(
+        knapp => {
+
+            knapp.disabled =
+                aktivTimer !== null;
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   VIS REGISTRERINGER
+========================================================= */
+
+function visRegistreringer() {
+
+
+    const liste =
+        document.getElementById(
+            "registreringerListe"
+        );
+
+
+    const ingen =
+        document.getElementById(
+            "ingenRegistreringer"
+        );
+
+
+    if (registreringer.length === 0) {
+
+        ingen.style.display =
+            "block";
+
+        liste.innerHTML =
+            "";
+
+        oppdaterTotal();
+
+        return;
+
+    }
+
+
+    ingen.style.display =
+        "none";
+
+
+    liste.innerHTML =
+        "";
+
+
+    /* -------------------------------------------------------
+       Nyeste registrering først
+    ------------------------------------------------------- */
+
+    const sortert =
+        [...registreringer].reverse();
+
+
+    sortert.forEach(
+        registrering => {
+
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "registrering";
+
+
+            const start =
+                new Date(
+                    registrering.start
+                );
+
+
+            const slutt =
+                new Date(
+                    registrering.slutt
+                );
+
+
+            const startTid =
+                start.toLocaleTimeString(
+                    "no-NO",
+                    {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    }
+                );
+
+
+            const sluttTid =
+                slutt.toLocaleTimeString(
+                    "no-NO",
+                    {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    }
+                );
+
+
+            div.innerHTML = `
+
+                <div class="registrering-header">
+
+                    <div class="registrering-type">
+
+                        ${escapeHtml(
+                            aktivitetNavn[
+                                registrering.type
+                            ]
+                        )}
+
+                    </div>
+
+
+                    <div class="registrering-tid">
+
+                        ${formaterTimer(
+                            registrering.sekunder
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div class="registrering-detaljer">
+
+                    ${startTid}
+                    –
+                    ${sluttTid}
+
+                </div>
+
+
+                <br>
+
+
+                <button
+                    class="slett-knapp"
+                    onclick="slettRegistrering(${registrering.id})">
+
+                    🗑 Slett
+
+                </button>
+
+            `;
+
+
+            liste.appendChild(
+                div
+            );
+
+        }
+    );
+
+
+    oppdaterTotal();
+
+}
+
+
+
+/* =========================================================
+   SLETT REGISTRERING
+========================================================= */
+
+function slettRegistrering(id) {
+
+
+    const bekreft =
+        confirm(
+            "Vil du slette denne registreringen?"
+        );
+
+
+    if (!bekreft) {
+
+        return;
+
+    }
+
+
+    registreringer =
+        registreringer.filter(
+            registrering =>
+                registrering.id !== id
+        );
+
+
+    visRegistreringer();
+
+}
+
+
+
+/* =========================================================
+   OPPDATER TOTAL
+========================================================= */
+
+function oppdaterTotal() {
+
+
+    const totalSekunder =
+        registreringer.reduce(
+
+            (sum, registrering) =>
+                sum +
+                registrering.sekunder,
+
+            0
+
+        );
+
+
+    document.getElementById(
+        "totalRegistrert"
+    ).textContent =
+
+        "⏱️ Total registrert tid i dag: " +
+
+        formaterTimer(
+            totalSekunder
+        );
+
+}
+
+
+
+/* =========================================================
+   FORMATER TIMER
+========================================================= */
+
+function formaterTimer(
+    sekunder
+) {
+
+
+    const timer =
+        Math.floor(
+            sekunder / 3600
+        );
+
+
+    const minutter =
+        Math.floor(
+            (sekunder % 3600) / 60
+        );
+
+
+    const sek =
+        sekunder % 60;
+
+
+    return (
+
+        String(timer).padStart(2, "0") +
+        ":" +
+        String(minutter).padStart(2, "0") +
+        ":" +
+        String(sek).padStart(2, "0")
+
+    );
+
+}
+
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+function visStatus(
+    melding,
+    type = ""
+) {
+
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    status.style.display =
+        "block";
+
+
+    status.textContent =
+        melding;
+
+
+    status.className =
+        "status";
+
+
+    if (type) {
+
+        status.classList.add(
+            type
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SIKRERE VISNING
+========================================================= */
+
+function escapeHtml(
+    tekst
+) {
+
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        tekst;
+
+
+    return div.innerHTML;
+
+}
+
+
+
+/* =========================================================
+   ADRESSER
 ========================================================= */
 
 let antallAdresser = 4;
 
 
-
-/* =========================================================
-   LEGG TIL ADRESSE
-========================================================= */
 
 function leggTilAdresse() {
 
@@ -946,11 +1988,15 @@ function leggTilAdresse() {
 
 
     const container =
-        document.getElementById("adresser");
+        document.getElementById(
+            "adresser"
+        );
 
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     div.className =
@@ -974,51 +2020,16 @@ function leggTilAdresse() {
     `;
 
 
-    container.appendChild(div);
-
-
-}
-
-
-
-/* =========================================================
-   STATUSMELDING
-========================================================= */
-
-function visStatus(
-    melding,
-    type = ""
-) {
-
-
-    const status =
-        document.getElementById("status");
-
-
-    status.style.display =
-        "block";
-
-
-    status.textContent =
-        melding;
-
-
-    status.className =
-        "status";
-
-
-    if (type) {
-
-        status.classList.add(type);
-
-    }
+    container.appendChild(
+        div
+    );
 
 }
 
 
 
 /* =========================================================
-   HENT ALLE ADRESSER
+   HENT ADRESSER
 ========================================================= */
 
 function hentAdresser() {
@@ -1030,23 +2041,28 @@ function hentAdresser() {
         );
 
 
-    const adresser = [];
+    const adresser =
+        [];
 
 
-    inputs.forEach(input => {
+    inputs.forEach(
+        input => {
 
 
-        const adresse =
-            input.value.trim();
+            const adresse =
+                input.value.trim();
 
 
-        if (adresse !== "") {
+            if (adresse !== "") {
 
-            adresser.push(adresse);
+                adresser.push(
+                    adresse
+                );
+
+            }
 
         }
-
-    });
+    );
 
 
     return adresser;
@@ -1056,7 +2072,16 @@ function hentAdresser() {
 
 
 /* =========================================================
-   HOVEDFUNKSJON
+   GANGTID API
+========================================================= */
+
+const GANGTID_API =
+    "https://gangtid-740297234658.europe-north1.run.app/gangtid";
+
+
+
+/* =========================================================
+   BEREGN GANGTID
 ========================================================= */
 
 async function beregnGangtid() {
@@ -1066,32 +2091,21 @@ async function beregnGangtid() {
         hentAdresser();
 
 
-    /* ---------------------------------------------------------
-       Minst to adresser
-    --------------------------------------------------------- */
-
     if (adresser.length < 2) {
-
 
         alert(
             "Du må skrive inn minst to adresser."
         );
-
 
         return;
 
     }
 
 
-
-    /* ---------------------------------------------------------
-       Skjul gammelt resultat
-    --------------------------------------------------------- */
-
     document.getElementById(
         "resultat"
-    ).style.display = "none";
-
+    ).style.display =
+        "none";
 
 
     visStatus(
@@ -1099,23 +2113,20 @@ async function beregnGangtid() {
     );
 
 
-
     try {
 
 
-        const resultater = [];
+        const resultater =
+            [];
 
 
-        let totalSekunder = 0;
+        let totalSekunder =
+            0;
 
 
-        let totalMeter = 0;
+        let totalMeter =
+            0;
 
-
-
-        /* =====================================================
-           BEREGN HVER ETAPPE
-        ===================================================== */
 
         for (
             let i = 0;
@@ -1132,18 +2143,12 @@ async function beregnGangtid() {
                 adresser[i + 1];
 
 
-
             visStatus(
 
                 `🚶 Beregner etappe ${i + 1} av ${adresser.length - 1}...`
 
             );
 
-
-
-            /* -------------------------------------------------
-               Send forespørsel til vårt Cloud Run API
-            ------------------------------------------------- */
 
             const response =
                 await fetch(
@@ -1177,11 +2182,6 @@ async function beregnGangtid() {
                 );
 
 
-
-            /* -------------------------------------------------
-               Kontroller HTTP-status
-            ------------------------------------------------- */
-
             if (!response.ok) {
 
 
@@ -1206,7 +2206,7 @@ async function beregnGangtid() {
 
                 catch {
 
-                    // Ingen JSON-feil tilgjengelig
+                    // Ingen JSON-feil
 
                 }
 
@@ -1221,19 +2221,9 @@ async function beregnGangtid() {
             }
 
 
-
-            /* -------------------------------------------------
-               Les JSON fra API-et
-            ------------------------------------------------- */
-
             const data =
                 await response.json();
 
-
-
-            /* -------------------------------------------------
-               Kontroller API-svaret
-            ------------------------------------------------- */
 
             if (
                 data.status !== "OK" ||
@@ -1252,32 +2242,17 @@ async function beregnGangtid() {
             }
 
 
-
-            /* -------------------------------------------------
-               Hent gangtid
-            ------------------------------------------------- */
-
             const sekunder =
                 Number(
                     data.walkingTime.seconds
                 );
 
 
-
-            /* -------------------------------------------------
-               Hent avstand
-            ------------------------------------------------- */
-
             const meter =
                 Number(
                     data.distance.meters
                 );
 
-
-
-            /* -------------------------------------------------
-               Legg til totalen
-            ------------------------------------------------- */
 
             totalSekunder +=
                 sekunder;
@@ -1286,11 +2261,6 @@ async function beregnGangtid() {
             totalMeter +=
                 meter;
 
-
-
-            /* -------------------------------------------------
-               Lagre resultatet
-            ------------------------------------------------- */
 
             resultater.push({
 
@@ -1311,14 +2281,8 @@ async function beregnGangtid() {
 
             });
 
-
         }
 
-
-
-        /* =====================================================
-           VIS RESULTAT
-        ===================================================== */
 
         visResultat(
 
@@ -1329,7 +2293,6 @@ async function beregnGangtid() {
             totalMeter
 
         );
-
 
 
         visStatus(
@@ -1368,7 +2331,7 @@ async function beregnGangtid() {
 
 
 /* =========================================================
-   VIS RESULTAT
+   VIS GANGTIDRESULTAT
 ========================================================= */
 
 function visResultat(
@@ -1402,11 +2365,6 @@ function visResultat(
         "";
 
 
-
-    /* =====================================================
-       VIS HVER ETAPPE
-    ===================================================== */
-
     resultater.forEach(
 
         (rute, index) => {
@@ -1422,7 +2380,6 @@ function visResultat(
                 "resultat-rad";
 
 
-
             rad.innerHTML = `
 
                 <div>
@@ -1436,7 +2393,9 @@ function visResultat(
 
                     <div class="adresse-fra">
 
-                        ${escapeHtml(rute.fra)}
+                        ${escapeHtml(
+                            rute.fra
+                        )}
 
                     </div>
 
@@ -1447,7 +2406,9 @@ function visResultat(
 
                     <div class="adresse-til">
 
-                        → ${escapeHtml(rute.til)}
+                        → ${escapeHtml(
+                            rute.til
+                        )}
 
                     </div>
 
@@ -1484,11 +2445,6 @@ function visResultat(
     );
 
 
-
-    /* =====================================================
-       TOTAL GANGTID
-    ===================================================== */
-
     document.getElementById(
         "total"
     ).textContent =
@@ -1499,11 +2455,6 @@ function visResultat(
             totalSekunder
         );
 
-
-
-    /* =====================================================
-       TOTAL GANGAVSTAND
-    ===================================================== */
 
     document.getElementById(
         "totalAvstand"
@@ -1520,7 +2471,7 @@ function visResultat(
 
 
 /* =========================================================
-   FORMATER TID
+   FORMATER GANGTID
 ========================================================= */
 
 function formaterTid(
@@ -1544,7 +2495,6 @@ function formaterTid(
         minutter % 60;
 
 
-
     if (timer > 0) {
 
 
@@ -1558,7 +2508,6 @@ function formaterTid(
         return `${timer} t ${rest} min`;
 
     }
-
 
 
     return `${rest} min`;
@@ -1591,7 +2540,6 @@ function formaterAvstand(
     }
 
 
-
     return (
 
         Math.round(meter)
@@ -1602,35 +2550,6 @@ function formaterAvstand(
 
 }
 
-
-
-/* =========================================================
-   SIKRERE VISNING AV ADRESSER
-=========================================================
-
-   Vi bruker denne funksjonen slik at en adresse som
-   inneholder HTML-tegn ikke kan tolkes som HTML.
-
-========================================================= */
-
-function escapeHtml(
-    tekst
-) {
-
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-
-    div.textContent =
-        tekst;
-
-
-    return div.innerHTML;
-
-}
 
 </script>
 
@@ -1666,4 +2585,3 @@ function escapeHtml(
 </body>
 
 </html>
-```
