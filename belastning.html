@@ -11,7 +11,7 @@
     <meta name="robots"
           content="noindex, nofollow">
 
-    <title>Arbeidsbelastning</title>
+    <title>Arbeidsbelastning – Team Sør</title>
 
     <link rel="stylesheet"
           href="gerica.css">
@@ -29,7 +29,6 @@
           content="#2f5d9f">
 
     <link rel="icon"
-          type="image/png"
           href="images/logo-192.png">
 
     <link rel="apple-touch-icon"
@@ -38,695 +37,935 @@
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
+
+<style>
+
+/* ======================================================
+   ARBEIDSBELASTNING
+======================================================= */
+
+.belastning-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.belastning-hero {
+    background: linear-gradient(135deg, #2f5d9f, #4d7fc1);
+    color: white;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+.belastning-hero h1 {
+    margin: 0 0 10px;
+}
+
+.belastning-hero p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.belastning-card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.belastning-card h2 {
+    margin-top: 0;
+    color: #2f5d9f;
+}
+
+.ansatt-select-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ansatt-select-wrapper label {
+    font-weight: 600;
+}
+
+#ansattSelect {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+}
+
+#ansattStatus {
+    margin-top: 10px;
+    color: #666;
+}
+
+.aktiv-timer {
+    display: none;
+    background: #eef5ff;
+    border: 2px solid #2f5d9f;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.aktiv-timer.vis {
+    display: block;
+}
+
+.aktiv-timer h3 {
+    margin-top: 0;
+    color: #2f5d9f;
+}
+
+#aktivTid {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 15px 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.aktivitet-gruppe {
+    margin-bottom: 25px;
+}
+
+.aktivitet-gruppe h3 {
+    margin-bottom: 15px;
+}
+
+.aktivitet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.aktivitet-knapp {
+    border: 1px solid #d2d2d2;
+    background: white;
+    border-radius: 10px;
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 15px;
+}
+
+.aktivitet-knapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-color: #2f5d9f;
+}
+
+.aktivitet-knapp:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.aktivitet-ikon {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.aktivitet-navn {
+    display: block;
+    font-weight: 600;
+}
+
+.stoppTimer {
+    display: none;
+    border: none;
+    background: #c62828;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.stoppTimer.vis {
+    display: inline-block;
+}
+
+#statusMelding {
+    margin-top: 15px;
+    min-height: 24px;
+}
+
+.registrering {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.registrering:last-child {
+    border-bottom: none;
+}
+
+.registrering-info {
+    flex: 1;
+}
+
+.registrering-aktivitet {
+    font-weight: 600;
+}
+
+.registrering-detaljer {
+    color: #666;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.registrering-varighet {
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+.slett-registrering {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.oppsummering-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.oppsummering-boks {
+    background: #f5f7fa;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.oppsummering-boks .tall {
+    display: block;
+    margin-top: 8px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #2f5d9f;
+    font-variant-numeric: tabular-nums;
+}
+
+.survey-sporsmal {
+    margin-bottom: 25px;
+}
+
+.survey-sporsmal h3 {
+    margin-bottom: 12px;
+}
+
+.radio-gruppe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.radio-alternativ {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f5f7fa;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.radio-alternativ:hover {
+    background: #e9eef5;
+}
+
+#kommentar {
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+#lagreSvar {
+    border: none;
+    background: #2f5d9f;
+    color: white;
+    padding: 13px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#lagreSvar:hover {
+    background: #244b82;
+}
+
+#lagreSvar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.gangtid-info {
+    background: #eef5ff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.api-info {
+    font-size: 14px;
+    color: #666;
+}
+
+.adresser-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.adresse {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nummer {
+    min-width: 30px;
+    font-weight: bold;
+    color: #2f5d9f;
+}
+
+.adresse input {
+    flex: 1;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.gangtid-knapper {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.gangtid-knapp {
+    border: none;
+    background: #2f5d9f;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.gangtid-knapp:hover {
+    background: #244b82;
+}
+
+.gangtid-knapp:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.gangtid-nullstill {
+    background: #777;
+}
+
+#gangtidStatus {
+    display: none;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+#gangtidStatus.vis {
+    display: block;
+}
+
+.error {
+    background: #fdecec;
+    color: #b71c1c;
+}
+
+.success {
+    background: #eaf7ea;
+    color: #2e7d32;
+}
+
+#gangtidResultat {
+    display: none;
+    margin-top: 20px;
+}
+
+#gangtidResultat.vis {
+    display: block;
+}
+
+.gangtid-resultat-rad {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.etappe {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 4px;
+}
+
+.adresse-fra,
+.adresse-til {
+    font-weight: 600;
+}
+
+.gangtid-resultat-tid {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.gangtid-resultat-avstand {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.gangtid-total {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2f5d9f;
+}
+
+.gangtid-total-avstand {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #555;
+}
+
+.gangtid-total-info {
+    margin-top: 10px;
+    color: #666;
+}
+
+.vis {
+    display: block;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+
+/* ======================================================
+   RESPONSIV
+======================================================= */
+
+@media (max-width: 768px) {
+
+    .belastning-wrapper {
+        padding: 12px;
+    }
+
+    .belastning-hero {
+        padding: 22px;
+    }
+
+    .belastning-card {
+        padding: 18px;
+    }
+
+    .oppsummering-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gangtid-resultat-rad {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+}
+
+@media (max-width: 760px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .aktivitet-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .radio-gruppe {
+        flex-direction: column;
+    }
+
+    .gangtid-knapper {
+        flex-direction: column;
+    }
+
+    .gangtid-knapp {
+        width: 100%;
+    }
+
+}
+
+
+/* ======================================================
+   EKSTRA
+======================================================= */
+
+.belastning-card p {
+    line-height: 1.6;
+}
+
+</style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================================================
-     NAVIGASJON
-========================================================= -->
+<!-- ======================================================
+     NAVBAR
+======================================================= -->
 
-<nav class="navbar">
+<header class="topbar">
 
-    <div class="nav-container">
+    <div class="brand">
 
-        <a href="index.html"
-           class="nav-logo">
-            <i class="fas fa-home"></i>
-            Team Sør
-        </a>
-
-        <div class="nav-links">
-
-            <a href="index.html">
-                <i class="fas fa-house"></i>
-                Hjem
-            </a>
-
-            <a href="vaktbok.html">
-                <i class="fas fa-calendar-days"></i>
-                Vaktbok
-            </a>
-
-            <a href="merkantil.html">
-                <i class="fas fa-user-tie"></i>
-                Merkantil
-            </a>
-
-            <a href="rutiner.html">
-                <i class="fas fa-list-check"></i>
-                Rutiner
-            </a>
-
-            <a href="belastning.html"
-               class="active">
-                <i class="fas fa-stopwatch"></i>
-                Arbeidsbelastning
-            </a>
-
-            <a href="arbeidsmiljo.html">
-                <i class="fas fa-people-group"></i>
-                Arbeidsmiljø
-            </a>
-
-            <a href="bursdager.html">
-                <i class="fas fa-cake-candles"></i>
-                Bursdager
-            </a>
-
-            <a href="album.html">
-                <i class="fas fa-images"></i>
-                Sør-album
-            </a>
-
-        </div>
+        <img src="images/logo-192.png"
+             alt="Team Sør">
 
     </div>
 
-</nav>
+
+    <div class="search-box">
+
+        <input type="text"
+               id="searchInput"
+               placeholder="🔍 Søk på hele Team Sør">
+
+        <div id="searchResults"></div>
+
+    </div>
 
 
+    <nav class="nav"
+         aria-label="Hovedmeny">
 
-<!-- =========================================================
-     HOVEDINNHOLD
-========================================================= -->
+        <button
+            class="menu-toggle"
+            aria-label="Åpne meny"
+            id="menuToggle"
+            aria-expanded="false"
+            type="button">
 
-<main class="container">
+            ☰
+
+        </button>
 
 
-    <section class="page-header">
+        <ul id="menu">
+
+            <li>
+                <a href="index.html">
+                    Hjem
+                </a>
+            </li>
+
+            <li>
+                <a href="ekstravakter.html">
+                    Vaktbok
+                </a>
+            </li>
+
+            <li>
+                <a href="arbeidsliste.html">
+                    Merkantil
+                </a>
+            </li>
+
+            <li>
+                <a href="sjekkliste.html">
+                    Rutiner
+                </a>
+            </li>
+
+            <li>
+                <a href="belastning.html"
+                   aria-current="page">
+                    Arbeidsbelastning
+                </a>
+            </li>
+
+            <li>
+                <a href="arbeidsmiljø.html">
+                    Arbeidsmiljø
+                </a>
+            </li>
+
+            <li>
+                <a href="Bursdager.html">
+                    Bursdager
+                </a>
+            </li>
+
+            <li>
+                <a href="album.html">
+                    Sør-album
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- ======================================================
+     MAIN
+======================================================= -->
+
+<main class="belastning-wrapper">
+
+
+    <!-- ==================================================
+         HERO
+    =================================================== -->
+
+    <section class="belastning-hero">
 
         <h1>
-            <i class="fas fa-stopwatch"></i>
             Arbeidsbelastning
         </h1>
 
         <p>
-            Registrer tidsbruk og aktiviteter gjennom arbeidsdagen.
+            Registrer tiden du bruker på ulike arbeidsoppgaver
+            gjennom arbeidsdagen. Målet er å få et bedre bilde
+            av den faktiske arbeidsbelastningen.
         </p>
 
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ==================================================
          ANSATT
-    ====================================================== -->
+    =================================================== -->
 
-    <section class="card">
+    <section class="belastning-card">
 
         <h2>
-            <i class="fas fa-user"></i>
-            Velg ansatt
+            Hvem registrerer?
         </h2>
 
-        <div class="form-group">
+
+        <div class="ansatt-select-wrapper">
 
             <label for="ansattSelect">
-                Ansatt
+                Velg ansatt
             </label>
+
 
             <select id="ansattSelect">
 
                 <option value="">
-                    Laster ansatte...
+                    Laster ansatte ...
                 </option>
 
             </select>
 
-            <div id="ansattStatus"
-                 class="status-message">
-            </div>
-
         </div>
+
+
+        <p id="ansattStatus"></p>
 
     </section>
 
 
+    <!-- ==================================================
+         TIDSREGISTRERING
+    =================================================== -->
 
-    <!-- =====================================================
-         FASTE AKTIVITETER
-    ====================================================== -->
-
-    <section class="card">
+    <section class="belastning-card">
 
         <h2>
-            <i class="fas fa-clock"></i>
-            Faste aktiviteter
+            Registrer arbeidstid
         </h2>
 
-        <p class="section-description">
-            Start og stopp tiden når aktiviteten begynner og slutter.
-        </p>
+
+        <div class="aktivitet-gruppe">
+
+            <h3>
+                Faste aktiviteter
+            </h3>
 
 
-        <!-- MORGENRAPPORT -->
-
-        <div class="activity-row">
-
-            <div class="activity-info">
-
-                <strong>
-                    Morgenrapport
-                </strong>
-
-                <span>
-                    Rapport / møte før arbeidsdagen
-                </span>
-
-            </div>
-
-            <div class="activity-controls">
+            <div class="aktivitet-grid">
 
                 <button
-                    type="button"
-                    class="btn btn-primary start-activity"
-                    data-activity="Morgenrapport"
-                    data-category="Fast aktivitet">
+                    class="aktivitet-knapp"
+                    data-aktivitet="Morgenrapport"
+                    data-kategori="fast"
+                    type="button">
 
-                    <i class="fas fa-play"></i>
-                    Start
+                    <span class="aktivitet-ikon">
+                        🌅
+                    </span>
+
+                    <span class="aktivitet-navn">
+                        Morgenrapport
+                    </span>
+
                 </button>
+
 
                 <button
-                    type="button"
-                    class="btn btn-danger stop-activity"
-                    data-activity="Morgenrapport"
-                    data-category="Fast aktivitet"
-                    disabled>
+                    class="aktivitet-knapp"
+                    data-aktivitet="Pause"
+                    data-kategori="pause"
+                    type="button">
 
-                    <i class="fas fa-stop"></i>
-                    Stopp
+                    <span class="aktivitet-ikon">
+                        ☕
+                    </span>
+
+                    <span class="aktivitet-navn">
+                        Pause
+                    </span>
+
                 </button>
 
-                <span
-                    class="timer"
-                    id="timer-Morgenrapport">
-                    00:00:00
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- PAUSE -->
-
-        <div class="activity-row">
-
-            <div class="activity-info">
-
-                <strong>
-                    Pause
-                </strong>
-
-                <span>
-                    Registrer faktisk pausetid
-                </span>
-
-            </div>
-
-            <div class="activity-controls">
 
                 <button
-                    type="button"
-                    class="btn btn-primary start-activity"
-                    data-activity="Pause"
-                    data-category="Pause">
+                    class="aktivitet-knapp"
+                    data-aktivitet="Sluttrapport"
+                    data-kategori="fast"
+                    type="button">
 
-                    <i class="fas fa-play"></i>
-                    Start
+                    <span class="aktivitet-ikon">
+                        🌙
+                    </span>
+
+                    <span class="aktivitet-navn">
+                        Sluttrapport
+                    </span>
+
                 </button>
-
-                <button
-                    type="button"
-                    class="btn btn-danger stop-activity"
-                    data-activity="Pause"
-                    data-category="Pause"
-                    disabled>
-
-                    <i class="fas fa-stop"></i>
-                    Stopp
-                </button>
-
-                <span
-                    class="timer"
-                    id="timer-Pause">
-                    00:00:00
-                </span>
 
             </div>
 
         </div>
 
 
+        <div class="aktivitet-gruppe">
 
-        <!-- SLUTTRAPPORT -->
+            <h3>
+                Andre arbeidsoppgaver
+            </h3>
 
-        <div class="activity-row">
 
-            <div class="activity-info">
-
-                <strong>
-                    Sluttrapport
-                </strong>
-
-                <span>
-                    Dokumentasjon / rapport ved arbeidsdagens slutt
-                </span>
-
-            </div>
-
-            <div class="activity-controls">
+            <div class="aktivitet-grid">
 
                 <button
-                    type="button"
-                    class="btn btn-primary start-activity"
-                    data-activity="Sluttrapport"
-                    data-category="Fast aktivitet">
+                    class="aktivitet-knapp"
+                    data-aktivitet="Overgang dør til dør"
+                    data-kategori="arbeidsoppgave"
+                    type="button">
 
-                    <i class="fas fa-play"></i>
-                    Start
+                    <span class="aktivitet-ikon">
+                        🚶
+                    </span>
+
+                    <span class="aktivitet-navn">
+                        Overgang dør til dør
+                    </span>
+
                 </button>
+
 
                 <button
-                    type="button"
-                    class="btn btn-danger stop-activity"
-                    data-activity="Sluttrapport"
-                    data-category="Fast aktivitet"
-                    disabled>
+                    class="aktivitet-knapp"
+                    data-aktivitet="Dokumentasjon"
+                    data-kategori="arbeidsoppgave"
+                    type="button">
 
-                    <i class="fas fa-stop"></i>
-                    Stopp
+                    <span class="aktivitet-ikon">
+                        📝
+                    </span>
+
+                    <span class="aktivitet-navn">
+                        Dokumentasjon
+                    </span>
+
                 </button>
 
-                <span
-                    class="timer"
-                    id="timer-Sluttrapport">
-                    00:00:00
-                </span>
+
+                <button
+                    class="aktivitet-knapp"
+                    data-aktivitet="Apotek / medisinhenting"
+                    data-kategori="arbeidsoppgave"
+                    type="button">
+
+                    <span class="aktivitet-ikon">
+                        💊
+                    </span>
+
+                    <span class="aktivitet-navn">
+                        Apotek / medisinhenting
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="aktivitet-knapp"
+                    data-aktivitet="Telefonsamtale"
+                    data-kategori="arbeidsoppgave"
+                    type="button">
+
+                    <span class="aktivitet-ikon">
+                        📞
+                    </span>
+
+                    <span class="aktivitet-navn">
+                        Telefonsamtale
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="aktivitet-knapp"
+                    data-aktivitet="Samtale med pårørende"
+                    data-kategori="arbeidsoppgave"
+                    type="button">
+
+                    <span class="aktivitet-ikon">
+                        👨‍👩‍👧
+                    </span>
+
+                    <span class="aktivitet-navn">
+                        Samtale med pårørende
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="aktivitet-knapp"
+                    data-aktivitet="Uplanlagt oppgave"
+                    data-kategori="arbeidsoppgave"
+                    type="button">
+
+                    <span class="aktivitet-ikon">
+                        ⚠️
+                    </span>
+
+                    <span class="aktivitet-navn">
+                        Uplanlagt oppgave
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="aktivitet-knapp"
+                    data-aktivitet="Annet"
+                    data-kategori="arbeidsoppgave"
+                    type="button">
+
+                    <span class="aktivitet-ikon">
+                        ➕
+                    </span>
+
+                    <span class="aktivitet-navn">
+                        Annet
+                    </span>
+
+                </button>
 
             </div>
 
         </div>
+
+
+        <!-- AKTIV TIMER -->
+
+        <div class="aktiv-timer"
+             id="aktivTimer">
+
+            <h3>
+                Aktiv registrering
+            </h3>
+
+
+            <div id="aktivitetNavn">
+                –
+            </div>
+
+
+            <div id="aktivTid">
+                00:00:00
+            </div>
+
+
+            <button
+                id="stoppTimer"
+                type="button">
+
+                ⏹ Stopp og lagre
+
+            </button>
+
+        </div>
+
+
+        <p id="statusMelding"></p>
 
     </section>
 
 
-
-    <!-- =====================================================
-         ANDRE AKTIVITETER
-    ====================================================== -->
-
-    <section class="card">
-
-        <h2>
-            <i class="fas fa-list"></i>
-            Andre aktiviteter
-        </h2>
-
-        <p class="section-description">
-            Registrer tid som brukes på andre oppgaver.
-        </p>
-
-
-        <!-- OVERGANG -->
-
-        <div class="activity-row">
-
-            <div class="activity-info">
-
-                <strong>
-                    Overgang dør til dør
-                </strong>
-
-                <span>
-                    Tid mellom brukere
-                </span>
-
-            </div>
-
-            <div class="activity-controls">
-
-                <button
-                    type="button"
-                    class="btn btn-primary start-activity"
-                    data-activity="Overgang dør til dør"
-                    data-category="Gangtid">
-
-                    <i class="fas fa-play"></i>
-                    Start
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-danger stop-activity"
-                    data-activity="Overgang dør til dør"
-                    data-category="Gangtid"
-                    disabled>
-
-                    <i class="fas fa-stop"></i>
-                    Stopp
-                </button>
-
-                <span
-                    class="timer"
-                    id="timer-Overgang dør til dør">
-                    00:00:00
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- DOKUMENTASJON -->
-
-        <div class="activity-row">
-
-            <div class="activity-info">
-
-                <strong>
-                    Dokumentasjon
-                </strong>
-
-                <span>
-                    Dokumentasjon utover ordinær brukertid
-                </span>
-
-            </div>
-
-            <div class="activity-controls">
-
-                <button
-                    type="button"
-                    class="btn btn-primary start-activity"
-                    data-activity="Dokumentasjon"
-                    data-category="Dokumentasjon">
-
-                    <i class="fas fa-play"></i>
-                    Start
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-danger stop-activity"
-                    data-activity="Dokumentasjon"
-                    data-category="Dokumentasjon"
-                    disabled>
-
-                    <i class="fas fa-stop"></i>
-                    Stopp
-                </button>
-
-                <span
-                    class="timer"
-                    id="timer-Dokumentasjon">
-                    00:00:00
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- APOTEK -->
-
-        <div class="activity-row">
-
-            <div class="activity-info">
-
-                <strong>
-                    Apotek / medisinhenting
-                </strong>
-
-                <span>
-                    Tid brukt på apotek eller henting av medisiner
-                </span>
-
-            </div>
-
-            <div class="activity-controls">
-
-                <button
-                    type="button"
-                    class="btn btn-primary start-activity"
-                    data-activity="Apotek / medisinhenting"
-                    data-category="Ekstra aktivitet">
-
-                    <i class="fas fa-play"></i>
-                    Start
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-danger stop-activity"
-                    data-activity="Apotek / medisinhenting"
-                    data-category="Ekstra aktivitet"
-                    disabled>
-
-                    <i class="fas fa-stop"></i>
-                    Stopp
-                </button>
-
-                <span
-                    class="timer"
-                    id="timer-Apotek / medisinhenting">
-                    00:00:00
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- TELEFONSAMTALE -->
-
-        <div class="activity-row">
-
-            <div class="activity-info">
-
-                <strong>
-                    Telefonsamtale
-                </strong>
-
-                <span>
-                    Telefonsamtale med bruker, pårørende eller andre
-                </span>
-
-            </div>
-
-            <div class="activity-controls">
-
-                <button
-                    type="button"
-                    class="btn btn-primary start-activity"
-                    data-activity="Telefonsamtale"
-                    data-category="Ekstra aktivitet">
-
-                    <i class="fas fa-play"></i>
-                    Start
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-danger stop-activity"
-                    data-activity="Telefonsamtale"
-                    data-category="Ekstra aktivitet"
-                    disabled>
-
-                    <i class="fas fa-stop"></i>
-                    Stopp
-                </button>
-
-                <span
-                    class="timer"
-                    id="timer-Telefonsamtale">
-                    00:00:00
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- PÅRØRENDE -->
-
-        <div class="activity-row">
-
-            <div class="activity-info">
-
-                <strong>
-                    Samtale med pårørende
-                </strong>
-
-                <span>
-                    Samtale eller oppfølging av pårørende
-                </span>
-
-            </div>
-
-            <div class="activity-controls">
-
-                <button
-                    type="button"
-                    class="btn btn-primary start-activity"
-                    data-activity="Samtale med pårørende"
-                    data-category="Ekstra aktivitet">
-
-                    <i class="fas fa-play"></i>
-                    Start
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-danger stop-activity"
-                    data-activity="Samtale med pårørende"
-                    data-category="Ekstra aktivitet"
-                    disabled>
-
-                    <i class="fas fa-stop"></i>
-                    Stopp
-                </button>
-
-                <span
-                    class="timer"
-                    id="timer-Samtale med pårørende">
-                    00:00:00
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- UPLANLAGT -->
-
-        <div class="activity-row">
-
-            <div class="activity-info">
-
-                <strong>
-                    Uplanlagt oppgave
-                </strong>
-
-                <span>
-                    Oppgave som ikke var planlagt
-                </span>
-
-            </div>
-
-            <div class="activity-controls">
-
-                <button
-                    type="button"
-                    class="btn btn-primary start-activity"
-                    data-activity="Uplanlagt oppgave"
-                    data-category="Uplanlagt">
-
-                    <i class="fas fa-play"></i>
-                    Start
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-danger stop-activity"
-                    data-activity="Uplanlagt oppgave"
-                    data-category="Uplanlagt"
-                    disabled>
-
-                    <i class="fas fa-stop"></i>
-                    Stopp
-                </button>
-
-                <span
-                    class="timer"
-                    id="timer-Uplanlagt oppgave">
-                    00:00:00
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ANNEN -->
-
-        <div class="activity-row">
-
-            <div class="activity-info">
-
-                <strong>
-                    Annet
-                </strong>
-
-                <span>
-                    Annen aktivitet
-                </span>
-
-            </div>
-
-            <div class="activity-controls">
-
-                <button
-                    type="button"
-                    class="btn btn-primary start-activity"
-                    data-activity="Annet"
-                    data-category="Annet">
-
-                    <i class="fas fa-play"></i>
-                    Start
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-danger stop-activity"
-                    data-activity="Annet"
-                    data-category="Annet"
-                    disabled>
-
-                    <i class="fas fa-stop"></i>
-                    Stopp
-                </button>
-
-                <span
-                    class="timer"
-                    id="timer-Annet">
-                    00:00:00
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
+    <!-- ==================================================
          DAGENS REGISTRERINGER
-    ====================================================== -->
+    =================================================== -->
 
-    <section class="card">
+    <section class="belastning-card">
 
         <h2>
-            <i class="fas fa-calendar-day"></i>
             Dagens registreringer
         </h2>
+
 
         <div id="dagensRegistreringer">
 
             <p>
-                Velg ansatt for å se dagens registreringer.
+                Ingen registreringer ennå.
             </p>
 
         </div>
@@ -734,127 +973,113 @@
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ==================================================
          OPPSUMMERING
-    ====================================================== -->
+    =================================================== -->
 
-    <section class="card">
+    <div class="oppsummering-grid">
 
-        <h2>
-            <i class="fas fa-chart-pie"></i>
-            Oppsummering
-        </h2>
+        <div class="oppsummering-boks">
 
-        <div class="summary-grid">
+            Total registrert tid
 
-            <div class="summary-item">
+            <span class="tall"
+                  id="totalTid">
 
-                <span class="summary-label">
-                    Total registrert tid
-                </span>
+                00:00:00
 
-                <strong id="totalTid">
-                    0 min
-                </strong>
-
-            </div>
-
-
-            <div class="summary-item">
-
-                <span class="summary-label">
-                    Arbeidstid
-                </span>
-
-                <strong id="arbeidstid">
-                    0 min
-                </strong>
-
-            </div>
-
-
-            <div class="summary-item">
-
-                <span class="summary-label">
-                    Pausetid
-                </span>
-
-                <strong id="pausetid">
-                    0 min
-                </strong>
-
-            </div>
+            </span>
 
         </div>
 
-    </section>
+
+        <div class="oppsummering-boks">
+
+            Arbeidstid
+
+            <span class="tall"
+                  id="arbeidstid">
+
+                00:00:00
+
+            </span>
+
+        </div>
 
 
+        <div class="oppsummering-boks">
 
-    <!-- =====================================================
-         DAGLIG SPØRREUNDERSØKELSE
-    ====================================================== -->
+            Pause
 
-    <section class="card">
+            <span class="tall"
+                  id="pausetid">
+
+                00:00:00
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <p>
+        Arbeidstid er registrert tid minus registrert pause.
+    </p>
+
+
+    <!-- ==================================================
+         SPØRREUNDERSØKELSE
+    =================================================== -->
+
+    <section class="belastning-card">
 
         <h2>
-            <i class="fas fa-clipboard-question"></i>
-            Daglig vurdering
+            Daglig registrering
         </h2>
 
-        <p class="section-description">
-            Svar på spørsmålene basert på dagens arbeidsdag.
-        </p>
+
+        <div class="survey-sporsmal">
+
+            <h3>
+                1. Hvordan opplever du gangavstanden mellom brukerne?
+            </h3>
 
 
-        <!-- GANGAVSTAND -->
+            <div class="radio-gruppe">
 
-        <div class="survey-question">
-
-            <label>
-                1. Hvordan opplevde du gangavstanden mellom brukerne?
-            </label>
-
-            <div class="radio-group">
-
-                <label>
-                    <input
-                        type="radio"
-                        name="gangavstand"
-                        value="kort">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="gangavstand"
+                           value="kort">
                     Kort
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="gangavstand"
-                        value="normal">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="gangavstand"
+                           value="normal">
                     Normal
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="gangavstand"
-                        value="litt_lang">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="gangavstand"
+                           value="litt_lang">
                     Litt lang
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="gangavstand"
-                        value="lang">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="gangavstand"
+                           value="lang">
                     Lang
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="gangavstand"
-                        value="svart_lang">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="gangavstand"
+                           value="svart_lang">
                     Svært lang
                 </label>
 
@@ -863,54 +1088,47 @@
         </div>
 
 
+        <div class="survey-sporsmal">
 
-        <!-- FREM OG TILBAKE -->
+            <h3>
+                2. Hvor mye tid bruker du på å gå frem og tilbake?
+            </h3>
 
-        <div class="survey-question">
 
-            <label>
-                2. Hvor ofte måtte du gå frem og tilbake på grunn av oppdrag?
-            </label>
+            <div class="radio-gruppe">
 
-            <div class="radio-group">
-
-                <label>
-                    <input
-                        type="radio"
-                        name="fremOgTilbake"
-                        value="nei">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="fremOgTilbake"
+                           value="nei">
                     Nei
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="fremOgTilbake"
-                        value="litt">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="fremOgTilbake"
+                           value="litt">
                     Litt
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="fremOgTilbake"
-                        value="en_del">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="fremOgTilbake"
+                           value="en_del">
                     En del
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="fremOgTilbake"
-                        value="mye">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="fremOgTilbake"
+                           value="mye">
                     Mye
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="fremOgTilbake"
-                        value="svart_mye">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="fremOgTilbake"
+                           value="svart_mye">
                     Svært mye
                 </label>
 
@@ -919,54 +1137,47 @@
         </div>
 
 
+        <div class="survey-sporsmal">
 
-        <!-- EKSTRA AKTIVITETER -->
+            <h3>
+                3. Hvor mye ekstra aktivitet oppstår i løpet av dagen?
+            </h3>
 
-        <div class="survey-question">
 
-            <label>
-                3. Hvor mye tid gikk til ekstra aktiviteter?
-            </label>
+            <div class="radio-gruppe">
 
-            <div class="radio-group">
-
-                <label>
-                    <input
-                        type="radio"
-                        name="ekstraAktiviteter"
-                        value="ingen">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="ekstraAktiviteter"
+                           value="ingen">
                     Ingen
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="ekstraAktiviteter"
-                        value="lite">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="ekstraAktiviteter"
+                           value="lite">
                     Lite
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="ekstraAktiviteter"
-                        value="noe">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="ekstraAktiviteter"
+                           value="noe">
                     Noe
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="ekstraAktiviteter"
-                        value="mye">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="ekstraAktiviteter"
+                           value="mye">
                     Mye
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="ekstraAktiviteter"
-                        value="svart_mye">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="ekstraAktiviteter"
+                           value="svart_mye">
                     Svært mye
                 </label>
 
@@ -975,46 +1186,40 @@
         </div>
 
 
+        <div class="survey-sporsmal">
 
-        <!-- MORGENRAPPORT -->
+            <h3>
+                4. Hvordan opplever du lengden på morgenrapporten?
+            </h3>
 
-        <div class="survey-question">
 
-            <label>
-                4. Hvordan opplevde du lengden på morgenrapporten?
-            </label>
+            <div class="radio-gruppe">
 
-            <div class="radio-group">
-
-                <label>
-                    <input
-                        type="radio"
-                        name="morgenrapport"
-                        value="passe">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="morgenrapport"
+                           value="passe">
                     Passe
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="morgenrapport"
-                        value="litt_lang">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="morgenrapport"
+                           value="litt_lang">
                     Litt lang
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="morgenrapport"
-                        value="for_lang">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="morgenrapport"
+                           value="for_lang">
                     For lang
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="morgenrapport"
-                        value="altfor_lang">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="morgenrapport"
+                           value="altfor_lang">
                     Altfor lang
                 </label>
 
@@ -1023,46 +1228,40 @@
         </div>
 
 
+        <div class="survey-sporsmal">
 
-        <!-- SLUTTRAPPORT -->
+            <h3>
+                5. Hvordan opplever du lengden på sluttrapporten?
+            </h3>
 
-        <div class="survey-question">
 
-            <label>
-                5. Hvordan opplevde du lengden på sluttrapporten?
-            </label>
+            <div class="radio-gruppe">
 
-            <div class="radio-group">
-
-                <label>
-                    <input
-                        type="radio"
-                        name="sluttrapport"
-                        value="passe">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="sluttrapport"
+                           value="passe">
                     Passe
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="sluttrapport"
-                        value="litt_lang">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="sluttrapport"
+                           value="litt_lang">
                     Litt lang
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="sluttrapport"
-                        value="for_lang">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="sluttrapport"
+                           value="for_lang">
                     For lang
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="sluttrapport"
-                        value="altfor_lang">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="sluttrapport"
+                           value="altfor_lang">
                     Altfor lang
                 </label>
 
@@ -1071,54 +1270,47 @@
         </div>
 
 
+        <div class="survey-sporsmal">
 
-        <!-- ARBEIDSLISTE -->
+            <h3>
+                6. Hvordan opplever du tiden du har til arbeidslisten?
+            </h3>
 
-        <div class="survey-question">
 
-            <label>
-                6. Hvordan opplevde du tiden som var satt av til arbeidslisten?
-            </label>
+            <div class="radio-gruppe">
 
-            <div class="radio-group">
-
-                <label>
-                    <input
-                        type="radio"
-                        name="arbeidslisteTid"
-                        value="god_tid">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="arbeidslisteTid"
+                           value="god_tid">
                     God tid
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="arbeidslisteTid"
-                        value="passelig">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="arbeidslisteTid"
+                           value="passelig">
                     Passelig
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="arbeidslisteTid"
-                        value="travelt">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="arbeidslisteTid"
+                           value="travelt">
                     Travelt
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="arbeidslisteTid"
-                        value="for_lite">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="arbeidslisteTid"
+                           value="for_lite">
                     For lite
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="arbeidslisteTid"
-                        value="altfor_lite">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="arbeidslisteTid"
+                           value="altfor_lite">
                     Altfor lite
                 </label>
 
@@ -1127,47 +1319,41 @@
         </div>
 
 
+        <div class="survey-sporsmal">
 
-        <!-- RAKK ALLE -->
+            <h3>
+                7. Rakk du alle oppgavene?
+            </h3>
 
-        <div class="survey-question">
 
-            <label>
-                7. Rakk du alle oppgavene som var satt opp?
-            </label>
+            <div class="radio-gruppe">
 
-            <div class="radio-group">
-
-                <label>
-                    <input
-                        type="radio"
-                        name="rakkAlleOppgaver"
-                        value="ja">
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="rakkAlleOppgaver"
+                           value="ja">
                     Ja
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="rakkAlleOppgaver"
-                        value="ja_lite_igjen">
-                    Ja, men hadde lite tid igjen
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="rakkAlleOppgaver"
+                           value="ja_lite_igjen">
+                    Ja, men lite igjen
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="rakkAlleOppgaver"
-                        value="nei_utsette">
-                    Nei, måtte utsette oppgaver
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="rakkAlleOppgaver"
+                           value="nei_utsette">
+                    Nei, måtte utsette
                 </label>
 
-                <label>
-                    <input
-                        type="radio"
-                        name="rakkAlleOppgaver"
-                        value="nei_overlate">
-                    Nei, måtte overlate oppgaver
+                <label class="radio-alternativ">
+                    <input type="radio"
+                           name="rakkAlleOppgaver"
+                           value="nei_overlate">
+                    Nei, måtte overlate
                 </label>
 
             </div>
@@ -1175,272 +1361,324 @@
         </div>
 
 
+        <div class="survey-sporsmal">
 
-        <!-- KOMMENTAR -->
+            <h3>
+                8. Kommentar
+            </h3>
 
-        <div class="survey-question">
-
-            <label for="kommentar">
-                Kommentar
-            </label>
 
             <textarea
                 id="kommentar"
-                rows="5"
-                placeholder="Eventuelle kommentarer om arbeidsbelastningen i dag...">
+                placeholder="Skriv eventuelle kommentarer her...">
             </textarea>
 
         </div>
 
 
+        <button
+            id="lagreSvar"
+            type="button">
 
-        <div class="form-actions">
+            Lagre svar
 
-            <button
-                type="button"
-                id="lagreSvar"
-                class="btn btn-primary">
-
-                <i class="fas fa-save"></i>
-                Lagre svar
-
-            </button>
-
-        </div>
+        </button>
 
 
-        <div id="surveyStatus"
-             class="status-message">
-        </div>
+        <p id="surveyStatus"></p>
 
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ==================================================
          GANGTID
-    ====================================================== -->
+    =================================================== -->
 
-    <section class="card">
+    <section class="belastning-card">
 
         <h2>
-            <i class="fas fa-person-walking"></i>
             Beregn gangtid
         </h2>
 
-        <p class="section-description">
-            Skriv inn adressene i rekkefølge for å beregne avstand og gangtid.
-        </p>
+
+        <div class="gangtid-info">
+
+            <p>
+                Skriv inn adressene i den rekkefølgen du besøker dem.
+                Systemet beregner gangtid og gangavstand mellom hver adresse.
+            </p>
 
 
-        <div id="adresseListe">
+            <p class="api-info">
+                Beregningen bruker Team Sør sin gangtidstjeneste.
+            </p>
 
-            <div class="address-row">
+        </div>
 
-                <label>
+
+        <div class="adresser-container"
+             id="adresser">
+
+
+            <div class="adresse">
+
+                <span class="nummer">
                     1
-                </label>
+                </span>
 
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+                <input type="text"
+                       placeholder="Adresse 1">
 
             </div>
 
 
-            <div class="address-row">
-                <label>2</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    2
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 2">
+
             </div>
 
 
-            <div class="address-row">
-                <label>3</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    3
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 3">
+
             </div>
 
 
-            <div class="address-row">
-                <label>4</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    4
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 4">
+
             </div>
 
 
-            <div class="address-row">
-                <label>5</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    5
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 5">
+
             </div>
 
 
-            <div class="address-row">
-                <label>6</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    6
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 6">
+
             </div>
 
 
-            <div class="address-row">
-                <label>7</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    7
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 7">
+
             </div>
 
 
-            <div class="address-row">
-                <label>8</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    8
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 8">
+
             </div>
 
 
-            <div class="address-row">
-                <label>9</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    9
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 9">
+
             </div>
 
 
-            <div class="address-row">
-                <label>10</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    10
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 10">
+
             </div>
 
 
-            <div class="address-row">
-                <label>11</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    11
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 11">
+
             </div>
 
 
-            <div class="address-row">
-                <label>12</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    12
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 12">
+
             </div>
 
 
-            <div class="address-row">
-                <label>13</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    13
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 13">
+
             </div>
 
 
-            <div class="address-row">
-                <label>14</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    14
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 14">
+
             </div>
 
 
-            <div class="address-row">
-                <label>15</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    15
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 15">
+
             </div>
 
 
-            <div class="address-row">
-                <label>16</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    16
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 16">
+
             </div>
 
 
-            <div class="address-row">
-                <label>17</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    17
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 17">
+
             </div>
 
 
-            <div class="address-row">
-                <label>18</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    18
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 18">
+
             </div>
 
 
-            <div class="address-row">
-                <label>19</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    19
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 19">
+
             </div>
 
 
-            <div class="address-row">
-                <label>20</label>
-                <input
-                    type="text"
-                    class="adresse-input"
-                    placeholder="Adresse">
+            <div class="adresse">
+
+                <span class="nummer">
+                    20
+                </span>
+
+                <input type="text"
+                       placeholder="Adresse 20">
+
             </div>
 
         </div>
 
 
-        <div class="form-actions">
+        <div class="gangtid-knapper">
 
             <button
-                type="button"
+                class="gangtid-knapp"
                 id="beregnGangtid"
-                class="btn btn-primary">
+                type="button">
 
-                <i class="fas fa-route"></i>
-                Beregn gangtid
+                🚶 Beregn gangtid
 
             </button>
 
 
             <button
-                type="button"
+                class="gangtid-knapp gangtid-nullstill"
                 id="nullstillGangtid"
-                class="btn btn-secondary">
+                type="button">
 
-                <i class="fas fa-rotate-left"></i>
                 Nullstill
 
             </button>
@@ -1448,49 +1686,26 @@
         </div>
 
 
-        <div id="gangtidStatus"
-             class="status-message">
-        </div>
+        <div id="gangtidStatus"></div>
 
 
-        <div id="gangtidResultat"
-             style="display:none;">
+        <div id="gangtidResultat">
 
-            <h3>
-                Resultat
-            </h3>
+            <div id="gangtidResultatListe"></div>
 
-            <div id="gangtidResultatListe">
+
+            <div class="gangtid-total"
+                 id="gangtidTotal">
             </div>
 
 
-            <div class="summary-grid">
-
-                <div class="summary-item">
-
-                    <span class="summary-label">
-                        Total gangtid
-                    </span>
-
-                    <strong id="gangtidTotal">
-                        0 min
-                    </strong>
-
-                </div>
+            <div class="gangtid-total-avstand"
+                 id="gangtidTotalAvstand">
+            </div>
 
 
-                <div class="summary-item">
-
-                    <span class="summary-label">
-                        Total avstand
-                    </span>
-
-                    <strong id="gangtidTotalAvstand">
-                        0 m
-                    </strong>
-
-                </div>
-
+            <div class="gangtid-total-info">
+                Totalen gjelder summen av alle etappene.
             </div>
 
         </div>
@@ -1498,27 +1713,81 @@
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ==================================================
          DOKUMENTASJON
-    ====================================================== -->
+    =================================================== -->
 
-    <section class="card">
+    <section class="belastning-card">
 
         <h2>
-            <i class="fas fa-circle-info"></i>
-            Om registreringen
+            Dokumentasjon – tid
         </h2>
 
-        <p>
-            Formålet med registreringen er å få et bedre bilde av
-            arbeidsbelastningen gjennom arbeidsdagen.
-        </p>
 
         <p>
-            Registreringen kan brukes til å synliggjøre tid som går til
-            oppgaver, gangtid, dokumentasjon og andre aktiviteter som
-            ikke nødvendigvis kommer frem av arbeidslisten.
+            Registreringen skal gi et realistisk bilde av hvor
+            mye tid som faktisk brukes gjennom arbeidsdagen.
+        </p>
+
+
+        <ol>
+
+            <li>
+                Start timeren når du begynner på aktiviteten.
+            </li>
+
+            <li>
+                Stopp timeren når aktiviteten er ferdig.
+            </li>
+
+            <li>
+                Registrer overgang mellom brukere når dette tar
+                merkbar tid.
+            </li>
+
+            <li>
+                Registrer dokumentasjon som gjøres utenom
+                selve brukerbesøket.
+            </li>
+
+            <li>
+                Registrer tid brukt på apotek og medisinhenting.
+            </li>
+
+            <li>
+                Registrer telefonsamtaler.
+            </li>
+
+            <li>
+                Registrer samtaler med pårørende.
+            </li>
+
+            <li>
+                Registrer uplanlagte oppgaver.
+            </li>
+
+            <li>
+                Bruk «Annet» dersom aktiviteten ikke passer
+                i de andre kategoriene.
+            </li>
+
+            <li>
+                Pause registreres som egen aktivitet.
+            </li>
+
+            <li>
+                Ikke stopp timeren dersom du går direkte over
+                til en annen aktivitet som skal registreres.
+            </li>
+
+        </ol>
+
+
+        <p>
+            Husk spesielt å registrere tid som går med til
+            apotek, telefonsamtaler, pårørendesamtaler og
+            uplanlagte oppgaver. Dette er arbeidsoppgaver som
+            ofte ikke fremkommer tydelig i arbeidslisten.
         </p>
 
     </section>
@@ -1527,61 +1796,93 @@
 </main>
 
 
-
-<!-- =========================================================
-     SCRIPTS
-========================================================= -->
+<!-- ======================================================
+     SØK
+======================================================= -->
 
 <script src="searchData.js"
-        defer></script>
+        defer>
+</script>
+
 
 <script src="search.js"
-        defer></script>
+        defer>
+</script>
+
+
+<!-- ======================================================
+     GLIGHTBOX
+======================================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js">
 </script>
+
+
+<!-- ======================================================
+     APP
+======================================================= -->
 
 <script type="module"
         src="app.js">
 </script>
 
+
+<!-- ======================================================
+     BURSDAG
+======================================================= -->
+
 <script type="module"
         src="bursdag.js">
 </script>
+
+
+<!-- ======================================================
+     INDEX
+======================================================= -->
 
 <script type="module"
         src="index.js">
 </script>
 
+
+<!-- ======================================================
+     AUTH
+======================================================= -->
+
 <script type="module"
         src="auth.js">
 </script>
 
+
 <script type="module"
         src="login.js">
 </script>
+
 
 <script type="module"
         src="logout.js">
 </script>
 
 
-
-<!-- =========================================================
+<!-- ======================================================
      ARBEIDSBELASTNING JAVASCRIPT
-========================================================= -->
+======================================================= -->
 
 <script type="module">
+
+
+/* ======================================================
+   IMPORT
+======================================================= */
 
 import {
     hentAnsatte
 } from "./ansatteFirestore.js";
 
 
-
-/* =========================================================
-   API
-========================================================= */
+/* ======================================================
+   KONFIGURASJON
+======================================================= */
 
 const ARBEIDSBELASTNING_API =
     "https://script.google.com/macros/s/AKfycbzLrv3bjJjPj50ichDW5P_P3stb1c89mk7vkb32AkwoqMTzxBOFs-4QdiwibskOI8hU/exec";
@@ -1591,140 +1892,157 @@ const GANGTID_API =
     "https://gangtid-740297234658.europe-north1.run.app/gangtid";
 
 
+/* ======================================================
+   ELEMENTER
+======================================================= */
 
-/* =========================================================
-   GLOBAL VARIABLER
-========================================================= */
+const ansattSelect =
+    document.getElementById("ansattSelect");
+
+const ansattStatus =
+    document.getElementById("ansattStatus");
+
+const aktivitetKnapper =
+    document.querySelectorAll(".aktivitet-knapp");
+
+const aktivTimer =
+    document.getElementById("aktivTimer");
+
+const aktivitetNavn =
+    document.getElementById("aktivitetNavn");
+
+const aktivTid =
+    document.getElementById("aktivTid");
+
+const stoppTimer =
+    document.getElementById("stoppTimer");
+
+const statusMelding =
+    document.getElementById("statusMelding");
+
+const dagensRegistreringer =
+    document.getElementById("dagensRegistreringer");
+
+const totalTid =
+    document.getElementById("totalTid");
+
+const arbeidstid =
+    document.getElementById("arbeidstid");
+
+const pausetid =
+    document.getElementById("pausetid");
+
+const lagreSvar =
+    document.getElementById("lagreSvar");
+
+const surveyStatus =
+    document.getElementById("surveyStatus");
+
+
+const beregnGangtidKnapp =
+    document.getElementById("beregnGangtid");
+
+const nullstillGangtidKnapp =
+    document.getElementById("nullstillGangtid");
+
+const gangtidStatus =
+    document.getElementById("gangtidStatus");
+
+const gangtidResultat =
+    document.getElementById("gangtidResultat");
+
+const gangtidResultatListe =
+    document.getElementById("gangtidResultatListe");
+
+const gangtidTotal =
+    document.getElementById("gangtidTotal");
+
+const gangtidTotalAvstand =
+    document.getElementById("gangtidTotalAvstand");
+
+
+/* ======================================================
+   DATA
+======================================================= */
 
 let ansatte = [];
 
-let valgtAnsatt = null;
+let aktivRegistrering = null;
 
-const aktiveTimere = {};
+let timerInterval = null;
 
-let dagensAktiviteter = [];
-
-let dagensSvar = null;
+let dagensData = [];
 
 
-
-/* =========================================================
+/* ======================================================
    DATO
-========================================================= */
+======================================================= */
 
 function dagensDato() {
 
     const dato =
         new Date();
 
-    const year =
-        dato.getFullYear();
-
-    const month =
+    return (
+        dato.getFullYear() +
+        "-" +
         String(
             dato.getMonth() + 1
-        ).padStart(
-            2,
-            "0"
-        );
-
-    const day =
+        ).padStart(2, "0") +
+        "-" +
         String(
             dato.getDate()
-        ).padStart(
-            2,
-            "0"
-        );
+        ).padStart(2, "0")
+    );
 
-    return `${year}-${month}-${day}`;
 }
 
 
+/* ======================================================
+   FORMATER TID
+======================================================= */
 
-/* =========================================================
-   TID
-========================================================= */
-
-function klokkeslett() {
-
-    const dato =
-        new Date();
-
-    const timer =
-        String(
-            dato.getHours()
-        ).padStart(
-            2,
-            "0"
-        );
-
-    const minutter =
-        String(
-            dato.getMinutes()
-        ).padStart(
-            2,
-            "0"
-        );
-
-    const sekunder =
-        String(
-            dato.getSeconds()
-        ).padStart(
-            2,
-            "0"
-        );
-
-    return `${timer}:${minutter}:${sekunder}`;
-}
-
-
-
-/* =========================================================
-   FORMATERE MINUTTER
-========================================================= */
-
-function formaterMinutter(
-    minutter
+function formaterTid(
+    sekunder
 ) {
 
-    const verdi =
-        Number(
-            minutter
-        ) || 0;
-
-    const avrundet =
-        Math.round(
-            verdi
+    sekunder =
+        Math.max(
+            0,
+            Math.floor(
+                Number(sekunder) || 0
+            )
         );
-
-    if (
-        avrundet < 60
-    ) {
-        return `${avrundet} min`;
-    }
 
     const timer =
         Math.floor(
-            avrundet / 60
+            sekunder / 3600
         );
 
-    const rest =
-        avrundet % 60;
+    const minutter =
+        Math.floor(
+            (sekunder % 3600) / 60
+        );
 
-    if (
-        rest === 0
-    ) {
-        return `${timer} t`;
-    }
+    const sek =
+        sekunder % 60;
 
-    return `${timer} t ${rest} min`;
+    return [
+
+        String(timer).padStart(2, "0"),
+
+        String(minutter).padStart(2, "0"),
+
+        String(sek).padStart(2, "0")
+
+    ].join(":");
+
 }
 
 
-
-/* =========================================================
-   POST TIL APPS SCRIPT
-========================================================= */
+/* ======================================================
+   API POST
+======================================================= */
 
 async function postTilArbeidsbelastningAPI(
     data
@@ -1740,19 +2058,32 @@ async function postTilArbeidsbelastningAPI(
         }
     );
 
+
     return {
         success: true,
         sent: true
     };
+
 }
 
 
+/* ======================================================
+   API GET – JSONP
+======================================================= */
 
-/* =========================================================
-   GET FRA APPS SCRIPT
-   JSONP brukes fordi GitHub Pages og Apps Script
-   ligger på forskjellige origins.
-========================================================= */
+/*
+ * GitHub Pages kan ikke lese et vanlig GET-svar
+ * fra Google Apps Script på grunn av CORS.
+ *
+ * Derfor bruker vi JSONP for GET.
+ *
+ * Apps Script returnerer da:
+ *
+ * callback({...});
+ *
+ * Nettleseren kan laste dette som et script,
+ * og callback-funksjonen mottar JSON-dataene.
+ */
 
 function hentFraArbeidsbelastningAPI(
     action,
@@ -1760,10 +2091,7 @@ function hentFraArbeidsbelastningAPI(
 ) {
 
     return new Promise(
-        (
-            resolve,
-            reject
-        ) => {
+        (resolve, reject) => {
 
             const callbackName =
                 "__teamSorAPI_" +
@@ -1789,12 +2117,7 @@ function hentFraArbeidsbelastningAPI(
             Object.entries(
                 parametre
             ).forEach(
-                (
-                    [
-                        navn,
-                        verdi
-                    ]
-                ) => {
+                ([navn, verdi]) => {
 
                     if (
                         verdi !== undefined &&
@@ -1803,9 +2126,7 @@ function hentFraArbeidsbelastningAPI(
 
                         url.searchParams.set(
                             navn,
-                            String(
-                                verdi
-                            )
+                            String(verdi)
                         );
 
                     }
@@ -1834,16 +2155,17 @@ function hentFraArbeidsbelastningAPI(
                 setTimeout(
                     () => {
 
-                        if (
-                            ferdig
-                        ) {
+                        if (ferdig) {
                             return;
                         }
+
 
                         ferdig =
                             true;
 
+
                         cleanup();
+
 
                         reject(
                             new Error(
@@ -1863,9 +2185,7 @@ function hentFraArbeidsbelastningAPI(
                 );
 
 
-                if (
-                    script.parentNode
-                ) {
+                if (script.parentNode) {
 
                     script.parentNode.removeChild(
                         script
@@ -1884,8 +2204,7 @@ function hentFraArbeidsbelastningAPI(
 
                     window[
                         callbackName
-                    ] =
-                        undefined;
+                    ] = undefined;
 
                 }
 
@@ -1895,18 +2214,16 @@ function hentFraArbeidsbelastningAPI(
             window[
                 callbackName
             ] =
-                function(
-                    resultat
-                ) {
+                function(resultat) {
 
-                    if (
-                        ferdig
-                    ) {
+                    if (ferdig) {
                         return;
                     }
 
+
                     ferdig =
                         true;
+
 
                     cleanup();
 
@@ -1924,7 +2241,9 @@ function hentFraArbeidsbelastningAPI(
                             )
                         );
 
+
                         return;
+
                     }
 
 
@@ -1938,14 +2257,14 @@ function hentFraArbeidsbelastningAPI(
             script.onerror =
                 function() {
 
-                    if (
-                        ferdig
-                    ) {
+                    if (ferdig) {
                         return;
                     }
 
+
                     ferdig =
                         true;
+
 
                     cleanup();
 
@@ -1969,84 +2288,58 @@ function hentFraArbeidsbelastningAPI(
 
         }
     );
+
 }
 
 
-
-/* =========================================================
-   LAST INN ANSATTE
-========================================================= */
+/* ======================================================
+   HENT ANSATTE
+======================================================= */
 
 async function lastAnsatte() {
 
-    const select =
-        document.getElementById(
-            "ansattSelect"
-        );
-
-    const status =
-        document.getElementById(
-            "ansattStatus"
-        );
-
-
     try {
-
-        status.textContent =
-            "Laster ansatte...";
-
 
         ansatte =
             await hentAnsatte();
 
 
-        console.log(
-            "Antall ansatte:",
-            ansatte.length
-        );
-
-
-        select.innerHTML =
+        ansattSelect.innerHTML =
             "";
 
 
-        const defaultOption =
+        const tomOption =
             document.createElement(
                 "option"
             );
 
-        defaultOption.value =
+
+        tomOption.value =
             "";
 
-        defaultOption.textContent =
+        tomOption.textContent =
             "Velg ansatt";
 
-        select.appendChild(
-            defaultOption
+
+        ansattSelect.appendChild(
+            tomOption
         );
 
 
         ansatte
             .sort(
-                (
-                    a,
-                    b
-                ) =>
+                (a, b) =>
                     String(
-                        a.navn ||
-                        a.name ||
-                        ""
+                        a.navn || ""
                     ).localeCompare(
                         String(
-                            b.navn ||
-                            b.name ||
-                            ""
+                            b.navn || ""
                         ),
                         "no"
                     )
             )
             .forEach(
-                ansatt => {
+                person => {
 
                     const option =
                         document.createElement(
@@ -2055,17 +2348,15 @@ async function lastAnsatte() {
 
 
                     option.value =
-                        ansatt.id;
+                        person.id;
 
 
                     option.textContent =
-                        ansatt.navn ||
-                        ansatt.name ||
-                        ansatt.displayName ||
-                        ansatt.id;
+                        person.navn ||
+                        "Uten navn";
 
 
-                    select.appendChild(
+                    ansattSelect.appendChild(
                         option
                     );
 
@@ -2073,105 +2364,449 @@ async function lastAnsatte() {
             );
 
 
-        status.textContent =
-            `${ansatte.length} ansatte lastet.`;
+        const lagretAnsatt =
+            localStorage.getItem(
+                "belastningAnsattId"
+            );
 
 
-    } catch (
-        error
-    ) {
+        if (
+            lagretAnsatt &&
+            ansatte.some(
+                person =>
+                    String(person.id) ===
+                    String(lagretAnsatt)
+            )
+        ) {
+
+            ansattSelect.value =
+                lagretAnsatt;
+
+        }
+
+
+        oppdaterAnsattStatus();
+
+
+    } catch (error) {
 
         console.error(
-            "Kunne ikke laste ansatte:",
+            "Kunne ikke hente ansatte:",
             error
         );
 
 
-        select.innerHTML =
-            `<option value="">Kunne ikke laste ansatte</option>`;
+        ansattSelect.innerHTML = `
+            <option value="">
+                Kunne ikke hente ansatte
+            </option>
+        `;
 
 
-        status.textContent =
-            "Kunne ikke laste ansatte.";
+        ansattStatus.textContent =
+            "Kunne ikke hente ansatte fra databasen.";
 
     }
 
 }
 
 
+/* ======================================================
+   ANSATT ENDRET
+======================================================= */
 
-/* =========================================================
-   ANSATT VALGT
-========================================================= */
+ansattSelect.addEventListener(
+    "change",
+    async () => {
 
-async function ansattValgt() {
+        const id =
+            ansattSelect.value;
 
-    const select =
-        document.getElementById(
-            "ansattSelect"
+
+        if (id) {
+
+            localStorage.setItem(
+                "belastningAnsattId",
+                id
+            );
+
+        } else {
+
+            localStorage.removeItem(
+                "belastningAnsattId"
+            );
+
+        }
+
+
+        oppdaterAnsattStatus();
+
+
+        await lastDagensRegistreringer();
+
+
+        await lastDagensSvar();
+
+    }
+);
+
+
+/* ======================================================
+   ANSATT STATUS
+======================================================= */
+
+function oppdaterAnsattStatus() {
+
+    const person =
+        ansatte.find(
+            p =>
+                String(p.id) ===
+                String(ansattSelect.value)
         );
 
 
-    const id =
-        select.value;
+    if (!person) {
 
-
-    if (
-        !id
-    ) {
-
-        valgtAnsatt =
-            null;
-
-        dagensAktiviteter =
-            [];
-
-        dagensSvar =
-            null;
-
-        visDagensRegistreringer();
+        ansattStatus.textContent =
+            "Velg ansatt før du starter registrering.";
 
         return;
 
     }
 
 
-    valgtAnsatt =
-        ansatte.find(
-            ansatt =>
-                String(
-                    ansatt.id
-                ) ===
-                String(
-                    id
-                )
+    ansattStatus.textContent =
+        `Registreringer lagres for ${person.navn}.`;
+
+}
+
+
+/* ======================================================
+   START TIMER
+======================================================= */
+
+aktivitetKnapper.forEach(
+    knapp => {
+
+        knapp.addEventListener(
+            "click",
+            () => {
+
+                startTimer(
+                    knapp.dataset.aktivitet,
+                    knapp.dataset.kategori
+                );
+
+            }
         );
 
+    }
+);
 
-    console.log(
-        "Valgt ansatt:",
-        valgtAnsatt
+
+function startTimer(
+    aktivitet,
+    kategori
+) {
+
+    if (!ansattSelect.value) {
+
+        statusMelding.textContent =
+            "Velg ansatt før du starter en registrering.";
+
+        ansattSelect.focus();
+
+        return;
+
+    }
+
+
+    if (aktivRegistrering) {
+
+        statusMelding.textContent =
+            "En aktivitet er allerede aktiv. Stopp den først.";
+
+        return;
+
+    }
+
+
+    aktivRegistrering = {
+
+        aktivitet,
+        kategori,
+        start: new Date()
+
+    };
+
+
+    aktivitetNavn.textContent =
+        aktivitet;
+
+
+    aktivTimer.classList.add(
+        "vis"
     );
 
 
-    await lastDagensRegistreringer();
+    stoppTimer.classList.add(
+        "vis"
+    );
 
-    await lastDagensSvar();
+
+    aktivitetKnapper.forEach(
+        knapp => {
+
+            knapp.disabled =
+                true;
+
+        }
+    );
+
+
+    statusMelding.textContent =
+        "";
+
+
+    oppdaterAktivTid();
+
+
+    timerInterval =
+        setInterval(
+            oppdaterAktivTid,
+            1000
+        );
 
 }
 
 
+/* ======================================================
+   AKTIV TID
+======================================================= */
 
-/* =========================================================
-   LAST DAGENS AKTIVITETER
-========================================================= */
+function oppdaterAktivTid() {
+
+    if (!aktivRegistrering) {
+        return;
+    }
+
+
+    const sekunder =
+        Math.floor(
+            (
+                new Date() -
+                aktivRegistrering.start
+            ) / 1000
+        );
+
+
+    aktivTid.textContent =
+        formaterTid(
+            sekunder
+        );
+
+}
+
+
+/* ======================================================
+   STOPP OG LAGRE
+======================================================= */
+
+stoppTimer.addEventListener(
+    "click",
+    stoppAktivTimer
+);
+
+
+async function stoppAktivTimer() {
+
+    if (!aktivRegistrering) {
+        return;
+    }
+
+
+    const slutt =
+        new Date();
+
+
+    const start =
+        aktivRegistrering.start;
+
+
+    const varighetSekunder =
+        Math.max(
+            0,
+            Math.floor(
+                (
+                    slutt -
+                    start
+                ) / 1000
+            )
+        );
+
+
+    const person =
+        ansatte.find(
+            p =>
+                String(p.id) ===
+                String(ansattSelect.value)
+        );
+
+
+    if (!person) {
+
+        statusMelding.textContent =
+            "Fant ikke valgt ansatt.";
+
+        return;
+
+    }
+
+
+    stoppTimer.disabled =
+        true;
+
+
+    statusMelding.textContent =
+        "Sender registreringen til serveren...";
+
+
+    try {
+
+        await postTilArbeidsbelastningAPI({
+
+            action:
+                "lagreAktivitet",
+
+            dato:
+                dagensDato(),
+
+            ansattNavn:
+                person.navn || "",
+
+            ansattId:
+                person.id,
+
+            aktivitet:
+                aktivRegistrering.aktivitet,
+
+            kategori:
+                aktivRegistrering.kategori,
+
+            start:
+                start.toISOString(),
+
+            slutt:
+                slutt.toISOString(),
+
+            varighetSekunder:
+                varighetSekunder,
+
+            kommentar:
+                ""
+
+        });
+
+
+        clearInterval(
+            timerInterval
+        );
+
+        timerInterval =
+            null;
+
+        aktivRegistrering =
+            null;
+
+
+        aktivTimer.classList.remove(
+            "vis"
+        );
+
+        stoppTimer.classList.remove(
+            "vis"
+        );
+
+
+        aktivitetNavn.textContent =
+            "–";
+
+        aktivTid.textContent =
+            "00:00:00";
+
+
+        aktivitetKnapper.forEach(
+            knapp => {
+
+                knapp.disabled =
+                    false;
+
+            }
+        );
+
+
+        statusMelding.textContent =
+            `✅ Registreringen er sendt. ${formaterTid(
+                varighetSekunder
+            )}.`;
+
+
+        try {
+
+            await lastDagensRegistreringer();
+
+        } catch (error) {
+
+            console.warn(
+                "Registreringen er sendt, men kunne ikke hente dagens data:",
+                error
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Kunne ikke sende registrering:",
+            error
+        );
+
+
+        statusMelding.textContent =
+            "❌ Kunne ikke sende registreringen. " +
+            error.message;
+
+    }
+
+
+    stoppTimer.disabled =
+        false;
+
+}
+
+
+/* ======================================================
+   HENT DAGENS REGISTRERINGER
+======================================================= */
 
 async function lastDagensRegistreringer() {
 
-    if (
-        !valgtAnsatt
-    ) {
+    const ansattId =
+        ansattSelect.value;
+
+
+    if (!ansattId) {
+
+        dagensData =
+            [];
+
+        visRegistreringer();
+
+        oppdaterOppsummering();
+
         return;
+
     }
 
 
@@ -2182,7 +2817,7 @@ async function lastDagensRegistreringer() {
                 "hentAktiviteter",
                 {
                     ansattId:
-                        valgtAnsatt.id,
+                        ansattId,
 
                     dato:
                         dagensDato()
@@ -2190,34 +2825,113 @@ async function lastDagensRegistreringer() {
             );
 
 
+        /*
+         * Apps Script returnerer "aktiviteter".
+         * "data" beholdes som fallback.
+         */
+
         let data =
             resultat.aktiviteter ||
             resultat.data ||
             [];
 
 
-        dagensAktiviteter =
-            Array.isArray(
-                data
-            )
-                ? data
-                : [];
+        if (!Array.isArray(data)) {
+
+            data = [];
+
+        }
 
 
-        console.log(
-            "Dagens aktiviteter:",
-            dagensAktiviteter
+        dagensData =
+            data.map(
+                registrering => {
+
+                    const varighetMinutter =
+                        Number(
+                            registrering.varighetMinutter ||
+                            registrering["Varighet (min)"] ||
+                            0
+                        );
+
+
+                    let varighetSekunder =
+                        Number(
+                            registrering.varighetSekunder ||
+                            0
+                        );
+
+
+                    if (
+                        !varighetSekunder &&
+                        Number.isFinite(
+                            varighetMinutter
+                        )
+                    ) {
+
+                        varighetSekunder =
+                            Math.round(
+                                varighetMinutter * 60
+                            );
+
+                    }
+
+
+                    return {
+
+                        row:
+                            registrering.row,
+
+                        aktivitet:
+                            registrering.aktivitet ||
+                            registrering["Aktivitet"] ||
+                            "",
+
+                        kategori:
+                            registrering.kategori ||
+                            registrering["Kategori"] ||
+                            "",
+
+                        start:
+                            registrering.start ||
+                            registrering["Start"] ||
+                            "",
+
+                        slutt:
+                            registrering.slutt ||
+                            registrering["Slutt"] ||
+                            "",
+
+                        varighetSekunder:
+                            varighetSekunder
+
+                    };
+
+                }
+            );
+
+
+        dagensData =
+            dagensData.filter(
+                registrering =>
+                    registrering.start
+            );
+
+
+        dagensData.sort(
+            (a, b) =>
+                new Date(a.start) -
+                new Date(b.start)
         );
 
 
-        visDagensRegistreringer();
+        visRegistreringer();
+
 
         oppdaterOppsummering();
 
 
-    } catch (
-        error
-    ) {
+    } catch (error) {
 
         console.error(
             "Kunne ikke hente dagens registreringer:",
@@ -2225,29 +2939,532 @@ async function lastDagensRegistreringer() {
         );
 
 
-        dagensAktiviteter =
-            [];
+        dagensRegistreringer.innerHTML = `
+            <p>
+                ❌ Kunne ikke hente registreringene.
+                ${escapeHtml(error.message)}
+            </p>
+        `;
 
-
-        visDagensRegistreringer(
-            "Kunne ikke hente dagens registreringer."
-        );
+        throw error;
 
     }
 
 }
 
 
+/* ======================================================
+   VIS REGISTRERINGER
+======================================================= */
 
-/* =========================================================
-   LAST DAGLIGT SVAR
-========================================================= */
+function visRegistreringer() {
+
+    if (!dagensData.length) {
+
+        dagensRegistreringer.innerHTML =
+            "<p>Ingen registreringer ennå.</p>";
+
+        return;
+
+    }
+
+
+    dagensRegistreringer.innerHTML =
+        dagensData.map(
+            registrering => {
+
+                const start =
+                    new Date(
+                        registrering.start
+                    );
+
+
+                const slutt =
+                    new Date(
+                        registrering.slutt
+                    );
+
+
+                const klokkeStart =
+                    start.toLocaleTimeString(
+                        "no-NO",
+                        {
+                            hour: "2-digit",
+                            minute: "2-digit"
+                        }
+                    );
+
+
+                const klokkeSlutt =
+                    slutt.toLocaleTimeString(
+                        "no-NO",
+                        {
+                            hour: "2-digit",
+                            minute: "2-digit"
+                        }
+                    );
+
+
+                return `
+
+                    <div class="registrering">
+
+                        <div class="registrering-info">
+
+                            <div class="registrering-aktivitet">
+
+                                ${escapeHtml(
+                                    registrering.aktivitet
+                                )}
+
+                            </div>
+
+
+                            <div class="registrering-detaljer">
+
+                                ${klokkeStart}
+                                –
+                                ${klokkeSlutt}
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="registrering-varighet">
+
+                            ${formaterTid(
+                                registrering.varighetSekunder
+                            )}
+
+                        </div>
+
+
+                        <button
+                            class="slett-registrering"
+                            type="button"
+                            data-row="${escapeHtml(
+                                registrering.row
+                            )}">
+
+                            🗑️
+
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
+
+
+    document
+        .querySelectorAll(
+            ".slett-registrering"
+        )
+        .forEach(
+            knapp => {
+
+                knapp.addEventListener(
+                    "click",
+                    () => {
+
+                        slettRegistrering(
+                            knapp.dataset.row
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* ======================================================
+   SLETT REGISTRERING
+======================================================= */
+
+async function slettRegistrering(
+    row
+) {
+
+    if (!row) {
+
+        statusMelding.textContent =
+            "❌ Fant ikke raden som skal slettes.";
+
+        return;
+
+    }
+
+
+    const bekreft =
+        confirm(
+            "Vil du slette denne registreringen?"
+        );
+
+
+    if (!bekreft) {
+        return;
+    }
+
+
+    try {
+
+        statusMelding.textContent =
+            "Sender sletteforespørsel...";
+
+
+        await postTilArbeidsbelastningAPI({
+
+            action:
+                "slettAktivitet",
+
+            row:
+                Number(row)
+
+        });
+
+
+        statusMelding.textContent =
+            "✅ Sletteforespørselen er sendt.";
+
+
+        try {
+
+            await lastDagensRegistreringer();
+
+        } catch (error) {
+
+            console.warn(
+                "Kunne ikke hente data etter sletting:",
+                error
+            );
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Kunne ikke slette registrering:",
+            error
+        );
+
+
+        statusMelding.textContent =
+            "❌ Kunne ikke sende sletteforespørselen. " +
+            error.message;
+
+    }
+
+}
+
+
+/* ======================================================
+   OPPSUMMERING
+======================================================= */
+
+function oppdaterOppsummering() {
+
+    let total =
+        0;
+
+    let pause =
+        0;
+
+
+    dagensData.forEach(
+        registrering => {
+
+            const sekunder =
+                Number(
+                    registrering.varighetSekunder
+                ) || 0;
+
+
+            total +=
+                sekunder;
+
+
+            if (
+                registrering.kategori ===
+                "pause"
+            ) {
+
+                pause +=
+                    sekunder;
+
+            }
+
+        }
+    );
+
+
+    const arbeid =
+        Math.max(
+            0,
+            total - pause
+        );
+
+
+    totalTid.textContent =
+        formaterTid(
+            total
+        );
+
+    arbeidstid.textContent =
+        formaterTid(
+            arbeid
+        );
+
+    pausetid.textContent =
+        formaterTid(
+            pause
+        );
+
+}
+
+
+/* ======================================================
+   SPØRREUNDERSØKELSE
+======================================================= */
+
+lagreSvar.addEventListener(
+    "click",
+    lagreDagensSvar
+);
+
+
+/* ======================================================
+   HENT SURVEY-SVAR
+======================================================= */
+
+function hentSurveySvar() {
+
+    return {
+
+        gangavstand:
+            hentRadio(
+                "gangavstand"
+            ),
+
+        fremOgTilbake:
+            hentRadio(
+                "fremOgTilbake"
+            ),
+
+        ekstraAktiviteter:
+            hentRadio(
+                "ekstraAktiviteter"
+            ),
+
+        morgenrapport:
+            hentRadio(
+                "morgenrapport"
+            ),
+
+        sluttrapport:
+            hentRadio(
+                "sluttrapport"
+            ),
+
+        arbeidslisteTid:
+            hentRadio(
+                "arbeidslisteTid"
+            ),
+
+        rakkAlleOppgaver:
+            hentRadio(
+                "rakkAlleOppgaver"
+            ),
+
+        kommentar:
+            document
+                .getElementById(
+                    "kommentar"
+                )
+                .value
+                .trim()
+
+    };
+
+}
+
+
+/* ======================================================
+   RADIO
+======================================================= */
+
+function hentRadio(
+    name
+) {
+
+    const valgt =
+        document.querySelector(
+            `input[name="${name}"]:checked`
+        );
+
+
+    return valgt
+        ? valgt.value
+        : "";
+
+}
+
+
+/* ======================================================
+   LAGRE DAGLIG SVAR
+======================================================= */
+
+async function lagreDagensSvar() {
+
+    const ansattId =
+        ansattSelect.value;
+
+
+    if (!ansattId) {
+
+        surveyStatus.textContent =
+            "Velg ansatt først.";
+
+        ansattSelect.focus();
+
+        return;
+
+    }
+
+
+    const person =
+        ansatte.find(
+            p =>
+                String(p.id) ===
+                String(ansattId)
+        );
+
+
+    if (!person) {
+
+        surveyStatus.textContent =
+            "Fant ikke valgt ansatt.";
+
+        return;
+
+    }
+
+
+    const svar =
+        hentSurveySvar();
+
+
+    if (
+        !svar.gangavstand ||
+        !svar.fremOgTilbake ||
+        !svar.ekstraAktiviteter ||
+        !svar.morgenrapport ||
+        !svar.sluttrapport ||
+        !svar.arbeidslisteTid ||
+        !svar.rakkAlleOppgaver
+    ) {
+
+        surveyStatus.textContent =
+            "Svar på alle spørsmålene før du lagrer.";
+
+        return;
+
+    }
+
+
+    lagreSvar.disabled =
+        true;
+
+
+    surveyStatus.textContent =
+        "Sender svarene til serveren...";
+
+
+    try {
+
+        await postTilArbeidsbelastningAPI({
+
+            action:
+                "lagreSvar",
+
+            dato:
+                dagensDato(),
+
+            ansattNavn:
+                person.navn || "",
+
+            ansattId:
+                person.id,
+
+            gangavstand:
+                svar.gangavstand,
+
+            fremOgTilbake:
+                svar.fremOgTilbake,
+
+            ekstraAktiviteter:
+                svar.ekstraAktiviteter,
+
+            morgenrapport:
+                svar.morgenrapport,
+
+            sluttrapport:
+                svar.sluttrapport,
+
+            arbeidslisteTid:
+                svar.arbeidslisteTid,
+
+            rakkAlleOppgaver:
+                svar.rakkAlleOppgaver,
+
+            kommentar:
+                svar.kommentar
+
+        });
+
+
+        surveyStatus.textContent =
+            "✅ Svarene er sendt til serveren.";
+
+
+    } catch (error) {
+
+        console.error(
+            "Kunne ikke lagre svar:",
+            error
+        );
+
+
+        surveyStatus.textContent =
+            "❌ Kunne ikke sende svarene. " +
+            error.message;
+
+    }
+
+
+    lagreSvar.disabled =
+        false;
+
+}
+
+
+/* ======================================================
+   HENT DAGLIG SVAR
+======================================================= */
 
 async function lastDagensSvar() {
 
-    if (
-        !valgtAnsatt
-    ) {
+    const ansattId =
+        ansattSelect.value;
+
+
+    if (!ansattId) {
         return;
     }
 
@@ -2259,7 +3476,7 @@ async function lastDagensSvar() {
                 "hentSvar",
                 {
                     ansattId:
-                        valgtAnsatt.id,
+                        ansattId,
 
                     dato:
                         dagensDato()
@@ -2267,30 +3484,103 @@ async function lastDagensSvar() {
             );
 
 
+        /*
+         * Apps Script returnerer "svar".
+         * "data" beholdes som fallback.
+         */
+
         let svar =
             resultat.svar ||
             resultat.data ||
             null;
 
 
-        dagensSvar =
-            svar;
+        if (
+            Array.isArray(svar)
+        ) {
+
+            svar =
+                svar.length
+                    ? svar[0]
+                    : null;
+
+        }
 
 
-        console.log(
-            "Dagens svar:",
-            dagensSvar
+        if (!svar) {
+
+            surveyStatus.textContent =
+                "";
+
+            return;
+
+        }
+
+
+        settRadio(
+            "gangavstand",
+            svar.gangavstand ??
+            svar["Gangavstand"]
         );
 
 
-        fyllInnSvar(
-            dagensSvar
+        settRadio(
+            "fremOgTilbake",
+            svar.fremOgTilbake ??
+            svar["Frem og tilbake"]
         );
 
 
-    } catch (
-        error
-    ) {
+        settRadio(
+            "ekstraAktiviteter",
+            svar.ekstraAktiviteter ??
+            svar["Ekstra aktiviteter"]
+        );
+
+
+        settRadio(
+            "morgenrapport",
+            svar.morgenrapport ??
+            svar["Morgenrapport"]
+        );
+
+
+        settRadio(
+            "sluttrapport",
+            svar.sluttrapport ??
+            svar["Sluttrapport"]
+        );
+
+
+        settRadio(
+            "arbeidslisteTid",
+            svar.arbeidslisteTid ??
+            svar["Arbeidsliste tid"]
+        );
+
+
+        settRadio(
+            "rakkAlleOppgaver",
+            svar.rakkAlleOppgaver ??
+            svar["Rakk alle oppgaver"]
+        );
+
+
+        document
+            .getElementById(
+                "kommentar"
+            )
+            .value =
+                svar.kommentar ??
+                svar["Kommentar"] ??
+                "";
+
+
+        surveyStatus.textContent =
+            "Det finnes allerede lagrede svar for i dag.";
+
+
+    } catch (error) {
 
         console.error(
             "Kunne ikke hente dagens svar:",
@@ -2302,999 +3592,311 @@ async function lastDagensSvar() {
 }
 
 
+/* ======================================================
+   SETT RADIO
+======================================================= */
 
-/* =========================================================
-   VIS DAGENS REGISTRERINGER
-========================================================= */
-
-function visDagensRegistreringer(
-    melding = null
+function settRadio(
+    name,
+    value
 ) {
 
-    const container =
-        document.getElementById(
-            "dagensRegistreringer"
-        );
-
-
-    if (
-        melding
-    ) {
-
-        container.innerHTML =
-            `<p>${melding}</p>`;
-
-        return;
-
-    }
-
-
-    if (
-        !valgtAnsatt
-    ) {
-
-        container.innerHTML =
-            "<p>Velg ansatt for å se dagens registreringer.</p>";
-
-        return;
-
-    }
-
-
-    if (
-        dagensAktiviteter.length === 0
-    ) {
-
-        container.innerHTML =
-            "<p>Ingen registreringer i dag.</p>";
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        "";
-
-
-    dagensAktiviteter.forEach(
-        aktivitet => {
-
-            const rad =
-                document.createElement(
-                    "div"
-                );
-
-            rad.className =
-                "registration-row";
-
-
-            const minutter =
-                Number(
-                    aktivitet.varighetMinutter
-                ) || 0;
-
-
-            rad.innerHTML = `
-
-                <div>
-
-                    <strong>
-                        ${escapeHtml(
-                            aktivitet.aktivitet ||
-                            ""
-                        )}
-                    </strong>
-
-                    <div>
-                        ${
-                            aktivitet.start ||
-                            ""
-                        }
-                        –
-                        ${
-                            aktivitet.slutt ||
-                            ""
-                        }
-                    </div>
-
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        ${formaterMinutter(
-                            minutter
-                        )}
-                    </strong>
-
-                </div>
-
-            `;
-
-
-            container.appendChild(
-                rad
-            );
-
-        }
-    );
-
-}
-
-
-
-/* =========================================================
-   OPPDATER OPPSUMMERING
-========================================================= */
-
-function oppdaterOppsummering() {
-
-    let total =
-        0;
-
-    let pause =
-        0;
-
-
-    dagensAktiviteter.forEach(
-        aktivitet => {
-
-            const minutter =
-                Number(
-                    aktivitet.varighetMinutter
-                ) || 0;
-
-
-            total +=
-                minutter;
-
-
-            if (
-                aktivitet.kategori ===
-                "Pause" ||
-                aktivitet.aktivitet ===
-                "Pause"
-            ) {
-
-                pause +=
-                    minutter;
-
-            }
-
-        }
-    );
-
-
-    const arbeid =
-        total -
-        pause;
-
-
-    document.getElementById(
-        "totalTid"
-    ).textContent =
-        formaterMinutter(
-            total
-        );
-
-
-    document.getElementById(
-        "arbeidstid"
-    ).textContent =
-        formaterMinutter(
-            arbeid
-        );
-
-
-    document.getElementById(
-        "pausetid"
-    ).textContent =
-        formaterMinutter(
-            pause
-        );
-
-}
-
-
-
-/* =========================================================
-   START AKTIVITET
-========================================================= */
-
-function startAktivitet(
-    knapp
-) {
-
-    if (
-        !valgtAnsatt
-    ) {
-
-        alert(
-            "Velg ansatt først."
-        );
-
-        return;
-
-    }
-
-
-    const aktivitet =
-        knapp.dataset.activity;
-
-    const kategori =
-        knapp.dataset.category;
-
-
-    const key =
-        aktivitet;
-
-
-    if (
-        aktiveTimere[key]
-    ) {
+    if (!value) {
         return;
     }
 
 
-    const startTid =
-        new Date();
-
-
-    aktiveTimere[key] = {
-
-        aktivitet:
-            aktivitet,
-
-        kategori:
-            kategori,
-
-        start:
-            startTid,
-
-        interval:
-            null
-
-    };
-
-
-    const stopKnapp =
+    const radio =
         document.querySelector(
-            `.stop-activity[data-activity="${CSS.escape(aktivitet)}"]`
+            `input[name="${name}"][value="${value}"]`
         );
 
 
-    knapp.disabled =
-        true;
+    if (radio) {
 
-
-    if (
-        stopKnapp
-    ) {
-        stopKnapp.disabled =
-            false;
-    }
-
-
-    const timerElement =
-        document.getElementById(
-            `timer-${aktivitet}`
-        );
-
-
-    function oppdaterTimer() {
-
-        const sekunder =
-            Math.floor(
-                (
-                    Date.now() -
-                    startTid.getTime()
-                ) /
-                1000
-            );
-
-
-        const timer =
-            Math.floor(
-                sekunder /
-                3600
-            );
-
-
-        const minutter =
-            Math.floor(
-                (
-                    sekunder %
-                    3600
-                ) /
-                60
-            );
-
-
-        const sek =
-            sekunder %
-            60;
-
-
-        timerElement.textContent =
-            String(
-                timer
-            ).padStart(
-                2,
-                "0"
-            ) +
-            ":" +
-            String(
-                minutter
-            ).padStart(
-                2,
-                "0"
-            ) +
-            ":" +
-            String(
-                sek
-            ).padStart(
-                2,
-                "0"
-            );
-
-    }
-
-
-    aktiveTimere[key].interval =
-        setInterval(
-            oppdaterTimer,
-            1000
-        );
-
-
-    oppdaterTimer();
-
-}
-
-
-
-/* =========================================================
-   STOPP AKTIVITET
-========================================================= */
-
-async function stoppAktivitet(
-    knapp
-) {
-
-    if (
-        !valgtAnsatt
-    ) {
-        return;
-    }
-
-
-    const aktivitet =
-        knapp.dataset.activity;
-
-
-    const key =
-        aktivitet;
-
-
-    const timer =
-        aktiveTimere[key];
-
-
-    if (
-        !timer
-    ) {
-        return;
-    }
-
-
-    clearInterval(
-        timer.interval
-    );
-
-
-    const sluttTid =
-        new Date();
-
-
-    const varighetSekunder =
-        Math.max(
-            0,
-            Math.floor(
-                (
-                    sluttTid.getTime() -
-                    timer.start.getTime()
-                ) /
-                1000
-            )
-        );
-
-
-    const varighetMinutter =
-        varighetSekunder /
-        60;
-
-
-    const data = {
-
-        action:
-            "lagreAktivitet",
-
-        dato:
-            dagensDato(),
-
-        ansattNavn:
-            valgtAnsatt.navn ||
-            valgtAnsatt.name ||
-            valgtAnsatt.displayName ||
-            "",
-
-        ansattId:
-            valgtAnsatt.id,
-
-        aktivitet:
-            timer.aktivitet,
-
-        kategori:
-            timer.kategori,
-
-        start:
-            formatTidFraDato(
-                timer.start
-            ),
-
-        slutt:
-            formatTidFraDato(
-                sluttTid
-            ),
-
-        varighetMinutter:
-            varighetMinutter,
-
-        varighetSekunder:
-            varighetSekunder,
-
-        kommentar:
-            ""
-
-    };
-
-
-    const startKnapp =
-        document.querySelector(
-            `.start-activity[data-activity="${CSS.escape(aktivitet)}"]`
-        );
-
-
-    knapp.disabled =
-        true;
-
-
-    if (
-        startKnapp
-    ) {
-        startKnapp.disabled =
-            false;
-    }
-
-
-    const timerElement =
-        document.getElementById(
-            `timer-${aktivitet}`
-        );
-
-
-    if (
-        timerElement
-    ) {
-
-        timerElement.textContent =
-            "00:00:00";
-
-    }
-
-
-    delete aktiveTimere[key];
-
-
-    try {
-
-        await postTilArbeidsbelastningAPI(
-            data
-        );
-
-
-        await lastDagensRegistreringer();
-
-
-    } catch (
-        error
-    ) {
-
-        console.error(
-            "Kunne ikke lagre aktivitet:",
-            error
-        );
-
-
-        alert(
-            "Kunne ikke lagre aktiviteten."
-        );
+        radio.checked =
+            true;
 
     }
 
 }
 
 
-
-/* =========================================================
-   FORMATERE DATO/TID
-========================================================= */
-
-function formatTidFraDato(
-    dato
-) {
-
-    return (
-        String(
-            dato.getHours()
-        ).padStart(
-            2,
-            "0"
-        ) +
-        ":" +
-        String(
-            dato.getMinutes()
-        ).padStart(
-            2,
-            "0"
-        ) +
-        ":" +
-        String(
-            dato.getSeconds()
-        ).padStart(
-            2,
-            "0"
-        )
-    );
-
-}
-
-
-
-/* =========================================================
-   LAGRE DAGLIG SVAR
-========================================================= */
-
-async function lagreSvar() {
-
-    const status =
-        document.getElementById(
-            "surveyStatus"
-        );
-
-
-    if (
-        !valgtAnsatt
-    ) {
-
-        status.textContent =
-            "Velg ansatt først.";
-
-        return;
-
-    }
-
-
-    function radioVerdi(
-        navn
-    ) {
-
-        const valgt =
-            document.querySelector(
-                `input[name="${navn}"]:checked`
-            );
-
-        return valgt
-            ? valgt.value
-            : "";
-
-    }
-
-
-    const data = {
-
-        action:
-            "lagreSvar",
-
-        dato:
-            dagensDato(),
-
-        ansattNavn:
-            valgtAnsatt.navn ||
-            valgtAnsatt.name ||
-            valgtAnsatt.displayName ||
-            "",
-
-        ansattId:
-            valgtAnsatt.id,
-
-        gangavstand:
-            radioVerdi(
-                "gangavstand"
-            ),
-
-        fremOgTilbake:
-            radioVerdi(
-                "fremOgTilbake"
-            ),
-
-        ekstraAktiviteter:
-            radioVerdi(
-                "ekstraAktiviteter"
-            ),
-
-        morgenrapport:
-            radioVerdi(
-                "morgenrapport"
-            ),
-
-        sluttrapport:
-            radioVerdi(
-                "sluttrapport"
-            ),
-
-        arbeidslisteTid:
-            radioVerdi(
-                "arbeidslisteTid"
-            ),
-
-        rakkAlleOppgaver:
-            radioVerdi(
-                "rakkAlleOppgaver"
-            ),
-
-        kommentar:
-            document.getElementById(
-                "kommentar"
-            ).value.trim()
-
-    };
-
-
-    try {
-
-        status.textContent =
-            "Lagrer...";
-
-
-        await postTilArbeidsbelastningAPI(
-            data
-        );
-
-
-        dagensSvar =
-            data;
-
-
-        status.textContent =
-            "Svarene er lagret.";
-
-
-    } catch (
-        error
-    ) {
-
-        console.error(
-            "Kunne ikke lagre svar:",
-            error
-        );
-
-
-        status.textContent =
-            "Kunne ikke lagre svarene.";
-
-    }
-
-}
-
-
-
-/* =========================================================
-   FYLL INN EKSISTERENDE SVAR
-========================================================= */
-
-function fyllInnSvar(
-    svar
-) {
-
-    if (
-        !svar
-    ) {
-        return;
-    }
-
-
-    const felt = [
-        "gangavstand",
-        "fremOgTilbake",
-        "ekstraAktiviteter",
-        "morgenrapport",
-        "sluttrapport",
-        "arbeidslisteTid",
-        "rakkAlleOppgaver"
-    ];
-
-
-    felt.forEach(
-        navn => {
-
-            const verdi =
-                svar[navn];
-
-
-            if (
-                !verdi
-            ) {
-                return;
-            }
-
-
-            const radio =
-                document.querySelector(
-                    `input[name="${navn}"][value="${CSS.escape(String(verdi))}"]`
-                );
-
-
-            if (
-                radio
-            ) {
-
-                radio.checked =
-                    true;
-
-            }
-
-        }
-    );
-
-
-    const kommentar =
-        document.getElementById(
-            "kommentar"
-        );
-
-
-    if (
-        kommentar
-    ) {
-
-        kommentar.value =
-            svar.kommentar ||
-            "";
-
-    }
-
-}
-
-
-
-/* =========================================================
-   GANGTID
-========================================================= */
-
-async function beregnGangtid() {
+/* ======================================================
+   GANGTID – ADRESSER
+======================================================= */
+
+function hentGangtidAdresser() {
 
     const inputs =
-        Array.from(
-            document.querySelectorAll(
-                ".adresse-input"
-            )
+        document.querySelectorAll(
+            "#adresser input"
         );
 
 
     const adresser =
-        inputs
-            .map(
-                input =>
-                    input.value.trim()
-            )
-            .filter(
-                value =>
-                    value.length > 0
-            );
+        [];
 
 
-    const status =
-        document.getElementById(
-            "gangtidStatus"
+    inputs.forEach(
+        (input, index) => {
+
+            const adresse =
+                input.value.trim();
+
+
+            if (adresse !== "") {
+
+                adresser.push({
+
+                    nummer:
+                        index + 1,
+
+                    adresse:
+                        adresse
+
+                });
+
+            }
+
+        }
+    );
+
+
+    return adresser;
+
+}
+
+
+/* ======================================================
+   GANGTID STATUS
+======================================================= */
+
+function visGangtidStatus(
+    melding,
+    type = ""
+) {
+
+    gangtidStatus.style.display =
+        "block";
+
+
+    gangtidStatus.textContent =
+        melding;
+
+
+    gangtidStatus.className =
+        "";
+
+
+    gangtidStatus.classList.add(
+        "vis"
+    );
+
+
+    if (type) {
+
+        gangtidStatus.classList.add(
+            type
         );
 
+    }
 
-    const resultat =
-        document.getElementById(
-            "gangtidResultat"
-        );
+}
 
 
-    const liste =
-        document.getElementById(
-            "gangtidResultatListe"
-        );
+/* ======================================================
+   BEREGN GANGTID
+======================================================= */
+
+beregnGangtidKnapp.addEventListener(
+    "click",
+    beregnGangtid
+);
+
+
+async function beregnGangtid() {
+
+    const adresser =
+        hentGangtidAdresser();
 
 
     if (
         adresser.length < 2
     ) {
 
-        status.textContent =
-            "Skriv inn minst to adresser.";
+        visGangtidStatus(
+            "Du må skrive inn minst to adresser.",
+            "error"
+        );
+
+        gangtidResultat.classList.remove(
+            "vis"
+        );
 
         return;
 
     }
 
 
-    status.textContent =
-        "Beregner gangtid...";
+    gangtidResultat.classList.remove(
+        "vis"
+    );
 
 
-    resultat.style.display =
-        "none";
+    gangtidResultatListe.innerHTML =
+        "";
+
+    gangtidTotal.textContent =
+        "";
+
+    gangtidTotalAvstand.textContent =
+        "";
+
+
+    beregnGangtidKnapp.disabled =
+        true;
 
 
     try {
 
-        const response =
-            await fetch(
-                GANGTID_API,
-                {
-                    method:
-                        "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body:
-                        JSON.stringify({
-                            addresses:
-                                adresser
-                        })
-                }
-            );
+        const resultater =
+            [];
 
 
-        if (
-            !response.ok
+        let totalSekunder =
+            0;
+
+
+        let totalMeter =
+            0;
+
+
+        const antallEtapper =
+            adresser.length - 1;
+
+
+        for (
+            let i = 0;
+            i < antallEtapper;
+            i++
         ) {
 
-            throw new Error(
-                `HTTP ${response.status}`
+            const fra =
+                adresser[i];
+
+
+            const til =
+                adresser[i + 1];
+
+
+            visGangtidStatus(
+                `🚶 Beregner etappe ${i + 1} av ${antallEtapper}...`
             );
 
-        }
+
+            const response =
+                await fetch(
+                    GANGTID_API,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                origin:
+                                    fra.adresse,
+
+                                destination:
+                                    til.adresse
+
+                            })
+
+                    }
+                );
 
 
-        const data =
-            await response.json();
+            if (!response.ok) {
+
+                let detaljer =
+                    "";
 
 
-        console.log(
-            "Gangtid API:",
-            data
-        );
+                try {
+
+                    const feil =
+                        await response.json();
 
 
-        visGangtidResultat(
-            data
-        );
+                    if (feil.error) {
+
+                        detaljer =
+                            feil.error;
+
+                    }
+
+                } catch {
+                    /* Ingen JSON-feil */
+                }
 
 
-        status.textContent =
-            "Gangtid beregnet.";
+                throw new Error(
+                    detaljer ||
+                    `API-feil (${response.status})`
+                );
+
+            }
 
 
-    } catch (
-        error
-    ) {
-
-        console.error(
-            "Gangtid-feil:",
-            error
-        );
+            const data =
+                await response.json();
 
 
-        status.textContent =
-            "Kunne ikke beregne gangtid.";
+            if (
+                data.status !== "OK" ||
+                !data.walkingTime ||
+                !data.distance
+            ) {
 
-    }
+                throw new Error(
+                    data.error ||
+                    `Kunne ikke beregne etappe ${i + 1}.`
+                );
 
-}
+            }
 
-
-
-/* =========================================================
-   VIS GANGTID RESULTAT
-========================================================= */
-
-function visGangtidResultat(
-    data
-) {
-
-    const resultat =
-        document.getElementById(
-            "gangtidResultat"
-        );
-
-
-    const liste =
-        document.getElementById(
-            "gangtidResultatListe"
-        );
-
-
-    const totalTid =
-        document.getElementById(
-            "gangtidTotal"
-        );
-
-
-    const totalAvstand =
-        document.getElementById(
-            "gangtidTotalAvstand"
-        );
-
-
-    liste.innerHTML =
-        "";
-
-
-    let legs =
-        data.legs ||
-        data.routes ||
-        data.resultater ||
-        [];
-
-
-    if (
-        !Array.isArray(
-            legs
-        )
-    ) {
-        legs = [];
-    }
-
-
-    let totalSekunder =
-        0;
-
-    let totalMeter =
-        0;
-
-
-    legs.forEach(
-        (
-            leg,
-            index
-        ) => {
 
             const sekunder =
                 Number(
-                    leg.duration_seconds ??
-                    leg.duration ??
-                    0
+                    data.walkingTime.seconds
                 );
 
 
             const meter =
                 Number(
-                    leg.distance_meters ??
-                    leg.distance ??
-                    0
+                    data.distance.meters
                 );
+
+
+            if (
+                !Number.isFinite(
+                    sekunder
+                ) ||
+                !Number.isFinite(
+                    meter
+                )
+            ) {
+
+                throw new Error(
+                    `Ugyldig resultat for etappe ${i + 1}.`
+                );
+
+            }
 
 
             totalSekunder +=
@@ -3305,6 +3907,90 @@ function visGangtidResultat(
                 meter;
 
 
+            resultater.push({
+
+                fra:
+                    fra.adresse,
+
+                til:
+                    til.adresse,
+
+                fraNummer:
+                    fra.nummer,
+
+                tilNummer:
+                    til.nummer,
+
+                sekunder:
+                    sekunder,
+
+                meter:
+                    meter,
+
+                polyline:
+                    data.polyline || ""
+
+            });
+
+        }
+
+
+        visGangtidResultat(
+            resultater,
+            totalSekunder,
+            totalMeter
+        );
+
+
+        visGangtidStatus(
+            `✅ Beregningen er ferdig. ${resultater.length} etapper beregnet.`,
+            "success"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Gangtid-feil:",
+            error
+        );
+
+
+        visGangtidStatus(
+            "❌ " +
+            (
+                error.message ||
+                "Kunne ikke beregne gangtid."
+            ),
+            "error"
+        );
+
+    }
+
+
+    beregnGangtidKnapp.disabled =
+        false;
+
+}
+
+
+/* ======================================================
+   VIS GANGTID
+======================================================= */
+
+function visGangtidResultat(
+    resultater,
+    totalSekunder,
+    totalMeter
+) {
+
+    gangtidResultatListe.innerHTML =
+        "";
+
+
+    resultater.forEach(
+        (rute, index) => {
+
             const rad =
                 document.createElement(
                     "div"
@@ -3312,40 +3998,61 @@ function visGangtidResultat(
 
 
             rad.className =
-                "registration-row";
+                "gangtid-resultat-rad";
 
 
             rad.innerHTML = `
 
                 <div>
 
-                    <strong>
+                    <div class="etappe">
                         Etappe ${index + 1}
-                    </strong>
+                    </div>
+
+                    <div class="adresse-fra">
+
+                        ${escapeHtml(
+                            rute.fra
+                        )}
+
+                    </div>
 
                 </div>
 
 
                 <div>
 
-                    ${
-                        Math.round(
-                            meter
-                        )
-                    } m
-                    –
-                    ${
-                        formaterMinutter(
-                            sekunder / 60
-                        )
-                    }
+                    <div class="adresse-til">
+
+                        → ${escapeHtml(
+                            rute.til
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div class="gangtid-resultat-tid">
+
+                    🚶 ${formaterGangtid(
+                        rute.sekunder
+                    )}
+
+                    <span class="gangtid-resultat-avstand">
+
+                        📍 ${formaterGangavstand(
+                            rute.meter
+                        )}
+
+                    </span>
 
                 </div>
 
             `;
 
 
-            liste.appendChild(
+            gangtidResultatListe.appendChild(
                 rad
             );
 
@@ -3353,237 +4060,250 @@ function visGangtidResultat(
     );
 
 
-    if (
-        legs.length === 0
-    ) {
-
-        const message =
-            data.message ||
-            data.error ||
-            "Ingen ruter funnet.";
-
-
-        liste.innerHTML =
-            `<p>${escapeHtml(message)}</p>`;
-
-    }
-
-
-    totalTid.textContent =
-        formaterMinutter(
-            totalSekunder / 60
+    gangtidTotal.textContent =
+        "🚶 Total gangtid: " +
+        formaterGangtid(
+            totalSekunder
         );
 
 
-    if (
-        totalMeter >= 1000
-    ) {
-
-        totalAvstand.textContent =
-            (
-                totalMeter /
-                1000
-            ).toFixed(
-                2
-            ) +
-            " km";
-
-    } else {
-
-        totalAvstand.textContent =
-            Math.round(
-                totalMeter
-            ) +
-            " m";
-
-    }
+    gangtidTotalAvstand.textContent =
+        "📍 Total gangavstand: " +
+        formaterGangavstand(
+            totalMeter
+        );
 
 
-    resultat.style.display =
-        "block";
+    gangtidResultat.classList.add(
+        "vis"
+    );
 
 }
 
 
+/* ======================================================
+   FORMATER GANGTID
+======================================================= */
 
-/* =========================================================
+function formaterGangtid(
+    sekunder
+) {
+
+    const minutter =
+        Math.round(
+            Number(sekunder) / 60
+        );
+
+
+    if (
+        minutter <= 0
+    ) {
+
+        return "under 1 min";
+
+    }
+
+
+    const timer =
+        Math.floor(
+            minutter / 60
+        );
+
+
+    const rest =
+        minutter % 60;
+
+
+    if (
+        timer > 0
+    ) {
+
+        if (
+            rest === 0
+        ) {
+
+            return `${timer} t`;
+
+        }
+
+
+        return `${timer} t ${rest} min`;
+
+    }
+
+
+    return `${rest} min`;
+
+}
+
+
+/* ======================================================
+   FORMATER GANGAVSTAND
+======================================================= */
+
+function formaterGangavstand(
+    meter
+) {
+
+    meter =
+        Number(
+            meter
+        );
+
+
+    if (
+        !Number.isFinite(
+            meter
+        )
+    ) {
+
+        return "Ukjent avstand";
+
+    }
+
+
+    if (
+        meter >= 1000
+    ) {
+
+        return (
+            (
+                meter / 1000
+            ).toFixed(1)
+            +
+            " km"
+        );
+
+    }
+
+
+    return (
+        Math.round(
+            meter
+        ) +
+        " m"
+    );
+
+}
+
+
+/* ======================================================
    NULLSTILL GANGTID
-========================================================= */
+======================================================= */
+
+nullstillGangtidKnapp.addEventListener(
+    "click",
+    nullstillGangtid
+);
+
 
 function nullstillGangtid() {
 
-    document
-        .querySelectorAll(
-            ".adresse-input"
-        )
-        .forEach(
-            input => {
-                input.value =
-                    "";
-            }
+    const inputs =
+        document.querySelectorAll(
+            "#adresser input"
         );
 
 
-    document.getElementById(
-        "gangtidStatus"
-    ).textContent =
+    inputs.forEach(
+        input => {
+
+            input.value =
+                "";
+
+        }
+    );
+
+
+    gangtidResultatListe.innerHTML =
+        "";
+
+    gangtidTotal.textContent =
+        "";
+
+    gangtidTotalAvstand.textContent =
         "";
 
 
-    document.getElementById(
-        "gangtidResultat"
-    ).style.display =
+    gangtidResultat.classList.remove(
+        "vis"
+    );
+
+
+    gangtidStatus.textContent =
+        "";
+
+    gangtidStatus.className =
+        "";
+
+    gangtidStatus.style.display =
         "none";
 
 
-    document.getElementById(
-        "gangtidResultatListe"
-    ).innerHTML =
-        "";
+    const første =
+        document.querySelector(
+            "#adresser input"
+        );
 
 
-    document.getElementById(
-        "gangtidTotal"
-    ).textContent =
-        "0 min";
+    if (første) {
 
+        første.focus();
 
-    document.getElementById(
-        "gangtidTotalAvstand"
-    ).textContent =
-        "0 m";
+    }
 
 }
 
 
-
-/* =========================================================
-   HTML-SIKKERHET
-========================================================= */
+/* ======================================================
+   ESCAPE HTML
+======================================================= */
 
 function escapeHtml(
-    verdi
+    value
 ) {
 
     return String(
-        verdi ?? ""
+        value ?? ""
     )
-        .replace(
-            /&/g,
+        .replaceAll(
+            "&",
             "&amp;"
         )
-        .replace(
-            /</g,
+        .replaceAll(
+            "<",
             "&lt;"
         )
-        .replace(
-            />/g,
+        .replaceAll(
+            ">",
             "&gt;"
         )
-        .replace(
-            /"/g,
+        .replaceAll(
+            '"',
             "&quot;"
         )
-        .replace(
-            /'/g,
+        .replaceAll(
+            "'",
             "&#039;"
         );
 
 }
 
 
+/* ======================================================
+   START
+======================================================= */
 
-/* =========================================================
-   EVENT LISTENERS
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    async () => {
+await lastAnsatte();
 
 
-        await lastAnsatte();
+if (ansattSelect.value) {
 
+    await lastDagensRegistreringer();
 
-        document
-            .getElementById(
-                "ansattSelect"
-            )
-            .addEventListener(
-                "change",
-                ansattValgt
-            );
+    await lastDagensSvar();
 
-
-        document
-            .querySelectorAll(
-                ".start-activity"
-            )
-            .forEach(
-                knapp => {
-
-                    knapp.addEventListener(
-                        "click",
-                        () =>
-                            startAktivitet(
-                                knapp
-                            )
-                    );
-
-                }
-            );
-
-
-        document
-            .querySelectorAll(
-                ".stop-activity"
-            )
-            .forEach(
-                knapp => {
-
-                    knapp.addEventListener(
-                        "click",
-                        () =>
-                            stoppAktivitet(
-                                knapp
-                            )
-                    );
-
-                }
-            );
-
-
-        document
-            .getElementById(
-                "lagreSvar"
-            )
-            .addEventListener(
-                "click",
-                lagreSvar
-            );
-
-
-        document
-            .getElementById(
-                "beregnGangtid"
-            )
-            .addEventListener(
-                "click",
-                beregnGangtid
-            );
-
-
-        document
-            .getElementById(
-                "nullstillGangtid"
-            )
-            .addEventListener(
-                "click",
-                nullstillGangtid
-            );
-
-    }
-);
+}
 
 </script>
 
