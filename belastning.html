@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="no">
 
@@ -5,13 +6,11 @@
 
     <meta charset="utf-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
 
-    <meta
-        name="robots"
-        content="noindex, nofollow">
+    <meta name="robots"
+          content="noindex, nofollow">
 
     <title>Arbeidsbelastning – Team Sør</title>
 
@@ -20,20 +19,29 @@
          CSS
     =================================================== -->
 
-    <link
-        rel="stylesheet"
-        href="gerica.css">
+    <link rel="stylesheet"
+          href="gerica.css">
 
-    <link
-        rel="stylesheet"
-        href="index.css">
+    <link rel="stylesheet"
+          href="index.css">
 
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- GLightbox hvis resten av nettsiden bruker dette -->
+    <link rel="manifest"
+          href="manifest.json">
 
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <meta name="theme-color"
+          content="#2f5d9f">
+
+    <link rel="icon"
+          href="images/logo-192.png">
+
+    <link rel="apple-touch-icon"
+          href="images/logo-192.png">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
 
     <style>
@@ -404,21 +412,89 @@
            GANGTID
         ================================================= */
 
-        .adresse-rad {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
+        .gangtid-info {
+            background: #f5f7fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
 
-        .adresse-felt {
+        .gangtid-info p {
+            margin-top: 0;
+        }
+
+
+        .gangtid-info p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .api-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #555;
+            border: 1px solid #ddd;
+        }
+
+
+        /* =================================================
+           ADRESSER
+        ================================================= */
+
+        .adresser-container {
+            margin-top: 20px;
+        }
+
+
+        .adresse {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+
+        .nummer {
+            width: 32px;
+            flex-shrink: 0;
+            font-weight: 700;
+            text-align: right;
+        }
+
+
+        .adresse input {
+            flex: 1;
             width: 100%;
-            padding: 11px;
+            padding: 12px;
             border: 1px solid var(--border-color, #ccc);
             border-radius: 8px;
             box-sizing: border-box;
-            font-size: 1rem;
+            font-size: 16px;
+            background: white;
+        }
+
+
+        .adresse input:focus {
+            outline: none;
+            border-color: var(--primary-color, #2f5d9f);
+            box-shadow: 0 0 0 2px rgba(47,93,159,0.12);
+        }
+
+
+        /* =================================================
+           GANGTID-KNAPPER
+        ================================================= */
+
+        .gangtid-knapper {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
 
@@ -430,26 +506,190 @@
             color: white;
             font-weight: 700;
             cursor: pointer;
+            font-size: 1rem;
         }
 
 
-        .gangtid-resultat {
-            margin-top: 15px;
-            padding: 15px;
+        .gangtid-knapp:hover {
+            opacity: 0.9;
+        }
+
+
+        .gangtid-knapp:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+
+        .gangtid-nullstill {
+            padding: 12px 18px;
+            border: none;
             border-radius: 8px;
-            background: #f5f5f5;
-            display: none;
+            background: #666;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
         }
 
 
-        .gangtid-resultat.vis {
+        .gangtid-nullstill:hover {
+            opacity: 0.9;
+        }
+
+
+        /* =================================================
+           GANGTID STATUS
+        ================================================= */
+
+        #gangtidStatus {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #eef3f8;
+            line-height: 1.5;
+        }
+
+
+        #gangtidStatus.vis {
             display: block;
+        }
+
+
+        #gangtidStatus.error {
+            background: #fdeaea;
+            color: #a40000;
+        }
+
+
+        #gangtidStatus.success {
+            background: #eaf7ea;
+            color: #176b17;
+        }
+
+
+        /* =================================================
+           GANGTID RESULTAT
+        ================================================= */
+
+        #gangtidResultat {
+            display: none;
+            margin-top: 20px;
+            background: white;
+            border: 1px solid var(--border-color, #ddd);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+
+        #gangtidResultat.vis {
+            display: block;
+        }
+
+
+        .gangtid-resultat-rad {
+            display: grid;
+            grid-template-columns: 1fr 1fr 150px;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+            line-height: 1.5;
+        }
+
+
+        .gangtid-resultat-rad:last-child {
+            border-bottom: none;
+        }
+
+
+        .etappe {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+
+        .adresse-fra {
+            font-weight: 700;
+        }
+
+
+        .adresse-til {
+            color: #333;
+        }
+
+
+        .gangtid-resultat-tid {
+            text-align: right;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+
+        .gangtid-resultat-avstand {
+            display: block;
+            color: #666;
+            font-size: 13px;
+            font-weight: normal;
+            margin-top: 4px;
+        }
+
+
+        /* =================================================
+           TOTAL GANGTID
+        ================================================= */
+
+        .gangtid-total {
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 2px solid #ddd;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+
+        .gangtid-total-avstand {
+            margin-top: 8px;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+
+        .gangtid-total-info {
+            margin-top: 12px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+
+        /* =================================================
+           HAMBURGER
+        ================================================= */
+
+        .menu-toggle {
+            display: none;
+            color: rgb(12, 12, 12) !important;
+            font-size: 36px !important;
+            line-height: 1 !important;
+            border: none !important;
+            cursor: pointer;
+            z-index: 1000;
         }
 
 
         /* =================================================
            RESPONSIV
         ================================================= */
+
+        @media screen and (max-width: 768px) {
+
+            .menu-toggle {
+                display: block !important;
+            }
+
+        }
+
 
         @media screen and (max-width: 760px) {
 
@@ -473,11 +713,6 @@
             }
 
 
-            .adresse-rad {
-                grid-template-columns: 1fr;
-            }
-
-
             .registrering {
                 align-items: flex-start;
             }
@@ -485,6 +720,65 @@
 
             #aktivTid {
                 font-size: 2rem;
+            }
+
+
+            .gangtid-resultat-rad {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+
+            .gangtid-resultat-tid {
+                text-align: left;
+                margin-top: 5px;
+            }
+
+
+            .gangtid-knapper {
+                flex-direction: column;
+            }
+
+
+            .gangtid-knapp,
+            .gangtid-nullstill {
+                width: 100%;
+            }
+
+        }
+
+
+        @media screen and (max-width: 500px) {
+
+            .adresse {
+                gap: 7px;
+            }
+
+
+            .nummer {
+                width: 25px;
+                font-size: 14px;
+            }
+
+
+            .adresse input {
+                min-width: 0;
+                padding: 11px;
+            }
+
+
+            #gangtidResultat {
+                padding: 15px;
+            }
+
+
+            .gangtid-total {
+                font-size: 20px;
+            }
+
+
+            .gangtid-total-avstand {
+                font-size: 17px;
             }
 
         }
@@ -499,12 +793,12 @@
 
 <!-- ======================================================
      NAVBAR
-     SAMME STRUKTUR SOM INDEX.HTML
 ======================================================= -->
 
 <header class="topbar">
 
-    <!-- Logo -->
+
+    <!-- LOGO -->
 
     <div class="brand">
 
@@ -515,9 +809,7 @@
     </div>
 
 
-    <!-- ==================================================
-         SEARCH-FELT
-    =================================================== -->
+    <!-- SEARCH -->
 
     <div class="search-box">
 
@@ -531,13 +823,12 @@
     </div>
 
 
-    <!-- ==================================================
-         HOVEDMENY
-    =================================================== -->
+    <!-- HOVEDMENY -->
 
     <nav
         class="nav"
         aria-label="Hovedmeny">
+
 
         <button
             class="menu-toggle"
@@ -619,6 +910,7 @@
 </header>
 
 
+
 <!-- ======================================================
      HOVEDINNHOLD
 ======================================================= -->
@@ -663,6 +955,7 @@
                 Velg ansatt
             </label>
 
+
             <select id="ansattSelect">
 
                 <option value="">
@@ -672,6 +965,7 @@
             </select>
 
         </div>
+
 
         <p id="ansattStatus"></p>
 
@@ -696,9 +990,7 @@
         </p>
 
 
-        <!-- ----------------------------------------------
-             FASTE AKTIVITETER
-        ----------------------------------------------- -->
+        <!-- FASTE AKTIVITETER -->
 
         <div class="aktivitet-gruppe">
 
@@ -778,9 +1070,7 @@
 
 
 
-        <!-- ----------------------------------------------
-             ANDRE ARBEIDSOPPGAVER
-        ----------------------------------------------- -->
+        <!-- ANDRE ARBEIDSOPPGAVER -->
 
         <div class="aktivitet-gruppe">
 
@@ -944,9 +1234,7 @@
 
 
 
-        <!-- ----------------------------------------------
-             AKTIV TIMER
-        ----------------------------------------------- -->
+        <!-- AKTIV TIMER -->
 
         <div
             class="aktiv-timer"
@@ -956,13 +1244,16 @@
                 Aktiv registrering
             </h3>
 
+
             <div id="aktivitetNavn">
                 –
             </div>
 
+
             <div id="aktivTid">
                 00:00:00
             </div>
+
 
             <button
                 id="stoppTimer"
@@ -1066,10 +1357,8 @@
 
 
         <p>
-
             Arbeidstid er registrert tid minus registrert
             pause.
-
         </p>
 
     </section>
@@ -1510,7 +1799,6 @@
         </div>
 
 
-
         <button
             id="lagreSvar"
             type="button">
@@ -1532,49 +1820,691 @@
 
     <section class="belastning-card">
 
+
         <h2>
-            Beregn gangtid mellom adresser
+            🚶 Beregn gangtid mellom adresser
         </h2>
 
 
+        <div class="gangtid-info">
+
+
+            <p>
+                Skriv inn adressene i den rekkefølgen
+                du besøker brukerne.
+            </p>
+
+
+            <p>
+                Du kan bruke opptil
+                <strong>20 adresser</strong>.
+                Du trenger ikke fylle ut alle feltene.
+            </p>
+
+
+            <p>
+                Verktøyet beregner gangtid og
+                gangavstand mellom hvert stopp
+                og summerer resultatet.
+            </p>
+
+
+            <p>
+                <strong>
+                    Ikke skriv navn eller andre
+                    personopplysninger om brukere.
+                </strong>
+            </p>
+
+
+            <div class="api-info">
+
+                🚶 Beregningen bruker Google Routes API
+                via Team Sør sitt Gangtid API.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             20 ADRESSEFELTER
+
+             Hvert felt har:
+             - unik id
+             - unik name
+             - autocomplete off
+             - ingen street-address autocomplete
+
+             Dette hindrer nettleseren i å fylle flere
+             adressefelt samtidig.
+        ================================================= -->
+
+        <div
+            id="adresser"
+            class="adresser-container">
+
+
+            <!-- ADRESSE 1 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    1.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse1"
+                    name="gangadresse1"
+                    placeholder="For eksempel: Schweigaards gate 10, Oslo"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 2 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    2.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse2"
+                    name="gangadresse2"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 3 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    3.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse3"
+                    name="gangadresse3"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 4 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    4.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse4"
+                    name="gangadresse4"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 5 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    5.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse5"
+                    name="gangadresse5"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 6 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    6.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse6"
+                    name="gangadresse6"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 7 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    7.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse7"
+                    name="gangadresse7"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 8 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    8.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse8"
+                    name="gangadresse8"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 9 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    9.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse9"
+                    name="gangadresse9"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 10 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    10.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse10"
+                    name="gangadresse10"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 11 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    11.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse11"
+                    name="gangadresse11"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 12 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    12.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse12"
+                    name="gangadresse12"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 13 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    13.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse13"
+                    name="gangadresse13"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 14 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    14.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse14"
+                    name="gangadresse14"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 15 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    15.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse15"
+                    name="gangadresse15"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 16 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    16.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse16"
+                    name="gangadresse16"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 17 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    17.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse17"
+                    name="gangadresse17"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 18 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    18.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse18"
+                    name="gangadresse18"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 19 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    19.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse19"
+                    name="gangadresse19"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+
+            <!-- ADRESSE 20 -->
+
+            <div class="adresse">
+
+                <span class="nummer">
+                    20.
+                </span>
+
+                <input
+                    type="text"
+                    id="gangadresse20"
+                    name="gangadresse20"
+                    placeholder="Neste adresse"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="sentences"
+                    spellcheck="false">
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             KNAPPER
+        ================================================= -->
+
+        <div class="gangtid-knapper">
+
+
+            <button
+                class="gangtid-knapp"
+                id="beregnGangtid"
+                type="button">
+
+                🚶 Beregn gangtid
+
+            </button>
+
+
+            <button
+                class="gangtid-nullstill"
+                id="nullstillGangtid"
+                type="button">
+
+                🗑️ Tøm adresser
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             STATUS
+        ================================================= -->
+
+        <div
+            id="gangtidStatus"
+            role="status"
+            aria-live="polite">
+
+        </div>
+
+
+
+        <!-- =================================================
+             RESULTAT
+        ================================================= -->
+
+        <div
+            id="gangtidResultat">
+
+
+            <h2>
+                Resultat
+            </h2>
+
+
+            <div id="gangtidResultatListe">
+
+            </div>
+
+
+            <div
+                id="gangtidTotal"
+                class="gangtid-total">
+
+            </div>
+
+
+            <div
+                id="gangtidTotalAvstand"
+                class="gangtid-total-avstand">
+
+            </div>
+
+
+            <div class="gangtid-total-info">
+
+                Dette er beregnet utendørs gangtid.
+                Tid inne i bygninger, heiser, trapper og lignende
+                kommer i tillegg.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         DOKUMENTASJON
+    =================================================== -->
+
+    <section class="belastning-card">
+
+        <h1>
+            Dokumentasjon-tid
+        </h1>
+
+    </section>
+
+
+    <section class="belastning-card">
+
+        <h2>
+            Legg tiden du har brukt på dokumentasjon i arbeidslisten din:
+        </h2>
+
+
+        <br>
+
+
         <p>
-            Dette beregner utendørs gangtid mellom to adresser.
-            Eventuell tid inne i bygninger kommer i tillegg.
+            1- Finn brukeren under brukersøk
         </p>
 
 
-        <div class="adresse-rad">
-
-            <input
-                class="adresse-felt"
-                id="fraAdresse"
-                type="text"
-                placeholder="Fra adresse">
-
-            <input
-                class="adresse-felt"
-                id="tilAdresse"
-                type="text"
-                placeholder="Til adresse">
-
-        </div>
+        <p>
+            2- Klikk på navnet
+        </p>
 
 
-        <button
-            class="gangtid-knapp"
-            id="beregnGangtid"
-            type="button">
-
-            🚶 Beregn gangtid
-
-        </button>
+        <p>
+            3- Klikk på plusstegnet nederst til høyre
+        </p>
 
 
-        <div
-            class="gangtid-resultat"
-            id="gangtidResultat">
+        <p>
+            4- Velg nytt besøk
+        </p>
 
-        </div>
+
+        <p>
+            5- Velg dato, starttid og sluttid
+        </p>
+
+
+        <p>
+            6- Legg til oppdrag
+        </p>
+
+
+        <p>
+            7- Velg "Ekstra besøk"
+        </p>
+
+
+        <p>
+            8- Skriv tiden du har brukt på dokumentasjonen
+            (varighet)
+        </p>
+
+
+        <p>
+            9- Lagre
+        </p>
+
+
+        <p>
+            10- Nå kommer besøket på din liste
+        </p>
+
+
+        <p>
+            11- Registrer og skriv det du skal dokumentere
+            om brukeren der
+        </p>
+
+
+        <br>
+
+    </section>
+
+
+    <br>
+
+
+    <!-- ==================================================
+         ANNEN IKKE-PLANLAGT TID
+    =================================================== -->
+
+    <section class="belastning-card">
+
+        <h2>
+
+            Gjør det samme for å registrere tiden når du
+            henter medisiner fra apoteket, har telefonsamtaler
+            om brukere, samtaler med pårørende eller når du
+            må gjøre noe som ikke er planlagt i arbeidslisten din.
+
+        </h2>
+
+    </section>
+
+
+    <section class="belastning-card">
 
     </section>
 
@@ -1584,11 +2514,8 @@
 
 
 <!-- ======================================================
-     SCRIPT
+     SØK
 ======================================================= -->
-
-
-<!-- Søk -->
 
 <script
     src="searchData.js"
@@ -1602,14 +2529,20 @@
 </script>
 
 
-<!-- GLightbox -->
+
+<!-- ======================================================
+     GLIGHTBOX
+======================================================= -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js">
 </script>
 
 
-<!-- Felles app -->
+
+<!-- ======================================================
+     APP
+======================================================= -->
 
 <script
     type="module"
@@ -1617,7 +2550,10 @@
 </script>
 
 
-<!-- Bursdag -->
+
+<!-- ======================================================
+     BURSDAG
+======================================================= -->
 
 <script
     type="module"
@@ -1625,7 +2561,10 @@
 </script>
 
 
-<!-- Index-funksjoner -->
+
+<!-- ======================================================
+     INDEX
+======================================================= -->
 
 <script
     type="module"
@@ -1633,7 +2572,10 @@
 </script>
 
 
-<!-- Auth -->
+
+<!-- ======================================================
+     AUTH
+======================================================= -->
 
 <script
     type="module"
@@ -1660,7 +2602,13 @@
 
 <script type="module">
 
+
+/* ========================================================
+   FIREBASE
+======================================================== */
+
 import {
+
     collection,
     addDoc,
     getDocs,
@@ -1668,9 +2616,9 @@ import {
     doc,
     query,
     where,
-    orderBy,
     serverTimestamp,
     setDoc
+
 }
 from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
@@ -1692,64 +2640,106 @@ from "./ansatteFirestore.js";
    KONFIGURASJON
 ======================================================== */
 
-
 const GANGTID_API =
     "https://gangtid-740297234658.europe-north1.run.app/gangtid";
+
 
 
 /* ========================================================
    ELEMENTER
 ======================================================== */
 
-
 const ansattSelect =
     document.getElementById("ansattSelect");
+
 
 const ansattStatus =
     document.getElementById("ansattStatus");
 
+
 const aktivitetKnapper =
     document.querySelectorAll(".aktivitet-knapp");
+
 
 const aktivTimer =
     document.getElementById("aktivTimer");
 
+
 const aktivitetNavn =
     document.getElementById("aktivitetNavn");
+
 
 const aktivTid =
     document.getElementById("aktivTid");
 
+
 const stoppTimer =
     document.getElementById("stoppTimer");
+
 
 const statusMelding =
     document.getElementById("statusMelding");
 
+
 const dagensRegistreringer =
     document.getElementById("dagensRegistreringer");
+
 
 const totalTid =
     document.getElementById("totalTid");
 
+
 const arbeidstid =
     document.getElementById("arbeidstid");
+
 
 const pausetid =
     document.getElementById("pausetid");
 
+
 const lagreSvar =
     document.getElementById("lagreSvar");
+
 
 const surveyStatus =
     document.getElementById("surveyStatus");
 
 
 
+/* Gangtid-elementer */
+
+const beregnGangtidKnapp =
+    document.getElementById("beregnGangtid");
+
+
+const nullstillGangtidKnapp =
+    document.getElementById("nullstillGangtid");
+
+
+const gangtidStatus =
+    document.getElementById("gangtidStatus");
+
+
+const gangtidResultat =
+    document.getElementById("gangtidResultat");
+
+
+const gangtidResultatListe =
+    document.getElementById("gangtidResultatListe");
+
+
+const gangtidTotal =
+    document.getElementById("gangtidTotal");
+
+
+const gangtidTotalAvstand =
+    document.getElementById("gangtidTotalAvstand");
+
+
+
 /* ========================================================
    DATA
 ======================================================== */
-
 
 let ansatte = [];
 
@@ -1765,21 +2755,33 @@ let dagensData = [];
    DATO
 ======================================================== */
 
-
 function dagensDato() {
 
-    const dato = new Date();
+    const dato =
+        new Date();
+
 
     const aar =
         dato.getFullYear();
 
+
     const maaned =
-        String(dato.getMonth() + 1)
-            .padStart(2, "0");
+        String(
+            dato.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
 
     const dag =
-        String(dato.getDate())
-            .padStart(2, "0");
+        String(
+            dato.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
 
     return `${aar}-${maaned}-${dag}`;
 
@@ -1790,7 +2792,6 @@ function dagensDato() {
 /* ========================================================
    FORMATERE TID
 ======================================================== */
-
 
 function formaterTid(sekunder) {
 
@@ -1819,11 +2820,20 @@ function formaterTid(sekunder) {
 
     return [
 
-        String(timer).padStart(2, "0"),
+        String(timer).padStart(
+            2,
+            "0"
+        ),
 
-        String(minutter).padStart(2, "0"),
+        String(minutter).padStart(
+            2,
+            "0"
+        ),
 
-        String(sek).padStart(2, "0")
+        String(sek).padStart(
+            2,
+            "0"
+        )
 
     ].join(":");
 
@@ -1835,7 +2845,6 @@ function formaterTid(sekunder) {
    HENT ANSATTE
 ======================================================== */
 
-
 async function lastAnsatte() {
 
     try {
@@ -1844,16 +2853,23 @@ async function lastAnsatte() {
             await hentAnsatte();
 
 
-        ansattSelect.innerHTML = "";
+        ansattSelect.innerHTML =
+            "";
 
 
         const tomOption =
-            document.createElement("option");
+            document.createElement(
+                "option"
+            );
 
-        tomOption.value = "";
+
+        tomOption.value =
+            "";
+
 
         tomOption.textContent =
             "Velg ansatt";
+
 
         ansattSelect.appendChild(
             tomOption
@@ -1861,35 +2877,42 @@ async function lastAnsatte() {
 
 
         ansatte
-            .sort((a, b) =>
-                String(a.navn || "")
-                    .localeCompare(
-                        String(b.navn || ""),
+            .sort(
+                (a, b) =>
+                    String(
+                        a.navn || ""
+                    ).localeCompare(
+                        String(
+                            b.navn || ""
+                        ),
                         "no"
                     )
             )
-            .forEach(person => {
+            .forEach(
+                person => {
 
-                const option =
-                    document.createElement("option");
-
-                option.value =
-                    person.id;
-
-                option.textContent =
-                    person.navn ||
-                    "Uten navn";
-
-                ansattSelect.appendChild(
-                    option
-                );
-
-            });
+                    const option =
+                        document.createElement(
+                            "option"
+                        );
 
 
-        /* -----------------------------------------------
-           Gjenopprett tidligere valgt ansatt
-        ------------------------------------------------ */
+                    option.value =
+                        person.id;
+
+
+                    option.textContent =
+                        person.navn ||
+                        "Uten navn";
+
+
+                    ansattSelect.appendChild(
+                        option
+                    );
+
+                }
+            );
+
 
         const lagretAnsatt =
             localStorage.getItem(
@@ -1901,7 +2924,8 @@ async function lastAnsatte() {
             lagretAnsatt &&
             ansatte.some(
                 person =>
-                    person.id === lagretAnsatt
+                    person.id ===
+                    lagretAnsatt
             )
         ) {
 
@@ -1928,6 +2952,7 @@ async function lastAnsatte() {
             </option>
         `;
 
+
         ansattStatus.textContent =
             "Kunne ikke hente ansatte fra databasen.";
 
@@ -1940,7 +2965,6 @@ async function lastAnsatte() {
 /* ========================================================
    ANSATT VALGT
 ======================================================== */
-
 
 ansattSelect.addEventListener(
     "change",
@@ -1968,7 +2992,9 @@ ansattSelect.addEventListener(
 
         oppdaterAnsattStatus();
 
+
         await lastDagensRegistreringer();
+
 
         await lastDagensSvar();
 
@@ -1980,7 +3006,6 @@ ansattSelect.addEventListener(
 /* ========================================================
    ANSATT STATUS
 ======================================================== */
-
 
 function oppdaterAnsattStatus() {
 
@@ -2013,25 +3038,26 @@ function oppdaterAnsattStatus() {
    START TIMER
 ======================================================== */
 
+aktivitetKnapper.forEach(
+    knapp => {
 
-aktivitetKnapper.forEach(knapp => {
+        knapp.addEventListener(
+            "click",
+            () => {
 
-    knapp.addEventListener(
-        "click",
-        () => {
+                startTimer(
 
-            startTimer(
+                    knapp.dataset.aktivitet,
 
-                knapp.dataset.aktivitet,
+                    knapp.dataset.kategori
 
-                knapp.dataset.kategori
+                );
 
-            );
+            }
+        );
 
-        }
-    );
-
-});
+    }
+);
 
 
 
@@ -2078,14 +3104,22 @@ function startTimer(
         aktivitet;
 
 
-    aktivTimer.classList.add("vis");
+    aktivTimer.classList.add(
+        "vis"
+    );
 
-    stoppTimer.classList.add("vis");
+
+    stoppTimer.classList.add(
+        "vis"
+    );
 
 
     aktivitetKnapper.forEach(
         knapp => {
-            knapp.disabled = true;
+
+            knapp.disabled =
+                true;
+
         }
     );
 
@@ -2111,7 +3145,6 @@ function startTimer(
    OPPDATER AKTIV TIMER
 ======================================================== */
 
-
 function oppdaterAktivTid() {
 
     if (!aktivRegistrering) {
@@ -2125,14 +3158,17 @@ function oppdaterAktivTid() {
 
     const sekunder =
         Math.floor(
-            (naa -
-                aktivRegistrering.start) /
-            1000
+            (
+                naa -
+                aktivRegistrering.start
+            ) / 1000
         );
 
 
     aktivTid.textContent =
-        formaterTid(sekunder);
+        formaterTid(
+            sekunder
+        );
 
 }
 
@@ -2141,7 +3177,6 @@ function oppdaterAktivTid() {
 /* ========================================================
    STOPP TIMER
 ======================================================== */
-
 
 stoppTimer.addEventListener(
     "click",
@@ -2169,8 +3204,10 @@ async function stoppAktivTimer() {
         Math.max(
             0,
             Math.floor(
-                (slutt - start) /
-                1000
+                (
+                    slutt -
+                    start
+                ) / 1000
             )
         );
 
@@ -2193,16 +3230,19 @@ async function stoppAktivTimer() {
     }
 
 
-    stoppTimer.disabled = true;
+    stoppTimer.disabled =
+        true;
 
 
     try {
 
         await addDoc(
+
             collection(
                 db,
                 "arbeidsbelastning"
             ),
+
             {
 
                 ansattId:
@@ -2232,24 +3272,24 @@ async function stoppAktivTimer() {
                     serverTimestamp()
 
             }
+
         );
 
 
         statusMelding.textContent =
-            `Registrert ${formaterTid(varighetSekunder)}.`;
+            `Registrert ${formaterTid(
+                varighetSekunder
+            )}.`;
 
-
-
-        /* -----------------------------------------------
-           Nullstill
-        ------------------------------------------------ */
 
         clearInterval(
             timerInterval
         );
 
+
         timerInterval =
             null;
+
 
         aktivRegistrering =
             null;
@@ -2259,6 +3299,7 @@ async function stoppAktivTimer() {
             "vis"
         );
 
+
         stoppTimer.classList.remove(
             "vis"
         );
@@ -2267,13 +3308,17 @@ async function stoppAktivTimer() {
         aktivitetNavn.textContent =
             "–";
 
+
         aktivTid.textContent =
             "00:00:00";
 
 
         aktivitetKnapper.forEach(
             knapp => {
-                knapp.disabled = false;
+
+                knapp.disabled =
+                    false;
+
             }
         );
 
@@ -2295,7 +3340,8 @@ async function stoppAktivTimer() {
     }
 
 
-    stoppTimer.disabled = false;
+    stoppTimer.disabled =
+        false;
 
 }
 
@@ -2305,7 +3351,6 @@ async function stoppAktivTimer() {
    HENT DAGENS REGISTRERINGER
 ======================================================== */
 
-
 async function lastDagensRegistreringer() {
 
     const ansattId =
@@ -2314,11 +3359,15 @@ async function lastDagensRegistreringer() {
 
     if (!ansattId) {
 
-        dagensData = [];
+        dagensData =
+            [];
+
 
         visRegistreringer();
 
+
         oppdaterOppsummering();
+
 
         return;
 
@@ -2376,6 +3425,7 @@ async function lastDagensRegistreringer() {
 
         visRegistreringer();
 
+
         oppdaterOppsummering();
 
 
@@ -2399,7 +3449,6 @@ async function lastDagensRegistreringer() {
 /* ========================================================
    VIS REGISTRERINGER
 ======================================================== */
-
 
 function visRegistreringer() {
 
@@ -2433,8 +3482,11 @@ function visRegistreringer() {
                     start.toLocaleTimeString(
                         "no-NO",
                         {
-                            hour: "2-digit",
-                            minute: "2-digit"
+                            hour:
+                                "2-digit",
+
+                            minute:
+                                "2-digit"
                         }
                     );
 
@@ -2443,8 +3495,11 @@ function visRegistreringer() {
                     slutt.toLocaleTimeString(
                         "no-NO",
                         {
-                            hour: "2-digit",
-                            minute: "2-digit"
+                            hour:
+                                "2-digit",
+
+                            minute:
+                                "2-digit"
                         }
                     );
 
@@ -2462,7 +3517,6 @@ function visRegistreringer() {
                                 )}
 
                             </div>
-
 
                             <div class="registrering-detaljer">
 
@@ -2505,20 +3559,22 @@ function visRegistreringer() {
         .querySelectorAll(
             ".slett-registrering"
         )
-        .forEach(knapp => {
+        .forEach(
+            knapp => {
 
-            knapp.addEventListener(
-                "click",
-                () => {
+                knapp.addEventListener(
+                    "click",
+                    () => {
 
-                    slettRegistrering(
-                        knapp.dataset.id
-                    );
+                        slettRegistrering(
+                            knapp.dataset.id
+                        );
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
 }
 
@@ -2527,7 +3583,6 @@ function visRegistreringer() {
 /* ========================================================
    SLETT REGISTRERING
 ======================================================== */
-
 
 async function slettRegistrering(id) {
 
@@ -2545,11 +3600,13 @@ async function slettRegistrering(id) {
     try {
 
         await deleteDoc(
+
             doc(
                 db,
                 "arbeidsbelastning",
                 id
             )
+
         );
 
 
@@ -2577,11 +3634,11 @@ async function slettRegistrering(id) {
    OPPSUMMERING
 ======================================================== */
 
-
 function oppdaterOppsummering() {
 
     let total =
         0;
+
 
     let pause =
         0;
@@ -2639,7 +3696,6 @@ function oppdaterOppsummering() {
 /* ========================================================
    SPØRREUNDERSØKELSE
 ======================================================== */
-
 
 lagreSvar.addEventListener(
     "click",
@@ -2715,13 +3771,6 @@ async function lagreDagensSvar() {
 
 
     try {
-
-        /*
-         * Én undersøkelse per ansatt per dag.
-         *
-         * Firestore-dokument-ID:
-         * ansattId_dato
-         */
 
         const dokumentId =
             `${person.id}_${dagensDato()}`;
@@ -2811,7 +3860,6 @@ async function lagreDagensSvar() {
    HENT SURVEY-SVAR
 ======================================================== */
 
-
 function hentSurveySvar() {
 
     return {
@@ -2821,35 +3869,42 @@ function hentSurveySvar() {
                 "gangavstand"
             ),
 
+
         fremOgTilbake:
             hentRadio(
                 "fremOgTilbake"
             ),
+
 
         ekstraAktiviteter:
             hentRadio(
                 "ekstraAktiviteter"
             ),
 
+
         morgenrapport:
             hentRadio(
                 "morgenrapport"
             ),
+
 
         sluttrapport:
             hentRadio(
                 "sluttrapport"
             ),
 
+
         arbeidslisteTid:
             hentRadio(
                 "arbeidslisteTid"
             ),
 
+
         rakkAlleOppgaver:
             hentRadio(
                 "rakkAlleOppgaver"
             ),
+
 
         kommentar:
             document
@@ -2868,7 +3923,6 @@ function hentSurveySvar() {
 /* ========================================================
    RADIO
 ======================================================== */
-
 
 function hentRadio(name) {
 
@@ -2890,7 +3944,6 @@ function hentRadio(name) {
    LAST DAGENS SURVEY
 ======================================================== */
 
-
 async function lastDagensSvar() {
 
     const ansattId =
@@ -2903,10 +3956,6 @@ async function lastDagensSvar() {
 
 
     try {
-
-        const dokumentId =
-            `${ansattId}_${dagensDato()}`;
-
 
         const q =
             query(
@@ -2935,9 +3984,7 @@ async function lastDagensSvar() {
             await getDocs(q);
 
 
-        if (
-            snapshot.empty
-        ) {
+        if (snapshot.empty) {
 
             surveyStatus.textContent =
                 "";
@@ -3022,7 +4069,6 @@ async function lastDagensSvar() {
    SETT RADIO
 ======================================================== */
 
-
 function settRadio(
     name,
     value
@@ -3040,7 +4086,10 @@ function settRadio(
 
 
     if (radio) {
-        radio.checked = true;
+
+        radio.checked =
+            true;
+
     }
 
 }
@@ -3052,178 +4101,382 @@ function settRadio(
 ======================================================== */
 
 
-document
-    .getElementById(
-        "beregnGangtid"
-    )
-    .addEventListener(
-        "click",
-        beregnGangtid
+/*
+ * Henter alle utfylte adressefelter.
+ *
+ * Viktig:
+ *
+ * Hvert adressefelt er helt separat.
+ *
+ * Hvis brukeren fyller:
+ *
+ * 1. A
+ * 2. B
+ * 3. C
+ * 4. tom
+ * 5. E
+ *
+ * blir ruten:
+ *
+ * A → B → C → E
+ *
+ * Det er ingen funksjon som kopierer
+ * verdien fra ett felt til et annet.
+ */
+
+function hentGangtidAdresser() {
+
+    const inputs =
+        document.querySelectorAll(
+            "#adresser input.adresse-felt"
+        );
+
+
+    const adresser =
+        [];
+
+
+    inputs.forEach(
+        (input) => {
+
+            const adresse =
+                input.value.trim();
+
+
+            if (adresse !== "") {
+
+                adresser.push({
+
+                    nummer:
+                        Number(
+                            input.dataset.nummer
+                        ),
+
+                    adresse:
+                        adresse
+
+                });
+
+            }
+
+        }
     );
+
+
+    return adresser;
+
+}
+
+
+
+/* ========================================================
+   GANGTID STATUS
+======================================================== */
+
+function visGangtidStatus(
+    melding,
+    type = ""
+) {
+
+    gangtidStatus.style.display =
+        "block";
+
+
+    gangtidStatus.textContent =
+        melding;
+
+
+    gangtidStatus.className =
+        "";
+
+
+    gangtidStatus.id =
+        "gangtidStatus";
+
+
+    gangtidStatus.classList.add(
+        "vis"
+    );
+
+
+    if (type) {
+
+        gangtidStatus.classList.add(
+            type
+        );
+
+    }
+
+}
+
+
+
+/* ========================================================
+   BEREGN GANGTID
+======================================================== */
+
+beregnGangtidKnapp.addEventListener(
+    "click",
+    beregnGangtid
+);
 
 
 
 async function beregnGangtid() {
 
-    const fra =
-        document
-            .getElementById(
-                "fraAdresse"
-            )
-            .value
-            .trim();
+    const adresser =
+        hentGangtidAdresser();
 
 
-    const til =
-        document
-            .getElementById(
-                "tilAdresse"
-            )
-            .value
-            .trim();
+    if (adresser.length < 2) {
+
+        visGangtidStatus(
+            "Du må skrive inn minst to adresser.",
+            "error"
+        );
 
 
-    const resultat =
-        document
-            .getElementById(
-                "gangtidResultat"
-            );
-
-
-    if (!fra || !til) {
-
-        resultat.classList.add(
+        gangtidResultat.classList.remove(
             "vis"
         );
 
-        resultat.textContent =
-            "Skriv inn både fra- og til-adresse.";
 
         return;
 
     }
 
 
-    resultat.classList.add(
+    gangtidResultat.classList.remove(
         "vis"
     );
 
 
-    resultat.textContent =
-        "Beregner gangtid...";
+    gangtidResultatListe.innerHTML =
+        "";
+
+
+    gangtidTotal.textContent =
+        "";
+
+
+    gangtidTotalAvstand.textContent =
+        "";
+
+
+    beregnGangtidKnapp.disabled =
+        true;
 
 
     try {
 
-        const response =
-            await fetch(
-                GANGTID_API,
-                {
-
-                    method:
-                        "POST",
-
-                    headers: {
-
-                        "Content-Type":
-                            "application/json"
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            origin:
-                                fra,
-
-                            destination:
-                                til
-
-                        })
-
-                }
-            );
+        const resultater =
+            [];
 
 
-        if (!response.ok) {
-
-            throw new Error(
-                `HTTP ${response.status}`
-            );
-
-        }
+        let totalSekunder =
+            0;
 
 
-        const data =
-            await response.json();
+        let totalMeter =
+            0;
 
 
-        const sekunder =
-            data?.walkingTime?.seconds;
+        const antallEtapper =
+            adresser.length - 1;
 
 
-        const meter =
-            data?.distance?.meters;
-
-
-        if (
-            typeof sekunder !==
-            "number"
+        for (
+            let i = 0;
+            i < antallEtapper;
+            i++
         ) {
 
-            throw new Error(
-                "Ugyldig svar fra gangtidstjenesten."
+            const fra =
+                adresser[i];
+
+
+            const til =
+                adresser[i + 1];
+
+
+            visGangtidStatus(
+
+                `🚶 Beregner etappe ${i + 1} av ${antallEtapper}...`
+
             );
+
+
+            const response =
+                await fetch(
+
+                    GANGTID_API,
+
+                    {
+
+                        method:
+                            "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                origin:
+                                    fra.adresse,
+
+                                destination:
+                                    til.adresse
+
+                            })
+
+                    }
+
+                );
+
+
+            if (!response.ok) {
+
+                let detaljer =
+                    "";
+
+
+                try {
+
+                    const feil =
+                        await response.json();
+
+
+                    if (feil.error) {
+
+                        detaljer =
+                            feil.error;
+
+                    }
+
+                } catch {
+
+                    /* Ingen JSON-feil */
+
+                }
+
+
+                throw new Error(
+
+                    detaljer ||
+                    `API-feil (${response.status})`
+
+                );
+
+            }
+
+
+            const data =
+                await response.json();
+
+
+            if (
+                data.status !== "OK" ||
+                !data.walkingTime ||
+                !data.distance
+            ) {
+
+                throw new Error(
+
+                    data.error ||
+                    `Kunne ikke beregne etappe ${i + 1}.`
+
+                );
+
+            }
+
+
+            const sekunder =
+                Number(
+                    data.walkingTime.seconds
+                );
+
+
+            const meter =
+                Number(
+                    data.distance.meters
+                );
+
+
+            if (
+                !Number.isFinite(
+                    sekunder
+                ) ||
+                !Number.isFinite(
+                    meter
+                )
+            ) {
+
+                throw new Error(
+                    `Ugyldig resultat for etappe ${i + 1}.`
+                );
+
+            }
+
+
+            totalSekunder +=
+                sekunder;
+
+
+            totalMeter +=
+                meter;
+
+
+            resultater.push({
+
+                fra:
+                    fra.adresse,
+
+                til:
+                    til.adresse,
+
+                fraNummer:
+                    fra.nummer,
+
+                tilNummer:
+                    til.nummer,
+
+                sekunder:
+                    sekunder,
+
+                meter:
+                    meter,
+
+                polyline:
+                    data.polyline || ""
+
+            });
 
         }
 
 
-        const minutter =
-            Math.round(
-                sekunder / 60
-            );
+        visGangtidResultat(
+
+            resultater,
+
+            totalSekunder,
+
+            totalMeter
+
+        );
 
 
-        const km =
-            typeof meter === "number"
-                ? (
-                    meter / 1000
-                ).toFixed(2)
-                : null;
+        visGangtidStatus(
 
+            `✅ Beregningen er ferdig. ${resultater.length} etapper beregnet.`,
 
-        resultat.innerHTML = `
+            "success"
 
-            <strong>
-                🚶 Gangtid
-            </strong>
-
-            <p>
-                Omtrent
-                <strong>
-                    ${minutter} minutter
-                </strong>
-            </p>
-
-            ${
-                km
-                    ? `
-                        <p>
-                            Avstand:
-                            <strong>
-                                ${km} km
-                            </strong>
-                        </p>
-                    `
-                    : ""
-            }
-
-            <p>
-                Dette er beregnet utendørs gangtid.
-                Tid inne i bygninger kommer i tillegg.
-            </p>
-
-        `;
+        );
 
 
     } catch (error) {
@@ -3234,8 +4487,316 @@ async function beregnGangtid() {
         );
 
 
-        resultat.textContent =
-            "Kunne ikke beregne gangtid.";
+        visGangtidStatus(
+
+            "❌ " +
+            (
+                error.message ||
+                "Kunne ikke beregne gangtid."
+            ),
+
+            "error"
+
+        );
+
+    }
+
+
+    beregnGangtidKnapp.disabled =
+        false;
+
+}
+
+
+
+/* ========================================================
+   VIS GANGTIDRESULTAT
+======================================================== */
+
+function visGangtidResultat(
+
+    resultater,
+
+    totalSekunder,
+
+    totalMeter
+
+) {
+
+    gangtidResultatListe.innerHTML =
+        "";
+
+
+    resultater.forEach(
+        (rute, index) => {
+
+            const rad =
+                document.createElement(
+                    "div"
+                );
+
+
+            rad.className =
+                "gangtid-resultat-rad";
+
+
+            rad.innerHTML = `
+
+                <div>
+
+                    <div class="etappe">
+
+                        Etappe ${index + 1}
+
+                    </div>
+
+
+                    <div class="adresse-fra">
+
+                        ${escapeHtml(
+                            rute.fra
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="adresse-til">
+
+                        → ${escapeHtml(
+                            rute.til
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div class="gangtid-resultat-tid">
+
+                    🚶 ${formaterGangtid(
+                        rute.sekunder
+                    )}
+
+                    <span class="gangtid-resultat-avstand">
+
+                        📍 ${formaterGangavstand(
+                            rute.meter
+                        )}
+
+                    </span>
+
+                </div>
+
+            `;
+
+
+            gangtidResultatListe.appendChild(
+                rad
+            );
+
+        }
+    );
+
+
+    gangtidTotal.textContent =
+
+        "🚶 Total gangtid: " +
+
+        formaterGangtid(
+            totalSekunder
+        );
+
+
+    gangtidTotalAvstand.textContent =
+
+        "📍 Total gangavstand: " +
+
+        formaterGangavstand(
+            totalMeter
+        );
+
+
+    gangtidResultat.classList.add(
+        "vis"
+    );
+
+}
+
+
+
+/* ========================================================
+   FORMATER GANGTID
+======================================================== */
+
+function formaterGangtid(
+    sekunder
+) {
+
+    const minutter =
+        Math.round(
+            Number(sekunder) / 60
+        );
+
+
+    if (minutter <= 0) {
+
+        return "under 1 min";
+
+    }
+
+
+    const timer =
+        Math.floor(
+            minutter / 60
+        );
+
+
+    const rest =
+        minutter % 60;
+
+
+    if (timer > 0) {
+
+        if (rest === 0) {
+
+            return `${timer} t`;
+
+        }
+
+
+        return `${timer} t ${rest} min`;
+
+    }
+
+
+    return `${rest} min`;
+
+}
+
+
+
+/* ========================================================
+   FORMATER GANGAVSTAND
+======================================================== */
+
+function formaterGangavstand(
+    meter
+) {
+
+    meter =
+        Number(meter);
+
+
+    if (!Number.isFinite(meter)) {
+
+        return "Ukjent avstand";
+
+    }
+
+
+    if (meter >= 1000) {
+
+        return (
+
+            (meter / 1000)
+                .toFixed(1)
+
+            + " km"
+
+        );
+
+    }
+
+
+    return (
+
+        Math.round(
+            meter
+        )
+
+        + " m"
+
+    );
+
+}
+
+
+
+/* ========================================================
+   NULLSTILL ADRESSER
+======================================================== */
+
+nullstillGangtidKnapp.addEventListener(
+    "click",
+    nullstillGangtid
+);
+
+
+
+function nullstillGangtid() {
+
+    const inputs =
+        document.querySelectorAll(
+            "#adresser input.adresse-felt"
+        );
+
+
+    inputs.forEach(
+        input => {
+
+            input.value =
+                "";
+
+        }
+    );
+
+
+    gangtidResultatListe.innerHTML =
+        "";
+
+
+    gangtidTotal.textContent =
+        "";
+
+
+    gangtidTotalAvstand.textContent =
+        "";
+
+
+    gangtidResultat.classList.remove(
+        "vis"
+    );
+
+
+    gangtidStatus.textContent =
+        "";
+
+
+    gangtidStatus.className =
+        "";
+
+
+    gangtidStatus.id =
+        "gangtidStatus";
+
+
+    gangtidStatus.style.display =
+        "none";
+
+
+    const første =
+        document.querySelector(
+            "#adresser input.adresse-felt"
+        );
+
+
+    if (første) {
+
+        første.focus();
 
     }
 
@@ -3247,15 +4808,31 @@ async function beregnGangtid() {
    ESCAPE HTML
 ======================================================== */
 
-
 function escapeHtml(value) {
 
-    return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+    return String(
+        value ?? ""
+    )
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
@@ -3265,12 +4842,12 @@ function escapeHtml(value) {
    START
 ======================================================== */
 
-
 await lastAnsatte();
 
 await lastDagensRegistreringer();
 
 await lastDagensSvar();
+
 
 </script>
 
@@ -3278,3 +4855,4 @@ await lastDagensSvar();
 </body>
 
 </html>
+```
