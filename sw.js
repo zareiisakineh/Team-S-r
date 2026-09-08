@@ -3,25 +3,19 @@
 // PWA CACHE + ONESIGNAL PUSH
 // ==================================================
 
-
-
-
-// ==================================================
-// CACHE
-// ==================================================
-
-const CACHE_NAME = "team-sor-192";
+const CACHE_NAME = "team-sor-193";
 
 const FILES = [
     "./",
     "./index.html",
     "./gerica.css",
     "./app.js",
-     "./ansatteFirestore.js",
+    "./ansatteFirestore.js",
     "./manifest.json",
     "./images/logo-192.png",
     "./images/logo-512.png"
 ];
+
 
 // ==================================================
 // INSTALL
@@ -82,7 +76,10 @@ self.addEventListener("activate", event => {
 
             .then(() => {
 
-                console.log("TEAM SØR SERVICE WORKER AKTIVERT");
+                console.log(
+                    "TEAM SØR SERVICE WORKER AKTIVERT:",
+                    CACHE_NAME
+                );
 
                 return self.clients.claim();
 
@@ -99,13 +96,50 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
 
+    const url = new URL(event.request.url);
+
+    // --------------------------------------------------
+    // IKKE LA SERVICE WORKER HÅNDTERE APPS SCRIPT
+    // --------------------------------------------------
+
+    if (
+        url.hostname === "script.google.com" ||
+        url.hostname === "script.googleusercontent.com"
+    ) {
+
+        return;
+
+    }
+
+
+    // --------------------------------------------------
+    // IKKE CACHE POST / PUT / DELETE
+    // --------------------------------------------------
+
+    if (event.request.method !== "GET") {
+
+        return;
+
+    }
+
+
+    // --------------------------------------------------
+    // VANLIG PWA CACHE
+    // --------------------------------------------------
+
     event.respondWith(
 
         caches.match(event.request)
 
             .then(response => {
 
-                return response || fetch(event.request);
+                if (response) {
+
+                    return response;
+
+                }
+
+                return fetch(event.request);
 
             })
 

@@ -1,795 +1,719 @@
-```html
 <!DOCTYPE html>
+
 <html lang="no">
 
 <head>
 
-    <meta charset="utf-8">
+```
+<meta charset="utf-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1">
 
-    <meta name="robots"
-          content="noindex, nofollow">
+<meta name="robots"
+      content="noindex, nofollow">
 
-    <title>Arbeidsbelastning – Team Sør</title>
-
-
-    <!-- ==================================================
-         CSS
-    =================================================== -->
-
-    <link rel="stylesheet"
-          href="gerica.css">
-
-    <link rel="stylesheet"
-          href="index.css">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <link rel="manifest"
-          href="manifest.json">
-
-    <meta name="theme-color"
-          content="#2f5d9f">
-
-    <link rel="icon"
-          href="images/logo-192.png">
-
-    <link rel="apple-touch-icon"
-          href="images/logo-192.png">
-
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+<title>Arbeidsbelastning – Team Sør</title>
 
 
-    <style>
+<!-- ==================================================
+     CSS
+=================================================== -->
 
-        /* =================================================
-           ARBEIDSBELASTNING
-        ================================================= */
+<link rel="stylesheet"
+      href="gerica.css">
+
+<link rel="stylesheet"
+      href="index.css">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<link rel="manifest"
+      href="manifest.json">
+
+<meta name="theme-color"
+      content="#2f5d9f">
+
+<link rel="icon"
+      href="images/logo-192.png">
+
+<link rel="apple-touch-icon"
+      href="images/logo-192.png">
+
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+
+<style>
+
+    /* =================================================
+       ARBEIDSBELASTNING
+    ================================================= */
+
+    .belastning-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .belastning-hero {
+        margin-bottom: 25px;
+    }
+
+    .belastning-hero h1 {
+        margin-bottom: 10px;
+    }
+
+    .belastning-hero p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+
+    /* =================================================
+       KORT
+    ================================================= */
+
+    .belastning-card {
+        background: var(--card-bg, white);
+        border: 1px solid var(--border-color, #ddd);
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 25px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .belastning-card h2 {
+        margin-top: 0;
+    }
+
+
+    /* =================================================
+       ANSATT
+    ================================================= */
+
+    .ansatt-select-wrapper {
+        margin-bottom: 25px;
+    }
+
+    .ansatt-select-wrapper label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    #ansattSelect {
+        width: 100%;
+        max-width: 500px;
+        padding: 12px;
+        border: 1px solid var(--border-color, #ccc);
+        border-radius: 8px;
+        font-size: 1rem;
+        background: white;
+    }
+
+
+    /* =================================================
+       AKTIV TIMER
+    ================================================= */
+
+    .aktiv-timer {
+        display: none;
+        background: #f3f7ff;
+        border: 2px solid var(--primary-color, #2f5d9f);
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .aktiv-timer.vis {
+        display: block;
+    }
+
+    .aktiv-timer h3 {
+        margin-top: 0;
+    }
+
+    #aktivTid {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 10px 0 20px;
+        font-variant-numeric: tabular-nums;
+    }
+
+
+    /* =================================================
+       AKTIVITETER
+    ================================================= */
+
+    .aktivitet-gruppe {
+        margin-bottom: 25px;
+    }
+
+    .aktivitet-gruppe h3 {
+        margin-bottom: 12px;
+    }
+
+    .aktivitet-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .aktivitet-knapp {
+        border: 1px solid var(--border-color, #ccc);
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        cursor: pointer;
+        text-align: left;
+        font-size: 1rem;
+        transition: 0.2s;
+    }
+
+    .aktivitet-knapp:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .aktivitet-knapp:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .aktivitet-ikon {
+        display: block;
+        font-size: 1.6rem;
+        margin-bottom: 6px;
+    }
+
+    .aktivitet-navn {
+        display: block;
+        font-weight: 700;
+    }
+
+    .aktivitet-beskrivelse {
+        display: block;
+        margin-top: 4px;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+
+    /* =================================================
+       STOPP TIMER
+    ================================================= */
+
+    #stoppTimer {
+        display: none;
+        width: 100%;
+        padding: 14px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 8px;
+        background: #b42318;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    #stoppTimer.vis {
+        display: block;
+    }
+
+
+    /* =================================================
+       STATUS
+    ================================================= */
+
+    #statusMelding {
+        min-height: 24px;
+        margin: 10px 0;
+        font-weight: 600;
+    }
+
+
+    /* =================================================
+       DAGENS REGISTRERINGER
+    ================================================= */
+
+    .registrering {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        border-bottom: 1px solid var(--border-color, #ddd);
+        padding: 12px 0;
+    }
+
+    .registrering:last-child {
+        border-bottom: none;
+    }
+
+    .registrering-info {
+        flex: 1;
+    }
+
+    .registrering-aktivitet {
+        font-weight: 700;
+    }
+
+    .registrering-detaljer {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 3px;
+    }
+
+    .registrering-varighet {
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .slett-registrering {
+        border: 1px solid #ccc;
+        background: white;
+        border-radius: 6px;
+        padding: 6px 10px;
+        cursor: pointer;
+    }
+
+    .slett-registrering:hover {
+        background: #f5f5f5;
+    }
+
+
+    /* =================================================
+       OPPSUMMERING
+    ================================================= */
+
+    .oppsummering-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .oppsummering-boks {
+        border: 1px solid var(--border-color, #ddd);
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .oppsummering-boks .tall {
+        display: block;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-top: 5px;
+    }
+
+
+    /* =================================================
+       SPØRREUNDERSØKELSE
+    ================================================= */
+
+    .survey-sporsmal {
+        margin-bottom: 25px;
+    }
+
+    .survey-sporsmal > label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .radio-gruppe {
+        display: grid;
+        gap: 7px;
+    }
+
+    .radio-alternativ {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        border-radius: 7px;
+    }
+
+    .radio-alternativ:hover {
+        background: #f5f5f5;
+    }
+
+    .radio-alternativ input {
+        width: 18px;
+        height: 18px;
+    }
+
+    #kommentar {
+        width: 100%;
+        min-height: 130px;
+        padding: 12px;
+        border: 1px solid var(--border-color, #ccc);
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1rem;
+        resize: vertical;
+        box-sizing: border-box;
+    }
+
+    #lagreSvar {
+        padding: 13px 20px;
+        border: none;
+        border-radius: 8px;
+        background: var(--primary-color, #2f5d9f);
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    #lagreSvar:hover {
+        opacity: 0.9;
+    }
+
+
+    /* =================================================
+       GANGTID
+    ================================================= */
+
+    .gangtid-info {
+        background: #f5f7fa;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .gangtid-info p {
+        margin-top: 0;
+    }
+
+    .gangtid-info p:last-child {
+        margin-bottom: 0;
+    }
+
+    .api-info {
+        margin-top: 15px;
+        padding: 10px;
+        background: white;
+        border-radius: 6px;
+        font-size: 13px;
+        color: #555;
+        border: 1px solid #ddd;
+    }
+
+
+    /* =================================================
+       ADRESSER
+    ================================================= */
+
+    .adresser-container {
+        margin-top: 20px;
+    }
+
+    .adresse {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .nummer {
+        width: 32px;
+        flex-shrink: 0;
+        font-weight: 700;
+        text-align: right;
+    }
+
+    .adresse input {
+        flex: 1;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border-color, #ccc);
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 16px;
+        background: white;
+    }
+
+    .adresse input:focus {
+        outline: none;
+        border-color: var(--primary-color, #2f5d9f);
+        box-shadow: 0 0 0 2px rgba(47,93,159,0.12);
+    }
+
+
+    /* =================================================
+       GANGTID-KNAPPER
+    ================================================= */
+
+    .gangtid-knapper {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .gangtid-knapp {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 8px;
+        background: var(--primary-color, #2f5d9f);
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .gangtid-knapp:hover {
+        opacity: 0.9;
+    }
+
+    .gangtid-knapp:disabled {
+        opacity: 0.6;
+        cursor: wait;
+    }
+
+    .gangtid-nullstill {
+        padding: 12px 18px;
+        border: none;
+        border-radius: 8px;
+        background: #666;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .gangtid-nullstill:hover {
+        opacity: 0.9;
+    }
+
+
+    /* =================================================
+       GANGTID STATUS
+    ================================================= */
+
+    #gangtidStatus {
+        display: none;
+        margin-top: 15px;
+        padding: 12px;
+        border-radius: 8px;
+        background: #eef3f8;
+        line-height: 1.5;
+    }
+
+    #gangtidStatus.vis {
+        display: block;
+    }
+
+    #gangtidStatus.error {
+        background: #fdeaea;
+        color: #a40000;
+    }
+
+    #gangtidStatus.success {
+        background: #eaf7ea;
+        color: #176b17;
+    }
+
+
+    /* =================================================
+       GANGTID RESULTAT
+    ================================================= */
+
+    #gangtidResultat {
+        display: none;
+        margin-top: 20px;
+        background: white;
+        border: 1px solid var(--border-color, #ddd);
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    #gangtidResultat.vis {
+        display: block;
+    }
+
+    .gangtid-resultat-rad {
+        display: grid;
+        grid-template-columns: 1fr 1fr 150px;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid #ddd;
+        line-height: 1.5;
+    }
+
+    .gangtid-resultat-rad:last-child {
+        border-bottom: none;
+    }
+
+    .etappe {
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .adresse-fra {
+        font-weight: 700;
+    }
+
+    .adresse-til {
+        color: #333;
+    }
+
+    .gangtid-resultat-tid {
+        text-align: right;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .gangtid-resultat-avstand {
+        display: block;
+        color: #666;
+        font-size: 13px;
+        font-weight: normal;
+        margin-top: 4px;
+    }
+
+
+    /* =================================================
+       TOTAL GANGTID
+    ================================================= */
+
+    .gangtid-total {
+        margin-top: 20px;
+        padding-top: 18px;
+        border-top: 2px solid #ddd;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .gangtid-total-avstand {
+        margin-top: 8px;
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    .gangtid-total-info {
+        margin-top: 12px;
+        color: #666;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+
+    /* =================================================
+       HAMBURGER
+    ================================================= */
+
+    .menu-toggle {
+        display: none;
+        color: rgb(12, 12, 12) !important;
+        font-size: 36px !important;
+        line-height: 1 !important;
+        border: none !important;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+
+    /* =================================================
+       RESPONSIV
+    ================================================= */
+
+    @media screen and (max-width: 768px) {
+
+        .menu-toggle {
+            display: block !important;
+        }
+
+    }
+
+    @media screen and (max-width: 760px) {
 
         .belastning-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
         }
-
-
-        .belastning-hero {
-            margin-bottom: 25px;
-        }
-
-
-        .belastning-hero h1 {
-            margin-bottom: 10px;
-        }
-
-
-        .belastning-hero p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-
-        /* =================================================
-           KORT
-        ================================================= */
 
         .belastning-card {
-            background: var(--card-bg, white);
-            border: 1px solid var(--border-color, #ddd);
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 15px;
         }
-
-
-        .belastning-card h2 {
-            margin-top: 0;
-        }
-
-
-        /* =================================================
-           ANSATT
-        ================================================= */
-
-        .ansatt-select-wrapper {
-            margin-bottom: 25px;
-        }
-
-
-        .ansatt-select-wrapper label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-
-        #ansattSelect {
-            width: 100%;
-            max-width: 500px;
-            padding: 12px;
-            border: 1px solid var(--border-color, #ccc);
-            border-radius: 8px;
-            font-size: 1rem;
-            background: white;
-        }
-
-
-        /* =================================================
-           AKTIV TIMER
-        ================================================= */
-
-        .aktiv-timer {
-            display: none;
-            background: #f3f7ff;
-            border: 2px solid var(--primary-color, #2f5d9f);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-
-        .aktiv-timer.vis {
-            display: block;
-        }
-
-
-        .aktiv-timer h3 {
-            margin-top: 0;
-        }
-
-
-        #aktivTid {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 10px 0 20px;
-            font-variant-numeric: tabular-nums;
-        }
-
-
-        /* =================================================
-           AKTIVITETER
-        ================================================= */
-
-        .aktivitet-gruppe {
-            margin-bottom: 25px;
-        }
-
-
-        .aktivitet-gruppe h3 {
-            margin-bottom: 12px;
-        }
-
 
         .aktivitet-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            grid-template-columns: 1fr;
         }
-
-
-        .aktivitet-knapp {
-            border: 1px solid var(--border-color, #ccc);
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            cursor: pointer;
-            text-align: left;
-            font-size: 1rem;
-            transition: 0.2s;
-        }
-
-
-        .aktivitet-knapp:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-        }
-
-
-        .aktivitet-knapp:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-
-        .aktivitet-ikon {
-            display: block;
-            font-size: 1.6rem;
-            margin-bottom: 6px;
-        }
-
-
-        .aktivitet-navn {
-            display: block;
-            font-weight: 700;
-        }
-
-
-        .aktivitet-beskrivelse {
-            display: block;
-            margin-top: 4px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-
-        /* =================================================
-           STOPP TIMER
-        ================================================= */
-
-        #stoppTimer {
-            display: none;
-            width: 100%;
-            padding: 14px;
-            margin-top: 15px;
-            border: none;
-            border-radius: 8px;
-            background: #b42318;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-
-        #stoppTimer.vis {
-            display: block;
-        }
-
-
-        /* =================================================
-           STATUS
-        ================================================= */
-
-        #statusMelding {
-            min-height: 24px;
-            margin: 10px 0;
-            font-weight: 600;
-        }
-
-
-        /* =================================================
-           DAGENS REGISTRERINGER
-        ================================================= */
-
-        .registrering {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            border-bottom: 1px solid var(--border-color, #ddd);
-            padding: 12px 0;
-        }
-
-
-        .registrering:last-child {
-            border-bottom: none;
-        }
-
-
-        .registrering-info {
-            flex: 1;
-        }
-
-
-        .registrering-aktivitet {
-            font-weight: 700;
-        }
-
-
-        .registrering-detaljer {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 3px;
-        }
-
-
-        .registrering-varighet {
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-
-        .slett-registrering {
-            border: 1px solid #ccc;
-            background: white;
-            border-radius: 6px;
-            padding: 6px 10px;
-            cursor: pointer;
-        }
-
-
-        .slett-registrering:hover {
-            background: #f5f5f5;
-        }
-
-
-        /* =================================================
-           OPPSUMMERING
-        ================================================= */
 
         .oppsummering-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            grid-template-columns: 1fr;
         }
 
-
-        .oppsummering-boks {
-            border: 1px solid var(--border-color, #ddd);
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
+        .registrering {
+            align-items: flex-start;
         }
 
+        #aktivTid {
+            font-size: 2rem;
+        }
 
-        .oppsummering-boks .tall {
-            display: block;
-            font-size: 1.8rem;
-            font-weight: 700;
+        .gangtid-resultat-rad {
+            grid-template-columns: 1fr;
+            gap: 5px;
+        }
+
+        .gangtid-resultat-tid {
+            text-align: left;
             margin-top: 5px;
         }
 
-
-        /* =================================================
-           SPØRREUNDERSØKELSE
-        ================================================= */
-
-        .survey-sporsmal {
-            margin-bottom: 25px;
+        .gangtid-knapper {
+            flex-direction: column;
         }
 
-
-        .survey-sporsmal > label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 10px;
+        .gangtid-knapp,
+        .gangtid-nullstill {
+            width: 100%;
         }
 
+    }
 
-        .radio-gruppe {
-            display: grid;
+    @media screen and (max-width: 500px) {
+
+        .adresse {
             gap: 7px;
         }
 
-
-        .radio-alternativ {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px;
-            border-radius: 7px;
-        }
-
-
-        .radio-alternativ:hover {
-            background: #f5f5f5;
-        }
-
-
-        .radio-alternativ input {
-            width: 18px;
-            height: 18px;
-        }
-
-
-        #kommentar {
-            width: 100%;
-            min-height: 130px;
-            padding: 12px;
-            border: 1px solid var(--border-color, #ccc);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            resize: vertical;
-            box-sizing: border-box;
-        }
-
-
-        #lagreSvar {
-            padding: 13px 20px;
-            border: none;
-            border-radius: 8px;
-            background: var(--primary-color, #2f5d9f);
-            color: white;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-
-        #lagreSvar:hover {
-            opacity: 0.9;
-        }
-
-
-        /* =================================================
-           GANGTID
-        ================================================= */
-
-        .gangtid-info {
-            background: #f5f7fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-
-        .gangtid-info p {
-            margin-top: 0;
-        }
-
-
-        .gangtid-info p:last-child {
-            margin-bottom: 0;
-        }
-
-
-        .api-info {
-            margin-top: 15px;
-            padding: 10px;
-            background: white;
-            border-radius: 6px;
-            font-size: 13px;
-            color: #555;
-            border: 1px solid #ddd;
-        }
-
-
-        /* =================================================
-           ADRESSER
-        ================================================= */
-
-        .adresser-container {
-            margin-top: 20px;
-        }
-
-
-        .adresse {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-
         .nummer {
-            width: 32px;
-            flex-shrink: 0;
-            font-weight: 700;
-            text-align: right;
+            width: 25px;
+            font-size: 14px;
         }
-
 
         .adresse input {
-            flex: 1;
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color, #ccc);
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 16px;
-            background: white;
+            min-width: 0;
+            padding: 11px;
         }
-
-
-        .adresse input:focus {
-            outline: none;
-            border-color: var(--primary-color, #2f5d9f);
-            box-shadow: 0 0 0 2px rgba(47,93,159,0.12);
-        }
-
-
-        /* =================================================
-           GANGTID-KNAPPER
-        ================================================= */
-
-        .gangtid-knapper {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-
-        .gangtid-knapp {
-            padding: 12px 18px;
-            border: none;
-            border-radius: 8px;
-            background: var(--primary-color, #2f5d9f);
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-
-        .gangtid-knapp:hover {
-            opacity: 0.9;
-        }
-
-
-        .gangtid-knapp:disabled {
-            opacity: 0.6;
-            cursor: wait;
-        }
-
-
-        .gangtid-nullstill {
-            padding: 12px 18px;
-            border: none;
-            border-radius: 8px;
-            background: #666;
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-
-        .gangtid-nullstill:hover {
-            opacity: 0.9;
-        }
-
-
-        /* =================================================
-           GANGTID STATUS
-        ================================================= */
-
-        #gangtidStatus {
-            display: none;
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 8px;
-            background: #eef3f8;
-            line-height: 1.5;
-        }
-
-
-        #gangtidStatus.vis {
-            display: block;
-        }
-
-
-        #gangtidStatus.error {
-            background: #fdeaea;
-            color: #a40000;
-        }
-
-
-        #gangtidStatus.success {
-            background: #eaf7ea;
-            color: #176b17;
-        }
-
-
-        /* =================================================
-           GANGTID RESULTAT
-        ================================================= */
 
         #gangtidResultat {
-            display: none;
-            margin-top: 20px;
-            background: white;
-            border: 1px solid var(--border-color, #ddd);
-            border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
         }
-
-
-        #gangtidResultat.vis {
-            display: block;
-        }
-
-
-        .gangtid-resultat-rad {
-            display: grid;
-            grid-template-columns: 1fr 1fr 150px;
-            gap: 15px;
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-            line-height: 1.5;
-        }
-
-
-        .gangtid-resultat-rad:last-child {
-            border-bottom: none;
-        }
-
-
-        .etappe {
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-
-        .adresse-fra {
-            font-weight: 700;
-        }
-
-
-        .adresse-til {
-            color: #333;
-        }
-
-
-        .gangtid-resultat-tid {
-            text-align: right;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-
-        .gangtid-resultat-avstand {
-            display: block;
-            color: #666;
-            font-size: 13px;
-            font-weight: normal;
-            margin-top: 4px;
-        }
-
-
-        /* =================================================
-           TOTAL GANGTID
-        ================================================= */
 
         .gangtid-total {
-            margin-top: 20px;
-            padding-top: 18px;
-            border-top: 2px solid #ddd;
-            font-size: 22px;
-            font-weight: 700;
+            font-size: 20px;
         }
-
 
         .gangtid-total-avstand {
-            margin-top: 8px;
-            font-size: 18px;
-            font-weight: normal;
+            font-size: 17px;
         }
 
+    }
 
-        .gangtid-total-info {
-            margin-top: 12px;
-            color: #666;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-
-        /* =================================================
-           HAMBURGER
-        ================================================= */
-
-        .menu-toggle {
-            display: none;
-            color: rgb(12, 12, 12) !important;
-            font-size: 36px !important;
-            line-height: 1 !important;
-            border: none !important;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-
-        /* =================================================
-           RESPONSIV
-        ================================================= */
-
-        @media screen and (max-width: 768px) {
-
-            .menu-toggle {
-                display: block !important;
-            }
-
-        }
-
-
-        @media screen and (max-width: 760px) {
-
-            .belastning-wrapper {
-                padding: 10px;
-            }
-
-
-            .belastning-card {
-                padding: 15px;
-            }
-
-
-            .aktivitet-grid {
-                grid-template-columns: 1fr;
-            }
-
-
-            .oppsummering-grid {
-                grid-template-columns: 1fr;
-            }
-
-
-            .registrering {
-                align-items: flex-start;
-            }
-
-
-            #aktivTid {
-                font-size: 2rem;
-            }
-
-
-            .gangtid-resultat-rad {
-                grid-template-columns: 1fr;
-                gap: 5px;
-            }
-
-
-            .gangtid-resultat-tid {
-                text-align: left;
-                margin-top: 5px;
-            }
-
-
-            .gangtid-knapper {
-                flex-direction: column;
-            }
-
-
-            .gangtid-knapp,
-            .gangtid-nullstill {
-                width: 100%;
-            }
-
-        }
-
-
-        @media screen and (max-width: 500px) {
-
-            .adresse {
-                gap: 7px;
-            }
-
-
-            .nummer {
-                width: 25px;
-                font-size: 14px;
-            }
-
-
-            .adresse input {
-                min-width: 0;
-                padding: 11px;
-            }
-
-
-            #gangtidResultat {
-                padding: 15px;
-            }
-
-
-            .gangtid-total {
-                font-size: 20px;
-            }
-
-
-            .gangtid-total-avstand {
-                font-size: 17px;
-            }
-
-        }
-
-    </style>
+</style>
+```
 
 </head>
 
-
 <body>
-
 
 <!-- ======================================================
      NAVBAR
@@ -797,119 +721,101 @@
 
 <header class="topbar">
 
+```
+<div class="brand">
 
-    <!-- LOGO -->
+    <img
+        src="images/logo-192.png"
+        alt="Team Sør">
 
-    <div class="brand">
-
-        <img
-            src="images/logo-192.png"
-            alt="Team Sør">
-
-    </div>
+</div>
 
 
-    <!-- SEARCH -->
+<div class="search-box">
 
-    <div class="search-box">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Søk på hele Team Sør">
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔍 Søk på hele Team Sør">
+    <div id="searchResults"></div>
 
-        <div id="searchResults"></div>
-
-    </div>
+</div>
 
 
-    <!-- HOVEDMENY -->
+<nav
+    class="nav"
+    aria-label="Hovedmeny">
 
-    <nav
-        class="nav"
-        aria-label="Hovedmeny">
+    <button
+        class="menu-toggle"
+        aria-label="Åpne meny"
+        id="menuToggle"
+        aria-expanded="false"
+        type="button">
 
+        ☰
 
-        <button
-            class="menu-toggle"
-            aria-label="Åpne meny"
-            id="menuToggle"
-            aria-expanded="false"
-            type="button">
-
-            ☰
-
-        </button>
+    </button>
 
 
-        <ul id="menu">
+    <ul id="menu">
 
-            <li>
-                <a href="index.html">
-                    Hjem
-                </a>
-            </li>
+        <li>
+            <a href="index.html">
+                Hjem
+            </a>
+        </li>
 
+        <li>
+            <a href="ekstravakter.html">
+                Vaktbok
+            </a>
+        </li>
 
-            <li>
-                <a href="ekstravakter.html">
-                    Vaktbok
-                </a>
-            </li>
+        <li>
+            <a href="arbeidsliste.html">
+                Merkantil
+            </a>
+        </li>
 
+        <li>
+            <a href="sjekkliste.html">
+                Rutiner
+            </a>
+        </li>
 
-            <li>
-                <a href="arbeidsliste.html">
-                    Merkantil
-                </a>
-            </li>
+        <li>
+            <a href="belastning.html"
+               aria-current="page">
+                Arbeidsbelastning
+            </a>
+        </li>
 
+        <li>
+            <a href="arbeidsmiljø.html">
+                Arbeidsmiljø
+            </a>
+        </li>
 
-            <li>
-                <a href="sjekkliste.html">
-                    Rutiner
-                </a>
-            </li>
+        <li>
+            <a href="Bursdager.html">
+                Bursdager
+            </a>
+        </li>
 
+        <li>
+            <a href="album.html">
+                Sør-album
+            </a>
+        </li>
 
-            <li>
-                <a
-                    href="belastning.html"
-                    aria-current="page">
+    </ul>
 
-                    Arbeidsbelastning
-
-                </a>
-            </li>
-
-
-            <li>
-                <a href="arbeidsmiljø.html">
-                    Arbeidsmiljø
-                </a>
-            </li>
-
-
-            <li>
-                <a href="Bursdager.html">
-                    Bursdager
-                </a>
-            </li>
-
-
-            <li>
-                <a href="album.html">
-                    Sør-album
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
+</nav>
+```
 
 </header>
-
-
 
 <!-- ======================================================
      HOVEDINNHOLD
@@ -917,1575 +823,1193 @@
 
 <main class="belastning-wrapper">
 
+```
+<!-- INTRO -->
 
-    <!-- ==================================================
-         INTRO
-    =================================================== -->
+<section class="belastning-hero">
 
-    <section class="belastning-hero">
+    <h1>
+        Arbeidsbelastning
+    </h1>
 
-        <h1>
-            Arbeidsbelastning
-        </h1>
+    <p>
+        Registrer hvor mye tid arbeidsoppgavene faktisk tar.
+        Målet er å synliggjøre arbeid som ikke alltid kommer
+        frem av arbeidslisten.
+    </p>
 
-        <p>
-            Registrer hvor mye tid arbeidsoppgavene faktisk tar.
-            Målet er å synliggjøre arbeid som ikke alltid kommer
-            frem av arbeidslisten.
-        </p>
+</section>
 
-    </section>
 
+<!-- ANSATT -->
 
+<section class="belastning-card">
 
-    <!-- ==================================================
-         ANSATT
-    =================================================== -->
+    <h2>
+        Hvem registrerer?
+    </h2>
 
-    <section class="belastning-card">
+    <div class="ansatt-select-wrapper">
 
-        <h2>
-            Hvem registrerer?
-        </h2>
+        <label for="ansattSelect">
+            Velg ansatt
+        </label>
 
+        <select id="ansattSelect">
 
-        <div class="ansatt-select-wrapper">
+            <option value="">
+                Laster ansatte ...
+            </option>
 
-            <label for="ansattSelect">
-                Velg ansatt
-            </label>
+        </select>
 
+    </div>
 
-            <select id="ansattSelect">
+    <p id="ansattStatus"></p>
 
-                <option value="">
-                    Laster ansatte ...
-                </option>
+</section>
 
-            </select>
 
-        </div>
+<!-- TIDSREGISTRERING -->
 
+<section class="belastning-card">
 
-        <p id="ansattStatus"></p>
+    <h2>
+        Registrer arbeidstid
+    </h2>
 
-    </section>
+    <p>
+        Velg aktiviteten når du begynner.
+        Bare én aktivitet kan være aktiv samtidig.
+    </p>
 
 
+    <!-- FASTE AKTIVITETER -->
 
-    <!-- ==================================================
-         TIDSREGISTRERING
-    =================================================== -->
+    <div class="aktivitet-gruppe">
 
-    <section class="belastning-card">
+        <h3>
+            Faste aktiviteter
+        </h3>
 
-        <h2>
-            Registrer arbeidstid
-        </h2>
+        <div class="aktivitet-grid">
 
+            <button
+                class="aktivitet-knapp"
+                data-aktivitet="Morgenrapport"
+                data-kategori="fast"
+                type="button">
 
-        <p>
-            Velg aktiviteten når du begynner.
-            Bare én aktivitet kan være aktiv samtidig.
-        </p>
+                <span class="aktivitet-ikon">
+                    🌅
+                </span>
 
+                <span class="aktivitet-navn">
+                    Morgenrapport
+                </span>
 
-        <!-- FASTE AKTIVITETER -->
+                <span class="aktivitet-beskrivelse">
+                    Rapport / møte ved starten av dagen
+                </span>
 
-        <div class="aktivitet-gruppe">
-
-            <h3>
-                Faste aktiviteter
-            </h3>
-
-
-            <div class="aktivitet-grid">
-
-
-                <button
-                    class="aktivitet-knapp"
-                    data-aktivitet="Morgenrapport"
-                    data-kategori="fast"
-                    type="button">
-
-                    <span class="aktivitet-ikon">
-                        🌅
-                    </span>
-
-                    <span class="aktivitet-navn">
-                        Morgenrapport
-                    </span>
-
-                    <span class="aktivitet-beskrivelse">
-                        Rapport / møte ved starten av dagen
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="aktivitet-knapp"
-                    data-aktivitet="Pause"
-                    data-kategori="pause"
-                    type="button">
-
-                    <span class="aktivitet-ikon">
-                        ☕
-                    </span>
-
-                    <span class="aktivitet-navn">
-                        Pause
-                    </span>
-
-                    <span class="aktivitet-beskrivelse">
-                        Registrer faktisk pausetid
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="aktivitet-knapp"
-                    data-aktivitet="Sluttrapport"
-                    data-kategori="fast"
-                    type="button">
-
-                    <span class="aktivitet-ikon">
-                        🌙
-                    </span>
-
-                    <span class="aktivitet-navn">
-                        Sluttrapport
-                    </span>
-
-                    <span class="aktivitet-beskrivelse">
-                        Rapport / avslutning av dagen
-                    </span>
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ANDRE ARBEIDSOPPGAVER -->
-
-        <div class="aktivitet-gruppe">
-
-            <h3>
-                Andre arbeidsoppgaver
-            </h3>
-
-
-            <div class="aktivitet-grid">
-
-
-                <button
-                    class="aktivitet-knapp"
-                    data-aktivitet="Overgang dør til dør"
-                    data-kategori="arbeidsoppgave"
-                    type="button">
-
-                    <span class="aktivitet-ikon">
-                        🚶
-                    </span>
-
-                    <span class="aktivitet-navn">
-                        Overgang dør → dør
-                    </span>
-
-                    <span class="aktivitet-beskrivelse">
-                        Tid mellom brukere
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="aktivitet-knapp"
-                    data-aktivitet="Dokumentasjon"
-                    data-kategori="arbeidsoppgave"
-                    type="button">
-
-                    <span class="aktivitet-ikon">
-                        📝
-                    </span>
-
-                    <span class="aktivitet-navn">
-                        Dokumentasjon
-                    </span>
-
-                    <span class="aktivitet-beskrivelse">
-                        Journalføring og dokumentasjon
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="aktivitet-knapp"
-                    data-aktivitet="Apotek / medisinhenting"
-                    data-kategori="arbeidsoppgave"
-                    type="button">
-
-                    <span class="aktivitet-ikon">
-                        💊
-                    </span>
-
-                    <span class="aktivitet-navn">
-                        Apotek / medisinhenting
-                    </span>
-
-                    <span class="aktivitet-beskrivelse">
-                        Henting / levering av medisiner
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="aktivitet-knapp"
-                    data-aktivitet="Telefonsamtale"
-                    data-kategori="arbeidsoppgave"
-                    type="button">
-
-                    <span class="aktivitet-ikon">
-                        📞
-                    </span>
-
-                    <span class="aktivitet-navn">
-                        Telefonsamtale
-                    </span>
-
-                    <span class="aktivitet-beskrivelse">
-                        Telefonsamtaler i arbeidstiden
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="aktivitet-knapp"
-                    data-aktivitet="Samtale med pårørende"
-                    data-kategori="arbeidsoppgave"
-                    type="button">
-
-                    <span class="aktivitet-ikon">
-                        👨‍👩‍👧
-                    </span>
-
-                    <span class="aktivitet-navn">
-                        Samtale med pårørende
-                    </span>
-
-                    <span class="aktivitet-beskrivelse">
-                        Samtale / oppfølging av pårørende
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="aktivitet-knapp"
-                    data-aktivitet="Uplanlagt oppgave"
-                    data-kategori="arbeidsoppgave"
-                    type="button">
-
-                    <span class="aktivitet-ikon">
-                        ⚠️
-                    </span>
-
-                    <span class="aktivitet-navn">
-                        Uplanlagt oppgave
-                    </span>
-
-                    <span class="aktivitet-beskrivelse">
-                        Arbeid som ikke var planlagt
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="aktivitet-knapp"
-                    data-aktivitet="Annet"
-                    data-kategori="arbeidsoppgave"
-                    type="button">
-
-                    <span class="aktivitet-ikon">
-                        ➕
-                    </span>
-
-                    <span class="aktivitet-navn">
-                        Annet
-                    </span>
-
-                    <span class="aktivitet-beskrivelse">
-                        Annen arbeidsoppgave
-                    </span>
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- AKTIV TIMER -->
-
-        <div
-            class="aktiv-timer"
-            id="aktivTimer">
-
-            <h3>
-                Aktiv registrering
-            </h3>
-
-
-            <div id="aktivitetNavn">
-                –
-            </div>
-
-
-            <div id="aktivTid">
-                00:00:00
-            </div>
+            </button>
 
 
             <button
-                id="stoppTimer"
+                class="aktivitet-knapp"
+                data-aktivitet="Pause"
+                data-kategori="pause"
                 type="button">
 
-                ⏹ Stopp og lagre
+                <span class="aktivitet-ikon">
+                    ☕
+                </span>
+
+                <span class="aktivitet-navn">
+                    Pause
+                </span>
+
+                <span class="aktivitet-beskrivelse">
+                    Registrer faktisk pausetid
+                </span>
+
+            </button>
+
+
+            <button
+                class="aktivitet-knapp"
+                data-aktivitet="Sluttrapport"
+                data-kategori="fast"
+                type="button">
+
+                <span class="aktivitet-ikon">
+                    🌙
+                </span>
+
+                <span class="aktivitet-navn">
+                    Sluttrapport
+                </span>
+
+                <span class="aktivitet-beskrivelse">
+                    Rapport / avslutning av dagen
+                </span>
 
             </button>
 
         </div>
 
-
-        <p id="statusMelding"></p>
-
-    </section>
+    </div>
 
 
+    <!-- ANDRE ARBEIDSOPPGAVER -->
 
-    <!-- ==================================================
-         DAGENS REGISTRERINGER
-    =================================================== -->
+    <div class="aktivitet-gruppe">
 
-    <section class="belastning-card">
+        <h3>
+            Andre arbeidsoppgaver
+        </h3>
 
-        <h2>
-            Dagens registreringer
-        </h2>
+        <div class="aktivitet-grid">
 
+            <button
+                class="aktivitet-knapp"
+                data-aktivitet="Overgang dør til dør"
+                data-kategori="arbeidsoppgave"
+                type="button">
 
-        <div id="dagensRegistreringer">
-
-            <p>
-                Ingen registreringer ennå.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         OPPSUMMERING
-    =================================================== -->
-
-    <section class="belastning-card">
-
-        <h2>
-            Oppsummering i dag
-        </h2>
-
-
-        <div class="oppsummering-grid">
-
-
-            <div class="oppsummering-boks">
-
-                Total registrert tid
-
-                <span
-                    class="tall"
-                    id="totalTid">
-
-                    00:00:00
-
+                <span class="aktivitet-ikon">
+                    🚶
                 </span>
 
-            </div>
-
-
-            <div class="oppsummering-boks">
-
-                Arbeidstid
-
-                <span
-                    class="tall"
-                    id="arbeidstid">
-
-                    00:00:00
-
+                <span class="aktivitet-navn">
+                    Overgang dør → dør
                 </span>
 
-            </div>
-
-
-            <div class="oppsummering-boks">
-
-                Pause
-
-                <span
-                    class="tall"
-                    id="pausetid">
-
-                    00:00:00
-
+                <span class="aktivitet-beskrivelse">
+                    Tid mellom brukere
                 </span>
 
-            </div>
+            </button>
+
+
+            <button
+                class="aktivitet-knapp"
+                data-aktivitet="Dokumentasjon"
+                data-kategori="arbeidsoppgave"
+                type="button">
+
+                <span class="aktivitet-ikon">
+                    📝
+                </span>
+
+                <span class="aktivitet-navn">
+                    Dokumentasjon
+                </span>
+
+                <span class="aktivitet-beskrivelse">
+                    Journalføring og dokumentasjon
+                </span>
+
+            </button>
+
+
+            <button
+                class="aktivitet-knapp"
+                data-aktivitet="Apotek / medisinhenting"
+                data-kategori="arbeidsoppgave"
+                type="button">
+
+                <span class="aktivitet-ikon">
+                    💊
+                </span>
+
+                <span class="aktivitet-navn">
+                    Apotek / medisinhenting
+                </span>
+
+                <span class="aktivitet-beskrivelse">
+                    Henting / levering av medisiner
+                </span>
+
+            </button>
+
+
+            <button
+                class="aktivitet-knapp"
+                data-aktivitet="Telefonsamtale"
+                data-kategori="arbeidsoppgave"
+                type="button">
+
+                <span class="aktivitet-ikon">
+                    📞
+                </span>
+
+                <span class="aktivitet-navn">
+                    Telefonsamtaler i arbeidstiden
+                </span>
+
+            </button>
+
+
+            <button
+                class="aktivitet-knapp"
+                data-aktivitet="Samtale med pårørende"
+                data-kategori="arbeidsoppgave"
+                type="button">
+
+                <span class="aktivitet-ikon">
+                    👨‍👩‍👧
+                </span>
+
+                <span class="aktivitet-navn">
+                    Samtale med pårørende
+                </span>
+
+                <span class="aktivitet-beskrivelse">
+                    Samtale / oppfølging av pårørende
+                </span>
+
+            </button>
+
+
+            <button
+                class="aktivitet-knapp"
+                data-aktivitet="Uplanlagt oppgave"
+                data-kategori="arbeidsoppgave"
+                type="button">
+
+                <span class="aktivitet-ikon">
+                    ⚠️
+                </span>
+
+                <span class="aktivitet-navn">
+                    Uplanlagt oppgave
+                </span>
+
+                <span class="aktivitet-beskrivelse">
+                    Arbeid som ikke var planlagt
+                </span>
+
+            </button>
+
+
+            <button
+                class="aktivitet-knapp"
+                data-aktivitet="Annet"
+                data-kategori="arbeidsoppgave"
+                type="button">
+
+                <span class="aktivitet-ikon">
+                    ➕
+                </span>
+
+                <span class="aktivitet-navn">
+                    Annet
+                </span>
+
+                <span class="aktivitet-beskrivelse">
+                    Annen arbeidsoppgave
+                </span>
+
+            </button>
 
         </div>
 
-
-        <p>
-            Arbeidstid er registrert tid minus registrert
-            pause.
-        </p>
-
-    </section>
+    </div>
 
 
+    <!-- AKTIV TIMER -->
 
-    <!-- ==================================================
-         DAGLIG UNDERSØKELSE
-    =================================================== -->
+    <div
+        class="aktiv-timer"
+        id="aktivTimer">
 
-    <section class="belastning-card">
+        <h3>
+            Aktiv registrering
+        </h3>
 
-        <h2>
-            Hvordan var arbeidsdagen?
-        </h2>
-
-
-        <p>
-            Svar på spørsmålene etter at dagens arbeid er ferdig.
-            Svarene brukes til å synliggjøre arbeidsbelastningen.
-        </p>
-
-
-
-        <!-- GANGAVSTAND -->
-
-        <div class="survey-sporsmal">
-
-            <label>
-                1. Hvordan var gangavstanden?
-            </label>
-
-
-            <div class="radio-gruppe">
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="gangavstand"
-                        value="kort">
-                    Kort – lite gange
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="gangavstand"
-                        value="normal">
-                    Normal
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="gangavstand"
-                        value="litt_lang">
-                    Litt lang
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="gangavstand"
-                        value="lang">
-                    Lang
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="gangavstand"
-                        value="svart_lang">
-                    Svært lang
-                </label>
-
-            </div>
-
+        <div id="aktivitetNavn">
+            –
         </div>
 
-
-
-        <!-- FREM OG TILBAKE -->
-
-        <div class="survey-sporsmal">
-
-            <label>
-                2. Var det mye frem og tilbake mellom adresser?
-            </label>
-
-
-            <div class="radio-gruppe">
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="fremOgTilbake"
-                        value="nei">
-                    Nei, ruten var godt planlagt
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="fremOgTilbake"
-                        value="litt">
-                    Litt
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="fremOgTilbake"
-                        value="en_del">
-                    En del
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="fremOgTilbake"
-                        value="mye">
-                    Mye
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="fremOgTilbake"
-                        value="svart_mye">
-                    Svært mye
-                </label>
-
-            </div>
-
+        <div id="aktivTid">
+            00:00:00
         </div>
-
-
-
-        <!-- EKSTRA AKTIVITETER -->
-
-        <div class="survey-sporsmal">
-
-            <label>
-                3. Hvordan var aktivitetene du fikk i tillegg til listen?
-            </label>
-
-
-            <div class="radio-gruppe">
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="ekstraAktiviteter"
-                        value="ingen">
-                    Ingen ekstra aktiviteter
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="ekstraAktiviteter"
-                        value="lite">
-                    Lite ekstra arbeid
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="ekstraAktiviteter"
-                        value="noe">
-                    Noe ekstra arbeid
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="ekstraAktiviteter"
-                        value="mye">
-                    Mye ekstra arbeid
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="ekstraAktiviteter"
-                        value="svart_mye">
-                    Svært mye ekstra arbeid
-                </label>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- MORGENRAPPORT -->
-
-        <div class="survey-sporsmal">
-
-            <label>
-                4. Brukte du for mye tid på morgenrapport?
-            </label>
-
-
-            <div class="radio-gruppe">
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="morgenrapport"
-                        value="passe">
-                    Passe
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="morgenrapport"
-                        value="litt_lang">
-                    Litt lang
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="morgenrapport"
-                        value="for_lang">
-                    For lang
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="morgenrapport"
-                        value="altfor_lang">
-                    Altfor lang
-                </label>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- SLUTTRAPPORT -->
-
-        <div class="survey-sporsmal">
-
-            <label>
-                5. Brukte du for mye tid på sluttrapport?
-            </label>
-
-
-            <div class="radio-gruppe">
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="sluttrapport"
-                        value="passe">
-                    Passe
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="sluttrapport"
-                        value="litt_lang">
-                    Litt lang
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="sluttrapport"
-                        value="for_lang">
-                    For lang
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="sluttrapport"
-                        value="altfor_lang">
-                    Altfor lang
-                </label>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ARBEIDSLISTE -->
-
-        <div class="survey-sporsmal">
-
-            <label>
-                6. Hvordan var tiden du hadde på arbeidslisten?
-            </label>
-
-
-            <div class="radio-gruppe">
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="arbeidslisteTid"
-                        value="god_tid">
-                    God tid
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="arbeidslisteTid"
-                        value="passelig">
-                    Passelig tid
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="arbeidslisteTid"
-                        value="travelt">
-                    Travelt, men det gikk
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="arbeidslisteTid"
-                        value="for_lite">
-                    For lite tid
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="arbeidslisteTid"
-                        value="altfor_lite">
-                    Altfor lite tid
-                </label>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- RAKK ALLE -->
-
-        <div class="survey-sporsmal">
-
-            <label>
-                7. Rakk du alle oppgavene?
-            </label>
-
-
-            <div class="radio-gruppe">
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="rakkAlleOppgaver"
-                        value="ja">
-                    Ja
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="rakkAlleOppgaver"
-                        value="ja_lite_igjen">
-                    Ja, men med svært lite tid til overs
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="rakkAlleOppgaver"
-                        value="nei_utsette">
-                    Nei, noe måtte utsettes
-                </label>
-
-
-                <label class="radio-alternativ">
-                    <input
-                        type="radio"
-                        name="rakkAlleOppgaver"
-                        value="nei_overlate">
-                    Nei, noe måtte overlates til andre
-                </label>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- KOMMENTAR -->
-
-        <div class="survey-sporsmal">
-
-            <label for="kommentar">
-                8. Kommentar
-            </label>
-
-
-            <textarea
-                id="kommentar"
-                placeholder="Er det noe spesielt du ønsker å beskrive fra arbeidsdagen?"></textarea>
-
-        </div>
-
 
         <button
-            id="lagreSvar"
+            id="stoppTimer"
             type="button">
 
-            💾 Lagre svar
+            ⏹ Stopp og lagre
 
         </button>
 
+    </div>
 
-        <p id="surveyStatus"></p>
+    <p id="statusMelding"></p>
 
-    </section>
+</section>
 
 
+<!-- DAGENS REGISTRERINGER -->
 
-    <!-- ==================================================
-         GANGTID / RUTE
-    =================================================== -->
+<section class="belastning-card">
 
-    <section class="belastning-card">
+    <h2>
+        Dagens registreringer
+    </h2>
 
+    <div id="dagensRegistreringer">
+
+        <p>
+            Ingen registreringer ennå.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- OPPSUMMERING -->
+
+<section class="belastning-card">
+
+    <h2>
+        Oppsummering i dag
+    </h2>
+
+    <div class="oppsummering-grid">
+
+        <div class="oppsummering-boks">
+
+            Total registrert tid
+
+            <span
+                class="tall"
+                id="totalTid">
+
+                00:00:00
+
+            </span>
+
+        </div>
+
+
+        <div class="oppsummering-boks">
+
+            Arbeidstid
+
+            <span
+                class="tall"
+                id="arbeidstid">
+
+                00:00:00
+
+            </span>
+
+        </div>
+
+
+        <div class="oppsummering-boks">
+
+            Pause
+
+            <span
+                class="tall"
+                id="pausetid">
+
+                00:00:00
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <p>
+        Arbeidstid er registrert tid minus registrert
+        pause.
+    </p>
+
+</section>
+
+
+<!-- DAGLIG UNDERSØKELSE -->
+
+<section class="belastning-card">
+
+    <h2>
+        Hvordan var arbeidsdagen?
+    </h2>
+
+    <p>
+        Svar på spørsmålene etter at dagens arbeid er ferdig.
+        Svarene brukes til å synliggjøre arbeidsbelastningen.
+    </p>
+
+
+    <!-- GANGAVSTAND -->
+
+    <div class="survey-sporsmal">
+
+        <label>
+            1. Hvordan var gangavstanden?
+        </label>
+
+        <div class="radio-gruppe">
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="gangavstand"
+                       value="kort">
+                Kort – lite gange
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="gangavstand"
+                       value="normal">
+                Normal
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="gangavstand"
+                       value="litt_lang">
+                Litt lang
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="gangavstand"
+                       value="lang">
+                Lang
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="gangavstand"
+                       value="svart_lang">
+                Svært lang
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- FREM OG TILBAKE -->
+
+    <div class="survey-sporsmal">
+
+        <label>
+            2. Var det mye frem og tilbake mellom adresser?
+        </label>
+
+        <div class="radio-gruppe">
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="fremOgTilbake"
+                       value="nei">
+                Nei, ruten var godt planlagt
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="fremOgTilbake"
+                       value="litt">
+                Litt
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="fremOgTilbake"
+                       value="en_del">
+                En del
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="fremOgTilbake"
+                       value="mye">
+                Mye
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="fremOgTilbake"
+                       value="svart_mye">
+                Svært mye
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- EKSTRA AKTIVITETER -->
+
+    <div class="survey-sporsmal">
+
+        <label>
+            3. Hvordan var aktivitetene du fikk i tillegg til listen?
+        </label>
+
+        <div class="radio-gruppe">
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="ekstraAktiviteter"
+                       value="ingen">
+                Ingen ekstra aktiviteter
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="ekstraAktiviteter"
+                       value="lite">
+                Lite ekstra arbeid
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="ekstraAktiviteter"
+                       value="noe">
+                Noe ekstra arbeid
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="ekstraAktiviteter"
+                       value="mye">
+                Mye ekstra arbeid
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="ekstraAktiviteter"
+                       value="svart_mye">
+                Svært mye ekstra arbeid
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- MORGENRAPPORT -->
+
+    <div class="survey-sporsmal">
+
+        <label>
+            4. Brukte du for mye tid på morgenrapport?
+        </label>
+
+        <div class="radio-gruppe">
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="morgenrapport"
+                       value="passe">
+                Passe
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="morgenrapport"
+                       value="litt_lang">
+                Litt lang
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="morgenrapport"
+                       value="for_lang">
+                For lang
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="morgenrapport"
+                       value="altfor_lang">
+                Altfor lang
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- SLUTTRAPPORT -->
+
+    <div class="survey-sporsmal">
+
+        <label>
+            5. Brukte du for mye tid på sluttrapport?
+        </label>
+
+        <div class="radio-gruppe">
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="sluttrapport"
+                       value="passe">
+                Passe
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="sluttrapport"
+                       value="litt_lang">
+                Litt lang
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="sluttrapport"
+                       value="for_lang">
+                For lang
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="sluttrapport"
+                       value="altfor_lang">
+                Altfor lang
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- ARBEIDSLISTE -->
+
+    <div class="survey-sporsmal">
+
+        <label>
+            6. Hvordan var tiden du hadde på arbeidslisten?
+        </label>
+
+        <div class="radio-gruppe">
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="arbeidslisteTid"
+                       value="god_tid">
+                God tid
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="arbeidslisteTid"
+                       value="passelig">
+                Passelig tid
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="arbeidslisteTid"
+                       value="travelt">
+                Travelt, men det gikk
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="arbeidslisteTid"
+                       value="for_lite">
+                For lite tid
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="arbeidslisteTid"
+                       value="altfor_lite">
+                Altfor lite tid
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- RAKK ALLE -->
+
+    <div class="survey-sporsmal">
+
+        <label>
+            7. Rakk du alle oppgavene?
+        </label>
+
+        <div class="radio-gruppe">
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="rakkAlleOppgaver"
+                       value="ja">
+                Ja
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="rakkAlleOppgaver"
+                       value="ja_lite_igjen">
+                Ja, men med svært lite tid til overs
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="rakkAlleOppgaver"
+                       value="nei_utsette">
+                Nei, noe måtte utsettes
+            </label>
+
+            <label class="radio-alternativ">
+                <input type="radio"
+                       name="rakkAlleOppgaver"
+                       value="nei_overlate">
+                Nei, noe måtte overlates til andre
+            </label>
+
+        </div>
+
+    </div>
+
+
+    <!-- KOMMENTAR -->
+
+    <div class="survey-sporsmal">
+
+        <label for="kommentar">
+            8. Kommentar
+        </label>
+
+        <textarea
+            id="kommentar"
+            placeholder="Er det noe spesielt du ønsker å beskrive fra arbeidsdagen?"></textarea>
+
+    </div>
+
+
+    <button
+        id="lagreSvar"
+        type="button">
+
+        💾 Lagre svar
+
+    </button>
+
+    <p id="surveyStatus"></p>
+
+</section>
+
+
+<!-- ==================================================
+     GANGTID
+=================================================== -->
+
+<section class="belastning-card">
+
+    <h2>
+        🚶 Beregn gangtid mellom adresser
+    </h2>
+
+    <div class="gangtid-info">
+
+        <p>
+            Skriv inn adressene i den rekkefølgen
+            du besøker brukerne.
+        </p>
+
+        <p>
+            Du kan bruke opptil
+            <strong>20 adresser</strong>.
+            Du trenger ikke fylle ut alle feltene.
+        </p>
+
+        <p>
+            Verktøyet beregner gangtid og
+            gangavstand mellom hvert stopp
+            og summerer resultatet.
+        </p>
+
+        <p>
+            <strong>
+                Ikke skriv navn eller andre
+                personopplysninger om brukere.
+            </strong>
+        </p>
+
+        <div class="api-info">
+            🚶 Beregningen bruker Google Routes API
+            via Team Sør sitt Gangtid API.
+        </div>
+
+    </div>
+
+
+    <div id="adresser"
+         class="adresser-container">
+
+        <div class="adresse">
+            <span class="nummer">1.</span>
+            <input type="text"
+                   placeholder="For eksempel: Schweigaards gate 10, Oslo"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">2.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">3.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">4.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">5.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">6.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">7.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">8.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">9.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">10.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">11.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">12.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">13.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">14.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">15.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">16.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">17.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">18.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">19.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+        <div class="adresse">
+            <span class="nummer">20.</span>
+            <input type="text"
+                   placeholder="Neste adresse"
+                   autocomplete="street-address">
+        </div>
+
+    </div>
+
+
+    <div class="gangtid-knapper">
+
+        <button
+            class="gangtid-knapp"
+            id="beregnGangtid"
+            type="button">
+
+            🚶 Beregn gangtid
+
+        </button>
+
+        <button
+            class="gangtid-nullstill"
+            id="nullstillGangtid"
+            type="button">
+
+            🗑️ Tøm adresser
+
+        </button>
+
+    </div>
+
+
+    <div id="gangtidStatus"
+         role="status"
+         aria-live="polite">
+    </div>
+
+
+    <div id="gangtidResultat">
 
         <h2>
-            🚶 Beregn gangtid mellom adresser
+            Resultat
         </h2>
 
+        <div id="gangtidResultatListe"></div>
 
-        <div class="gangtid-info">
+        <div id="gangtidTotal"
+             class="gangtid-total">
+        </div>
 
+        <div id="gangtidTotalAvstand"
+             class="gangtid-total-avstand">
+        </div>
 
-            <p>
-                Skriv inn adressene i den rekkefølgen
-                du besøker brukerne.
-            </p>
+        <div class="gangtid-total-info">
 
-
-            <p>
-                Du kan bruke opptil
-                <strong>20 adresser</strong>.
-                Du trenger ikke fylle ut alle feltene.
-            </p>
-
-
-            <p>
-                Verktøyet beregner gangtid og
-                gangavstand mellom hvert stopp
-                og summerer resultatet.
-            </p>
-
-
-            <p>
-                <strong>
-                    Ikke skriv navn eller andre
-                    personopplysninger om brukere.
-                </strong>
-            </p>
-
-
-            <div class="api-info">
-
-                🚶 Beregningen bruker Google Routes API
-                via Team Sør sitt Gangtid API.
-
-            </div>
+            Dette er beregnet utendørs gangtid.
+            Tid inne i bygninger, heiser, trapper og lignende
+            kommer i tillegg.
 
         </div>
 
+    </div>
 
+</section>
 
-        <!-- =================================================
-             20 ADRESSEFELTER
-        ================================================= -->
 
-        <div
-            id="adresser"
-            class="adresser-container">
+<!-- ==================================================
+     DOKUMENTASJON
+=================================================== -->
 
+<section class="belastning-card">
 
-            <!-- ADRESSE 1 -->
+    <h1>
+        Dokumentasjon-tid
+    </h1>
 
-            <div class="adresse">
+</section>
 
-                <span class="nummer">
-                    1.
-                </span>
 
-                <input
-                    type="text"
-                    placeholder="For eksempel: Schweigaards gate 10, Oslo"
-                    autocomplete="street-address">
+<section class="belastning-card">
 
-            </div>
-
-
-            <!-- ADRESSE 2 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    2.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 3 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    3.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 4 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    4.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 5 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    5.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 6 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    6.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 7 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    7.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 8 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    8.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 9 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    9.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 10 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    10.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 11 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    11.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 12 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    12.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 13 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    13.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 14 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    14.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 15 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    15.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 16 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    16.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 17 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    17.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 18 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    18.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 19 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    19.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-
-            <!-- ADRESSE 20 -->
-
-            <div class="adresse">
-
-                <span class="nummer">
-                    20.
-                </span>
-
-                <input
-                    type="text"
-                    placeholder="Neste adresse"
-                    autocomplete="street-address">
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =================================================
-             KNAPPER
-        ================================================= -->
-
-        <div class="gangtid-knapper">
-
-
-            <button
-                class="gangtid-knapp"
-                id="beregnGangtid"
-                type="button">
-
-                🚶 Beregn gangtid
-
-            </button>
-
-
-            <button
-                class="gangtid-nullstill"
-                id="nullstillGangtid"
-                type="button">
-
-                🗑️ Tøm adresser
-
-            </button>
-
-        </div>
-
-
-
-        <!-- =================================================
-             STATUS
-        ================================================= -->
-
-        <div
-            id="gangtidStatus"
-            role="status"
-            aria-live="polite">
-
-        </div>
-
-
-
-        <!-- =================================================
-             RESULTAT
-        ================================================= -->
-
-        <div
-            id="gangtidResultat">
-
-
-            <h2>
-                Resultat
-            </h2>
-
-
-            <div id="gangtidResultatListe">
-
-            </div>
-
-
-            <div
-                id="gangtidTotal"
-                class="gangtid-total">
-
-            </div>
-
-
-            <div
-                id="gangtidTotalAvstand"
-                class="gangtid-total-avstand">
-
-            </div>
-
-
-            <div class="gangtid-total-info">
-
-                Dette er beregnet utendørs gangtid.
-                Tid inne i bygninger, heiser, trapper og lignende
-                kommer i tillegg.
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         DOKUMENTASJON
-    =================================================== -->
-
-    <section class="belastning-card">
-
-        <h1>
-            Dokumentasjon-tid
-        </h1>
-
-    </section>
-
-
-    <section class="belastning-card">
-
-        <h2>
-            Legg tiden du har brukt på dokumentasjon i arbeidslisten din:
-        </h2>
-
-
-        <br>
-
-
-        <p>
-            1- Finn brukeren under brukersøk
-        </p>
-
-
-        <p>
-            2- Klikk på navnet
-        </p>
-
-
-        <p>
-            3- Klikk på plusstegnet nederst til høyre
-        </p>
-
-
-        <p>
-            4- Velg nytt besøk
-        </p>
-
-
-        <p>
-            5- Velg dato, starttid og sluttid
-        </p>
-
-
-        <p>
-            6- Legg til oppdrag
-        </p>
-
-
-        <p>
-            7- Velg "Ekstra besøk"
-        </p>
-
-
-        <p>
-            8- Skriv tiden du har brukt på dokumentasjonen
-            (varighet)
-        </p>
-
-
-        <p>
-            9- Lagre
-        </p>
-
-
-        <p>
-            10- Nå kommer besøket på din liste
-        </p>
-
-
-        <p>
-            11- Registrer og skriv det du skal dokumentere
-            om brukeren der
-        </p>
-
-
-        <br>
-
-    </section>
-
+    <h2>
+        Legg tiden du har brukt på dokumentasjon i arbeidslisten din:
+    </h2>
 
     <br>
 
+    <p>
+        1- Finn brukeren under brukersøk
+    </p>
 
-    <!-- ==================================================
-         ANNEN IKKE-PLANLAGT TID
-    =================================================== -->
+    <p>
+        2- Klikk på navnet
+    </p>
 
-    <section class="belastning-card">
+    <p>
+        3- Klikk på plusstegnet nederst til høyre
+    </p>
 
-        <h2>
+    <p>
+        4- Velg nytt besøk
+    </p>
 
-            Gjør det samme for å registrere tiden når du
-            henter medisiner fra apoteket, har telefonsamtaler
-            om brukere, samtaler med pårørende eller når du
-            må gjøre noe som ikke er planlagt i arbeidslisten din.
+    <p>
+        5- Velg dato, starttid og sluttid
+    </p>
 
-        </h2>
+    <p>
+        6- Legg til oppdrag
+    </p>
 
-    </section>
+    <p>
+        7- Velg "Ekstra besøk"
+    </p>
+
+    <p>
+        8- Skriv tiden du har brukt på dokumentasjonen
+        (varighet)
+    </p>
+
+    <p>
+        9- Lagre
+    </p>
+
+    <p>
+        10- Nå kommer besøket på din liste
+    </p>
+
+    <p>
+        11- Registrer og skriv det du skal dokumentere
+        om brukeren der
+    </p>
+
+    <br>
+
+</section>
 
 
-    <section class="belastning-card">
+<br>
 
-    </section>
 
+<!-- ==================================================
+     ANNEN IKKE-PLANLAGT TID
+=================================================== -->
+
+<section class="belastning-card">
+
+    <h2>
+
+        Gjør det samme for å registrere tiden når du
+        henter medisiner fra apoteket, har telefonsamtaler
+        om brukere, samtaler med pårørende eller når du
+        må gjøre noe som ikke er planlagt i arbeidslisten din.
+
+    </h2>
+
+</section>
+
+
+<section class="belastning-card">
+</section>
+```
 
 </main>
-
-
 
 <!-- ======================================================
      SØK
 ======================================================= -->
 
-<script
-    src="searchData.js"
-    defer>
+<script src="searchData.js"
+        defer>
 </script>
 
-
-<script
-    src="search.js"
-    defer>
+<script src="search.js"
+        defer>
 </script>
-
-
 
 <!-- ======================================================
      GLIGHTBOX
 ======================================================= -->
 
-<script
-    src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js">
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js">
 </script>
-
-
 
 <!-- ======================================================
      APP
 ======================================================= -->
 
-<script
-    type="module"
-    src="app.js">
+<script type="module"
+        src="app.js">
 </script>
-
-
 
 <!-- ======================================================
      BURSDAG
 ======================================================= -->
 
-<script
-    type="module"
-    src="bursdag.js">
+<script type="module"
+        src="bursdag.js">
 </script>
-
-
 
 <!-- ======================================================
      INDEX
 ======================================================= -->
 
-<script
-    type="module"
-    src="index.js">
+<script type="module"
+        src="index.js">
 </script>
-
-
 
 <!-- ======================================================
      AUTH
 ======================================================= -->
 
-<script
-    type="module"
-    src="auth.js">
+<script type="module"
+        src="auth.js">
 </script>
 
-
-<script
-    type="module"
-    src="login.js">
+<script type="module"
+        src="login.js">
 </script>
 
-
-<script
-    type="module"
-    src="logout.js">
+<script type="module"
+        src="logout.js">
 </script>
-
-
 
 <!-- ======================================================
      ARBEIDSBELASTNING JAVASCRIPT
@@ -2493,143 +2017,99 @@
 
 <script type="module">
 
-
-/* ========================================================
-   FIREBASE
-======================================================== */
-
-import {
-
-    collection,
-    addDoc,
-    getDocs,
-    deleteDoc,
-    doc,
-    query,
-    where,
-    serverTimestamp,
-    setDoc
-
-}
-from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-
-import {
-    db
-}
-from "./firebase.js";
-
+/* ======================================================
+   IMPORT
+======================================================= */
 
 import {
     hentAnsatte
-}
-from "./ansatteFirestore.js";
+} from "./ansatteFirestore.js";
 
 
-
-/* ========================================================
+/* ======================================================
    KONFIGURASJON
-======================================================== */
+======================================================= */
+
+const ARBEIDSBELASTNING_API =
+    "https://script.google.com/macros/s/AKfycbzLrv3bjJzjP50ichDW5P_P3stb1c89mk7vkb32AkwoqMTzxBOFs-4QdiwibskOI8hU/exec";
+
 
 const GANGTID_API =
     "https://gangtid-740297234658.europe-north1.run.app/gangtid";
 
 
-
-/* ========================================================
+/* ======================================================
    ELEMENTER
-======================================================== */
+======================================================= */
 
 const ansattSelect =
     document.getElementById("ansattSelect");
 
-
 const ansattStatus =
     document.getElementById("ansattStatus");
-
 
 const aktivitetKnapper =
     document.querySelectorAll(".aktivitet-knapp");
 
-
 const aktivTimer =
     document.getElementById("aktivTimer");
-
 
 const aktivitetNavn =
     document.getElementById("aktivitetNavn");
 
-
 const aktivTid =
     document.getElementById("aktivTid");
-
 
 const stoppTimer =
     document.getElementById("stoppTimer");
 
-
 const statusMelding =
     document.getElementById("statusMelding");
-
 
 const dagensRegistreringer =
     document.getElementById("dagensRegistreringer");
 
-
 const totalTid =
     document.getElementById("totalTid");
-
 
 const arbeidstid =
     document.getElementById("arbeidstid");
 
-
 const pausetid =
     document.getElementById("pausetid");
 
-
 const lagreSvar =
     document.getElementById("lagreSvar");
-
 
 const surveyStatus =
     document.getElementById("surveyStatus");
 
 
-/* Gangtid-elementer */
-
 const beregnGangtidKnapp =
     document.getElementById("beregnGangtid");
-
 
 const nullstillGangtidKnapp =
     document.getElementById("nullstillGangtid");
 
-
 const gangtidStatus =
     document.getElementById("gangtidStatus");
-
 
 const gangtidResultat =
     document.getElementById("gangtidResultat");
 
-
 const gangtidResultatListe =
     document.getElementById("gangtidResultatListe");
 
-
 const gangtidTotal =
     document.getElementById("gangtidTotal");
-
 
 const gangtidTotalAvstand =
     document.getElementById("gangtidTotalAvstand");
 
 
-
-/* ========================================================
+/* ======================================================
    DATA
-======================================================== */
+======================================================= */
 
 let ansatte = [];
 
@@ -2640,101 +2120,251 @@ let timerInterval = null;
 let dagensData = [];
 
 
-
-/* ========================================================
+/* ======================================================
    DATO
-======================================================== */
+======================================================= */
 
 function dagensDato() {
 
     const dato =
         new Date();
 
-
-    const aar =
-        dato.getFullYear();
-
-
-    const maaned =
+    return (
+        dato.getFullYear() +
+        "-" +
         String(
             dato.getMonth() + 1
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const dag =
+        ).padStart(2, "0") +
+        "-" +
         String(
             dato.getDate()
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    return `${aar}-${maaned}-${dag}`;
+        ).padStart(2, "0")
+    );
 
 }
 
 
+/* ======================================================
+   FORMATER TID
+======================================================= */
 
-/* ========================================================
-   FORMATERE TID
-   Brukes av arbeidsbelastning/timer.
-======================================================== */
-
-function formaterTid(sekunder) {
+function formaterTid(
+    sekunder
+) {
 
     sekunder =
         Math.max(
             0,
-            Math.floor(sekunder)
+            Math.floor(
+                Number(sekunder) || 0
+            )
         );
-
 
     const timer =
         Math.floor(
             sekunder / 3600
         );
 
-
     const minutter =
         Math.floor(
             (sekunder % 3600) / 60
         );
 
-
     const sek =
         sekunder % 60;
 
-
     return [
 
-        String(timer).padStart(
-            2,
-            "0"
-        ),
+        String(timer).padStart(2, "0"),
 
-        String(minutter).padStart(
-            2,
-            "0"
-        ),
+        String(minutter).padStart(2, "0"),
 
-        String(sek).padStart(
-            2,
-            "0"
-        )
+        String(sek).padStart(2, "0")
 
     ].join(":");
 
 }
 
 
+/* ======================================================
+   API POST
+======================================================= */
 
-/* ========================================================
+async function postTilArbeidsbelastningAPI(
+    data
+) {
+
+    const response =
+        await fetch(
+            ARBEIDSBELASTNING_API,
+            {
+                method: "POST",
+                body: JSON.stringify(data)
+            }
+        );
+
+
+    const tekst =
+        await response.text();
+
+
+    let resultat;
+
+
+    try {
+
+        resultat =
+            JSON.parse(tekst);
+
+    } catch {
+
+        throw new Error(
+            "Apps Script returnerte ikke gyldig JSON."
+        );
+
+    }
+
+
+    if (
+        !response.ok
+    ) {
+
+        throw new Error(
+            resultat.error ||
+            resultat.message ||
+            `API-feil (${response.status})`
+        );
+
+    }
+
+
+    if (
+        resultat.success === false ||
+        resultat.status === "error"
+    ) {
+
+        throw new Error(
+            resultat.error ||
+            resultat.message ||
+            "Apps Script rapporterte en feil."
+        );
+
+    }
+
+
+    return resultat;
+
+}
+
+
+/* ======================================================
+   API GET
+======================================================= */
+
+async function hentFraArbeidsbelastningAPI(
+    action,
+    parametre = {}
+) {
+
+    const url =
+        new URL(
+            ARBEIDSBELASTNING_API
+        );
+
+
+    url.searchParams.set(
+        "action",
+        action
+    );
+
+
+    Object.entries(
+        parametre
+    ).forEach(
+        ([navn, verdi]) => {
+
+            if (
+                verdi !== undefined &&
+                verdi !== null
+            ) {
+
+                url.searchParams.set(
+                    navn,
+                    String(verdi)
+                );
+
+            }
+
+        }
+    );
+
+
+    const response =
+        await fetch(
+            url.toString(),
+            {
+                method: "GET",
+                cache: "no-store"
+            }
+        );
+
+
+    const tekst =
+        await response.text();
+
+
+    let resultat;
+
+
+    try {
+
+        resultat =
+            JSON.parse(tekst);
+
+    } catch {
+
+        throw new Error(
+            "Apps Script returnerte ikke gyldig JSON."
+        );
+
+    }
+
+
+    if (
+        !response.ok
+    ) {
+
+        throw new Error(
+            resultat.error ||
+            resultat.message ||
+            `API-feil (${response.status})`
+        );
+
+    }
+
+
+    if (
+        resultat.success === false ||
+        resultat.status === "error"
+    ) {
+
+        throw new Error(
+            resultat.error ||
+            resultat.message ||
+            "Kunne ikke hente data."
+        );
+
+    }
+
+
+    return resultat;
+
+}
+
+
+/* ======================================================
    HENT ANSATTE
-======================================================== */
+======================================================= */
 
 async function lastAnsatte() {
 
@@ -2756,7 +2386,6 @@ async function lastAnsatte() {
 
         tomOption.value =
             "";
-
 
         tomOption.textContent =
             "Velg ansatt";
@@ -2852,10 +2481,9 @@ async function lastAnsatte() {
 }
 
 
-
-/* ========================================================
-   ANSATT VALGT
-======================================================== */
+/* ======================================================
+   ANSATT ENDRET
+======================================================= */
 
 ansattSelect.addEventListener(
     "change",
@@ -2893,18 +2521,17 @@ ansattSelect.addEventListener(
 );
 
 
-
-/* ========================================================
+/* ======================================================
    ANSATT STATUS
-======================================================== */
+======================================================= */
 
 function oppdaterAnsattStatus() {
 
     const person =
         ansatte.find(
             p =>
-                p.id ===
-                ansattSelect.value
+                String(p.id) ===
+                String(ansattSelect.value)
         );
 
 
@@ -2924,10 +2551,9 @@ function oppdaterAnsattStatus() {
 }
 
 
-
-/* ========================================================
+/* ======================================================
    START TIMER
-======================================================== */
+======================================================= */
 
 aktivitetKnapper.forEach(
     knapp => {
@@ -2937,11 +2563,8 @@ aktivitetKnapper.forEach(
             () => {
 
                 startTimer(
-
                     knapp.dataset.aktivitet,
-
                     knapp.dataset.kategori
-
                 );
 
             }
@@ -2949,7 +2572,6 @@ aktivitetKnapper.forEach(
 
     }
 );
-
 
 
 function startTimer(
@@ -2982,11 +2604,8 @@ function startTimer(
     aktivRegistrering = {
 
         aktivitet,
-
         kategori,
-
-        start:
-            new Date()
+        start: new Date()
 
     };
 
@@ -3031,10 +2650,9 @@ function startTimer(
 }
 
 
-
-/* ========================================================
-   OPPDATER AKTIV TIMER
-======================================================== */
+/* ======================================================
+   AKTIV TID
+======================================================= */
 
 function oppdaterAktivTid() {
 
@@ -3043,14 +2661,10 @@ function oppdaterAktivTid() {
     }
 
 
-    const naa =
-        new Date();
-
-
     const sekunder =
         Math.floor(
             (
-                naa -
+                new Date() -
                 aktivRegistrering.start
             ) / 1000
         );
@@ -3064,16 +2678,14 @@ function oppdaterAktivTid() {
 }
 
 
-
-/* ========================================================
-   STOPP TIMER
-======================================================== */
+/* ======================================================
+   STOPP OG LAGRE
+======================================================= */
 
 stoppTimer.addEventListener(
     "click",
     stoppAktivTimer
 );
-
 
 
 async function stoppAktivTimer() {
@@ -3106,8 +2718,8 @@ async function stoppAktivTimer() {
     const person =
         ansatte.find(
             p =>
-                p.id ===
-                ansattSelect.value
+                String(p.id) ===
+                String(ansattSelect.value)
         );
 
 
@@ -3125,25 +2737,32 @@ async function stoppAktivTimer() {
         true;
 
 
+    statusMelding.textContent =
+        "Lagrer registreringen...";
+
+
     try {
 
-        await addDoc(
+        /*
+         * VIKTIG:
+         * Apps Script forventer ansattNavn,
+         * ikke ansatt.
+         */
 
-            collection(
-                db,
-                "arbeidsbelastning"
-            ),
+        const resultat =
+            await postTilArbeidsbelastningAPI({
 
-            {
+                action:
+                    "lagreAktivitet",
 
-                ansattId:
-                    person.id,
+                dato:
+                    dagensDato(),
 
                 ansattNavn:
                     person.navn || "",
 
-                dato:
-                    dagensDato(),
+                ansattId:
+                    person.id,
 
                 aktivitet:
                     aktivRegistrering.aktivitet,
@@ -3157,30 +2776,26 @@ async function stoppAktivTimer() {
                 slutt:
                     slutt.toISOString(),
 
-                varighetSekunder,
+                varighetSekunder:
+                    varighetSekunder,
 
-                opprettet:
-                    serverTimestamp()
+                kommentar:
+                    ""
 
-            }
-
-        );
+            });
 
 
-        statusMelding.textContent =
-            `Registrert ${formaterTid(
-                varighetSekunder
-            )}.`;
-
+        /*
+         * Timeren nullstilles først etter
+         * at Apps Script har bekreftet lagringen.
+         */
 
         clearInterval(
             timerInterval
         );
 
-
         timerInterval =
             null;
-
 
         aktivRegistrering =
             null;
@@ -3190,7 +2805,6 @@ async function stoppAktivTimer() {
             "vis"
         );
 
-
         stoppTimer.classList.remove(
             "vis"
         );
@@ -3198,7 +2812,6 @@ async function stoppAktivTimer() {
 
         aktivitetNavn.textContent =
             "–";
-
 
         aktivTid.textContent =
             "00:00:00";
@@ -3214,6 +2827,17 @@ async function stoppAktivTimer() {
         );
 
 
+        statusMelding.textContent =
+            `✅ Registrert ${formaterTid(
+                varighetSekunder
+            )}.`;
+
+
+        /*
+         * Hent data på nytt direkte fra
+         * Google Sheet.
+         */
+
         await lastDagensRegistreringer();
 
 
@@ -3226,7 +2850,8 @@ async function stoppAktivTimer() {
 
 
         statusMelding.textContent =
-            "Kunne ikke lagre registreringen.";
+            "❌ Kunne ikke lagre registreringen. " +
+            error.message;
 
     }
 
@@ -3237,10 +2862,9 @@ async function stoppAktivTimer() {
 }
 
 
-
-/* ========================================================
+/* ======================================================
    HENT DAGENS REGISTRERINGER
-======================================================== */
+======================================================= */
 
 async function lastDagensRegistreringer() {
 
@@ -3253,12 +2877,9 @@ async function lastDagensRegistreringer() {
         dagensData =
             [];
 
-
         visRegistreringer();
 
-
         oppdaterOppsummering();
-
 
         return;
 
@@ -3267,43 +2888,117 @@ async function lastDagensRegistreringer() {
 
     try {
 
-        const q =
-            query(
+        /*
+         * Apps Script bruker:
+         *
+         * action=hentAktiviteter
+         *
+         * IKKE:
+         *
+         * action=aktiviteter
+         */
 
-                collection(
-                    db,
-                    "arbeidsbelastning"
-                ),
+        const resultat =
+            await hentFraArbeidsbelastningAPI(
+                "hentAktiviteter",
+                {
+                    ansattId:
+                        ansattId,
 
-                where(
-                    "ansattId",
-                    "==",
-                    ansattId
-                ),
-
-                where(
-                    "dato",
-                    "==",
-                    dagensDato()
-                )
-
+                    dato:
+                        dagensDato()
+                }
             );
 
 
-        const snapshot =
-            await getDocs(q);
+        let data =
+            resultat.data || [];
+
+
+        if (!Array.isArray(data)) {
+
+            data = [];
+
+        }
 
 
         dagensData =
-            snapshot.docs.map(
-                docSnapshot => ({
+            data.map(
+                registrering => {
 
-                    id:
-                        docSnapshot.id,
+                    const varighetMinutter =
+                        Number(
+                            registrering.varighetMinutter ||
+                            registrering["Varighet (min)"] ||
+                            0
+                        );
 
-                    ...docSnapshot.data()
 
-                })
+                    let varighetSekunder =
+                        Number(
+                            registrering.varighetSekunder ||
+                            0
+                        );
+
+
+                    /*
+                     * Google Sheet lagrer minutter.
+                     * Gjør om til sekunder for visningen.
+                     */
+
+                    if (
+                        !varighetSekunder &&
+                        Number.isFinite(
+                            varighetMinutter
+                        )
+                    ) {
+
+                        varighetSekunder =
+                            Math.round(
+                                varighetMinutter * 60
+                            );
+
+                    }
+
+
+                    return {
+
+                        row:
+                            registrering.row,
+
+                        aktivitet:
+                            registrering.aktivitet ||
+                            registrering["Aktivitet"] ||
+                            "",
+
+                        kategori:
+                            registrering.kategori ||
+                            registrering["Kategori"] ||
+                            "",
+
+                        start:
+                            registrering.start ||
+                            registrering["Start"] ||
+                            "",
+
+                        slutt:
+                            registrering.slutt ||
+                            registrering["Slutt"] ||
+                            "",
+
+                        varighetSekunder:
+                            varighetSekunder
+
+                    };
+
+                }
+            );
+
+
+        dagensData =
+            dagensData.filter(
+                registrering =>
+                    registrering.start
             );
 
 
@@ -3328,18 +3023,21 @@ async function lastDagensRegistreringer() {
         );
 
 
-        dagensRegistreringer.innerHTML =
-            "<p>Kunne ikke hente registreringene.</p>";
+        dagensRegistreringer.innerHTML = `
+            <p>
+                ❌ Kunne ikke hente registreringene.
+                ${escapeHtml(error.message)}
+            </p>
+        `;
 
     }
 
 }
 
 
-
-/* ========================================================
+/* ======================================================
    VIS REGISTRERINGER
-======================================================== */
+======================================================= */
 
 function visRegistreringer() {
 
@@ -3373,11 +3071,8 @@ function visRegistreringer() {
                     start.toLocaleTimeString(
                         "no-NO",
                         {
-                            hour:
-                                "2-digit",
-
-                            minute:
-                                "2-digit"
+                            hour: "2-digit",
+                            minute: "2-digit"
                         }
                     );
 
@@ -3386,11 +3081,8 @@ function visRegistreringer() {
                     slutt.toLocaleTimeString(
                         "no-NO",
                         {
-                            hour:
-                                "2-digit",
-
-                            minute:
-                                "2-digit"
+                            hour: "2-digit",
+                            minute: "2-digit"
                         }
                     );
 
@@ -3408,6 +3100,7 @@ function visRegistreringer() {
                                 )}
 
                             </div>
+
 
                             <div class="registrering-detaljer">
 
@@ -3432,7 +3125,9 @@ function visRegistreringer() {
                         <button
                             class="slett-registrering"
                             type="button"
-                            data-id="${registrering.id}">
+                            data-row="${escapeHtml(
+                                registrering.row
+                            )}">
 
                             🗑️
 
@@ -3458,7 +3153,7 @@ function visRegistreringer() {
                     () => {
 
                         slettRegistrering(
-                            knapp.dataset.id
+                            knapp.dataset.row
                         );
 
                     }
@@ -3470,12 +3165,23 @@ function visRegistreringer() {
 }
 
 
-
-/* ========================================================
+/* ======================================================
    SLETT REGISTRERING
-======================================================== */
+======================================================= */
 
-async function slettRegistrering(id) {
+async function slettRegistrering(
+    row
+) {
+
+    if (!row) {
+
+        statusMelding.textContent =
+            "❌ Fant ikke raden som skal slettes.";
+
+        return;
+
+    }
+
 
     const bekreft =
         confirm(
@@ -3490,15 +3196,23 @@ async function slettRegistrering(id) {
 
     try {
 
-        await deleteDoc(
+        statusMelding.textContent =
+            "Sletter registrering...";
 
-            doc(
-                db,
-                "arbeidsbelastning",
-                id
-            )
 
-        );
+        await postTilArbeidsbelastningAPI({
+
+            action:
+                "slettAktivitet",
+
+            row:
+                Number(row)
+
+        });
+
+
+        statusMelding.textContent =
+            "✅ Registreringen er slettet.";
 
 
         await lastDagensRegistreringer();
@@ -3513,23 +3227,22 @@ async function slettRegistrering(id) {
 
 
         statusMelding.textContent =
-            "Kunne ikke slette registreringen.";
+            "❌ Kunne ikke slette registreringen. " +
+            error.message;
 
     }
 
 }
 
 
-
-/* ========================================================
+/* ======================================================
    OPPSUMMERING
-======================================================== */
+======================================================= */
 
 function oppdaterOppsummering() {
 
     let total =
         0;
-
 
     let pause =
         0;
@@ -3570,23 +3283,26 @@ function oppdaterOppsummering() {
 
 
     totalTid.textContent =
-        formaterTid(total);
-
+        formaterTid(
+            total
+        );
 
     arbeidstid.textContent =
-        formaterTid(arbeid);
-
+        formaterTid(
+            arbeid
+        );
 
     pausetid.textContent =
-        formaterTid(pause);
+        formaterTid(
+            pause
+        );
 
 }
 
 
-
-/* ========================================================
+/* ======================================================
    SPØRREUNDERSØKELSE
-======================================================== */
+======================================================= */
 
 lagreSvar.addEventListener(
     "click",
@@ -3594,6 +3310,86 @@ lagreSvar.addEventListener(
 );
 
 
+/* ======================================================
+   HENT SURVEY-SVAR
+======================================================= */
+
+function hentSurveySvar() {
+
+    return {
+
+        gangavstand:
+            hentRadio(
+                "gangavstand"
+            ),
+
+        fremOgTilbake:
+            hentRadio(
+                "fremOgTilbake"
+            ),
+
+        ekstraAktiviteter:
+            hentRadio(
+                "ekstraAktiviteter"
+            ),
+
+        morgenrapport:
+            hentRadio(
+                "morgenrapport"
+            ),
+
+        sluttrapport:
+            hentRadio(
+                "sluttrapport"
+            ),
+
+        arbeidslisteTid:
+            hentRadio(
+                "arbeidslisteTid"
+            ),
+
+        rakkAlleOppgaver:
+            hentRadio(
+                "rakkAlleOppgaver"
+            ),
+
+        kommentar:
+            document
+                .getElementById(
+                    "kommentar"
+                )
+                .value
+                .trim()
+
+    };
+
+}
+
+
+/* ======================================================
+   RADIO
+======================================================= */
+
+function hentRadio(
+    name
+) {
+
+    const valgt =
+        document.querySelector(
+            `input[name="${name}"]:checked`
+        );
+
+
+    return valgt
+        ? valgt.value
+        : "";
+
+}
+
+
+/* ======================================================
+   LAGRE DAGLIG SVAR
+======================================================= */
 
 async function lagreDagensSvar() {
 
@@ -3616,8 +3412,8 @@ async function lagreDagensSvar() {
     const person =
         ansatte.find(
             p =>
-                p.id ===
-                ansattId
+                String(p.id) ===
+                String(ansattId)
         );
 
 
@@ -3663,63 +3459,49 @@ async function lagreDagensSvar() {
 
     try {
 
-        const dokumentId =
-            `${person.id}_${dagensDato()}`;
+        await postTilArbeidsbelastningAPI({
 
+            action:
+                "lagreSvar",
 
-        await setDoc(
+            dato:
+                dagensDato(),
 
-            doc(
-                db,
-                "arbeidsbelastningSvar",
-                dokumentId
-            ),
+            /*
+             * Apps Script forventer ansattNavn.
+             */
 
-            {
+            ansattNavn:
+                person.navn || "",
 
-                ansattId:
-                    person.id,
+            ansattId:
+                person.id,
 
-                ansattNavn:
-                    person.navn || "",
+            gangavstand:
+                svar.gangavstand,
 
-                dato:
-                    dagensDato(),
+            fremOgTilbake:
+                svar.fremOgTilbake,
 
-                gangavstand:
-                    svar.gangavstand,
+            ekstraAktiviteter:
+                svar.ekstraAktiviteter,
 
-                fremOgTilbake:
-                    svar.fremOgTilbake,
+            morgenrapport:
+                svar.morgenrapport,
 
-                ekstraAktiviteter:
-                    svar.ekstraAktiviteter,
+            sluttrapport:
+                svar.sluttrapport,
 
-                morgenrapport:
-                    svar.morgenrapport,
+            arbeidslisteTid:
+                svar.arbeidslisteTid,
 
-                sluttrapport:
-                    svar.sluttrapport,
+            rakkAlleOppgaver:
+                svar.rakkAlleOppgaver,
 
-                arbeidslisteTid:
-                    svar.arbeidslisteTid,
+            kommentar:
+                svar.kommentar
 
-                rakkAlleOppgaver:
-                    svar.rakkAlleOppgaver,
-
-                kommentar:
-                    svar.kommentar,
-
-                oppdatert:
-                    serverTimestamp()
-
-            },
-
-            {
-                merge: true
-            }
-
-        );
+        });
 
 
         surveyStatus.textContent =
@@ -3735,7 +3517,8 @@ async function lagreDagensSvar() {
 
 
         surveyStatus.textContent =
-            "Kunne ikke lagre svarene.";
+            "❌ Kunne ikke lagre svarene. " +
+            error.message;
 
     }
 
@@ -3746,94 +3529,9 @@ async function lagreDagensSvar() {
 }
 
 
-
-/* ========================================================
-   HENT SURVEY-SVAR
-======================================================== */
-
-function hentSurveySvar() {
-
-    return {
-
-        gangavstand:
-            hentRadio(
-                "gangavstand"
-            ),
-
-
-        fremOgTilbake:
-            hentRadio(
-                "fremOgTilbake"
-            ),
-
-
-        ekstraAktiviteter:
-            hentRadio(
-                "ekstraAktiviteter"
-            ),
-
-
-        morgenrapport:
-            hentRadio(
-                "morgenrapport"
-            ),
-
-
-        sluttrapport:
-            hentRadio(
-                "sluttrapport"
-            ),
-
-
-        arbeidslisteTid:
-            hentRadio(
-                "arbeidslisteTid"
-            ),
-
-
-        rakkAlleOppgaver:
-            hentRadio(
-                "rakkAlleOppgaver"
-            ),
-
-
-        kommentar:
-            document
-                .getElementById(
-                    "kommentar"
-                )
-                .value
-                .trim()
-
-    };
-
-}
-
-
-
-/* ========================================================
-   RADIO
-======================================================== */
-
-function hentRadio(name) {
-
-    const valgt =
-        document.querySelector(
-            `input[name="${name}"]:checked`
-        );
-
-
-    return valgt
-        ? valgt.value
-        : "";
-
-}
-
-
-
-/* ========================================================
-   LAST DAGENS SURVEY
-======================================================== */
+/* ======================================================
+   HENT DAGLIG SVAR
+======================================================= */
 
 async function lastDagensSvar() {
 
@@ -3848,34 +3546,43 @@ async function lastDagensSvar() {
 
     try {
 
-        const q =
-            query(
+        /*
+         * Apps Script bruker:
+         *
+         * action=hentSvar
+         */
 
-                collection(
-                    db,
-                    "arbeidsbelastningSvar"
-                ),
+        const resultat =
+            await hentFraArbeidsbelastningAPI(
+                "hentSvar",
+                {
+                    ansattId:
+                        ansattId,
 
-                where(
-                    "ansattId",
-                    "==",
-                    ansattId
-                ),
-
-                where(
-                    "dato",
-                    "==",
-                    dagensDato()
-                )
-
+                    dato:
+                        dagensDato()
+                }
             );
 
 
-        const snapshot =
-            await getDocs(q);
+        let svar =
+            resultat.data ||
+            null;
 
 
-        if (snapshot.empty) {
+        if (
+            Array.isArray(svar)
+        ) {
+
+            svar =
+                svar.length
+                    ? svar[0]
+                    : null;
+
+        }
+
+
+        if (!svar) {
 
             surveyStatus.textContent =
                 "";
@@ -3885,49 +3592,52 @@ async function lastDagensSvar() {
         }
 
 
-        const svar =
-            snapshot.docs[0].data();
-
-
         settRadio(
             "gangavstand",
-            svar.gangavstand
+            svar.gangavstand ??
+            svar["Gangavstand"]
         );
 
 
         settRadio(
             "fremOgTilbake",
-            svar.fremOgTilbake
+            svar.fremOgTilbake ??
+            svar["Frem og tilbake"]
         );
 
 
         settRadio(
             "ekstraAktiviteter",
-            svar.ekstraAktiviteter
+            svar.ekstraAktiviteter ??
+            svar["Ekstra aktiviteter"]
         );
 
 
         settRadio(
             "morgenrapport",
-            svar.morgenrapport
+            svar.morgenrapport ??
+            svar["Morgenrapport"]
         );
 
 
         settRadio(
             "sluttrapport",
-            svar.sluttrapport
+            svar.sluttrapport ??
+            svar["Sluttrapport"]
         );
 
 
         settRadio(
             "arbeidslisteTid",
-            svar.arbeidslisteTid
+            svar.arbeidslisteTid ??
+            svar["Arbeidsliste tid"]
         );
 
 
         settRadio(
             "rakkAlleOppgaver",
-            svar.rakkAlleOppgaver
+            svar.rakkAlleOppgaver ??
+            svar["Rakk alle oppgaver"]
         );
 
 
@@ -3936,7 +3646,9 @@ async function lastDagensSvar() {
                 "kommentar"
             )
             .value =
-                svar.kommentar || "";
+                svar.kommentar ??
+                svar["Kommentar"] ??
+                "";
 
 
         surveyStatus.textContent =
@@ -3946,7 +3658,7 @@ async function lastDagensSvar() {
     } catch (error) {
 
         console.error(
-            "Kunne ikke hente dagens survey:",
+            "Kunne ikke hente dagens svar:",
             error
         );
 
@@ -3955,10 +3667,9 @@ async function lastDagensSvar() {
 }
 
 
-
-/* ========================================================
+/* ======================================================
    SETT RADIO
-======================================================== */
+======================================================= */
 
 function settRadio(
     name,
@@ -3986,32 +3697,9 @@ function settRadio(
 }
 
 
-
-/* ========================================================
-   GANGTID
-   OPPTIL 20 ADRESSER
-======================================================== */
-
-
-/*
- * Henter alle utfylte adressefelter.
- *
- * Viktig:
- * Hvis brukeren f.eks. fyller:
- *
- * 1. A
- * 2. B
- * 3. C
- * 4. tom
- * 5. E
- *
- * vil systemet bruke:
- *
- * A → B → C → E
- *
- * Det er altså de utfylte feltene som beregnes
- * i den rekkefølgen de står.
- */
+/* ======================================================
+   GANGTID – ADRESSER
+======================================================= */
 
 function hentGangtidAdresser() {
 
@@ -4055,10 +3743,9 @@ function hentGangtidAdresser() {
 }
 
 
-
-/* ========================================================
+/* ======================================================
    GANGTID STATUS
-======================================================== */
+======================================================= */
 
 function visGangtidStatus(
     melding,
@@ -4077,10 +3764,6 @@ function visGangtidStatus(
         "";
 
 
-    gangtidStatus.id =
-        "gangtidStatus";
-
-
     gangtidStatus.classList.add(
         "vis"
     );
@@ -4097,16 +3780,14 @@ function visGangtidStatus(
 }
 
 
-
-/* ========================================================
+/* ======================================================
    BEREGN GANGTID
-======================================================== */
+======================================================= */
 
 beregnGangtidKnapp.addEventListener(
     "click",
     beregnGangtid
 );
-
 
 
 async function beregnGangtid() {
@@ -4115,11 +3796,9 @@ async function beregnGangtid() {
         hentGangtidAdresser();
 
 
-    /* -----------------------------------------------------
-       Minst to adresser
-    ----------------------------------------------------- */
-
-    if (adresser.length < 2) {
+    if (
+        adresser.length < 2
+    ) {
 
         visGangtidStatus(
             "Du må skrive inn minst to adresser.",
@@ -4135,10 +3814,6 @@ async function beregnGangtid() {
     }
 
 
-    /* -----------------------------------------------------
-       Skjul gammelt resultat
-    ----------------------------------------------------- */
-
     gangtidResultat.classList.remove(
         "vis"
     );
@@ -4147,10 +3822,8 @@ async function beregnGangtid() {
     gangtidResultatListe.innerHTML =
         "";
 
-
     gangtidTotal.textContent =
         "";
-
 
     gangtidTotalAvstand.textContent =
         "";
@@ -4178,10 +3851,6 @@ async function beregnGangtid() {
             adresser.length - 1;
 
 
-        /* =================================================
-           BEREGN HVER ETAPPE
-        ================================================= */
-
         for (
             let i = 0;
             i < antallEtapper;
@@ -4197,31 +3866,19 @@ async function beregnGangtid() {
 
 
             visGangtidStatus(
-
                 `🚶 Beregner etappe ${i + 1} av ${antallEtapper}...`
-
             );
 
 
-            /* ------------------------------------------------
-               Send forespørsel til Cloud Run API
-            ------------------------------------------------ */
-
             const response =
                 await fetch(
-
                     GANGTID_API,
-
                     {
-
-                        method:
-                            "POST",
+                        method: "POST",
 
                         headers: {
-
                             "Content-Type":
                                 "application/json"
-
                         },
 
                         body:
@@ -4235,14 +3892,9 @@ async function beregnGangtid() {
 
                             })
 
-                    }
+                        }
+                    );
 
-                );
-
-
-            /* ------------------------------------------------
-               Kontroller HTTP-status
-            ------------------------------------------------ */
 
             if (!response.ok) {
 
@@ -4264,33 +3916,21 @@ async function beregnGangtid() {
                     }
 
                 } catch {
-
                     /* Ingen JSON-feil */
-
                 }
 
 
                 throw new Error(
-
                     detaljer ||
                     `API-feil (${response.status})`
-
                 );
 
             }
 
 
-            /* ------------------------------------------------
-               Les JSON
-            ------------------------------------------------ */
-
             const data =
                 await response.json();
 
-
-            /* ------------------------------------------------
-               Kontroller API-svar
-            ------------------------------------------------ */
 
             if (
                 data.status !== "OK" ||
@@ -4299,28 +3939,18 @@ async function beregnGangtid() {
             ) {
 
                 throw new Error(
-
                     data.error ||
                     `Kunne ikke beregne etappe ${i + 1}.`
-
                 );
 
             }
 
-
-            /* ------------------------------------------------
-               Gangtid
-            ------------------------------------------------ */
 
             const sekunder =
                 Number(
                     data.walkingTime.seconds
                 );
 
-
-            /* ------------------------------------------------
-               Avstand
-            ------------------------------------------------ */
 
             const meter =
                 Number(
@@ -4344,10 +3974,6 @@ async function beregnGangtid() {
             }
 
 
-            /* ------------------------------------------------
-               Summer
-            ------------------------------------------------ */
-
             totalSekunder +=
                 sekunder;
 
@@ -4355,10 +3981,6 @@ async function beregnGangtid() {
             totalMeter +=
                 meter;
 
-
-            /* ------------------------------------------------
-               Lagre resultat
-            ------------------------------------------------ */
 
             resultater.push({
 
@@ -4388,27 +4010,16 @@ async function beregnGangtid() {
         }
 
 
-        /* =================================================
-           VIS RESULTAT
-        ================================================= */
-
         visGangtidResultat(
-
             resultater,
-
             totalSekunder,
-
             totalMeter
-
         );
 
 
         visGangtidStatus(
-
             `✅ Beregningen er ferdig. ${resultater.length} etapper beregnet.`,
-
             "success"
-
         );
 
 
@@ -4421,15 +4032,12 @@ async function beregnGangtid() {
 
 
         visGangtidStatus(
-
             "❌ " +
             (
                 error.message ||
                 "Kunne ikke beregne gangtid."
             ),
-
             "error"
-
         );
 
     }
@@ -4441,19 +4049,14 @@ async function beregnGangtid() {
 }
 
 
-
-/* ========================================================
-   VIS GANGTIDRESULTAT
-======================================================== */
+/* ======================================================
+   VIS GANGTID
+======================================================= */
 
 function visGangtidResultat(
-
     resultater,
-
     totalSekunder,
-
     totalMeter
-
 ) {
 
     gangtidResultatListe.innerHTML =
@@ -4478,11 +4081,8 @@ function visGangtidResultat(
                 <div>
 
                     <div class="etappe">
-
                         Etappe ${index + 1}
-
                     </div>
-
 
                     <div class="adresse-fra">
 
@@ -4535,27 +4135,15 @@ function visGangtidResultat(
     );
 
 
-    /* =====================================================
-       TOTAL GANGTID
-    ===================================================== */
-
     gangtidTotal.textContent =
-
         "🚶 Total gangtid: " +
-
         formaterGangtid(
             totalSekunder
         );
 
 
-    /* =====================================================
-       TOTAL GANGAVSTAND
-    ===================================================== */
-
     gangtidTotalAvstand.textContent =
-
         "📍 Total gangavstand: " +
-
         formaterGangavstand(
             totalMeter
         );
@@ -4568,12 +4156,9 @@ function visGangtidResultat(
 }
 
 
-
-/* ========================================================
+/* ======================================================
    FORMATER GANGTID
-   Egen funksjon slik at arbeidsbelastningens
-   formaterTid() ikke påvirkes.
-======================================================== */
+======================================================= */
 
 function formaterGangtid(
     sekunder
@@ -4585,7 +4170,9 @@ function formaterGangtid(
         );
 
 
-    if (minutter <= 0) {
+    if (
+        minutter <= 0
+    ) {
 
         return "under 1 min";
 
@@ -4602,9 +4189,13 @@ function formaterGangtid(
         minutter % 60;
 
 
-    if (timer > 0) {
+    if (
+        timer > 0
+    ) {
 
-        if (rest === 0) {
+        if (
+            rest === 0
+        ) {
 
             return `${timer} t`;
 
@@ -4621,63 +4212,64 @@ function formaterGangtid(
 }
 
 
-
-/* ========================================================
+/* ======================================================
    FORMATER GANGAVSTAND
-======================================================== */
+======================================================= */
 
 function formaterGangavstand(
     meter
 ) {
 
     meter =
-        Number(meter);
+        Number(
+            meter
+        );
 
 
-    if (!Number.isFinite(meter)) {
+    if (
+        !Number.isFinite(
+            meter
+        )
+    ) {
 
         return "Ukjent avstand";
 
     }
 
 
-    if (meter >= 1000) {
+    if (
+        meter >= 1000
+    ) {
 
         return (
-
-            (meter / 1000)
-                .toFixed(1)
-
-            + " km"
-
+            (
+                meter / 1000
+            ).toFixed(1)
+            +
+            " km"
         );
 
     }
 
 
     return (
-
         Math.round(
             meter
-        )
-
-        + " m"
-
+        ) +
+        " m"
     );
 
 }
 
 
-
-/* ========================================================
-   NULLSTILL ADRESSER
-======================================================== */
+/* ======================================================
+   NULLSTILL GANGTID
+======================================================= */
 
 nullstillGangtidKnapp.addEventListener(
     "click",
     nullstillGangtid
 );
-
 
 
 function nullstillGangtid() {
@@ -4701,10 +4293,8 @@ function nullstillGangtid() {
     gangtidResultatListe.innerHTML =
         "";
 
-
     gangtidTotal.textContent =
         "";
-
 
     gangtidTotalAvstand.textContent =
         "";
@@ -4718,20 +4308,12 @@ function nullstillGangtid() {
     gangtidStatus.textContent =
         "";
 
-
     gangtidStatus.className =
         "";
-
-
-    gangtidStatus.id =
-        "gangtidStatus";
-
 
     gangtidStatus.style.display =
         "none";
 
-
-    /* Sett fokus på første felt */
 
     const første =
         document.querySelector(
@@ -4748,12 +4330,13 @@ function nullstillGangtid() {
 }
 
 
-
-/* ========================================================
+/* ======================================================
    ESCAPE HTML
-======================================================== */
+======================================================= */
 
-function escapeHtml(value) {
+function escapeHtml(
+    value
+) {
 
     return String(
         value ?? ""
@@ -4782,22 +4365,23 @@ function escapeHtml(value) {
 }
 
 
-
-/* ========================================================
+/* ======================================================
    START
-======================================================== */
+======================================================= */
 
 await lastAnsatte();
 
-await lastDagensRegistreringer();
 
-await lastDagensSvar();
+if (ansattSelect.value) {
 
+    await lastDagensRegistreringer();
+
+    await lastDagensSvar();
+
+}
 
 </script>
-
 
 </body>
 
 </html>
-```
