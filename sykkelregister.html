@@ -803,46 +803,138 @@ async function lastSykler() {
 
 
 /* =====================================================
-   HENT ANSATTE
+   HENT ANSATTE FRA FIREBASE
    ===================================================== */
+
+/*
+ * Vi bruker samme ansatteFirestore.js som belastning.html.
+ *
+ * Vi bruker dynamisk import fordi resten av denne siden
+ * bruker onclick="..." i HTML. Da slipper vi å gjøre hele
+ * scriptet til type="module".
+ */
+
+let hentAnsatteFirebase = null;
+
 
 async function lastAnsatte() {
 
-    const url =
-        API_URL +
-        "?action=hentAnsatte";
+    try {
+
+        if (!hentAnsatteFirebase) {
+
+            const firebaseModule =
+                await import("./ansatteFirestore.js");
+
+            hentAnsatteFirebase =
+                firebaseModule.hentAnsatte;
+        }
 
 
-    const response =
-        await fetch(url);
+        const data =
+            await hentAnsatteFirebase();
 
 
-    if (!response.ok) {
+        if (!Array.isArray(data)) {
 
-        throw new Error(
-            "Kunne ikke hente ansatte."
-        );
+            throw new Error(
+                "Firebase returnerte ikke en liste over ansatte."
+            );
+
+        }
+
+
+        /*
+         * Firebase-funksjonen i belastning.html
+         * returnerer ansattnavn som tekst.
+         *
+         * Vi beholder samme struktur her.
+         */
+
+        ansatte =
+            data
+                .map(function(ansatt) {
+
+                    /*
+                     * Vanligvis er verdien allerede et navn.
+                     * Disse ekstra variantene gjør løsningen
+                     * litt mer robust dersom Firebase-funksjonen
+                     * senere returnerer objekter.
+                     */
+
+                    if (typeof ansatt === "string") {
+                        return ansatt.trim();
+                    }
+
+                    if (
+                        ansatt &&
+                        typeof ansatt.navn === "string"
+                    ) {
+                        return ansatt.navn.trim();
+                    }
+
+                    if (
+                        ansatt &&
+                        typeof ansatt.Navn === "string"
+                    ) {
+                        return ansatt.Navn.trim();
+                    }
+
+                    return "";
+
+                })
+                .filter(function(navn) {
+                    return navn !== "";
+                });
+
+
+        /*
+         * Sorter alfabetisk.
+         */
+
+        ansatte.sort(function(a, b) {
+
+            return a.localeCompare(
+                b,
+                "nb",
+                {
+                    sensitivity: "base"
+                }
+            );
+
+        });
+
+
+        fyllAnsattListe();
+
 
     }
+    catch (error) {
 
-
-    const data =
-        await response.json();
-
-
-    if (!Array.isArray(data)) {
-
-        throw new Error(
-            "Ugyldig svar ved henting av ansatte."
+        console.error(
+            "Feil ved henting av ansatte fra Firebase:",
+            error
         );
 
+
+        const select =
+            document.getElementById(
+                "employeeSelect"
+            );
+
+
+        select.innerHTML = `
+
+            <option value="">
+                Kunne ikke hente ansatte fra Firebase
+            </option>
+
+        `;
+
+
+        throw error;
+
     }
-
-
-    ansatte = data;
-
-
-    fyllAnsattListe();
 
 }
 
