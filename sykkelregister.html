@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <meta name="robots"
+          content="noindex, nofollow">
+
+    <title>Sykkelregister – Team Sør</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f4f6f8;
+            font-family: Arial, sans-serif;
+            color: #222;
+        }
+
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+
+        .header {
+            background: #2f5d9f;
+            color: white;
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+
+
+        .header h1 {
+            margin: 0 0 8px 0;
+            font-size: 28px;
+        }
+
+
+        .header p {
+            margin: 0;
+            opacity: 0.95;
+        }
+
+
+        .info {
+            background: white;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+
+        .info strong {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+
+        .status-message {
+            display: none;
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+
+        .status-message.success {
+            display: block;
+            background: #e7f6ec;
+            color: #176b32;
+        }
+
+
+        .status-message.error {
+            display: block;
+            background: #fdeaea;
+            color: #a32020;
+        }
+
+
+        .loading {
+            text-align: center;
+            background: white;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+
+        .bike-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+
+        .bike-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+        }
+
+
+        .bike-card.available {
+            border-color: #b9dfc3;
+        }
+
+
+        .bike-card.in-use {
+            border-color: #efb4b4;
+        }
+
+
+        .bike-card.error {
+            border-color: #e7c477;
+        }
+
+
+        .bike-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+
+        .bike-title h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+
+        .status {
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+
+        .status.available {
+            background: #e4f5e8;
+            color: #176b32;
+        }
+
+
+        .status.in-use {
+            background: #fde5e5;
+            color: #a32020;
+        }
+
+
+        .status.error {
+            background: #fff1cf;
+            color: #7a5600;
+        }
+
+
+        .bike-details {
+            margin-bottom: 18px;
+            line-height: 1.7;
+        }
+
+
+        .bike-details div {
+            margin-bottom: 4px;
+        }
+
+
+        .bike-details strong {
+            display: inline-block;
+            min-width: 115px;
+        }
+
+
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 11px 16px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+
+        button:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+
+        .btn-primary {
+            background: #2f5d9f;
+            color: white;
+        }
+
+
+        .btn-success {
+            background: #238636;
+            color: white;
+        }
+
+
+        .btn-warning {
+            background: #d49a18;
+            color: white;
+        }
+
+
+        .btn-secondary {
+            background: #e9ecef;
+            color: #333;
+        }
+
+
+        .actions {
+            margin-top: 10px;
+        }
+
+
+        .register-button {
+            margin-top: 20px;
+        }
+
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+
+        .modal {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+
+        .modal h2 {
+            margin-top: 0;
+        }
+
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 9px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+
+        .modal-buttons button {
+            margin-top: 0;
+        }
+
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 13px;
+        }
+
+
+        @media (max-width: 650px) {
+
+            body {
+                padding: 12px;
+            }
+
+
+            .bike-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .header {
+                padding: 20px;
+            }
+
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <div class="header">
+
+        <h1>🚲 Sykkelregister</h1>
+
+        <p>
+            Team Sør – oversikt over sykler
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         INFORMASJON
+         ================================================= -->
+
+    <div class="info">
+
+        <strong>
+            Slik bruker du registeret
+        </strong>
+
+        <div>
+            Velg riktig handling på sykkelen du bruker.
+            Husk å levere sykkelen tilbake når du er ferdig.
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         MELDINGER
+         ================================================= -->
+
+    <div id="statusMessage"
+         class="status-message">
+    </div>
+
+
+    <!-- =================================================
+         LASTING
+         ================================================= -->
+
+    <div id="loading"
+         class="loading">
+
+        Laster sykkelregister …
+
+    </div>
+
+
+    <!-- =================================================
+         SYKKELKORT
+         ================================================= -->
+
+    <div id="bikeGrid"
+         class="bike-grid"
+         style="display:none;">
+    </div>
+
+
+    <!-- =================================================
+         OPPDATER
+         ================================================= -->
+
+    <button
+        id="refreshButton"
+        class="btn-secondary register-button"
+        onclick="lastSykler()">
+
+        🔄 Oppdater sykkelstatus
+
+    </button>
+
+
+    <div class="footer">
+
+        Team Sør – Sykkelregister
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     MODAL – TA UT SYKKEL
+     ===================================================== -->
+
+<div id="takeModal"
+     class="modal-overlay">
+
+    <div class="modal">
+
+        <h2>
+            🚲 Ta ut sykkel
+        </h2>
+
+        <p id="takeBikeText"></p>
+
+
+        <div class="form-group">
+
+            <label for="employeeSelect">
+                Velg navn
+            </label>
+
+            <select id="employeeSelect">
+
+                <option value="">
+                    Velg ansatt …
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="btn-secondary"
+                onclick="lukkTakeModal()">
+
+                Avbryt
+
+            </button>
+
+
+            <button
+                class="btn-primary"
+                onclick="bekreftTaUtSykkel()">
+
+                Ta ut sykkel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL – MELD FEIL
+     ===================================================== -->
+
+<div id="errorModal"
+     class="modal-overlay">
+
+    <div class="modal">
+
+        <h2>
+            ⚠️ Meld feil på sykkel
+        </h2>
+
+        <p id="errorBikeText"></p>
+
+
+        <div class="form-group">
+
+            <label for="errorType">
+
+                Hva er problemet?
+
+            </label>
+
+            <select id="errorType">
+
+                <option value="">
+                    Velg feiltype …
+                </option>
+
+                <option value="Punktering">
+                    Punktering
+                </option>
+
+                <option value="Batteri">
+                    Batteri
+                </option>
+
+                <option value="Motor">
+                    Motor
+                </option>
+
+                <option value="Bremser">
+                    Bremser
+                </option>
+
+                <option value="Kjede">
+                    Kjede
+                </option>
+
+                <option value="Lås">
+                    Lås / kjetting
+                </option>
+
+                <option value="Nøkkel">
+                    Nøkkel
+                </option>
+
+                <option value="Tyveri">
+                    Tyveri
+                </option>
+
+                <option value="Annet">
+                    Annet
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="errorComment">
+
+                Kommentar
+
+            </label>
+
+            <textarea
+                id="errorComment"
+                placeholder="Beskriv gjerne problemet …">
+            </textarea>
+
+        </div>
+
+
+        <div class="modal-buttons">
+
+            <button
+                class="btn-secondary"
+                onclick="lukkErrorModal()">
+
+                Avbryt
+
+            </button>
+
+
+            <button
+                class="btn-warning"
+                onclick="bekreftMeldFeil()">
+
+                Meld feil
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   INNSTILLINGER
+   ===================================================== */
+
+
+/*
+ * NY WEB APP-ADRESSE
+ */
+
+const API_URL =
+    "https://script.google.com/macros/s/AKfycby5IBVs3MbTagiW0_QAtb0-hYrfXTfnNsmluvQ-PUi0UXLBI9_VVysENmeIfYgc8zlO6A/exec";
+
+
+/*
+ * Lagrer syklene som hentes fra serveren.
+ */
+
+let sykler = [];
+
+
+/*
+ * Lagrer ansatte.
+ */
+
+let ansatte = [];
+
+
+/*
+ * Sykkel som skal tas ut.
+ */
+
+let valgtSykkelForUttak = null;
+
+
+/*
+ * Sykkel hvor feil skal meldes.
+ */
+
+let valgtSykkelForFeil = null;
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        lastSykler();
+
+    }
+);
+
+
+/* =====================================================
+   HENT ALLE SYKLER
+   ===================================================== */
+
+async function lastSykler() {
+
+    visLaster(true);
+
+    skjulMelding();
+
+
+    try {
+
+        const url =
+            API_URL +
+            "?action=hentAlleSykler";
+
+
+        const response =
+            await fetch(url);
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Serveren svarte med HTTP " +
+                response.status
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        /*
+         * API-et skal returnere en liste.
+         */
+
+        if (!Array.isArray(data)) {
+
+            throw new Error(
+                data.message ||
+                "Ugyldig svar fra serveren."
+            );
+
+        }
+
+
+        sykler = data;
+
+
+        /*
+         * Hent ansatte samtidig.
+         */
+
+        await lastAnsatte();
+
+
+        visSykler();
+
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Feil ved henting av sykler:",
+            error
+        );
+
+
+        visMelding(
+
+            "Kunne ikke hente sykkelstatus. " +
+            "Kontroller forbindelsen til sykkelregisteret.",
+
+            "error"
+
+        );
+
+    }
+
+    finally {
+
+        visLaster(false);
+
+    }
+
+}
+
+
+/* =====================================================
+   HENT ANSATTE
+   ===================================================== */
+
+async function lastAnsatte() {
+
+    const url =
+        API_URL +
+        "?action=hentAnsatte";
+
+
+    const response =
+        await fetch(url);
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "Kunne ikke hente ansatte."
+        );
+
+    }
+
+
+    const data =
+        await response.json();
+
+
+    if (!Array.isArray(data)) {
+
+        throw new Error(
+            "Ugyldig svar ved henting av ansatte."
+        );
+
+    }
+
+
+    ansatte = data;
+
+
+    fyllAnsattListe();
+
+}
+
+
+/* =====================================================
+   VIS SYKLER
+   ===================================================== */
+
+function visSykler() {
+
+    const grid =
+        document.getElementById(
+            "bikeGrid"
+        );
+
+
+    grid.innerHTML = "";
+
+
+    if (sykler.length === 0) {
+
+        grid.innerHTML = `
+
+            <div class="info">
+
+                Ingen sykler ble funnet.
+
+            </div>
+
+        `;
+
+
+        grid.style.display = "block";
+
+        return;
+
+    }
+
+
+    sykler.forEach(
+        function(sykkel) {
+
+            grid.appendChild(
+                lagSykkelKort(sykkel)
+            );
+
+        }
+    );
+
+
+    grid.style.display = "grid";
+
+}
+
+
+/* =====================================================
+   LAG SYKKELKORT
+   ===================================================== */
+
+function lagSykkelKort(
+    sykkel
+) {
+
+    const card =
+        document.createElement(
+            "div"
+        );
+
+
+    const status =
+        String(
+            sykkel.status || ""
+        ).trim();
+
+
+    let statusClass =
+        "available";
+
+
+    let statusText =
+        "Tilgjengelig";
+
+
+    if (status === "I bruk") {
+
+        statusClass =
+            "in-use";
+
+        statusText =
+            "I bruk";
+
+    }
+
+
+    else if (
+        status === "Feil meldt"
+    ) {
+
+        statusClass =
+            "error";
+
+        statusText =
+            "Feil meldt";
+
+    }
+
+
+    card.className =
+        "bike-card " +
+        statusClass;
+
+
+    let brukerTekst =
+        "Ingen registrert";
+
+
+    if (sykkel.bruker) {
+
+        brukerTekst =
+            escapeHtml(
+                sykkel.bruker
+            );
+
+    }
+
+
+    let tattUtTekst =
+        "-";
+
+
+    if (sykkel.tattUt) {
+
+        tattUtTekst =
+            escapeHtml(
+                sykkel.tattUt
+            );
+
+    }
+
+
+    card.innerHTML = `
+
+        <div class="bike-title">
+
+            <h2>
+                🚲 ${escapeHtml(sykkel.sykkelID)}
+            </h2>
+
+            <span class="status ${statusClass}">
+                ${statusText}
+            </span>
+
+        </div>
+
+
+        <div class="bike-details">
+
+            <div>
+
+                <strong>Bruker:</strong>
+
+                ${brukerTekst}
+
+            </div>
+
+
+            <div>
+
+                <strong>Tatt ut:</strong>
+
+                ${tattUtTekst}
+
+            </div>
+
+        </div>
+
+
+        <div class="actions">
+
+            ${
+                status === "Tilgjengelig"
+
+                ?
+
+                `
+
+                <button
+                    class="btn-primary"
+                    onclick="åpneTakeModal('${escapeAttr(sykkel.sykkelID)}')">
+
+                    🚲 Ta ut sykkel
+
+                </button>
+
+                `
+
+                :
+
+                ""
+
+            }
+
+
+            ${
+                status === "I bruk"
+
+                ?
+
+                `
+
+                <button
+                    class="btn-success"
+                    onclick="leverTilbake('${escapeAttr(sykkel.sykkelID)}')">
+
+                    ✓ Lever tilbake
+
+                </button>
+
+                `
+
+                :
+
+                ""
+
+            }
+
+
+            ${
+                status !== "Feil meldt"
+
+                ?
+
+                `
+
+                <button
+                    class="btn-warning"
+                    onclick="åpneErrorModal('${escapeAttr(sykkel.sykkelID)}')">
+
+                    ⚠️ Meld feil
+
+                </button>
+
+                `
+
+                :
+
+                ""
+
+            }
+
+        </div>
+
+    `;
+
+
+    return card;
+
+}
+
+
+/* =====================================================
+   FYLL ANSATTLISTE
+   ===================================================== */
+
+function fyllAnsattListe() {
+
+    const select =
+        document.getElementById(
+            "employeeSelect"
+        );
+
+
+    select.innerHTML = `
+
+        <option value="">
+            Velg ansatt …
+        </option>
+
+    `;
+
+
+    ansatte.forEach(
+        function(navn) {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                navn;
+
+
+            option.textContent =
+                navn;
+
+
+            select.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ÅPNE TA UT-MODAL
+   ===================================================== */
+
+function åpneTakeModal(
+    sykkelID
+) {
+
+    valgtSykkelForUttak =
+        sykkelID;
+
+
+    document.getElementById(
+        "takeBikeText"
+    ).textContent =
+        "Du er i ferd med å ta ut " +
+        sykkelID +
+        ".";
+
+
+    document.getElementById(
+        "employeeSelect"
+    ).value = "";
+
+
+    document.getElementById(
+        "takeModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   LUKK TA UT-MODAL
+   ===================================================== */
+
+function lukkTakeModal() {
+
+    valgtSykkelForUttak =
+        null;
+
+
+    document.getElementById(
+        "takeModal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   BEKREFT TA UT SYKKEL
+   ===================================================== */
+
+async function bekreftTaUtSykkel() {
+
+    if (!valgtSykkelForUttak) {
+
+        return;
+
+    }
+
+
+    const navn =
+        document.getElementById(
+            "employeeSelect"
+        ).value;
+
+
+    if (!navn) {
+
+        alert(
+            "Velg navn før sykkelen tas ut."
+        );
+
+        return;
+
+    }
+
+
+    const sykkelID =
+        valgtSykkelForUttak;
+
+
+    lukkTakeModal();
+
+
+    visMelding(
+        "Registrerer uttak …",
+        "success"
+    );
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        action:
+                            "taUtSykkel",
+
+                        sykkelID:
+                            sykkelID,
+
+                        navn:
+                            navn
+
+                    })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!data.success) {
+
+            throw new Error(
+                data.message ||
+                "Kunne ikke registrere uttaket."
+            );
+
+        }
+
+
+        visMelding(
+            data.message ||
+            "Sykkelen er registrert som tatt ut.",
+            "success"
+        );
+
+
+        await lastSykler();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Feil ved uttak:",
+            error
+        );
+
+
+        visMelding(
+
+            error.message ||
+            "Kunne ikke registrere uttaket.",
+
+            "error"
+
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   LEVER TILBAKE
+   ===================================================== */
+
+async function leverTilbake(
+    sykkelID
+) {
+
+    const sykkel =
+        sykler.find(
+            function(item) {
+
+                return (
+                    item.sykkelID ===
+                    sykkelID
+                );
+
+            }
+        );
+
+
+    if (!sykkel) {
+
+        return;
+
+    }
+
+
+    let navn =
+        sykkel.bruker;
+
+
+    /*
+     * Hvis bruker er registrert,
+     * spør vi om bekreftelse.
+     */
+
+    const bekreft =
+        confirm(
+
+            "Sykkelen " +
+            sykkelID +
+            " er registrert på " +
+            navn +
+            ".\n\n" +
+            "Vil du registrere at den er levert tilbake?"
+
+        );
+
+
+    if (!bekreft) {
+
+        return;
+
+    }
+
+
+    visMelding(
+        "Registrerer retur …",
+        "success"
+    );
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        action:
+                            "leverTilbakeSykkel",
+
+                        sykkelID:
+                            sykkelID,
+
+                        navn:
+                            navn
+
+                    })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!data.success) {
+
+            throw new Error(
+                data.message ||
+                "Kunne ikke registrere retur."
+            );
+
+        }
+
+
+        visMelding(
+            data.message ||
+            "Sykkelen er levert tilbake.",
+            "success"
+        );
+
+
+        await lastSykler();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Feil ved retur:",
+            error
+        );
+
+
+        visMelding(
+
+            error.message ||
+            "Kunne ikke registrere retur.",
+
+            "error"
+
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   ÅPNE FEIL-MODAL
+   ===================================================== */
+
+function åpneErrorModal(
+    sykkelID
+) {
+
+    valgtSykkelForFeil =
+        sykkelID;
+
+
+    document.getElementById(
+        "errorBikeText"
+    ).textContent =
+        "Meld feil på " +
+        sykkelID +
+        ".";
+
+
+    document.getElementById(
+        "errorType"
+    ).value = "";
+
+
+    document.getElementById(
+        "errorComment"
+    ).value = "";
+
+
+    document.getElementById(
+        "errorModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   LUKK FEIL-MODAL
+   ===================================================== */
+
+function lukkErrorModal() {
+
+    valgtSykkelForFeil =
+        null;
+
+
+    document.getElementById(
+        "errorModal"
+    ).classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   BEKREFT MELD FEIL
+   ===================================================== */
+
+async function bekreftMeldFeil() {
+
+    if (!valgtSykkelForFeil) {
+
+        return;
+
+    }
+
+
+    const feiltype =
+        document.getElementById(
+            "errorType"
+        ).value;
+
+
+    const kommentar =
+        document.getElementById(
+            "errorComment"
+        ).value.trim();
+
+
+    if (!feiltype) {
+
+        alert(
+            "Velg en feiltype."
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * Hent navn fra den som er registrert
+     * på sykkelen.
+     *
+     * Hvis sykkelen er tilgjengelig,
+     * ber vi brukeren velge navn.
+     */
+
+    const sykkel =
+        sykler.find(
+            function(item) {
+
+                return (
+                    item.sykkelID ===
+                    valgtSykkelForFeil
+                );
+
+            }
+        );
+
+
+    let navn =
+        sykkel &&
+        sykkel.bruker
+            ? sykkel.bruker
+            : "";
+
+
+    if (!navn) {
+
+        navn =
+            prompt(
+                "Skriv navnet ditt:"
+            );
+
+
+        if (!navn) {
+
+            return;
+
+        }
+
+    }
+
+
+    const sykkelID =
+        valgtSykkelForFeil;
+
+
+    lukkErrorModal();
+
+
+    visMelding(
+        "Registrerer feil …",
+        "success"
+    );
+
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        action:
+                            "meldFeil",
+
+                        sykkelID:
+                            sykkelID,
+
+                        navn:
+                            navn,
+
+                        feiltype:
+                            feiltype,
+
+                        kommentar:
+                            kommentar
+
+                    })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!data.success) {
+
+            throw new Error(
+                data.message ||
+                "Kunne ikke registrere feilen."
+            );
+
+        }
+
+
+        visMelding(
+            data.message ||
+            "Feilen er registrert.",
+            "success"
+        );
+
+
+        await lastSykler();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Feil ved registrering:",
+            error
+        );
+
+
+        visMelding(
+
+            error.message ||
+            "Kunne ikke registrere feilen.",
+
+            "error"
+
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   VIS / SKJUL LASTING
+   ===================================================== */
+
+function visLaster(
+    vis
+) {
+
+    const loading =
+        document.getElementById(
+            "loading"
+        );
+
+
+    loading.style.display =
+        vis
+            ? "block"
+            : "none";
+
+}
+
+
+/* =====================================================
+   MELDING
+   ===================================================== */
+
+function visMelding(
+    tekst,
+    type
+) {
+
+    const element =
+        document.getElementById(
+            "statusMessage"
+        );
+
+
+    element.textContent =
+        tekst;
+
+
+    element.className =
+        "status-message " +
+        type;
+
+}
+
+
+/* =====================================================
+   SKJUL MELDING
+   ===================================================== */
+
+function skjulMelding() {
+
+    const element =
+        document.getElementById(
+            "statusMessage"
+        );
+
+
+    element.textContent =
+        "";
+
+
+    element.className =
+        "status-message";
+
+}
+
+
+/* =====================================================
+   HTML-SIKKERHET
+   ===================================================== */
+
+function escapeHtml(
+    value
+) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+function escapeAttr(
+    value
+) {
+
+    return String(value)
+        .replaceAll("\\", "\\\\")
+        .replaceAll("'", "\\'");
+
+}
+
+
+/* =====================================================
+   LUKK MODAL VED KLIKK UTENFOR
+   ===================================================== */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const takeModal =
+            document.getElementById(
+                "takeModal"
+            );
+
+
+        const errorModal =
+            document.getElementById(
+                "errorModal"
+            );
+
+
+        if (
+            event.target ===
+            takeModal
+        ) {
+
+            lukkTakeModal();
+
+        }
+
+
+        if (
+            event.target ===
+            errorModal
+        ) {
+
+            lukkErrorModal();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
