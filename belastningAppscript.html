@@ -1,0 +1,1270 @@
+// ==========================================================
+// TEAM SØR – ARBEIDSBELASTNING API
+// ==========================================================
+
+const AKTIVITETER_ARK = "Aktiviteter";
+const DAGLIGE_SVAR_ARK = "DagligeSvar";
+
+
+// ==========================================================
+// GET
+// ==========================================================
+
+function doGet(e) {
+
+  try {
+
+    const action =
+      e &&
+      e.parameter &&
+      e.parameter.action
+        ? e.parameter.action
+        : "test";
+
+
+    let resultat;
+
+
+    // ------------------------------------------------------
+    // TEST
+    // ------------------------------------------------------
+
+    if (action === "test") {
+
+      resultat = {
+        success: true,
+        message:
+          "Team Sør Arbeidsbelastning API fungerer.",
+        timestamp:
+          new Date().toISOString()
+      };
+
+    }
+
+
+    // ------------------------------------------------------
+    // HENT AKTIVITETER
+    // ------------------------------------------------------
+
+    else if (action === "hentAktiviteter") {
+
+      const ansattId =
+        e.parameter.ansattId || "";
+
+      const dato =
+        e.parameter.dato || "";
+
+
+      resultat =
+        hentAktiviteterData(
+          ansattId,
+          dato
+        );
+
+    }
+
+
+    // ------------------------------------------------------
+    // HENT DAGLIG SVAR
+    // ------------------------------------------------------
+
+    else if (action === "hentSvar") {
+
+      const ansattId =
+        e.parameter.ansattId || "";
+
+      const dato =
+        e.parameter.dato || "";
+
+
+      resultat =
+        hentDagligSvarData(
+          ansattId,
+          dato
+        );
+
+    }
+
+
+    // ------------------------------------------------------
+    // UKJENT ACTION
+    // ------------------------------------------------------
+
+    else {
+
+      resultat = {
+
+        success: false,
+
+        error:
+          "Ukjent action: " +
+          action
+
+      };
+
+    }
+
+
+    return jsonResponse(
+      resultat,
+      e
+    );
+
+
+  } catch (error) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        error.message,
+
+      stack:
+        error.stack
+
+    }, e);
+
+  }
+
+}
+
+
+// ==========================================================
+// POST
+// ==========================================================
+
+function doPost(e) {
+
+  try {
+
+    if (
+      !e ||
+      !e.postData
+    ) {
+
+      return jsonResponse({
+
+        success: false,
+
+        error:
+          "Ingen POST-data mottatt."
+
+      });
+
+    }
+
+
+    const rawData =
+      e.postData.contents;
+
+
+    if (!rawData) {
+
+      return jsonResponse({
+
+        success: false,
+
+        error:
+          "POST-data er tom."
+
+      });
+
+    }
+
+
+    let data;
+
+
+    try {
+
+      data =
+        JSON.parse(
+          rawData
+        );
+
+    } catch (jsonError) {
+
+      return jsonResponse({
+
+        success: false,
+
+        error:
+          "Kunne ikke lese JSON-data.",
+
+        details:
+          jsonError.message
+
+      });
+
+    }
+
+
+    const action =
+      data.action || "";
+
+
+    // ------------------------------------------------------
+    // LAGRE AKTIVITET
+    // ------------------------------------------------------
+
+    if (
+      action ===
+      "lagreAktivitet"
+    ) {
+
+      return lagreAktivitet(
+        data
+      );
+
+    }
+
+
+    // ------------------------------------------------------
+    // SLETT AKTIVITET
+    // ------------------------------------------------------
+
+    if (
+      action ===
+      "slettAktivitet"
+    ) {
+
+      return slettAktivitet(
+        data
+      );
+
+    }
+
+
+    // ------------------------------------------------------
+    // LAGRE DAGLIG SVAR
+    // ------------------------------------------------------
+
+    if (
+      action ===
+      "lagreSvar"
+    ) {
+
+      return lagreDagligSvar(
+        data
+      );
+
+    }
+
+
+    // ------------------------------------------------------
+    // TEST POST
+    // ------------------------------------------------------
+
+    if (
+      action ===
+      "test"
+    ) {
+
+      return jsonResponse({
+
+        success: true,
+
+        message:
+          "POST fungerer.",
+
+        data:
+          data
+
+      });
+
+    }
+
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        "Ukjent POST action: " +
+        action
+
+    });
+
+
+  } catch (error) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        error.message,
+
+      stack:
+        error.stack
+
+    });
+
+  }
+
+}
+
+
+// ==========================================================
+// LAGRE AKTIVITET
+// ==========================================================
+
+function lagreAktivitet(data) {
+
+  if (!data.dato) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        "Dato mangler."
+
+    });
+
+  }
+
+
+  if (!data.ansattId) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        "Ansatt-ID mangler."
+
+    });
+
+  }
+
+
+  if (!data.ansattNavn) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        "Ansattnavn mangler."
+
+    });
+
+  }
+
+
+  if (!data.aktivitet) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        "Aktivitet mangler."
+
+    });
+
+  }
+
+
+  const sheet =
+    getAktiviteterArk();
+
+
+  let varighetMinutter =
+    Number(
+      data.varighetMinutter
+    );
+
+
+  if (
+    !Number.isFinite(
+      varighetMinutter
+    )
+  ) {
+
+    const sekunder =
+      Number(
+        data.varighetSekunder
+      );
+
+
+    if (
+      Number.isFinite(
+        sekunder
+      )
+    ) {
+
+      varighetMinutter =
+        sekunder / 60;
+
+    } else {
+
+      varighetMinutter =
+        0;
+
+    }
+
+  }
+
+
+  /*
+   * Vi lagrer minutter som tall.
+   *
+   * Eksempel:
+   *
+   * 60 sekunder = 1 minutt
+   */
+
+  const rad = [
+
+    data.dato,
+
+    data.ansattNavn,
+
+    data.ansattId,
+
+    data.aktivitet,
+
+    data.kategori || "",
+
+    data.start || "",
+
+    data.slutt || "",
+
+    varighetMinutter,
+
+    data.kommentar || ""
+
+  ];
+
+
+  sheet.appendRow(
+    rad
+  );
+
+
+  return jsonResponse({
+
+    success: true,
+
+    message:
+      "Aktiviteten er lagret.",
+
+    row:
+      sheet.getLastRow()
+
+  });
+
+}
+
+
+// ==========================================================
+// HENT AKTIVITETER – DATA
+// ==========================================================
+
+function hentAktiviteterData(
+  ansattId,
+  dato
+) {
+
+  const sheet =
+    getAktiviteterArk();
+
+
+  const lastRow =
+    sheet.getLastRow();
+
+
+  if (
+    lastRow < 2
+  ) {
+
+    return {
+
+      success: true,
+
+      aktiviteter: []
+
+    };
+
+  }
+
+
+  const data =
+    sheet.getRange(
+      2,
+      1,
+      lastRow - 1,
+      9
+    ).getValues();
+
+
+  const aktiviteter =
+    [];
+
+
+  for (
+    let i = 0;
+    i < data.length;
+    i++
+  ) {
+
+    const row =
+      data[i];
+
+
+    const radDato =
+      normaliserDato(
+        row[0]
+      );
+
+
+    const radAnsattId =
+      String(
+        row[2] || ""
+      );
+
+
+    if (
+      radAnsattId ===
+        String(ansattId) &&
+      radDato ===
+        String(dato)
+    ) {
+
+      aktiviteter.push({
+
+        row:
+          i + 2,
+
+        dato:
+          row[0],
+
+        ansattNavn:
+          row[1],
+
+        ansattId:
+          row[2],
+
+        aktivitet:
+          row[3],
+
+        kategori:
+          row[4],
+
+        start:
+          row[5],
+
+        slutt:
+          row[6],
+
+        varighetMinutter:
+          Number(
+            row[7]
+          ) || 0,
+
+        kommentar:
+          row[8] || ""
+
+      });
+
+    }
+
+  }
+
+
+  return {
+
+    success: true,
+
+    aktiviteter:
+      aktiviteter
+
+  };
+
+}
+
+
+// ==========================================================
+// SLETT AKTIVITET
+// ==========================================================
+
+function slettAktivitet(data) {
+
+  const row =
+    Number(
+      data.row
+    );
+
+
+  if (
+    !Number.isInteger(row) ||
+    row < 2
+  ) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        "Ugyldig rad."
+
+    });
+
+  }
+
+
+  const sheet =
+    getAktiviteterArk();
+
+
+  const lastRow =
+    sheet.getLastRow();
+
+
+  if (
+    row > lastRow
+  ) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        "Raden finnes ikke."
+
+    });
+
+  }
+
+
+  sheet.deleteRow(
+    row
+  );
+
+
+  return jsonResponse({
+
+    success: true,
+
+    message:
+      "Registreringen er slettet."
+
+  });
+
+}
+
+
+// ==========================================================
+// LAGRE DAGLIG SVAR
+// ==========================================================
+
+function lagreDagligSvar(data) {
+
+  if (!data.dato) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        "Dato mangler."
+
+    });
+
+  }
+
+
+  if (!data.ansattId) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        "Ansatt-ID mangler."
+
+    });
+
+  }
+
+
+  if (!data.ansattNavn) {
+
+    return jsonResponse({
+
+      success: false,
+
+      error:
+        "Ansattnavn mangler."
+
+    });
+
+  }
+
+
+  const sheet =
+    getDagligeSvarArk();
+
+
+  const lastRow =
+    sheet.getLastRow();
+
+
+  /*
+   * Kolonner:
+   *
+   * 1  dato
+   * 2  ansattNavn
+   * 3  ansattId
+   * 4  gangavstand
+   * 5  fremOgTilbake
+   * 6  ekstraAktiviteter
+   * 7  morgenrapport
+   * 8  sluttrapport
+   * 9  arbeidslisteTid
+   * 10 rakkAlleOppgaver
+   * 11 kommentar
+   */
+
+
+  const nyRad = [
+
+    data.dato,
+
+    data.ansattNavn,
+
+    data.ansattId,
+
+    data.gangavstand || "",
+
+    data.fremOgTilbake || "",
+
+    data.ekstraAktiviteter || "",
+
+    data.morgenrapport || "",
+
+    data.sluttrapport || "",
+
+    data.arbeidslisteTid || "",
+
+    data.rakkAlleOppgaver || "",
+
+    data.kommentar || ""
+
+  ];
+
+
+  /*
+   * Hvis samme ansatt allerede har svart i dag,
+   * oppdaterer vi eksisterende rad.
+   */
+
+  if (
+    lastRow >= 2
+  ) {
+
+    const eksisterende =
+      sheet.getRange(
+        2,
+        1,
+        lastRow - 1,
+        11
+      ).getValues();
+
+
+    for (
+      let i = 0;
+      i < eksisterende.length;
+      i++
+    ) {
+
+      const rad =
+        eksisterende[i];
+
+
+      const radDato =
+        normaliserDato(
+          rad[0]
+        );
+
+
+      const radAnsattId =
+        String(
+          rad[2] || ""
+        );
+
+
+      if (
+        radDato ===
+          String(data.dato) &&
+        radAnsattId ===
+          String(data.ansattId)
+      ) {
+
+        const faktiskRad =
+          i + 2;
+
+
+        sheet
+          .getRange(
+            faktiskRad,
+            1,
+            1,
+            11
+          )
+          .setValues([
+            nyRad
+          ]);
+
+
+        return jsonResponse({
+
+          success: true,
+
+          message:
+            "Svarene er oppdatert.",
+
+          row:
+            faktiskRad
+
+        });
+
+      }
+
+    }
+
+  }
+
+
+  /*
+   * Ingen eksisterende svar.
+   * Opprett ny rad.
+   */
+
+  sheet.appendRow(
+    nyRad
+  );
+
+
+  return jsonResponse({
+
+    success: true,
+
+    message:
+      "Svarene er lagret.",
+
+    row:
+      sheet.getLastRow()
+
+  });
+
+}
+
+
+// ==========================================================
+// HENT DAGLIG SVAR – DATA
+// ==========================================================
+
+function hentDagligSvarData(
+  ansattId,
+  dato
+) {
+
+  const sheet =
+    getDagligeSvarArk();
+
+
+  const lastRow =
+    sheet.getLastRow();
+
+
+  if (
+    lastRow < 2
+  ) {
+
+    return {
+
+      success: true,
+
+      svar: null
+
+    };
+
+  }
+
+
+  const data =
+    sheet.getRange(
+      2,
+      1,
+      lastRow - 1,
+      11
+    ).getValues();
+
+
+  for (
+    let i = 0;
+    i < data.length;
+    i++
+  ) {
+
+    const row =
+      data[i];
+
+
+    const radDato =
+      normaliserDato(
+        row[0]
+      );
+
+
+    const radAnsattId =
+      String(
+        row[2] || ""
+      );
+
+
+    if (
+      radDato ===
+        String(dato) &&
+      radAnsattId ===
+        String(ansattId)
+    ) {
+
+      return {
+
+        success: true,
+
+        svar: {
+
+          row:
+            i + 2,
+
+          dato:
+            row[0],
+
+          ansattNavn:
+            row[1],
+
+          ansattId:
+            row[2],
+
+          gangavstand:
+            row[3],
+
+          fremOgTilbake:
+            row[4],
+
+          ekstraAktiviteter:
+            row[5],
+
+          morgenrapport:
+            row[6],
+
+          sluttrapport:
+            row[7],
+
+          arbeidslisteTid:
+            row[8],
+
+          rakkAlleOppgaver:
+            row[9],
+
+          kommentar:
+            row[10] || ""
+
+        }
+
+      };
+
+    }
+
+  }
+
+
+  return {
+
+    success: true,
+
+    svar: null
+
+  };
+
+}
+
+
+// ==========================================================
+// AKTIVITETER-ARK
+// ==========================================================
+
+function getAktiviteterArk() {
+
+  const spreadsheet =
+    SpreadsheetApp
+      .getActiveSpreadsheet();
+
+
+  const sheet =
+    spreadsheet.getSheetByName(
+      AKTIVITETER_ARK
+    );
+
+
+  if (!sheet) {
+
+    throw new Error(
+      'Fant ikke arket "' +
+      AKTIVITETER_ARK +
+      '".'
+    );
+
+  }
+
+
+  return sheet;
+
+}
+
+
+// ==========================================================
+// DAGLIGE SVAR-ARK
+// ==========================================================
+
+function getDagligeSvarArk() {
+
+  const spreadsheet =
+    SpreadsheetApp
+      .getActiveSpreadsheet();
+
+
+  const sheet =
+    spreadsheet.getSheetByName(
+      DAGLIGE_SVAR_ARK
+    );
+
+
+  if (!sheet) {
+
+    throw new Error(
+      'Fant ikke arket "' +
+      DAGLIGE_SVAR_ARK +
+      '".'
+    );
+
+  }
+
+
+  return sheet;
+
+}
+
+
+// ==========================================================
+// NORMALISER DATO
+// ==========================================================
+
+function normaliserDato(
+  verdi
+) {
+
+  if (
+    verdi instanceof Date
+  ) {
+
+    return Utilities.formatDate(
+      verdi,
+      Session.getScriptTimeZone(),
+      "yyyy-MM-dd"
+    );
+
+  }
+
+
+  if (
+    verdi === null ||
+    verdi === undefined
+  ) {
+
+    return "";
+
+  }
+
+
+  const tekst =
+    String(
+      verdi
+    ).trim();
+
+
+  /*
+   * Hvis datoen allerede er yyyy-mm-dd
+   */
+
+  if (
+    /^\d{4}-\d{2}-\d{2}$/.test(
+      tekst
+    )
+  ) {
+
+    return tekst;
+
+  }
+
+
+  /*
+   * Prøv å tolke datoen.
+   */
+
+  const dato =
+    new Date(
+      tekst
+    );
+
+
+  if (
+    !isNaN(
+      dato.getTime()
+    )
+  ) {
+
+    return Utilities.formatDate(
+      dato,
+      Session.getScriptTimeZone(),
+      "yyyy-MM-dd"
+    );
+
+  }
+
+
+  return tekst;
+
+}
+
+
+// ==========================================================
+// JSON / JSONP RESPONSE
+// ==========================================================
+
+function jsonResponse(
+  data,
+  e
+) {
+
+  const callback =
+    e &&
+    e.parameter &&
+    e.parameter.callback
+      ? String(
+          e.parameter.callback
+        )
+      : "";
+
+
+  const json =
+    JSON.stringify(
+      data
+    );
+
+
+  /*
+   * JSONP:
+   *
+   * callback({...});
+   *
+   * Dette kan lastes med <script>
+   * fra GitHub Pages uten CORS-problem.
+   */
+
+  if (
+    callback
+  ) {
+
+    /*
+     * Enkel validering av callback-navnet.
+     * Vi tillater kun navn som vår HTML
+     * selv genererer.
+     */
+
+    if (
+      !/^[A-Za-z_$][A-Za-z0-9_$]*$/.test(
+        callback
+      )
+    ) {
+
+      return ContentService
+        .createTextOutput(
+          "Invalid callback"
+        )
+        .setMimeType(
+          ContentService.MimeType.TEXT
+        );
+
+    }
+
+
+    return ContentService
+      .createTextOutput(
+        callback +
+        "(" +
+        json +
+        ");"
+      )
+      .setMimeType(
+        ContentService.MimeType.JAVASCRIPT
+      );
+
+  }
+
+
+  return ContentService
+    .createTextOutput(
+      json
+    )
+    .setMimeType(
+      ContentService.MimeType.JSON
+    );
+
+}
+
+
+// ==========================================================
+// TEST LAGRING
+// ==========================================================
+
+function testLagre() {
+
+  const sheet =
+    getAktiviteterArk();
+
+
+  sheet.appendRow([
+
+    "2026-09-08",
+
+    "TESTANSATT",
+
+    "TEST-ID",
+
+    "TEST",
+
+    "test",
+
+    "18:00",
+
+    "18:01",
+
+    1,
+
+    "Dette er en test"
+
+  ]);
+
+
+  Logger.log(
+    "Testdata lagret."
+  );
+
+}

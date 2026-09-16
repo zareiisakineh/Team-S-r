@@ -96,6 +96,10 @@ const fagsykepleier = ansatte.filter(person =>
     person.gruppe === "fagsykepleiere"
 );
 
+const studenter = ansatte.filter(person =>
+    person.gruppe === "studenter"
+);
+
 const vaktmester = ansatte.filter(person =>
     person.gruppe === "vaktmestre"
 );
@@ -218,6 +222,10 @@ if (document.getElementById("responssenter")) {
 
 if (document.getElementById("fagSPL")) {
     visGruppe("fagSPL", fagsykepleier);
+}
+
+if (document.getElementById("student")) {
+    visGruppe("student", studenter);
 }
 
 if (document.getElementById("vaktmester")) {

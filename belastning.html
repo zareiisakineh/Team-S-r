@@ -542,6 +542,7 @@
     line-height: 1.6;
 }
 
+
 </style>
 
 </head>
@@ -961,6 +962,8 @@
         </div>
 
     </section>
+
+
 
 
     <!-- ==================================================
@@ -2251,30 +2254,18 @@ function hentFraArbeidsbelastningAPI(
                         return;
                     }
 
-
-                    ferdig =
-                        true;
-
-
+                    ferdig = true;
                     cleanup();
-
-
-                    reject(
-                        new Error(
-                            "Kunne ikke hente data fra Apps Script."
-                        )
+                    reject(new Error("Kunne ikke hente data fra Apps Script.")
                     );
 
                 };
 
 
-            script.src =
-                url.toString();
+            script.src = url.toString();
 
 
-            document.head.appendChild(
-                script
-            );
+            document.head.appendChild(script);
 
         }
     );
@@ -3217,6 +3208,8 @@ function oppdaterOppsummering() {
         );
 
 }
+
+
 
 
 /* ======================================================
