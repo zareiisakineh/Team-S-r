@@ -3,7 +3,7 @@
 // PWA CACHE + ONESIGNAL PUSH
 // ==================================================
 
-const CACHE_NAME = "team-sor-215";
+const CACHE_NAME = "team-sor-216";
 
 const FILES = [
     "./",
