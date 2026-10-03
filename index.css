@@ -442,12 +442,13 @@ Forslag for forbedring av nettsiden forslag.html
     display: inline-block;
     background: #3A7D44;
     color: white;
-    padding: 12px 90px;
+    padding: 12px 60px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
     margin: 10px 0;
      transition: 0.3s ease;
+     margin: 10px;
 }
 
 #forslag-knapp:hover {
@@ -476,7 +477,7 @@ Forslag for forbedring av nettsiden forslag.html
     align-items: center;
     gap: 10px;
 
-    margin-top: 25px;
+    margin: 10px;
     padding: 14px 45px;
 
     background:  #e5ec9e;
@@ -510,4 +511,5 @@ Forslag for forbedring av nettsiden forslag.html
 
 #kart{
     padding: 4px 28px;
+    
 }
